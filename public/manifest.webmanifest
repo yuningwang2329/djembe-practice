@@ -1,0 +1,26 @@
+{
+  "name": "鼓点练习",
+  "short_name": "鼓点练习",
+  "description": "适合 iPad 横屏使用的非洲鼓离线练习工具",
+  "lang": "zh-CN",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "landscape",
+  "theme_color": "#f7f1e8",
+  "background_color": "#f7f1e8",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
