@@ -10,6 +10,7 @@ import {
   type PlaybackControllerOptions,
 } from "../playback/controller";
 import { createDrumSynth } from "../playback/drumSynth";
+import { createDrumSampler } from "../playback/drumSampler";
 
 const emptySnapshot: PlaybackSnapshot = {
   countInBeatsRemaining: 0,
@@ -80,7 +81,7 @@ export function usePlaybackController(
     const controller = createPlaybackController({
       audio,
       song,
-      synth: context ? createDrumSynth(context) : undefined,
+      synth: context ? createDrumSampler(context, createDrumSynth(context)) : undefined,
       requestFrame: requestFrameOverride,
       cancelFrame: cancelFrameOverride,
     });

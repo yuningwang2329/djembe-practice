@@ -13,7 +13,7 @@ describe("App", () => {
     await user.click(screen.getByRole("button", { name: "开始练习 暖身律动" }));
 
     expect(screen.getByRole("heading", { name: "暖身律动" })).toBeInTheDocument();
-    expect(screen.getByLabelText("当前四小节鼓谱")).toBeInTheDocument();
+    expect(screen.getByLabelText("可跟练鼓谱")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "原歌曲音轨" })).toHaveAttribute(
       "aria-pressed",
       "true",

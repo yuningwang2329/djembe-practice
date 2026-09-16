@@ -6,7 +6,7 @@ test("iPad landscape practice controls stay large, independent and usable", asyn
   await expect(page.getByRole("heading", { name: "曲目库" })).toBeVisible();
   await page.getByRole("button", { name: "开始练习 暖身律动" }).click();
 
-  await expect(page.getByLabel("当前四小节鼓谱")).toBeVisible();
+  await expect(page.getByLabel("可跟练鼓谱")).toBeVisible();
   await expect(page.locator(".score-bar")).toHaveCount(4);
   await expect(page.getByText("内置伴奏 · 离线可用")).toBeVisible();
 

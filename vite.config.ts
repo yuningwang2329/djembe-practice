@@ -16,6 +16,9 @@ export default defineConfig({
         await stampServiceWorker(distFile("index.html"), distFile("sw.js"), [
           distFile("manifest.webmanifest"),
           distFile("audio/demo-groove.wav"),
+          distFile("audio/drums/bass.mp3"),
+          distFile("audio/drums/tone.mp3"),
+          distFile("audio/drums/slap.mp3"),
           distFile("icons/apple-touch-icon.png"),
           distFile("icons/icon-192.png"),
           distFile("icons/icon-512.png"),

@@ -3,7 +3,7 @@ import { AudioSourceManager } from "./components/AudioSourceManager";
 import { ScorePage } from "./components/ScorePage";
 import { TrackToggle } from "./components/TrackToggle";
 import { songLibrary } from "./data/demoSong";
-import { clampPlaybackRate, getBarAtTime, getBarPage, getHitState } from "./domain/timeline";
+import { clampPlaybackRate, getBarAtTime, getBarPage } from "./domain/timeline";
 import type { SongDefinition } from "./domain/song";
 import { usePlaybackController } from "./hooks/usePlaybackController";
 import { useWakeLock } from "./hooks/useWakeLock";
@@ -127,7 +127,9 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
 
   const activeBar = getBarAtTime(song, snapshot.currentTimeMs) ?? song.bars[0];
   const page = getBarPage(song, activeBar.number);
-  const hitState = getHitState(song, snapshot.currentTimeMs);
+  const countInBeat = snapshot.isCountingIn
+    ? song.timeSignature[0] - snapshot.countInBeatsRemaining + 1
+    : 0;
 
   const setSpeed = (candidate: number) => playback.setRate(clampPlaybackRate(candidate));
   const updateLoop = (startBar: number, endBar: number, enabled = loopEnabled) => {
@@ -179,11 +181,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
       {snapshot.isCountingIn && <div className="count-in" role="status">准备开始 {snapshot.countInBeatsRemaining}</div>}
       {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
       <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
-      <ScorePage
-        bars={page}
-        currentHitAtMs={hitState.current?.atMs ?? null}
-        nextHitAtMs={hitState.next?.atMs ?? null}
-      />
+      <ScorePage bars={page} currentTimeMs={snapshot.currentTimeMs} countInBeat={countInBeat} />
 
       <section className="practice-controls" aria-label="播放控制">
         <div className="transport-controls">
