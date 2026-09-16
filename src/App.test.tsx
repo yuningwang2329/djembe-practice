@@ -51,18 +51,15 @@ describe("App", () => {
     expect(loopButton).toHaveAttribute("aria-pressed", "true");
   });
 
-  it("switches between score variants for songs that provide them", async () => {
+  it("opens 桥边姑娘 with the official score: sections, lyrics and tempo", async () => {
     const user = userEvent.setup();
     render(<App />);
     await user.click(screen.getByRole("button", { name: "开始练习 桥边姑娘" }));
 
-    const transcribed = screen.getByRole("button", { name: "扒谱版" });
-    const textbook = screen.getByRole("button", { name: "教材版" });
-    expect(transcribed).toHaveAttribute("aria-pressed", "true");
-    expect(textbook).toHaveAttribute("aria-pressed", "false");
-
-    await user.click(textbook);
-    expect(textbook).toHaveAttribute("aria-pressed", "true");
-    expect(transcribed).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText("前奏")).toBeInTheDocument();
+    expect(screen.getByText("节奏 4/4 · 速度 77.5")).toBeInTheDocument();
+    // 一行四小节，当前播放头落在第 1 小节
+    expect(screen.getByLabelText("第 1 小节")).toBeInTheDocument();
+    expect(screen.getByLabelText("第 4 小节")).toBeInTheDocument();
   });
 });

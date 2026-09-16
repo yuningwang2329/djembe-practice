@@ -6,14 +6,18 @@ interface ScorePageProps {
   currentTimeMs: number;
   /** 倒数中的拍号（1 起），0 表示不在倒数 */
   countInBeat?: number;
+  /** 拍号（如 4/4）与速度，显示在谱面上方 */
+  timeSignature?: [number, number];
+  bpm?: number;
 }
 
 const ACTIVE_WINDOW_MS = 150;
 
 /**
- * 标准非洲鼓记谱：一小节按拍分组，每拍两个八分音符位置。
- * 两个八分共一条下划线；只有一个音且落在拍头时记为四分音符（不带下划线）；
- * 休止记为 0。多出来的十六分细分按最近的八分位置归并（示例曲全部为八分网格）。
+ * 标准非洲鼓记谱：一行多小节，每小节按拍分组，每拍两个八分音符位置。
+ * 独音独占一拍为四分音符（不带下划线）；两个八分紧邻共一条下划线；
+ * 空拍只写一个 0；段落（前奏/进唱/副歌…）标在小节左上角，
+ * 歌词行渲染在对应谱面行下方。速度参考「阿波非洲鼓」教学谱排版。
  */
 interface BeatPair {
   first: HitEvent | null;
@@ -37,7 +41,13 @@ function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
-export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePageProps) {
+export function ScorePage({
+  bars,
+  currentTimeMs,
+  countInBeat = 0,
+  timeSignature,
+  bpm,
+}: ScorePageProps) {
   const activeBar =
     bars.find((bar) => currentTimeMs >= bar.startMs && currentTimeMs < bar.endMs) ?? null;
   const nextHit =
@@ -68,6 +78,47 @@ export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePagePro
     );
   }
 
+  function beatCell(pair: BeatPair, key: number) {
+    // 空拍：只写一个 0，不占两个八分格
+    if (!pair.first && !pair.second) {
+      return (
+        <div className="score-beat score-beat--rest" key={key}>
+          <span className="score-rest" aria-label="休止">
+            0
+          </span>
+        </div>
+      );
+    }
+    // 独音落在拍头：四分音符，不带下划线
+    const isQuarter = Boolean(pair.first && !pair.second);
+    return (
+      <div className="score-beat" key={key}>
+        <span
+          className={
+            isQuarter ? "score-group score-group--quarter" : "score-group score-group--eighths"
+          }
+        >
+          {pair.first ? (
+            strokeChar(pair.first)
+          ) : (
+            <span className="score-char score-char--rest" aria-label="休止">
+              <b className="score-char__letter">0</b>
+            </span>
+          )}
+          {pair.second ? (
+            strokeChar(pair.second)
+          ) : isQuarter ? null : (
+            <span className="score-char score-char--rest" aria-label="休止">
+              <b className="score-char__letter">0</b>
+            </span>
+          )}
+        </span>
+      </div>
+    );
+  }
+
+  const barCount = Math.max(bars.length, 1);
+
   return (
     <section className="score" aria-label="可跟练鼓谱">
       <div className="score-legend" aria-hidden="true">
@@ -77,66 +128,90 @@ export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePagePro
             {strokeLabels[stroke].name}
           </span>
         ))}
+        {timeSignature && bpm ? (
+          <span className="score-meta">
+            节奏 {timeSignature[0]}/{timeSignature[1]} · 速度 {bpm}
+          </span>
+        ) : null}
         <span className="score-legend__hands">
           <i className="score-hand score-hand--R">R</i> 右手
           <i className="score-hand score-hand--L">L</i> 左手
         </span>
       </div>
 
-      <div className="score-beat-row" aria-hidden="true">
-        <span className="score-gutter" />
-        {Array.from({ length: beatCount }, (_, index) => (
-          <span key={index} className={countInBeat === index + 1 ? "score-beat--count" : undefined}>
-            {index + 1}
-          </span>
-        ))}
-      </div>
-
-      {bars.map((bar) => {
-        const isActive = activeBar?.number === bar.number;
-        const progress = clamp01((currentTimeMs - bar.startMs) / (bar.endMs - bar.startMs));
-        return (
-          <article
-            className={isActive ? "score-bar score-bar--active" : "score-bar"}
-            key={bar.number}
-            aria-label={`第 ${bar.number} 小节`}
-          >
-            <div className="score-bar__no" aria-hidden="true">{bar.number}</div>
-            <div className="score-bar__grid">
-              {beatPairs(bar).map((pair, index) => {
-                const isQuarter = Boolean(pair.first && !pair.second);
-                return (
-                  <div className="score-beat" key={index}>
-                    <span className={isQuarter ? "score-group score-group--quarter" : "score-group score-group--eighths"}>
-                      {pair.first ? (
-                        strokeChar(pair.first)
-                      ) : (
-                        <span className="score-char score-char--rest" aria-label="休止">
-                          <b className="score-char__letter">0</b>
-                        </span>
-                      )}
-                      {pair.second ? (
-                        strokeChar(pair.second)
-                      ) : isQuarter ? null : (
-                        <span className="score-char score-char--rest" aria-label="休止">
-                          <b className="score-char__letter">0</b>
-                        </span>
-                      )}
-                    </span>
-                  </div>
-                );
-              })}
-              {isActive && (
-                <div
-                  className="score-playhead"
-                  style={{ left: `${progress * 100}%` }}
-                  aria-hidden="true"
-                />
-              )}
+      <div className="score-page">
+        <div className="score-page__beats" aria-hidden="true">
+          <span className="score-gutter" />
+          {bars.map((bar) => (
+            <div className="score-page__bar-beats" key={`beats-${bar.number}`}>
+              {Array.from({ length: beatCount }, (_, index) => (
+                <span
+                  key={index}
+                  className={
+                    countInBeat === index + 1 && activeBar?.number === bar.number
+                      ? "score-beat--count"
+                      : undefined
+                  }
+                >
+                  {index + 1}
+                </span>
+              ))}
             </div>
-          </article>
-        );
-      })}
+          ))}
+        </div>
+
+        <div className="score-page__row">
+          {bars.map((bar) => {
+            const isActive = activeBar?.number === bar.number;
+            const progress = clamp01((currentTimeMs - bar.startMs) / (bar.endMs - bar.startMs));
+            return (
+              <article
+                className={isActive ? "score-bar score-bar--active" : "score-bar"}
+                key={bar.number}
+                aria-label={`第 ${bar.number} 小节`}
+              >
+                {bar.section ? (
+                  <span className="score-section" aria-hidden="true">
+                    {bar.section}
+                  </span>
+                ) : null}
+                <div className="score-bar__no" aria-hidden="true">
+                  {bar.number}
+                </div>
+                <div className="score-bar__grid">
+                  {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
+                  {isActive && (
+                    <div
+                      className="score-playhead"
+                      style={{ left: `${progress * 100}%` }}
+                      aria-hidden="true"
+                    />
+                  )}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {bars.some((bar) => bar.lyric) && (
+          <div className="score-lyrics" aria-hidden="true">
+            {bars.map((bar, index) =>
+              bar.lyric ? (
+                <p
+                  key={`lyric-${bar.number}`}
+                  className="score-lyric"
+                  style={{
+                    left: `${(index / barCount) * 100}%`,
+                    width: `${((barCount - index) / barCount) * 100}%`,
+                  }}
+                >
+                  {bar.lyric}
+                </p>
+              ) : null,
+            )}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

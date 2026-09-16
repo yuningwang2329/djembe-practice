@@ -201,7 +201,13 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
       {snapshot.isCountingIn && <div className="count-in" role="status">准备开始 {snapshot.countInBeatsRemaining}</div>}
       {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
       <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
-      <ScorePage bars={page} currentTimeMs={snapshot.currentTimeMs} countInBeat={countInBeat} />
+      <ScorePage
+        bars={page}
+        currentTimeMs={snapshot.currentTimeMs}
+        countInBeat={countInBeat}
+        timeSignature={song.timeSignature}
+        bpm={song.bpm}
+      />
 
       <section className="practice-controls" aria-label="播放控制">
         <div className="transport-controls">

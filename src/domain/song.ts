@@ -13,6 +13,10 @@ export interface Bar {
   endMs: number;
   beats: number;
   hits: HitEvent[];
+  /** 段落标签（前奏/进唱/副歌/间奏/尾奏），标在该小节左上角 */
+  section?: string;
+  /** 该行谱面对应的歌词，渲染在这一行谱面下方 */
+  lyric?: string;
 }
 
 export interface SongDefinition {

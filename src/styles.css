@@ -183,22 +183,51 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-legend__item--bass b { background: #c79a71; }
 .score-legend__item--tone b { background: #d7b65a; }
 .score-legend__item--slap b { background: #8fb2a0; }
+.score-meta { border: 1px solid #c9b49d; border-radius: 999px; padding: .28rem .7rem; color: #665244; font-size: .86em; font-weight: 750; white-space: nowrap; }
 .score-legend__hands { margin-left: auto; display: inline-flex; align-items: center; gap: .4rem; }
 .score-hand { display: inline-flex; align-items: center; justify-content: center; width: 1.45em; height: 1.45em; border-radius: 999px; font-style: normal; font-weight: 800; font-size: .8em; }
 .score-hand--R { background: #35618e; color: #fff; }
 .score-hand--L { background: #8e5a35; color: #fff; }
 
-.score-beat-row { display: grid; grid-template-columns: clamp(2.1rem, 3.2vw, 2.9rem) repeat(4, 1fr); column-gap: 4px; color: #a08a76; font-size: clamp(.66rem, 1.1vw, .84rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
-.score-beat-row .score-beat--count { color: #e45f26; transform: scale(1.25); }
+/* 一行多小节：拍号行 + 谱面行 + 歌词行 */
+.score-page { position: relative; display: flex; flex-direction: column; gap: 4px; padding-bottom: clamp(1.8rem, 5.5vh, 3rem); }
+.score-page__beats { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); color: #a08a76; font-size: clamp(.66rem, 1.1vw, .84rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+.score-gutter { flex: none; width: clamp(2.1rem, 3.2vw, 2.9rem); }
+.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 4px; padding: 0 clamp(.7rem, 1.8vw, 1.2rem); }
+.score-page__beats .score-beat--count { color: #e45f26; transform: scale(1.25); display: inline-block; }
 
-.score-bar { display: grid; grid-template-columns: clamp(2.1rem, 3.2vw, 2.9rem) minmax(0, 1fr); column-gap: 4px; align-items: stretch; opacity: .58; transition: opacity 180ms ease; }
+.score-page__row { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); align-items: stretch; }
+.score-bar { position: relative; flex: 1; display: grid; grid-template-columns: clamp(2.1rem, 3.2vw, 2.9rem) minmax(0, 1fr); column-gap: 4px; align-items: stretch; opacity: .58; transition: opacity 180ms ease; }
 .score-bar--active { opacity: 1; }
 .score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 10px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.9rem, 1.6vw, 1.25rem); font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { background: #e45f26; color: #fff; }
-.score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.4rem, 1.4vw, .9rem); min-height: clamp(3.4rem, 10.5vh, 5.4rem); padding: .35rem clamp(.7rem, 1.8vw, 1.2rem); border-left: 3px solid #4a382c; border-right: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); }
+.score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.4rem, 1.4vw, .9rem); min-height: clamp(3.4rem, 10.5vh, 5.4rem); padding: .35rem clamp(.7rem, 1.8vw, 1.2rem); border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); }
+.score-page__row .score-bar:last-child .score-bar__grid { border-right: 3px solid #4a382c; }
 
-/* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线 */
+.score-section {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: clamp(2.1rem, 3.2vw, 2.9rem);
+  transform: translate(-4px, -88%);
+  border-radius: 7px;
+  padding: .12rem .5rem;
+  background: #4a382c;
+  color: #fff3e2;
+  font-size: clamp(.62rem, 1.15vw, .76rem);
+  font-weight: 800;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.5rem, 4.5vh, 2.4rem); pointer-events: none; }
+.score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .3rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #6d5340; font-size: clamp(.78rem, 1.65vw, 1rem); font-weight: 700; letter-spacing: .03em; }
+
+/* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；空拍一个 0 */
 .score-beat { display: flex; align-items: stretch; justify-content: center; min-width: 0; }
+.score-beat--rest { align-items: flex-end; }
+.score-rest { padding-bottom: .34rem; color: #cbb8a4; font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 600; line-height: 1; }
 .score-group { display: inline-flex; align-items: flex-end; justify-content: center; gap: .5em; padding: 0 .18em .34rem; }
 .score-group--eighths { border-bottom: 3px solid #503d2e; }
 .score-char { position: relative; display: inline-flex; justify-content: center; min-width: 1.1em; line-height: 1; }
