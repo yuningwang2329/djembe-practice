@@ -38,7 +38,7 @@ export function readAudioDurationMs(
     };
     const fail = () => {
       cleanup();
-      reject(new AudioImportError("invalid-audio", "Safari 无法读取这份音频，请换用 MP3、M4A 或 AAC 文件"));
+      reject(new AudioImportError("invalid-audio", "Safari 无法读取这份音频，请换用 MP3、M4A、AAC 或 FLAC 文件"));
     };
     const handleMetadata: EventListener = () => {
       if (!Number.isFinite(audio.duration) || audio.duration <= 0) {

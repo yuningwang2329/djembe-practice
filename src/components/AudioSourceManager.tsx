@@ -131,7 +131,7 @@ export function AudioSourceManager({
     setPendingMismatch(null);
     try {
       if (!isSupportedAudioFile(file)) {
-        throw new AudioImportError("unsupported-format", "请选择 MP3、M4A 或 AAC 歌曲文件");
+        throw new AudioImportError("unsupported-format", "请选择 MP3、M4A、AAC 或 FLAC 歌曲文件");
       }
       const nextEstimate = await services.getStorageEstimate();
       setEstimate(nextEstimate);
@@ -218,7 +218,7 @@ export function AudioSourceManager({
         <input
           aria-label="导入原歌曲"
           type="file"
-          accept="audio/mpeg,audio/mp4,audio/aac,.mp3,.m4a,.aac"
+          accept="audio/mpeg,audio/mp4,audio/aac,audio/flac,.mp3,.m4a,.aac,.flac"
           disabled={busy}
           onChange={handleFileChange}
         />

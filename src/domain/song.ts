@@ -25,6 +25,14 @@ export interface SongDefinition {
   expectedDurationMs: number;
   builtInAudioUrl?: string;
   bars: Bar[];
+  /** 同一首歌的可选谱面版本（如扒谱版、教材版），练习时可切换 */
+  variants?: ScoreVariant[];
+}
+
+export interface ScoreVariant {
+  id: string;
+  name: string;
+  bars: Bar[];
 }
 
 const strokes = new Set<unknown>(["bass", "tone", "slap"]);

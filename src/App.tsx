@@ -1,4 +1,4 @@
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { AudioSourceManager } from "./components/AudioSourceManager";
 import { ScorePage } from "./components/ScorePage";
 import { TrackToggle } from "./components/TrackToggle";
@@ -121,12 +121,16 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
   const [loopEnabled, setLoopEnabled] = useState(false);
   const [playbackError, setPlaybackError] = useState<string | null>(null);
   const [audioUrl, setAudioUrl] = useState(song.builtInAudioUrl);
-  const playback = usePlaybackController(song, audioUrl);
+  const [variantId, setVariantId] = useState(song.variants?.[0]?.id ?? "default");
+  const activeBars = song.variants?.find((variant) => variant.id === variantId)?.bars ?? song.bars;
+  // 谱面版本切换通过替换 bars 的派生歌曲实现，控制器随版本重建
+  const effectiveSong = useMemo(() => ({ ...song, bars: activeBars }), [song, activeBars]);
+  const playback = usePlaybackController(effectiveSong, audioUrl);
   const { snapshot } = playback;
   const wakeLock = useWakeLock(snapshot.isPlaying || snapshot.isCountingIn);
 
-  const activeBar = getBarAtTime(song, snapshot.currentTimeMs) ?? song.bars[0];
-  const page = getBarPage(song, activeBar.number);
+  const activeBar = getBarAtTime(effectiveSong, snapshot.currentTimeMs) ?? effectiveSong.bars[0];
+  const page = getBarPage(effectiveSong, activeBar.number);
   const countInBeat = snapshot.isCountingIn
     ? song.timeSignature[0] - snapshot.countInBeatsRemaining + 1
     : 0;
@@ -139,8 +143,8 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
     playback.setLoop(
       enabled
         ? {
-            startMs: song.bars[startBar - 1].startMs,
-            endMs: song.bars[normalizedEnd - 1].endMs,
+            startMs: effectiveSong.bars[startBar - 1].startMs,
+            endMs: effectiveSong.bars[normalizedEnd - 1].endMs,
           }
         : null,
     );
@@ -176,6 +180,22 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
           <strong>{formatTime(snapshot.currentTimeMs)}</strong>
         </div>
       </header>
+
+      {song.variants && song.variants.length > 0 && (
+        <div className="variant-switch" role="group" aria-label="谱面版本">
+          <span className="variant-switch__label">谱面版本</span>
+          {song.variants.map((variant) => (
+            <button
+              key={variant.id}
+              type="button"
+              aria-pressed={variantId === variant.id}
+              onClick={() => setVariantId(variant.id)}
+            >
+              {variant.name}
+            </button>
+          ))}
+        </div>
+      )}
 
       <p className="portrait-note">横屏可同时看到完整四小节</p>
       {snapshot.isCountingIn && <div className="count-in" role="status">准备开始 {snapshot.countInBeatsRemaining}</div>}
@@ -216,13 +236,13 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
           <label>
             循环从
             <select aria-label="循环起始小节" value={loopStartBar} onChange={(event) => updateLoop(Number(event.currentTarget.value), loopEndBar)}>
-              {song.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
+              {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
             </select>
           </label>
           <label>
             循环到
             <select aria-label="循环结束小节" value={loopEndBar} onChange={(event) => updateLoop(loopStartBar, Number(event.currentTarget.value))}>
-              {song.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
+              {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
             </select>
           </label>
         </div>

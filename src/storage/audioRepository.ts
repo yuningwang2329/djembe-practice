@@ -46,8 +46,10 @@ const supportedMimeTypes = new Set([
   "audio/x-m4a",
   "audio/aac",
   "audio/x-aac",
+  "audio/flac",
+  "audio/x-flac",
 ]);
-const supportedExtensions = new Set(["mp3", "m4a", "aac"]);
+const supportedExtensions = new Set(["mp3", "m4a", "aac", "flac"]);
 
 export function isSupportedAudioFile(file: Pick<File, "name" | "type">): boolean {
   if (supportedMimeTypes.has(file.type.toLowerCase())) return true;
@@ -103,7 +105,7 @@ export function createAudioRepository(databaseName = "djembe-practice") {
       if (!isSupportedAudioFile({ name: record.fileName, type: record.mimeType } as File)) {
         throw new AudioImportError(
           "unsupported-format",
-          "请选择 MP3、M4A 或 AAC 歌曲文件",
+          "请选择 MP3、M4A、AAC 或 FLAC 歌曲文件",
         );
       }
       const difference = Math.abs(record.durationMs - options.expectedDurationMs);

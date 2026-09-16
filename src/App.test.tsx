@@ -50,4 +50,19 @@ describe("App", () => {
     await user.click(loopButton);
     expect(loopButton).toHaveAttribute("aria-pressed", "true");
   });
+
+  it("switches between score variants for songs that provide them", async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(screen.getByRole("button", { name: "开始练习 桥边姑娘" }));
+
+    const transcribed = screen.getByRole("button", { name: "扒谱版" });
+    const textbook = screen.getByRole("button", { name: "教材版" });
+    expect(transcribed).toHaveAttribute("aria-pressed", "true");
+    expect(textbook).toHaveAttribute("aria-pressed", "false");
+
+    await user.click(textbook);
+    expect(textbook).toHaveAttribute("aria-pressed", "true");
+    expect(transcribed).toHaveAttribute("aria-pressed", "false");
+  });
 });
