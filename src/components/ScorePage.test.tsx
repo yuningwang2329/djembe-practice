@@ -4,17 +4,33 @@ import { ScorePage } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
-  it("renders bars as timeline rows with stroke letters, names and hands", () => {
+  it("renders bars as staff rows with a stroke legend", () => {
     const song = makeSong();
     render(<ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={0} />);
 
     expect(screen.getByLabelText("第 1 小节")).toBeInTheDocument();
     expect(screen.getByLabelText("第 4 小节")).toBeInTheDocument();
-    expect(screen.getAllByText("低音").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("开音").length).toBeGreaterThan(0);
+    expect(screen.getByText("低音")).toBeInTheDocument();
+    expect(screen.getByText("开音")).toBeInTheDocument();
     expect(screen.getAllByText("B").length).toBeGreaterThan(0);
     expect(screen.getAllByText("R").length).toBeGreaterThan(0);
     expect(screen.getAllByText("L").length).toBeGreaterThan(0);
+  });
+
+  it("writes quarter notes without underline and pairs eighth notes under one line", () => {
+    const song = makeSong();
+    const { container } = render(
+      <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={0} />,
+    );
+
+    // 测试曲每小节：第 1 拍低音在拍头（四分），第 2 拍开音在拍头（四分），第 3、4 拍休止
+    const quarters = container.querySelectorAll(".score-group--quarter");
+    expect(quarters).toHaveLength(8);
+    const eighths = container.querySelectorAll(".score-group--eighths");
+    expect(eighths).toHaveLength(8);
+    // 休止拍写成两个 0 且共一条下划线
+    const restPair = eighths[0];
+    expect(restPair.querySelectorAll(".score-char--rest")).toHaveLength(2);
   });
 
   it("marks the sounding hit and the upcoming hit without marking rests", () => {
@@ -25,7 +41,7 @@ describe("ScorePage", () => {
 
     expect(container.querySelector('[data-hit-at="0"]')).toHaveAttribute("data-state", "current");
     expect(container.querySelector('[data-hit-at="500"]')).toHaveAttribute("data-state", "next");
-    expect(container.querySelector(".score-rest")).not.toHaveAttribute("data-state");
+    expect(container.querySelector(".score-char--rest")).not.toHaveAttribute("data-state");
   });
 
   it("sweeps the playhead across the active bar only", () => {

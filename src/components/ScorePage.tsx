@@ -8,24 +8,29 @@ interface ScorePageProps {
   countInBeat?: number;
 }
 
-interface ScoreSlot {
-  hit: HitEvent | null;
-  index: number;
+const ACTIVE_WINDOW_MS = 150;
+
+/**
+ * 标准非洲鼓记谱：一小节按拍分组，每拍两个八分音符位置。
+ * 两个八分共一条下划线；只有一个音且落在拍头时记为四分音符（不带下划线）；
+ * 休止记为 0。多出来的十六分细分按最近的八分位置归并（示例曲全部为八分网格）。
+ */
+interface BeatPair {
+  first: HitEvent | null;
+  second: HitEvent | null;
 }
 
-const ACTIVE_WINDOW_MS = 140;
-
-function makeSlots(bar: Bar): ScoreSlot[] {
-  const slotCount = bar.beats * 4;
-  const slots: ScoreSlot[] = Array.from({ length: slotCount }, (_, index) => ({ hit: null, index }));
-  const duration = bar.endMs - bar.startMs;
-
+function beatPairs(bar: Bar): BeatPair[] {
+  const eighthMs = (bar.endMs - bar.startMs) / bar.beats / 2;
+  const byEighth = new Map<number, HitEvent>();
   for (const hit of bar.hits) {
-    const rawSlot = Math.round(((hit.atMs - bar.startMs) / duration) * slotCount);
-    const index = Math.min(slotCount - 1, Math.max(0, rawSlot));
-    slots[index] = { hit, index };
+    const index = Math.round((hit.atMs - bar.startMs) / eighthMs);
+    if (index >= 0 && index < bar.beats * 2) byEighth.set(index, hit);
   }
-  return slots;
+  return Array.from({ length: bar.beats }, (_, beat) => ({
+    first: byEighth.get(beat * 2) ?? null,
+    second: byEighth.get(beat * 2 + 1) ?? null,
+  }));
 }
 
 function clamp01(value: number): number {
@@ -48,6 +53,21 @@ export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePagePro
     return "idle";
   }
 
+  function strokeChar(hit: HitEvent) {
+    const label = strokeLabels[hit.stroke];
+    return (
+      <span
+        className={`score-char score-char--${hit.stroke}`}
+        data-hit-at={hit.atMs}
+        data-state={hitState(hit)}
+        aria-label={`${label.name} ${label.letter}，${hit.hand} 手`}
+      >
+        <b className="score-char__letter">{label.letter}</b>
+        <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>
+      </span>
+    );
+  }
+
   return (
     <section className="score" aria-label="可跟练鼓谱">
       <div className="score-legend" aria-hidden="true">
@@ -66,10 +86,7 @@ export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePagePro
       <div className="score-beat-row" aria-hidden="true">
         <span className="score-gutter" />
         {Array.from({ length: beatCount }, (_, index) => (
-          <span
-            key={index}
-            className={countInBeat === index + 1 ? "score-beat--count" : undefined}
-          >
+          <span key={index} className={countInBeat === index + 1 ? "score-beat--count" : undefined}>
             {index + 1}
           </span>
         ))}
@@ -86,22 +103,26 @@ export function ScorePage({ bars, currentTimeMs, countInBeat = 0 }: ScorePagePro
           >
             <div className="score-bar__no" aria-hidden="true">{bar.number}</div>
             <div className="score-bar__grid">
-              {makeSlots(bar).map(({ hit, index }) => {
-                if (!hit) return <div className="score-rest" key={index} aria-label="休止" />;
-                const label = strokeLabels[hit.stroke];
+              {beatPairs(bar).map((pair, index) => {
+                const isQuarter = Boolean(pair.first && !pair.second);
                 return (
-                  <div
-                    className={`score-note score-note--${hit.stroke}`}
-                    data-hit-at={hit.atMs}
-                    data-state={hitState(hit)}
-                    key={index}
-                    aria-label={`第 ${bar.number} 小节 ${label.name} ${label.letter}，${hit.hand} 手`}
-                  >
-                    <b className="score-note__letter">{label.letter}</b>
-                    <span className="score-note__name">{label.name}</span>
-                    <i className={`score-hand score-hand--${hit.hand} score-note__hand`}>
-                      {hit.hand}
-                    </i>
+                  <div className="score-beat" key={index}>
+                    <span className={isQuarter ? "score-group score-group--quarter" : "score-group score-group--eighths"}>
+                      {pair.first ? (
+                        strokeChar(pair.first)
+                      ) : (
+                        <span className="score-char score-char--rest" aria-label="休止">
+                          <b className="score-char__letter">0</b>
+                        </span>
+                      )}
+                      {pair.second ? (
+                        strokeChar(pair.second)
+                      ) : isQuarter ? null : (
+                        <span className="score-char score-char--rest" aria-label="休止">
+                          <b className="score-char__letter">0</b>
+                        </span>
+                      )}
+                    </span>
                   </div>
                 );
               })}
