@@ -5,6 +5,9 @@ const INDEX_URL = new URL("index.html", SCOPE_URL).href;
 const REQUIRED_ASSETS = [
   new URL("manifest.webmanifest", SCOPE_URL).href,
   new URL("audio/demo-groove.wav", SCOPE_URL).href,
+  new URL("audio/drums/bass.mp3", SCOPE_URL).href,
+  new URL("audio/drums/tone.mp3", SCOPE_URL).href,
+  new URL("audio/drums/slap.mp3", SCOPE_URL).href,
   new URL("icons/apple-touch-icon.png", SCOPE_URL).href,
   new URL("icons/icon-192.png", SCOPE_URL).href,
   new URL("icons/icon-512.png", SCOPE_URL).href,
