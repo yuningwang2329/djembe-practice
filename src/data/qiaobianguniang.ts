@@ -10,13 +10,12 @@ import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song
  * 歌词来源：百度百科《桥边姑娘》完整歌词（含第二段主歌
  * 「暖阳下的桥头旁 … 一个人在流浪」，共 24 句）。
  *
- * 音频对齐：第一段吉他落音实测 2.282s；全曲网格拟合 77.33 BPM，
- * 与谱面标注速度 77.5 一致。逐小节能量分析确认：第 6 小节人声进入；
- * 28–30 小节为弱唱 breakdown（能量骤降的循环段）；54–57 小节尾奏渐弱；
- * 第 58 小节收尾。全曲每句歌词占 2 小节，展开为 58 小节：
- * 前奏 1–5 · 主歌一 6–13 · 主歌二 14–21 · 副歌 22–33 ·
- * 主歌三 34–49 · 副歌再现 50–53 · 尾奏 54–58。
- * （段落到具体小节的对应按歌词句与能量曲线推断，若跟唱时感觉错位可微调。）
+ * 音频对齐：全曲三处独立锚点实测——首个强拍 3.111s、副歌「桥边姑娘」
+ * 进入 65.046s（= 第 21 小节）、58 小节终点 182.7s 与音频渐弱收尾一致；
+ * 第一处人声起音 15.498s 恰好落在第 5 小节第 1 拍。逐句歌词按 2 小节
+ * 对位展开为 58 小节：前奏 1–4 · 主歌一 5–12 · 主歌二 13–20 ·
+ * 副歌 21–32 · 主歌三 33–48 · 副歌再现 49–52 · 尾奏 53–58。
+ * （小节级对位由能量/起音分析推断，若跟唱时感觉错位可微调。）
  *
  * DSL：8 个字符 = 一小节的 8 个八分位置；大写 = 右手，小写 = 左手；
  * B/T/S 为鼓音，0 为休止。记谱组由渲染层归并：独音独占一拍为四分音符，
@@ -26,7 +25,7 @@ import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song
 const BPM = 77.5;
 const BEAT_MS = 60000 / BPM;
 const BAR_MS = BEAT_MS * 4;
-const AUDIO_OFFSET_MS = 2282;
+const AUDIO_OFFSET_MS = 3111;
 const BAR_COUNT = 58;
 const EXPECTED_DURATION_MS = 183141;
 
@@ -75,13 +74,12 @@ const spec = (pattern: PatternName, extra: Omit<BarSpec, "pattern"> = {}): BarSp
 const LYRIC_SPAN = 2;
 
 const specs: BarSpec[] = [
-  // 前奏 1–5（谱面：B SB B S ×3 ｜ B SB BB S ｜ B 0）
+  // 前奏 1–4（谱面：B SB B S ×3 ｜ B SB BB S）
   spec("a", { section: "前奏" }),
   spec("a"),
   spec("a"),
   spec("b"),
-  spec("c"),
-  // 主歌一 6–13：暖阳下我迎芬芳 / 是谁家的姑娘 / 我走在那座小桥上 / 你抚琴奏忧伤
+  // 主歌一 5–12：暖阳下我迎芬芳 / 是谁家的姑娘 / 我走在那座小桥上 / 你抚琴奏忧伤
   spec("a", { section: "主歌一", lyric: "暖阳下 我迎芬芳", lyricSpan: LYRIC_SPAN }),
   spec("a"),
   spec("a", { lyric: "是谁家的姑娘", lyricSpan: LYRIC_SPAN }),
@@ -90,7 +88,7 @@ const specs: BarSpec[] = [
   spec("a"),
   spec("a", { lyric: "你抚琴奏忧伤", lyricSpan: LYRIC_SPAN }),
   spec("b"),
-  // 主歌二 14–21（后半段第 4 拍 S 左手）
+  // 主歌二 13–20（后半段第 4 拍 S 左手）
   spec("a", { section: "主歌二", lyric: "桥边歌唱的小姑娘", lyricSpan: LYRIC_SPAN }),
   spec("a"),
   spec("a", { lyric: "你眼角在流淌", lyricSpan: LYRIC_SPAN }),
@@ -99,7 +97,7 @@ const specs: BarSpec[] = [
   spec("aLeft"),
   spec("aLeft", { lyric: "一个人念家乡", lyricSpan: LYRIC_SPAN }),
   spec("b"),
-  // 副歌 22–33：风华两行 + 我说四行（28–30 弱唱 breakdown）
+  // 副歌 21–32：风华两行 + 我说四行（弱唱 breakdown 段）
   spec("a", { section: "副歌", lyric: "风华模样 你落落大方", lyricSpan: LYRIC_SPAN }),
   spec("a"),
   spec("a", { lyric: "坐在桥上 我听你歌唱", lyricSpan: LYRIC_SPAN }),
@@ -112,7 +110,7 @@ const specs: BarSpec[] = [
   spec("b"),
   spec("b", { lyric: "我把你放心房 不想让你流浪", lyricSpan: LYRIC_SPAN }),
   spec("b"),
-  // 主歌三（第二段）34–49
+  // 主歌三（第二段）33–48
   spec("a", { section: "主歌三", lyric: "暖阳下 的桥头旁", lyricSpan: LYRIC_SPAN }),
   spec("a"),
   spec("a", { lyric: "有这样一姑娘", lyricSpan: LYRIC_SPAN }),
@@ -129,15 +127,16 @@ const specs: BarSpec[] = [
   spec("a"),
   spec("a", { lyric: "一个人在流浪", lyricSpan: LYRIC_SPAN }),
   spec("b"),
-  // 副歌再现 50–53
+  // 副歌再现 49–52
   spec("b", { section: "副歌", lyric: "我说桥边姑娘 你的芬芳", lyricSpan: LYRIC_SPAN }),
   spec("b"),
   spec("b", { lyric: "我把你放心上 刻在了我心膛", lyricSpan: LYRIC_SPAN }),
   spec("b"),
-  // 尾奏 54–58：弱唱收尾（鼓手休息），最后一记低音收束
+  // 尾奏 53–58：弱唱收尾（鼓手休息），最后一记低音收束
   spec("rest", { section: "尾奏", lyric: "桥边姑娘 你的忧伤", lyricSpan: LYRIC_SPAN }),
   spec("rest"),
   spec("rest", { lyric: "我把你放心房 不想让你流浪", lyricSpan: LYRIC_SPAN }),
+  spec("rest"),
   spec("rest"),
   spec("c"),
 ];
