@@ -118,8 +118,6 @@ export function ScorePage({
     );
   }
 
-  const rowCount = Math.max(bars.length, 1);
-
   /** 把一页的小节切成每行 4 小节 */
   const rows: Bar[][] = [];
   for (let index = 0; index < bars.length; index += 4) {
@@ -216,8 +214,8 @@ export function ScorePage({
                         key={`lyric-${bar.number}`}
                         className="score-lyric"
                         style={{
-                          left: `${(index / rowCount) * 100}%`,
-                          width: `${(span / rowCount) * 100}%`,
+                          left: `${(index / rowBars.length) * 100}%`,
+                          width: `${(span / rowBars.length) * 100}%`,
                         }}
                       >
                         {bar.lyric}
