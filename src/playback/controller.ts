@@ -145,6 +145,13 @@ export function createPlaybackController(options: PlaybackControllerOptions): Pl
   async function startPlayback(): Promise<void> {
     if (destroyed || clock.isPlaying()) return;
     await synth?.resume();
+    // The recording may begin with lead-in silence before the score origin
+    // (score time 0 = audio time audioOffsetMs). If we start playback while
+    // the audio element sits before that point, the user hears the silence
+    // first and the drums feel late. Seek the audio to the score origin first.
+    if (audio && audio.currentTime * 1_000 < song.audioOffsetMs) {
+      clock.seek(getCurrentTimeMs());
+    }
     await clock.play();
     hasStarted = true;
     cursor.reset(getCurrentTimeMs());

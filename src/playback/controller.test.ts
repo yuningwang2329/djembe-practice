@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createPerformanceClock } from "./clock";
+import { createAudioClock, createPerformanceClock } from "./clock";
 import { createPlaybackController } from "./controller";
 import { makeSong } from "../test/fixtures";
 
@@ -11,6 +11,30 @@ function makeSynth() {
     resume: vi.fn(async () => undefined),
     schedule: vi.fn(),
   };
+}
+
+function makeAudio(currentTime = 0) {
+  const state = { currentTime, paused: true };
+  return {
+    get currentTime() {
+      return state.currentTime;
+    },
+    set currentTime(value: number) {
+      state.currentTime = value;
+    },
+    get paused() {
+      return state.paused;
+    },
+    muted: false,
+    playbackRate: 1,
+    volume: 1,
+    pause: vi.fn(() => {
+      state.paused = true;
+    }),
+    play: vi.fn(async () => {
+      state.paused = false;
+    }),
+  } as unknown as HTMLAudioElement;
 }
 
 describe("playback controller", () => {
@@ -96,7 +120,7 @@ describe("playback controller", () => {
   });
 
   it("keeps the song and demonstration tracks independently controllable", async () => {
-    const audio = { muted: false, volume: 1 } as HTMLAudioElement;
+    const audio = { currentTime: 0, muted: false, volume: 1 } as HTMLAudioElement;
     const synth = makeSynth();
     const controller = createPlaybackController({
       song: makeSong(),
@@ -121,6 +145,42 @@ describe("playback controller", () => {
       drumVolume: 0.45,
     });
     expect(synth.schedule).not.toHaveBeenCalled();
+  });
+
+  it("seeks the audio to the score origin before playing so drums and song enter together", async () => {
+    const audio = makeAudio(0);
+    const song = { ...makeSong(), audioOffsetMs: 2_000 };
+    const controller = createPlaybackController({
+      song,
+      audio,
+      clock: createAudioClock(audio, song.audioOffsetMs),
+      synth: makeSynth(),
+      requestFrame: () => 1,
+      cancelFrame: vi.fn(),
+    });
+
+    await controller.play({ countInBeats: 0 });
+
+    expect(audio.currentTime).toBe(2);
+    expect(controller.getSnapshot()).toMatchObject({ currentTimeMs: 0, isPlaying: true });
+  });
+
+  it("does not seek the audio on resume when it already sits past the score origin", async () => {
+    const audio = makeAudio(5);
+    const song = { ...makeSong(), audioOffsetMs: 2_000 };
+    const controller = createPlaybackController({
+      song,
+      audio,
+      clock: createAudioClock(audio, song.audioOffsetMs),
+      synth: makeSynth(),
+      requestFrame: () => 1,
+      cancelFrame: vi.fn(),
+    });
+
+    await controller.play({ countInBeats: 0 });
+
+    expect(audio.currentTime).toBe(5);
+    expect(controller.getSnapshot()).toMatchObject({ currentTimeMs: 3_000, isPlaying: true });
   });
 
   it("allows the playback-rate alias to be passed directly to a control", () => {
