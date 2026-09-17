@@ -17,6 +17,8 @@ export interface Bar {
   section?: string;
   /** 该行谱面对应的歌词，渲染在这一行谱面下方 */
   lyric?: string;
+  /** 歌词跨越的小节数（从本小节起，默认 1），用于词组对位 */
+  lyricSpan?: number;
 }
 
 export interface SongDefinition {

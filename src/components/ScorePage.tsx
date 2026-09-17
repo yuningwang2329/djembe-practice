@@ -14,10 +14,11 @@ interface ScorePageProps {
 const ACTIVE_WINDOW_MS = 150;
 
 /**
- * 标准非洲鼓记谱：一行多小节，每小节按拍分组，每拍两个八分音符位置。
+ * 标准非洲鼓记谱：一页 3 行、每行 4 小节。每小节按拍分组，每拍两个八分音符位置。
  * 独音独占一拍为四分音符（不带下划线）；两个八分紧邻共一条下划线；
- * 空拍只写一个 0；段落（前奏/进唱/副歌…）标在小节左上角，
- * 歌词行渲染在对应谱面行下方。速度参考「阿波非洲鼓」教学谱排版。
+ * 空拍只写一个 0；段落（前奏/进唱/副歌…）标在小节左上角；
+ * 歌词词组按小节对位（lyricSpan 跨几小节就居中于几小节下方）。
+ * 速度参考「阿波非洲鼓」教学谱排版。
  */
 interface BeatPair {
   first: HitEvent | null;
@@ -117,7 +118,13 @@ export function ScorePage({
     );
   }
 
-  const barCount = Math.max(bars.length, 1);
+  const rowCount = Math.max(bars.length, 1);
+
+  /** 把一页的小节切成每行 4 小节 */
+  const rows: Bar[][] = [];
+  for (let index = 0; index < bars.length; index += 4) {
+    rows.push(bars.slice(index, index + 4));
+  }
 
   return (
     <section className="score" aria-label="可跟练鼓谱">
@@ -140,77 +147,88 @@ export function ScorePage({
       </div>
 
       <div className="score-page">
-        <div className="score-page__beats" aria-hidden="true">
-          <span className="score-gutter" />
-          {bars.map((bar) => (
-            <div className="score-page__bar-beats" key={`beats-${bar.number}`}>
-              {Array.from({ length: beatCount }, (_, index) => (
-                <span
-                  key={index}
-                  className={
-                    countInBeat === index + 1 && activeBar?.number === bar.number
-                      ? "score-beat--count"
-                      : undefined
-                  }
-                >
-                  {index + 1}
-                </span>
-              ))}
+        {rows.map((rowBars) => {
+          const rowKey = rowBars[0]?.number ?? 0;
+          return (
+            <div className="score-page__block" key={rowKey}>
+              <div className="score-page__beats" aria-hidden="true">
+                <span className="score-gutter" />
+                {rowBars.map((bar) => (
+                  <div className="score-page__bar-beats" key={`beats-${bar.number}`}>
+                    {Array.from({ length: beatCount }, (_, index) => (
+                      <span
+                        key={index}
+                        className={
+                          countInBeat === index + 1 && activeBar?.number === bar.number
+                            ? "score-beat--count"
+                            : undefined
+                        }
+                      >
+                        {index + 1}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <div className="score-page__row">
+                {rowBars.map((bar) => {
+                  const isActive = activeBar?.number === bar.number;
+                  const progress = clamp01(
+                    (currentTimeMs - bar.startMs) / (bar.endMs - bar.startMs),
+                  );
+                  return (
+                    <article
+                      className={isActive ? "score-bar score-bar--active" : "score-bar"}
+                      key={bar.number}
+                      aria-label={`第 ${bar.number} 小节`}
+                    >
+                      {bar.section ? (
+                        <span className="score-section" aria-hidden="true">
+                          {bar.section}
+                        </span>
+                      ) : null}
+                      <div className="score-bar__no" aria-hidden="true">
+                        {bar.number}
+                      </div>
+                      <div className="score-bar__grid">
+                        {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
+                        {isActive && (
+                          <div
+                            className="score-playhead"
+                            style={{ left: `${progress * 100}%` }}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+
+              {rowBars.some((bar) => bar.lyric) && (
+                <div className="score-lyrics" aria-hidden="true">
+                  {rowBars.map((bar, index) => {
+                    if (!bar.lyric) return null;
+                    const span = Math.min(bar.lyricSpan ?? 1, rowBars.length - index);
+                    return (
+                      <p
+                        key={`lyric-${bar.number}`}
+                        className="score-lyric"
+                        style={{
+                          left: `${(index / rowCount) * 100}%`,
+                          width: `${(span / rowCount) * 100}%`,
+                        }}
+                      >
+                        {bar.lyric}
+                      </p>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          ))}
-        </div>
-
-        <div className="score-page__row">
-          {bars.map((bar) => {
-            const isActive = activeBar?.number === bar.number;
-            const progress = clamp01((currentTimeMs - bar.startMs) / (bar.endMs - bar.startMs));
-            return (
-              <article
-                className={isActive ? "score-bar score-bar--active" : "score-bar"}
-                key={bar.number}
-                aria-label={`第 ${bar.number} 小节`}
-              >
-                {bar.section ? (
-                  <span className="score-section" aria-hidden="true">
-                    {bar.section}
-                  </span>
-                ) : null}
-                <div className="score-bar__no" aria-hidden="true">
-                  {bar.number}
-                </div>
-                <div className="score-bar__grid">
-                  {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
-                  {isActive && (
-                    <div
-                      className="score-playhead"
-                      style={{ left: `${progress * 100}%` }}
-                      aria-hidden="true"
-                    />
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        {bars.some((bar) => bar.lyric) && (
-          <div className="score-lyrics" aria-hidden="true">
-            {bars.map((bar, index) =>
-              bar.lyric ? (
-                <p
-                  key={`lyric-${bar.number}`}
-                  className="score-lyric"
-                  style={{
-                    left: `${(index / barCount) * 100}%`,
-                    width: `${((barCount - index) / barCount) * 100}%`,
-                  }}
-                >
-                  {bar.lyric}
-                </p>
-              ) : null,
-            )}
-          </div>
-        )}
+          );
+        })}
       </div>
     </section>
   );

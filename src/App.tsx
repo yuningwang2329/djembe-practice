@@ -83,7 +83,7 @@ function SongLibrary({
       </header>
       <section className="library-intro">
         <h2>选一首歌，跟着鼓点练习</h2>
-        <p>横屏观看四小节谱面。原歌曲和示范鼓声都能独立开关。</p>
+        <p>横屏同时看三行谱面。原歌曲和示范鼓声都能独立开关。</p>
       </section>
       <section className="song-list" aria-label="曲目列表">
         {songLibrary.map((song) => (
@@ -197,7 +197,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
         </div>
       )}
 
-      <p className="portrait-note">横屏可同时看到完整四小节</p>
+      <p className="portrait-note">横屏可同时看到三行谱面</p>
       {snapshot.isCountingIn && <div className="count-in" role="status">准备开始 {snapshot.countInBeatsRemaining}</div>}
       {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
       <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />

@@ -7,7 +7,7 @@ test("iPad landscape practice controls stay large, independent and usable", asyn
   await page.getByRole("button", { name: "开始练习 暖身律动" }).click();
 
   await expect(page.getByLabel("可跟练鼓谱")).toBeVisible();
-  await expect(page.locator(".score-bar")).toHaveCount(4);
+  await expect(page.locator(".score-bar")).toHaveCount(12);
   await expect(page.getByText("内置伴奏 · 离线可用")).toBeVisible();
 
   const originalTrack = page.getByRole("button", { name: "原歌曲音轨" });
@@ -27,7 +27,7 @@ test("portrait remains operable and asks the player to rotate", async ({ page })
   await page.goto("/");
   await page.getByRole("button", { name: "开始练习 暖身律动" }).click();
 
-  await expect(page.getByText("横屏可同时看到完整四小节")).toBeVisible();
+  await expect(page.getByText("横屏可同时看到三行谱面")).toBeVisible();
   await expect(page.getByRole("button", { name: "开始播放" })).toBeVisible();
 });
 

@@ -17,10 +17,15 @@ describe("timeline derivations", () => {
     expect(getBarAtTime(song, 99_000)?.number).toBe(8);
   });
 
-  it("returns the four-bar page containing the active bar", () => {
+  it("returns the twelve-bar page (three rows) containing the active bar", () => {
     const song = makeSong();
-    expect(getBarPage(song, 1).map((bar) => bar.number)).toEqual([1, 2, 3, 4]);
-    expect(getBarPage(song, 6).map((bar) => bar.number)).toEqual([5, 6, 7, 8]);
+    // 测试曲只有 8 小节，不足一页时返回全部小节
+    expect(getBarPage(song, 1).map((bar) => bar.number)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8,
+    ]);
+    expect(getBarPage(song, 6).map((bar) => bar.number)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8,
+    ]);
   });
 
   it("marks a hit briefly and exposes the next hit", () => {

@@ -36,29 +36,38 @@ describe("qiaobianguniang", () => {
     // 进唱第 3 行（第 17 小节起）第 4 拍 S 用左手
     const bar17 = qiaobianguniangBars[16];
     expect(bar17.hits.at(-1)).toMatchObject({ stroke: "slap", hand: "L" });
-    // 副歌结束句 D：B ｜ B ｜ B ｜ 0（第 37 小节）
-    const bar37 = qiaobianguniangBars[36];
-    expect(bar37.hits.map((hit) => hit.stroke)).toEqual(["bass", "bass", "bass"]);
-    // 间奏全休止（第 25–29 小节）
-    for (const bar of qiaobianguniangBars.slice(24, 29)) {
+    // 副歌结束句 D：B ｜ B ｜ B ｜ 0（第 36 小节）
+    const bar36 = qiaobianguniangBars[35];
+    expect(bar36.hits.map((hit) => hit.stroke)).toEqual(["bass", "bass", "bass"]);
+    // 间奏全休止（第 25–28 小节）
+    for (const bar of qiaobianguniangBars.slice(24, 28)) {
       expect(bar.hits).toHaveLength(0);
     }
   });
 
-  it("labels sections at their first bars and attaches lyrics to lines", () => {
+  it("labels sections at their first bars and aligns lyrics bar by bar", () => {
     const sectionAt = (barNumber: number) => qiaobianguniangBars[barNumber - 1].section;
     expect(sectionAt(1)).toBe("前奏");
     expect(sectionAt(9)).toBe("进唱");
     expect(sectionAt(25)).toBe("间奏");
-    expect(sectionAt(30)).toBe("副歌");
-    expect(sectionAt(51)).toBe("尾奏");
+    expect(sectionAt(29)).toBe("副歌");
+    expect(sectionAt(53)).toBe("尾奏");
     expect(qiaobianguniangBars[1].section).toBeUndefined();
 
     const lyricAt = (barNumber: number) => qiaobianguniangBars[barNumber - 1].lyric;
-    expect(lyricAt(9)).toContain("暖阳下");
-    expect(lyricAt(21)).toContain("逞强");
-    expect(lyricAt(30)).toContain("风华模样");
-    expect(lyricAt(49)).toContain("放心房");
+    expect(lyricAt(9)).toBe("暖阳下");
+    expect(lyricAt(11)).toBe("是谁家的姑娘");
+    expect(qiaobianguniangBars[10].lyricSpan).toBe(2);
+    expect(lyricAt(21)).toBe("你说");
+    expect(lyricAt(29)).toBe("风华模样");
+    expect(lyricAt(49)).toBe("我把你放心房");
+    expect(lyricAt(51)).toBe("不想让你流浪");
+    // 每个歌词词组都在 4 小节的谱面行内，不跨行
+    qiaobianguniangBars.forEach((bar, index) => {
+      if (!bar.lyricSpan || bar.lyricSpan <= 1) return;
+      const col = index % 4;
+      expect(col + bar.lyricSpan).toBeLessThanOrEqual(4);
+    });
   });
 
   it("covers the measured audio duration without overflowing", () => {

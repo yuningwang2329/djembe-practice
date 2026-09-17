@@ -15,7 +15,7 @@ export function getBarAtTime(song: SongDefinition, timeMs: number): Bar | null {
   );
 }
 
-export function getBarPage(song: SongDefinition, activeBarNumber: number, pageSize = 4): Bar[] {
+export function getBarPage(song: SongDefinition, activeBarNumber: number, pageSize = 12): Bar[] {
   const activeIndex = Math.max(
     0,
     song.bars.findIndex((bar) => bar.number === activeBarNumber),
