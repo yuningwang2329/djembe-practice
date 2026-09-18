@@ -1,6 +1,17 @@
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
+test("cached audio supports tap-to-play after an offline restart", async ({page, context}) => {
+  await page.goto('/');
+  await page.evaluate(() => navigator.serviceWorker.ready.then(() => undefined));
+  await context.setOffline(true);
+  await page.reload();
+  await page.getByRole('button', {name:'开始练习 暖身律动'}).click();
+  await page.locator('[data-hit-at="18250"]').click();
+  await expect(page.getByRole('button', {name:'暂停播放'})).toBeVisible();
+  await expect.poll(() => page.getByLabel('播放进度').inputValue()).toMatch(/^18\d{3}(\.\d+)?$/);
+});
+
 test("tapping a hit starts there and exits a loop that would pull playback elsewhere", async ({ page }) => {
   await page.goto('/');
   await page.getByRole('button', { name: '开始练习 暖身律动' }).click();

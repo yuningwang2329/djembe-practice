@@ -61,9 +61,27 @@ self.addEventListener("fetch", (event) => {
   }
 
   event.respondWith(caches.match(request, { ignoreVary: true }).then(async (cached) => {
-    if (cached) return cached;
+    if (cached) {
+      const range = request.headers.get("Range");
+      if (!range || cached.status !== 200) return cached;
+      const match = /^bytes=(\d*)-(\d*)$/.exec(range);
+      if (!match || (!match[1] && !match[2])) return cached;
+      const bytes = await cached.arrayBuffer();
+      const length = bytes.byteLength;
+      const start = match[1] ? Number(match[1]) : Math.max(0, length - Number(match[2]));
+      const end = match[1] && match[2] ? Math.min(Number(match[2]), length - 1) : length - 1;
+      if (start >= length || start > end) {
+        return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${length}` } });
+      }
+      const headers = new Headers(cached.headers);
+      headers.set("Accept-Ranges", "bytes");
+      headers.set("Content-Range", `bytes ${start}-${end}/${length}`);
+      headers.set("Content-Length", String(end - start + 1));
+      return new Response(bytes.slice(start, end + 1), { status: 206, headers });
+    }
     const response = await fetch(request);
-    if (response.ok) {
+    // Cache API 不接受 206，不能把一次局部读取误存成完整音频。
+    if (response.status === 200) {
       const cache = await caches.open(CACHE_NAME);
       await cache.put(request, response.clone());
     }
