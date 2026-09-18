@@ -27,6 +27,12 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Unit and component tests
+        run: npm run test:run
+      - name: Install test browser
+        run: npx playwright install --with-deps chrome
+      - name: Browser regression tests
+        run: npx playwright test
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

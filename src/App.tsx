@@ -3,7 +3,7 @@ import { AudioSourceManager } from "./components/AudioSourceManager";
 import { ScorePage } from "./components/ScorePage";
 import { TrackToggle } from "./components/TrackToggle";
 import { songLibrary } from "./data/demoSong";
-import { clampPlaybackRate, getBarAtTime, getBarPage } from "./domain/timeline";
+import { clampPlaybackRate, getBarAtTime } from "./domain/timeline";
 import type { SongDefinition } from "./domain/song";
 import { usePlaybackController } from "./hooks/usePlaybackController";
 import { useWakeLock } from "./hooks/useWakeLock";
@@ -130,7 +130,6 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
   const wakeLock = useWakeLock(snapshot.isPlaying || snapshot.isCountingIn);
 
   const activeBar = getBarAtTime(effectiveSong, snapshot.currentTimeMs) ?? effectiveSong.bars[0];
-  const page = getBarPage(effectiveSong, activeBar.number);
   const countInBeat = snapshot.isCountingIn
     ? song.timeSignature[0] - snapshot.countInBeatsRemaining + 1
     : 0;
@@ -202,7 +201,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
       {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
       <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
       <ScorePage
-        bars={page}
+        bars={activeBars}
         currentTimeMs={snapshot.currentTimeMs}
         lyrics={effectiveSong.lyrics}
         countInBeat={countInBeat}

@@ -7,9 +7,20 @@ describe("ScorePage", () => {
   it("highlights timed lyrics only during their cue and clears them in a gap", () => {
     const props = { bars: makeSong().bars.slice(0, 4), lyrics: [{ startMs: 500, endMs: 1500, text: "测试句子" }] };
     const { rerender } = render(<ScorePage {...props} currentTimeMs={700} />);
-    expect(screen.getByText("测试句子")).toHaveAttribute("data-state", "current");
+    expect(screen.getByLabelText("测试句子")).toHaveAttribute("data-state", "current");
     rerender(<ScorePage {...props} currentTimeMs={1500} />);
-    expect(screen.getByText("测试句子")).toHaveAttribute("data-state", "idle");
+    expect(screen.getByLabelText("测试句子")).toHaveAttribute("data-state", "idle");
+  });
+  it("spreads every character once across a row boundary without ellipses or repeated lyrics", () => {
+    const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={4100}
+      lyrics={[{ startMs: 3000, endMs: 5000, text: "甲乙 丙丁" }]} />);
+    const chars = [...container.querySelectorAll('.score-lyric__char')];
+    expect(chars.map((char) => char.textContent).join('')).toBe('甲乙丙丁');
+    expect(container.querySelectorAll('.score-lyrics')[0].textContent).toBe('甲乙');
+    expect(container.querySelectorAll('.score-lyrics')[1].textContent).toBe('丙丁');
+    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(1);
+    expect(container.querySelector('.score-page')!.textContent).not.toContain('…');
+    expect(chars[0].getAttribute('style')).not.toBe(chars[1].getAttribute('style'));
   });
   it("renders bars as staff rows with a stroke legend", () => {
     const song = makeSong();

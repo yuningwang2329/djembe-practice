@@ -1,5 +1,6 @@
 import type { Bar, HitEvent, Stroke, SongDefinition } from "../domain/song";
 import { strokeLabels } from "../domain/song";
+import { useLayoutEffect, useRef } from "react";
 
 interface ScorePageProps {
   bars: Bar[];
@@ -15,7 +16,7 @@ interface ScorePageProps {
 const ACTIVE_WINDOW_MS = 150;
 
 /**
- * 标准非洲鼓记谱：一页 3 行、每行 4 小节。每小节按拍分组，每拍两个八分音符位置。
+ * 连续非洲鼓谱：每行 4 小节，视窗围绕当前行缓慢移动，提前露出下一行。
  * 独音独占一拍为四分音符（不带下划线）；两个八分紧邻共一条下划线；
  * 空拍只写一个 0；段落（前奏/进唱/副歌…）标在小节左上角；
  * 歌词词组按小节对位（lyricSpan 跨几小节就居中于几小节下方）。
@@ -51,6 +52,40 @@ export function ScorePage({
   bpm,
   lyrics,
 }: ScorePageProps) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const timeRef = useRef(currentTimeMs);
+  timeRef.current = currentTimeMs;
+  const followRef = useRef<() => void>(() => {});
+
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    const follow = () => {
+      viewport.style.setProperty("--viewport-height", `${viewport.clientHeight}px`);
+      const blocks = Array.from(viewport.querySelectorAll<HTMLElement>(".score-page__block"));
+      if (!blocks.length) return;
+      const time = timeRef.current;
+      const found = blocks.findIndex((block) => time < Number(block.dataset.end));
+      const index = found < 0 ? blocks.length - 1 : found;
+      const block = blocks[index];
+      const start = Number(block.dataset.start);
+      const end = Number(block.dataset.end);
+      const stride = blocks[index + 1]
+        ? blocks[index + 1].offsetTop - block.offsetTop
+        : index > 0 ? block.offsetTop - blocks[index - 1].offsetTop : block.offsetHeight;
+      // 每行播放期间只移动一行高度，换行处连续；跳转和循环直接跟随音频位置。
+      const progress = clamp01((time - start) / (end - start));
+      viewport.scrollTop = Math.max(0, block.offsetTop + block.offsetHeight / 2
+        - viewport.clientHeight * 0.4 + (progress - 0.5) * stride);
+    };
+    followRef.current = follow;
+    follow();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(follow);
+    observer?.observe(viewport);
+    return () => { observer?.disconnect(); followRef.current = () => {}; };
+  }, [bars]);
+
+  useLayoutEffect(() => { followRef.current(); }, [currentTimeMs]);
   const activeBar =
     bars.find((bar) => currentTimeMs >= bar.startMs && currentTimeMs < bar.endMs) ?? null;
   const nextHit =
@@ -120,7 +155,7 @@ export function ScorePage({
     );
   }
 
-  /** 把一页的小节切成每行 4 小节 */
+  /** 全曲连续排版，每行 4 小节 */
   const rows: Bar[][] = [];
   for (let index = 0; index < bars.length; index += 4) {
     rows.push(bars.slice(index, index + 4));
@@ -146,6 +181,7 @@ export function ScorePage({
         </span>
       </div>
 
+      <div className="score-viewport" ref={viewportRef} tabIndex={0} aria-label="连续鼓谱，暂停后可上下滑动">
       <div className="score-page">
         {rows.map((rowBars) => {
           const rowKey = rowBars[0]?.number ?? 0;
@@ -153,7 +189,7 @@ export function ScorePage({
           const rowEnd = rowBars[rowBars.length - 1].endMs;
           const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
           return (
-            <div className="score-page__block" key={rowKey}>
+            <div className="score-page__block" key={rowKey} data-start={rowStart} data-end={rowEnd}>
               <div className="score-page__beats" aria-hidden="true">
                 <span className="score-gutter" />
                 {rowBars.map((bar) => (
@@ -211,16 +247,26 @@ export function ScorePage({
 
               {lyrics ? (
                 <div className="score-lyrics" aria-label="本行歌词">
-                  {rowLyrics?.map((cue) => (
-                    <p key={cue.startMs} className="score-lyric"
+                  {rowLyrics?.map((cue) => {
+                    const characters = Array.from(cue.text.replace(/\s/g, ""));
+                    // 均匀铺字用于视觉预读，不把它宣称为逐字人声识别时间。
+                    const positions = characters.map((char, i) => ({ char,
+                      at: cue.startMs + (i + 0.5) / characters.length * (cue.endMs - cue.startMs),
+                    })).filter(({ at }) => at >= rowStart && at < rowEnd);
+                    if (!positions.length) return null;
+                    const start = Math.max(cue.startMs, rowStart);
+                    const end = Math.min(cue.endMs, rowEnd);
+                    return <p key={cue.startMs} className="score-lyric score-lyric--timed"
+                      aria-label={positions.map(({ char }) => char).join("")}
                       data-state={currentTimeMs >= Math.max(cue.startMs, rowStart) && currentTimeMs < Math.min(cue.endMs, rowEnd) ? "current" : "idle"}
                       style={{
                         left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
                         width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
                       }}>
-                      {cue.startMs < rowStart ? "… " : ""}{cue.text}{cue.endMs > rowEnd ? " …" : ""}
-                    </p>
-                  ))}
+                      {positions.map(({ char, at }, i) => <span className="score-lyric__char" key={i}
+                        style={{ left: `${(at - start) / (end - start) * 100}%` }}>{char}</span>)}
+                    </p>;
+                  })}
                 </div>
               ) : rowBars.some((bar) => bar.lyric) && (
                 <div className="score-lyrics" aria-hidden="true">
@@ -245,6 +291,7 @@ export function ScorePage({
             </div>
           );
         })}
+      </div>
       </div>
     </section>
   );

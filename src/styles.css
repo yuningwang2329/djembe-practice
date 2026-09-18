@@ -114,7 +114,8 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .song-row button:active, .play-button:active, .back-button:active { transform: translateY(1px) scale(.985); }
 .library-note { margin-top: 2rem; font-size: .88rem; }
 
-.practice-shell { display: grid; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: clamp(.45rem, 1.2vh, .8rem); }
+.practice-shell { display: flex; flex-direction: column; height: 100dvh; min-height: 600px; gap: clamp(.45rem, 1.2vh, .8rem); }
+.practice-shell > :not(.score) { flex-shrink: 0; }
 .practice-header { min-height: 3rem; }
 .practice-header > div:nth-child(2) { flex: 1; }
 .practice-position { display: flex; align-items: end; gap: .65rem; color: #665244; font-weight: 750; }
@@ -176,7 +177,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   font-weight: 900;
 }
 
-.score { display: flex; flex-direction: column; justify-content: center; gap: clamp(.3rem, 1vh, .55rem); min-height: 0; }
+.score { display: flex; flex: 1; flex-direction: column; gap: clamp(.3rem, 1vh, .55rem); min-height: 0; }
+.score-legend { flex-shrink: 0; }
+.score-viewport { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; overflow-anchor: none; scrollbar-width: thin; position: relative; }
+.score-viewport:focus-visible { outline: 2px solid #e45f26; outline-offset: 2px; }
 .score-legend { display: flex; align-items: center; gap: clamp(.8rem, 2vw, 1.3rem); color: #6d5a4a; font-size: clamp(.72rem, 1.25vw, .92rem); font-weight: 600; }
 .score-legend__item { display: inline-flex; align-items: center; gap: .35rem; }
 .score-legend__item b { display: inline-flex; align-items: center; justify-content: center; width: 1.6em; height: 1.6em; border-radius: 6px; color: #2e211b; font-size: .95em; font-weight: 800; }
@@ -190,8 +194,8 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-hand--L { background: #8e5a35; color: #fff; }
 
 /* 一页多行：每行 4 小节，行下方是逐小节对位的歌词 */
-.score-page { display: flex; flex-direction: column; justify-content: center; gap: clamp(.3rem, 1.3vh, .7rem); min-height: 0; }
-.score-page__block { position: relative; padding-bottom: clamp(1.35rem, 3.6vh, 1.9rem); }
+.score-page { position: relative; display: flex; flex-direction: column; gap: clamp(.8rem, 2.5vh, 1.5rem); padding-block: calc(var(--viewport-height, 360px) / 2); }
+.score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.7rem, 4vh, 2.1rem); }
 .score-page__beats { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); color: #a08a76; font-size: clamp(.62rem, 1.05vw, .8rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
 .score-gutter { flex: none; width: clamp(1.9rem, 2.9vw, 2.6rem); }
 .score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 4px; padding: 0 clamp(.6rem, 1.6vw, 1.1rem); }
@@ -225,6 +229,8 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.25rem, 3.2vh, 1.7rem); pointer-events: none; }
 .score-lyric[data-state="current"] { color: #a53e12; background: #fff0d8; border-radius: .3rem; }
 .score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #6d5340; font-size: clamp(.72rem, 1.5vw, .92rem); font-weight: 700; letter-spacing: .02em; }
+.score-lyric--timed { height: 1.7em; line-height: 1.7; overflow: visible; padding: 0; text-overflow: clip; }
+.score-lyric__char { position: absolute; transform: translateX(-50%); }
 
 /* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；空拍一个 0 */
 .score-beat { display: flex; align-items: stretch; justify-content: center; min-width: 0; }
