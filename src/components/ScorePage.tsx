@@ -100,10 +100,12 @@ export function ScorePage({
       .at(0) ?? null;
   const beatCount = bars[0]?.beats ?? 4;
   const latestHit = activeBar?.hits.filter(hit => hit.atMs <= currentTimeMs).at(-1);
+  const sixteenthMs = bpm ? Math.round(60_000 / bpm / 4) : 125;
+  const activeWindowMs = Math.min(140, Math.max(70, Math.round(sixteenthMs * 0.85)));
 
   function hitState(hit: HitEvent): "current" | "next" | "idle" {
-    if (latestHit === hit && currentTimeMs - hit.atMs <= ACTIVE_WINDOW_MS) return "current";
-    if (nextHit && hit.atMs === nextHit.atMs) return "next";
+    if (latestHit === hit && currentTimeMs - hit.atMs <= activeWindowMs) return "current";
+    if (nextHit && hit.atMs === nextHit.atMs && nextHit.atMs - currentTimeMs <= 1500) return "next";
     return "idle";
   }
 
@@ -160,7 +162,9 @@ export function ScorePage({
         >
           {notes.map((note, index) => (
             <span className="score-note" key={index}
-              data-duration={note.duration === 1 ? "sixteenth" : note.duration === 2 ? "eighth" : "quarter"}>
+              data-duration={note.duration === 1 ? "sixteenth" : note.duration === 2 ? "eighth" : "quarter"}
+              style={{ flex: note.duration }}
+            >
               {note.hit ? strokeChar(note.hit) : (
                 <span className="score-char score-char--rest" aria-label="休止"><b className="score-char__letter">0</b></span>
               )}

@@ -43,9 +43,10 @@ describe("qiaobianguniang", () => {
     // 第 4 小节 = B ｜ SB ｜ BB ｜ S：BB 为右左
     const fourth = qiaobianguniangBars[3];
     expect(fourth.hits.map((hit) => hit.hand)).toEqual(["R", "R", "L", "R", "L", "R"]);
-    // 主歌二后半段（第 18 小节起）第 4 拍 S 用左手
+    // 主歌二后半段（第 18 小节起）第 4 拍 S 用左手且为轻击
     const bar18 = qiaobianguniangBars[17];
-    expect(bar18.hits.at(-1)).toMatchObject({ stroke: "slap", hand: "L" });
+    expect(first.hits[2]).toMatchObject({ stroke: "bass", hand: "L", dynamics: "soft" });
+    expect(bar18.hits.at(-1)).toMatchObject({ stroke: "slap", hand: "L", dynamics: "soft" });
     // 尾奏弱唱段全休止（第 53–57 小节），第 58 小节单音收尾
     for (const bar of qiaobianguniangBars.slice(52, 57)) {
       expect(bar.hits).toHaveLength(0);

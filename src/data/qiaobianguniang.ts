@@ -28,13 +28,13 @@ const AUDIO_OFFSET_MS = 3111;
 const BAR_COUNT = 58;
 const EXPECTED_DURATION_MS = 183141;
 
-const strokeForChar: Record<string, { stroke: Stroke; hand: Hand }> = {
+const strokeForChar: Record<string, { stroke: Stroke; hand: Hand; dynamics?: "soft" }> = {
   B: { stroke: "bass", hand: "R" },
-  b: { stroke: "bass", hand: "L" },
+  b: { stroke: "bass", hand: "L", dynamics: "soft" },
   T: { stroke: "tone", hand: "R" },
-  t: { stroke: "tone", hand: "L" },
+  t: { stroke: "tone", hand: "L", dynamics: "soft" },
   S: { stroke: "slap", hand: "R" },
-  s: { stroke: "slap", hand: "L" },
+  s: { stroke: "slap", hand: "L", dynamics: "soft" },
 };
 
 type PatternName = "a" | "aLeft" | "b" | "c" | "rest";
@@ -157,6 +157,7 @@ export const qiaobianguniangBars: Bar[] = specs.map((barSpec, index) => {
       atMs: Math.round(startMs + eighth * (BEAT_MS / 2)),
       stroke: mapped.stroke,
       hand: mapped.hand,
+      ...(mapped.dynamics ? { dynamics: mapped.dynamics } : {}),
     });
   }
 

@@ -198,7 +198,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.7rem, 4vh, 2.1rem); }
 .score-page__beats { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); color: #a08a76; font-size: clamp(.62rem, 1.05vw, .8rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
 .score-gutter { flex: none; width: clamp(1.9rem, 2.9vw, 2.6rem); }
-.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 4px; padding: 0 clamp(.6rem, 1.6vw, 1.1rem); }
+.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 4px; padding: 0; }
 .score-page__beats .score-beat--count { color: #e45f26; transform: scale(1.25); display: inline-block; }
 
 .score-page__row { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); align-items: stretch; }
@@ -209,7 +209,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-char[data-seekable]::after { content: ""; position: absolute; inset: -.6rem -.2rem; }
 .score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 9px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.82rem, 1.45vw, 1.1rem); font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { background: #e45f26; color: #fff; }
-.score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.35rem, 1.2vw, .8rem); min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem clamp(.6rem, 1.6vw, 1.1rem); border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); }
+.score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem 0; border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); overflow: hidden; }
 .score-page__row .score-bar:last-child .score-bar__grid { border-right: 3px solid #4a382c; }
 
 .score-section {
@@ -236,13 +236,14 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-lyric__char { position: absolute; transform: translateX(-50%); }
 
 /* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；空拍一个 0 */
-.score-beat { display: flex; align-items: stretch; justify-content: center; min-width: 0; }
-.score-beat--rest { align-items: flex-end; }
+.score-beat { display: flex; align-items: stretch; justify-content: stretch; min-width: 0; width: 100%; border-right: 1px dashed rgb(80 61 46 / 10%); }
+.score-beat:last-child { border-right: none; }
+.score-beat--rest { align-items: flex-end; justify-content: center; }
 .score-rest { padding-bottom: .34rem; color: #cbb8a4; font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 600; line-height: 1; }
-.score-group { display: inline-flex; align-items: flex-end; justify-content: center; gap: .5em; padding: 0 .18em .34rem; }
+.score-group { display: flex; width: 100%; align-items: flex-end; justify-content: stretch; padding: 0 0 .34rem; }
 .score-group--eighths { border-bottom: 3px solid #503d2e; }
-.score-note { position: relative; }
-.score-note[data-duration="sixteenth"]::after { content: ""; position: absolute; left: -.1em; right: -.1em; bottom: -.9rem; border-bottom: 2px solid #503d2e; }
+.score-note { position: relative; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
+.score-note[data-duration="sixteenth"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.9rem; border-bottom: 2px solid #503d2e; }
 .score-group--dense { gap: 0; padding-left: 0; padding-right: 0; width: 100%; }
 .score-group--dense .score-note { flex: 1; min-width: 0; text-align: center; }
 .score-group--dense .score-char { min-width: 0; }

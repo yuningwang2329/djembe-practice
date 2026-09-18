@@ -152,10 +152,11 @@ export function createPlaybackController(options: PlaybackControllerOptions): Pl
     if (audio && audio.currentTime * 1_000 < song.audioOffsetMs) {
       clock.seek(getCurrentTimeMs());
     }
-    await clock.play();
+    const playPromise = clock.play();
     hasStarted = true;
     cursor.reset(getCurrentTimeMs());
     tick();
+    await playPromise;
   }
 
   function startCountIn(beats: number): void {
@@ -174,6 +175,9 @@ export function createPlaybackController(options: PlaybackControllerOptions): Pl
       }
       countInBeatsRemaining -= 1;
       emit();
+      if (countInBeatsRemaining === 1) {
+        void synth?.resume();
+      }
       if (countInBeatsRemaining === 0) {
         void startPlayback();
         return;

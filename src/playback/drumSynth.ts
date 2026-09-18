@@ -39,13 +39,35 @@ export function createDrumSynth(audioContext: AudioContext): DrumSynth {
       const endTime = startTime + settings.durationSeconds;
       const normalizedVolume = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1);
 
-      oscillator.type = hit.stroke === "slap" ? "square" : "sine";
+      oscillator.type = hit.stroke === "slap" ? "triangle" : "sine";
       oscillator.frequency.setValueAtTime(settings.frequency, startTime);
       oscillator.frequency.exponentialRampToValueAtTime(settings.endFrequency, endTime);
       gain.gain.setValueAtTime(normalizedVolume, startTime);
       gain.gain.exponentialRampToValueAtTime(0.001, endTime);
 
-      oscillator.connect(gain);
+      let lastNode: AudioNode = oscillator;
+      if (typeof audioContext.createBiquadFilter === "function") {
+        const filter = audioContext.createBiquadFilter();
+        if (hit.dynamics === "soft") {
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 180 : 1000, startTime);
+          lastNode.connect(filter);
+          lastNode = filter;
+        } else if (hit.stroke === "bass") {
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(320, startTime);
+          lastNode.connect(filter);
+          lastNode = filter;
+        } else if (hit.stroke === "slap") {
+          filter.type = "bandpass";
+          filter.frequency.setValueAtTime(3200, startTime);
+          filter.Q.setValueAtTime(1.5, startTime);
+          lastNode.connect(filter);
+          lastNode = filter;
+        }
+      }
+
+      lastNode.connect(gain);
       gain.connect(audioContext.destination);
       oscillator.onended = () => removeVoice(oscillator);
       liveVoices.add(oscillator);

@@ -72,6 +72,11 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
       });
   }
 
+  if (typeof document !== "undefined" && typeof fetch === "function") {
+    loadStarted = true;
+    (Object.keys(sampleFiles) as Stroke[]).forEach(load);
+  }
+
   return {
     getCurrentTime() {
       return context.currentTime;
@@ -100,7 +105,24 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
       const velocity = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1) * (0.93 + Math.random() * 0.14);
 
       gain.gain.setValueAtTime(velocity, startTime);
-      source.connect(gain);
+
+      let lastNode: AudioNode = source;
+      if (typeof context.createBiquadFilter === "function") {
+        const filter = context.createBiquadFilter();
+        if (hit.dynamics === "soft") {
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 180 : 1100, startTime);
+          lastNode.connect(filter);
+          lastNode = filter;
+        } else if (hit.stroke === "bass") {
+          filter.type = "lowpass";
+          filter.frequency.setValueAtTime(360, startTime);
+          lastNode.connect(filter);
+          lastNode = filter;
+        }
+      }
+
+      lastNode.connect(gain);
       gain.connect(context.destination);
       source.onended = () => activeSources.delete(source);
       activeSources.add(source);
