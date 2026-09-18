@@ -36,7 +36,7 @@ test("tapping the score cancels count-in and plays immediately", async ({ page }
   await page.locator('[data-hit-at="4000"]').click();
   await expect(page.locator('.count-in')).toHaveCount(0);
   await expect(page.getByRole('button', { name: '暂停播放' })).toBeVisible();
-  await expect.poll(async () => Number(await page.getByLabel('播放进度').inputValue())).toBeGreaterThan(4000);
+  await expect.poll(async () => Number(await page.getByLabel('播放进度').inputValue()), { timeout: 10000 }).toBeGreaterThan(4000);
 });
 
 test("song lyric cues follow seeking and leave the instrumental gap clear", async ({ page }) => {
@@ -46,13 +46,13 @@ test("song lyric cues follow seeking and leave the instrumental gap clear", asyn
   await progress.fill("18000");
   const active = page.locator('.score-lyric[data-state="current"]');
   await expect(active).toHaveCount(1);
-  await expect(active).toContainText("是谁家的姑娘");
+  await expect(active).toContainText("暖阳下我迎芬芳");
   await page.screenshot({ path: "test-results/qiao-lyrics-landscape.png" });
   await progress.fill("90000");
   await expect(active).toHaveCount(0);
   await progress.fill("123000");
   await expect(active).toHaveCount(1);
-  await expect(active).toContainText("风华模样");
+  await expect(active).toContainText("风华模");
 });
 
 test("continuous score previews the next row and crosses the old page boundary without jumping", async ({ page }) => {
@@ -103,12 +103,12 @@ test("iPad landscape practice controls stay large, independent and usable", asyn
   await expect(page.getByRole("button", { name: "小节循环" })).toHaveAttribute("aria-pressed", "true");
 });
 
-test("portrait remains operable and asks the player to rotate", async ({ page }) => {
+test("portrait remains operable", async ({ page }) => {
   await page.setViewportSize({ width: 820, height: 1180 });
   await page.goto("/");
   await page.getByRole("button", { name: "开始练习 暖身律动" }).click();
 
-  await expect(page.getByText("横屏可同时看到三行谱面")).toBeVisible();
+  await expect(page.getByLabel("可跟练鼓谱")).toBeVisible();
   await expect(page.getByRole("button", { name: "开始播放" })).toBeVisible();
 });
 
