@@ -52,7 +52,7 @@ test("song lyric cues follow seeking and leave the instrumental gap clear", asyn
   await expect(active).toHaveCount(0);
   await progress.fill("123000");
   await expect(active).toHaveCount(1);
-  await expect(active).toContainText("风华模");
+  await expect(active).toContainText("你说无人在身旁");
 });
 
 test("continuous score previews the next row and crosses the old page boundary without jumping", async ({ page }) => {
