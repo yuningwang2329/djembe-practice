@@ -45,7 +45,7 @@ describe("playback controller", () => {
     const controller = createPlaybackController({ song: qiaobianguniang, audio, synth, requestFrame: () => 1 });
     controller.setRate(rate);
     await controller.play({ countInBeats: 0 });
-    for (const index of [0, 24, 57]) {
+    for (const index of [0, 24, 56]) {
       const hit = qiaobianguniang.bars[index].hits[0];
       synth.schedule.mockClear();
       controller.seek(hit.atMs - 100);

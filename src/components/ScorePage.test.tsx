@@ -141,4 +141,32 @@ describe("ScorePage", () => {
     expect(counted).toHaveLength(1);
     expect(counted[0]).toHaveTextContent("2");
   });
+
+  it("renders a 2/4 time signature badge and exactly 2 beat numbers for a 2-beat bar", () => {
+    const bar24 = {
+      number: 5,
+      startMs: 4000,
+      endMs: 5000,
+      beats: 2,
+      timeSignature: [2, 4] as [number, number],
+      hits: [{ atMs: 4000, stroke: "bass" as const, hand: "R" as const }],
+    };
+    const { container } = render(
+      <ScorePage bars={[bar24]} currentTimeMs={4000} />,
+    );
+
+    const meterBadge = container.querySelector(".score-bar__meter");
+    expect(meterBadge).not.toBeNull();
+    expect(meterBadge).toHaveAttribute("aria-label", "拍号切换 2/4");
+    expect(meterBadge!.textContent).toBe("24");
+
+    const barBeats = container.querySelector(".score-page__bar-beats");
+    expect(barBeats).not.toBeNull();
+    // 拍头上方应只有 1, 2 两个数字，而不是 4 个
+    const beatNumbers = [...barBeats!.querySelectorAll("span:not(.score-page__meter-space)")];
+    expect(beatNumbers.map((el) => el.textContent)).toEqual(["1", "2"]);
+
+    const article = container.querySelector(".score-bar");
+    expect(article).toHaveStyle({ flex: "2" });
+  });
 });

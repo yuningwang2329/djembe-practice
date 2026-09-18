@@ -21,6 +21,8 @@ export interface Bar {
   lyric?: string;
   /** 歌词跨越的小节数（从本小节起，默认 1），用于词组对位 */
   lyricSpan?: number;
+  /** 拍号变化标记（如 [2, 4]），标在该小节起始处 */
+  timeSignature?: [number, number];
 }
 
 export interface SongDefinition {

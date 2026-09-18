@@ -232,7 +232,9 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.7rem, 4vh, 2.1rem); }
 .score-page__beats { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); color: #a08a76; font-size: clamp(.62rem, 1.05vw, .8rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
 .score-gutter { flex: none; width: clamp(1.1rem, 1.8vw, 1.4rem); }
-.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 3px; padding: 0; }
+.score-page__bar-beats { flex: 1; display: flex; align-items: center; margin-left: 3px; padding: 0; }
+.score-page__bar-beats > span:not(.score-page__meter-space) { flex: 1; text-align: center; }
+.score-page__meter-space { flex: none; width: clamp(1.2rem, 1.8vw, 1.5rem); }
 .score-page__beats .score-beat--count { color: #e45f26; transform: scale(1.25); display: inline-block; }
 
 .score-page__row { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); align-items: stretch; }
@@ -243,8 +245,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-char[data-seekable]::after { content: ""; position: absolute; inset: -.6rem -.2rem; }
 .score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.72rem, 1.2vw, .95rem); font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { background: #e45f26; color: #fff; }
-.score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem 0; border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); overflow: hidden; }
+.score-bar__grid { position: relative; display: flex; align-items: stretch; gap: 0; min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem 0; border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); overflow: hidden; }
 .score-page__row .score-bar:last-child .score-bar__grid { border-right: 3px solid #4a382c; }
+.score-bar__meter { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: clamp(1.2rem, 1.8vw, 1.5rem); padding: 0 .15rem; border-right: 1.5px solid #6d5340; background: rgba(228, 95, 38, 0.08); color: #4a382c; font-family: inherit; font-weight: 900; font-size: clamp(.68rem, 1.1vw, .85rem); line-height: 1.05; user-select: none; }
+.score-bar__meter-num { display: block; text-align: center; }
 
 .score-section {
   position: absolute;
@@ -270,7 +274,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-lyric__char { position: absolute; transform: translateX(-50%); }
 
 /* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；十六分音符双下划线清晰分离 */
-.score-beat { display: flex; align-items: stretch; justify-content: stretch; min-width: 0; width: 100%; border-right: 1px dashed rgb(80 61 46 / 10%); }
+.score-beat { display: flex; align-items: stretch; justify-content: stretch; min-width: 0; flex: 1; border-right: 1px dashed rgb(80 61 46 / 10%); }
 .score-beat:last-child { border-right: none; }
 .score-beat--rest { align-items: flex-end; justify-content: center; }
 .score-rest { padding-bottom: .34rem; color: #cbb8a4; font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 600; line-height: 1; }

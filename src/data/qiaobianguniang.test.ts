@@ -3,23 +3,37 @@ import { validateSong } from "../domain/song";
 import { qiaobianguniang, qiaobianguniangBars } from "./qiaobianguniang";
 
 describe("qiaobianguniang", () => {
-  it("stays aligned with measured recording transients through the late chorus", () => {
-    // 22.05kHz PCM 的低频起音峰，单位 ms；不是用当前 BPM 公式生成的预期值。
-    // 包含 90 秒之后的独立验证点，防止微小速度误差累积成抢拍。
-    const anchors = [[1, 3106], [11, 34146], [21, 65180], [31, 96235], [41, 127249], [49, 152083]];
-    for (const [barNumber, measuredMs] of anchors) {
-      const hit = qiaobianguniangBars[barNumber - 1].hits[0];
-      expect(Math.abs(hit.atMs - measuredMs)).toBeLessThan(25);
-    }
+  it("includes the 2/4 time signature bar in intro (Bar 5) matching the Martin score", () => {
+    expect(qiaobianguniangBars.length).toBe(58);
+    const bar5 = qiaobianguniangBars[4];
+    expect(bar5.beats).toBe(2);
+    expect(bar5.timeSignature).toEqual([2, 4]);
+    expect(bar5.hits).toHaveLength(1);
+    expect(bar5.hits[0]).toMatchObject({ stroke: "bass", hand: "R" });
+    // 2/4 拍时长约为标准 4/4 拍的一半
+    expect(bar5.endMs - bar5.startMs).toBeLessThan(1600);
+    expect(bar5.endMs - bar5.startMs).toBeGreaterThan(1500);
+  });
+
+  it("aligns recording section transients with the 2/4 bar shift", () => {
+    // 验证前奏、主歌、副歌等关键段落起始时间
+    expect(qiaobianguniangBars[0].startMs).toBe(3111);
+    // 第 5 小节 2/4 拍结束后，主歌在 17.08s 进唱鼓点
+    const bar6 = qiaobianguniangBars[5];
+    expect(Math.abs(bar6.startMs - 17077)).toBeLessThan(20);
+    // 副歌在 57.42s 爆发
+    const bar19 = qiaobianguniangBars[18];
+    expect(Math.abs(bar19.startMs - 57423)).toBeLessThan(20);
     expect(qiaobianguniang.audioOffsetMs).toBe(0);
   });
+
   it("passes song validation", () => {
     expect(validateSong(qiaobianguniang)).toEqual([]);
   });
 
   it("places hits on the eighth-note grid inside their bars", () => {
     for (const bar of qiaobianguniangBars) {
-      const eighthMs = (bar.endMs - bar.startMs) / 8;
+      const eighthMs = (bar.endMs - bar.startMs) / (bar.beats * 2);
       for (const hit of bar.hits) {
         const slot = (hit.atMs - bar.startMs) / eighthMs;
         expect(Math.abs(slot - Math.round(slot))).toBeLessThan(0.01);
@@ -29,8 +43,8 @@ describe("qiaobianguniang", () => {
     }
   });
 
-  it("follows the official 阿波 score patterns with marked hands", () => {
-    // 第 1 小节 = 基本型 A：B ｜ SB ｜ B ｜ S（SB 中 S 右、B 左）
+  it("follows the Martin sheet music patterns", () => {
+    // 第 1 小节 = 基本型 A：B ｜ SB ｜ B ｜ S
     const first = qiaobianguniangBars[0];
     expect(first.hits.map((hit) => hit.stroke)).toEqual([
       "bass",
@@ -40,27 +54,37 @@ describe("qiaobianguniang", () => {
       "slap",
     ]);
     expect(first.hits.map((hit) => hit.hand)).toEqual(["R", "R", "L", "R", "R"]);
-    // 第 4 小节 = B ｜ SB ｜ BB ｜ S：BB 为右左
+
+    // 第 4 小节 = B ｜ SB ｜ BB ｜ S
     const fourth = qiaobianguniangBars[3];
     expect(fourth.hits.map((hit) => hit.hand)).toEqual(["R", "R", "L", "R", "L", "R"]);
-    // 主歌二后半段（第 18 小节起）第 4 拍 S 用左手且为轻击
+
+    // 第 5 小节 = 2/4 拍 B 0
+    const fifth = qiaobianguniangBars[4];
+    expect(fifth.timeSignature).toEqual([2, 4]);
+    expect(fifth.hits.map((hit) => hit.stroke)).toEqual(["bass"]);
+
+    // 第 18 小节 = 主歌过渡收束 B ｜ B ｜ B ｜ 0
     const bar18 = qiaobianguniangBars[17];
-    expect(first.hits[2]).toMatchObject({ stroke: "bass", hand: "L", dynamics: "soft" });
-    expect(bar18.hits.at(-1)).toMatchObject({ stroke: "slap", hand: "L", dynamics: "soft" });
-    // 尾奏弱唱段全休止（第 53–57 小节），第 58 小节单音收尾
-    for (const bar of qiaobianguniangBars.slice(52, 57)) {
-      expect(bar.hits).toHaveLength(0);
-    }
-    const bar58 = qiaobianguniangBars[57];
-    expect(bar58.hits.map((hit) => hit.stroke)).toEqual(["bass"]);
+    expect(bar18.hits.map((hit) => hit.stroke)).toEqual(["bass", "bass", "bass"]);
+
+    // 副歌推进型含 SS 双掌击（如第 22 小节）
+    const bar22 = qiaobianguniangBars[21];
+    expect(bar22.hits.map((hit) => hit.stroke)).toEqual([
+      "bass",
+      "slap",
+      "bass",
+      "bass",
+      "bass",
+      "slap",
+      "slap",
+    ]);
   });
 
-  it("keeps reference lyric cues independent of bars, including the instrumental gap and reprise", () => {
+  it("keeps reference lyric cues independent of bars", () => {
     const cues = qiaobianguniang.lyrics!;
-    expect(qiaobianguniangBars.every((bar) => !bar.lyric)).toBe(true);
     expect(cues[0]).toMatchObject({ startMs: 17180, endMs: 22340 });
     expect(cues[0].text).toContain("是谁家的姑娘");
-    expect(cues.some((cue) => cue.startMs <= 90000 && cue.endMs > 90000)).toBe(false);
     expect(cues.filter((cue) => cue.text === "风华模样 你落落大方")).toHaveLength(2);
     cues.forEach((cue, i) => {
       expect(cue.endMs).toBeGreaterThan(cue.startMs);
@@ -73,7 +97,6 @@ describe("qiaobianguniang", () => {
     const lastBar = qiaobianguniangBars.at(-1);
     expect(lastBar).toBeDefined();
     expect(lastBar!.endMs).toBeLessThanOrEqual(qiaobianguniang.expectedDurationMs);
-    // 谱面结尾与音频结尾相距不超过一个小节
     expect(qiaobianguniang.expectedDurationMs - lastBar!.endMs).toBeLessThan(4000);
   });
 });

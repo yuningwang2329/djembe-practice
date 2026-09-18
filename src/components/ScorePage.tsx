@@ -237,8 +237,15 @@ export function ScorePage({
               <div className="score-page__beats" aria-hidden="true">
                 <span className="score-gutter" />
                 {rowBars.map((bar) => (
-                  <div className="score-page__bar-beats" key={`beats-${bar.number}`}>
-                    {Array.from({ length: beatCount }, (_, index) => (
+                  <div
+                    className="score-page__bar-beats"
+                    key={`beats-${bar.number}`}
+                    style={{ flex: bar.beats }}
+                  >
+                    {bar.timeSignature && (
+                      <span className="score-page__meter-space" aria-hidden="true" />
+                    )}
+                    {Array.from({ length: bar.beats }, (_, index) => (
                       <span
                         key={index}
                         className={
@@ -264,6 +271,7 @@ export function ScorePage({
                     <article
                       className={isActive ? "score-bar score-bar--active" : "score-bar"}
                       key={bar.number}
+                      style={{ flex: bar.beats }}
                       aria-label={`第 ${bar.number} 小节`}
                       tabIndex={onSeekAndPlay ? 0 : undefined}
                       data-seekable={onSeekAndPlay ? "true" : undefined}
@@ -285,6 +293,15 @@ export function ScorePage({
                         {bar.number}
                       </div>
                       <div className="score-bar__grid">
+                        {bar.timeSignature && (
+                          <div
+                            className="score-bar__meter"
+                            aria-label={`拍号切换 ${bar.timeSignature[0]}/${bar.timeSignature[1]}`}
+                          >
+                            <span className="score-bar__meter-num">{bar.timeSignature[0]}</span>
+                            <span className="score-bar__meter-num">{bar.timeSignature[1]}</span>
+                          </div>
+                        )}
                         {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
                         {isActive && (
                           <div

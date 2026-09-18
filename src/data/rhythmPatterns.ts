@@ -4,13 +4,13 @@ function parseSlotsToBar(
   slotsStr: string,
   bpm: number,
   barNumber = 1,
+  beats = 4,
+  timeSignature?: [number, number],
 ): Bar {
   const clean = slotsStr.replace(/\s+/g, "");
-  const beats = 4;
   const beatMs = 60000 / bpm;
   const barMs = beatMs * beats;
-  const isSixteenth = clean.length === 16;
-  const slotCount = isSixteenth ? 16 : 8;
+  const slotCount = clean.length;
   const slotMs = barMs / slotCount;
 
   const hits: HitEvent[] = [];
@@ -69,6 +69,7 @@ function parseSlotsToBar(
     endMs: Math.round(barMs),
     beats,
     hits,
+    ...(timeSignature ? { timeSignature } : {}),
   };
 }
 
@@ -79,13 +80,15 @@ export function createRhythmPattern(
   slots: string,
   bpm: number,
   description?: string,
+  beats = 4,
+  timeSignature?: [number, number],
 ): RhythmPattern {
   return {
     id,
     name,
     patternText,
     description,
-    bars: [parseSlotsToBar(slots, bpm, 1)],
+    bars: [parseSlotsToBar(slots, bpm, 1, beats, timeSignature)],
   };
 }
 
@@ -128,7 +131,7 @@ export const gulouPatterns: RhythmPattern[] = [
 export const qiaobianPatterns: RhythmPattern[] = [
   createRhythmPattern(
     "qiaobian-a",
-    "节奏 A（前奏/过渡）",
+    "节奏 A（前奏/主歌）",
     "B ｜ SB ｜ B ｜ S",
     "B0SbB0S0",
     77.329,
@@ -136,7 +139,7 @@ export const qiaobianPatterns: RhythmPattern[] = [
   ),
   createRhythmPattern(
     "qiaobian-b",
-    "节奏 B（主歌摇摆）",
+    "节奏 B（主歌/副歌）",
     "B ｜ SB ｜ BB ｜ S",
     "B0SbBbS0",
     77.329,
@@ -144,19 +147,29 @@ export const qiaobianPatterns: RhythmPattern[] = [
   ),
   createRhythmPattern(
     "qiaobian-c",
-    "节奏 C（副歌推进）",
+    "节奏 C（前奏 2/4 拍过渡）",
+    "2/4 拍  B ｜ 0",
+    "B000",
+    77.329,
+    "前奏第 5 小节两拍留白变节拍，蓄势起唱",
+    2,
+    [2, 4],
+  ),
+  createRhythmPattern(
+    "qiaobian-d",
+    "节奏 D（副歌双掌击）",
     "B ｜ SB ｜ BB ｜ SS",
-    "B0SbBbSS",
+    "B0SbBbSs",
     77.329,
     "第 4 拍双掌击提速，推动情绪升华",
   ),
   createRhythmPattern(
-    "qiaobian-d",
-    "节奏 D（前奏收尾）",
+    "qiaobian-e",
+    "节奏 E（主歌收尾过渡）",
     "B ｜ B ｜ B ｜ 0",
     "B0B0B000",
     77.329,
-    "小节渐收，为进唱留白",
+    "三连四分音符留白，准备切入副歌",
   ),
 ];
 
