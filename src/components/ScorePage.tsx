@@ -12,6 +12,7 @@ interface ScorePageProps {
   bpm?: number;
   lyrics?: SongDefinition["lyrics"];
   onSeekAndPlay?: (timeMs: number) => void;
+  showHands?: boolean;
 }
 
 const ACTIVE_WINDOW_MS = 150;
@@ -56,6 +57,7 @@ export function ScorePage({
   bpm,
   lyrics,
   onSeekAndPlay,
+  showHands = true,
 }: ScorePageProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef(currentTimeMs);
@@ -135,7 +137,7 @@ export function ScorePage({
         } : undefined}
       >
         <b className="score-char__letter">{letter}</b>
-        <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>
+        {showHands && <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>}
       </span>
     );
   }
@@ -175,14 +177,33 @@ export function ScorePage({
     );
   }
 
-  /** 全曲连续排版，每行 4 小节 */
+  /** 全曲连续排版，每行 3 小节（适配平板与宽屏视野） */
   const rows: Bar[][] = [];
-  for (let index = 0; index < bars.length; index += 4) {
-    rows.push(bars.slice(index, index + 4));
+  for (let index = 0; index < bars.length; index += 3) {
+    rows.push(bars.slice(index, index + 3));
+  }
+
+  // 计算首个鼓点提示，解决“4321 之后不知道何时敲”的问题
+  const firstDrumHit = bars.flatMap(bar => bar.hits).find(hit => hit.atMs >= 0) ?? null;
+  const beatMs = bpm ? Math.round(60_000 / bpm) : 500;
+  let drumEntryPrompt: string | null = null;
+  if (firstDrumHit && currentTimeMs < firstDrumHit.atMs) {
+    const timeUntilDrum = firstDrumHit.atMs - currentTimeMs;
+    if (timeUntilDrum <= beatMs * 4 && timeUntilDrum > 0) {
+      const remainingBeats = Math.max(1, Math.ceil(timeUntilDrum / beatMs));
+      drumEntryPrompt = `🥁 准备进鼓 ${remainingBeats}`;
+    }
+  } else if (firstDrumHit && currentTimeMs >= firstDrumHit.atMs && currentTimeMs - firstDrumHit.atMs < beatMs) {
+    drumEntryPrompt = `🥁 进鼓！敲！`;
   }
 
   return (
     <section className="score" aria-label="可跟练鼓谱">
+      {drumEntryPrompt && (
+        <div className="drum-entry-cue" role="status" aria-live="assertive">
+          {drumEntryPrompt}
+        </div>
+      )}
       <div className="score-legend" aria-hidden="true">
         {bars.some(bar => bar.hits.some(hit => hit.dynamics === "soft")) ? <span className="score-meta">小写 b/s：轻击</span> : null}
         {(["bass", "tone", "slap"] as Stroke[]).map((stroke) => (
@@ -196,10 +217,12 @@ export function ScorePage({
             节奏 {timeSignature[0]}/{timeSignature[1]} · 速度 {bpm}
           </span>
         ) : null}
-        <span className="score-legend__hands">
-          <i className="score-hand score-hand--R">R</i> 右手
-          <i className="score-hand score-hand--L">L</i> 左手
-        </span>
+        {showHands && (
+          <span className="score-legend__hands">
+            <i className="score-hand score-hand--R">R</i> 右手
+            <i className="score-hand score-hand--L">L</i> 左手
+          </span>
+        )}
       </div>
 
       <div className="score-viewport" ref={viewportRef} tabIndex={0} aria-label="连续鼓谱，暂停后可上下滑动">

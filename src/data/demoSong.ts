@@ -49,5 +49,16 @@ export const demoSong: SongDefinition = {
 import { qiaobianguniang } from "./qiaobianguniang";
 import { gulou } from "./gulou";
 import { dayu } from "./dayu";
+import { tongnianSong } from "./tongnian";
+import { shuishouSong } from "./shuishou";
+import { lasaSong } from "./lasa";
 
-export const songLibrary: SongDefinition[] = [demoSong, qiaobianguniang, gulou, dayu];
+export const songLibrary: SongDefinition[] = [
+  demoSong,
+  qiaobianguniang,
+  gulou,
+  dayu,
+  tongnianSong,
+  shuishouSong,
+  lasaSong,
+];

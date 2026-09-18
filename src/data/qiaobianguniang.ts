@@ -171,6 +171,8 @@ export const qiaobianguniangBars: Bar[] = specs.map((barSpec, index) => {
   };
 });
 
+import { qiaobianPatterns } from "./rhythmPatterns";
+
 export const qiaobianguniang: SongDefinition = {
   id: "qiao-bian-gu-niang",
   title: "桥边姑娘",
@@ -182,6 +184,7 @@ export const qiaobianguniang: SongDefinition = {
   expectedDurationMs: EXPECTED_DURATION_MS,
   bars: qiaobianguniangBars,
   lyrics: [],
+  rhythmPatterns: qiaobianPatterns,
 };
 
 // 参考时间戳：https://www.9ku.com/play/1000452.htm

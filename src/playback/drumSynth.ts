@@ -37,7 +37,9 @@ export function createDrumSynth(audioContext: AudioContext): DrumSynth {
       const gain = audioContext.createGain();
       const startTime = Math.max(audioContext.currentTime, atAudioTimeSeconds);
       const endTime = startTime + settings.durationSeconds;
-      const normalizedVolume = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1);
+      const isSoft = hit.dynamics === "soft";
+      const softMultiplier = hit.stroke === "bass" ? 0.70 : 0.45;
+      const normalizedVolume = Math.min(1, Math.max(0, volume)) * (isSoft ? softMultiplier : 1);
 
       oscillator.type = hit.stroke === "slap" ? "triangle" : "sine";
       oscillator.frequency.setValueAtTime(settings.frequency, startTime);
@@ -50,7 +52,7 @@ export function createDrumSynth(audioContext: AudioContext): DrumSynth {
         const filter = audioContext.createBiquadFilter();
         if (hit.dynamics === "soft") {
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 180 : 1000, startTime);
+          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 260 : 1000, startTime);
           lastNode.connect(filter);
           lastNode = filter;
         } else if (hit.stroke === "bass") {

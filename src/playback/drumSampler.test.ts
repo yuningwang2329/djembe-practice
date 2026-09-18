@@ -25,4 +25,8 @@ it("applies soft dynamics once to loaded samples and preserves the requested ons
   expect(starts[0]).toHaveBeenCalledWith(2);
   expect(gains[0]).toHaveBeenCalledWith(.8 * .45, 2);
   expect(fallback.schedule).not.toHaveBeenCalled();
+
+  sampler.schedule({ atMs: 100, stroke: 'bass', hand: 'L', dynamics: 'soft' }, 3, .8);
+  expect(starts[1]).toHaveBeenCalledWith(3);
+  expect(gains[1]).toHaveBeenCalledWith(.8 * .70, 3);
 });

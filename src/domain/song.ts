@@ -37,11 +37,21 @@ export interface SongDefinition {
   lyrics?: Array<{ startMs: number; endMs: number; text: string }>;
   /** 同一首歌的可选谱面版本（如扒谱版、教材版），练习时可切换 */
   variants?: ScoreVariant[];
+  /** 歌曲的核心常用节奏型，供专项节奏型循环练习 */
+  rhythmPatterns?: RhythmPattern[];
 }
 
 export interface ScoreVariant {
   id: string;
   name: string;
+  bars: Bar[];
+}
+
+export interface RhythmPattern {
+  id: string;
+  name: string;
+  patternText: string;
+  description?: string;
   bars: Bar[];
 }
 

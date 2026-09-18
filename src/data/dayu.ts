@@ -113,6 +113,8 @@ const cues: Array<[number, number, string]> = [
   [214, 222, "倒流回最初的相遇"],
 ];
 
+import { dayuPatterns } from "./rhythmPatterns";
+
 export const dayu: SongDefinition = {
   id: "da-yu-zhou-shen",
   title: "大鱼",
@@ -127,4 +129,5 @@ export const dayu: SongDefinition = {
     endMs: Math.round(end * 1000),
     text,
   })),
+  rhythmPatterns: dayuPatterns,
 };

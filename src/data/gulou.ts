@@ -84,9 +84,12 @@ const cues: Array<[number, number, string]> = [
   [224, 231, "我在鼓楼 我在鼓楼"],
 ];
 
+import { gulouPatterns } from "./rhythmPatterns";
+
 export const gulou: SongDefinition = {
   id: "gu-lou-zhao-lei", title: "鼓楼", artist: "赵雷", bpm: BPM,
   timeSignature: [4, 4], audioOffsetMs: 0, expectedDurationMs: 281003,
   bars: gulouBars,
   lyrics: cues.map(([start, end, text]) => ({ startMs: start * 1000, endMs: end * 1000, text })),
+  rhythmPatterns: gulouPatterns,
 };

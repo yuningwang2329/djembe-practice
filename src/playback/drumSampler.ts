@@ -101,8 +101,9 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
       source.buffer = buffer;
       const gain = context.createGain();
       const startTime = Math.max(context.currentTime, atAudioTimeSeconds);
-      // 细微的力度变化，避免机器般的绝对均匀
-      const velocity = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1) * (0.93 + Math.random() * 0.14);
+      const isSoft = hit.dynamics === "soft";
+      const softMultiplier = hit.stroke === "bass" ? 0.70 : 0.45;
+      const velocity = Math.min(1, Math.max(0, volume)) * (isSoft ? softMultiplier : 1) * (0.93 + Math.random() * 0.14);
 
       gain.gain.setValueAtTime(velocity, startTime);
 
@@ -111,7 +112,7 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
         const filter = context.createBiquadFilter();
         if (hit.dynamics === "soft") {
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 180 : 1100, startTime);
+          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 260 : 1100, startTime);
           lastNode.connect(filter);
           lastNode = filter;
         } else if (hit.stroke === "bass") {

@@ -118,6 +118,15 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .practice-shell > :not(.score) { flex-shrink: 0; }
 .practice-header { min-height: 3rem; }
 .practice-header > div:nth-child(2) { flex: 1; }
+.practice-header__info { flex: 1; display: flex; flex-direction: column; gap: .2rem; }
+.practice-header__headline { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.mode-pill-group { display: inline-flex; border-radius: 12px; background: #efe2d2; padding: 3px; gap: 3px; }
+.mode-pill { border: none; background: transparent; color: #6d5340; padding: .35rem .85rem; border-radius: 9px; font-weight: 750; font-size: clamp(.78rem, 1.25vw, .92rem); cursor: pointer; transition: all 160ms ease; }
+.mode-pill--active { background: #4a382c; color: #fff; box-shadow: 0 2px 8px rgb(74 56 44 / 22%); }
+.toggle-pill { border: 1px solid #d8c7b5; background: #faf4ec; color: #5c4738; padding: .35rem .75rem; border-radius: 999px; font-weight: 700; font-size: clamp(.72rem, 1.2vw, .85rem); cursor: pointer; transition: all 150ms ease; }
+.toggle-pill--active { background: #4a382c; color: #fff; border-color: #4a382c; }
+.quick-entry-btn { border: 1px solid #e45f26; background: #fff4ed; color: #c94f1c; padding: .35rem .75rem; border-radius: 999px; font-weight: 750; font-size: clamp(.72rem, 1.2vw, .85rem); cursor: pointer; transition: background 150ms ease; }
+.quick-entry-btn:hover { background: #fde6d7; }
 .practice-position { display: flex; align-items: end; gap: .65rem; color: #665244; font-weight: 750; }
 .variant-switch { display: flex; align-items: center; gap: .45rem; }
 .variant-switch__label { color: #8b7565; font-size: .78rem; font-weight: 700; margin-right: .2rem; }
@@ -193,21 +202,46 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-hand--R { background: #35618e; color: #fff; }
 .score-hand--L { background: #8e5a35; color: #fff; }
 
-/* 一页多行：每行 4 小节，行下方是逐小节对位的歌词 */
+.drum-entry-cue {
+  position: sticky;
+  top: .5rem;
+  z-index: 10;
+  margin: 0 auto .6rem;
+  padding: .4rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e45f26, #f38237);
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(.9rem, 1.8vw, 1.2rem);
+  text-align: center;
+  box-shadow: 0 6px 20px rgb(228 95 38 / 45%);
+  animation: pulseEntry 600ms infinite alternate ease-in-out;
+  width: fit-content;
+}
+.drum-entry-cue--hit {
+  background: linear-gradient(135deg, #2b8252, #3db372);
+  box-shadow: 0 6px 20px rgb(43 130 82 / 45%);
+}
+@keyframes pulseEntry {
+  0% { transform: scale(0.97); }
+  100% { transform: scale(1.05); }
+}
+
+/* 一页多行：每行 3 小节（平板与宽屏视野开阔），行下方是逐小节对位的歌词 */
 .score-page { position: relative; display: flex; flex-direction: column; gap: clamp(.8rem, 2.5vh, 1.5rem); padding-block: calc(var(--viewport-height, 360px) / 2); }
 .score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.7rem, 4vh, 2.1rem); }
 .score-page__beats { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); color: #a08a76; font-size: clamp(.62rem, 1.05vw, .8rem); font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
-.score-gutter { flex: none; width: clamp(1.9rem, 2.9vw, 2.6rem); }
-.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 4px; padding: 0; }
+.score-gutter { flex: none; width: clamp(1.1rem, 1.8vw, 1.4rem); }
+.score-page__bar-beats { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); margin-left: 3px; padding: 0; }
 .score-page__beats .score-beat--count { color: #e45f26; transform: scale(1.25); display: inline-block; }
 
 .score-page__row { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); align-items: stretch; }
-.score-bar { position: relative; flex: 1; display: grid; grid-template-columns: clamp(1.9rem, 2.9vw, 2.6rem) minmax(0, 1fr); column-gap: 4px; align-items: stretch; opacity: .58; transition: opacity 180ms ease; }
+.score-bar { position: relative; flex: 1; display: grid; grid-template-columns: clamp(1.1rem, 1.8vw, 1.4rem) minmax(0, 1fr); column-gap: 3px; align-items: stretch; opacity: .58; transition: opacity 180ms ease; }
 .score-bar--active { opacity: 1; }
 .score-bar[data-seekable], .score-char[data-seekable] { cursor: pointer; touch-action: manipulation; }
 .score-bar[data-seekable]:focus-visible, .score-char[data-seekable]:focus-visible { outline: 2px solid #e45f26; outline-offset: 4px; }
 .score-char[data-seekable]::after { content: ""; position: absolute; inset: -.6rem -.2rem; }
-.score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 9px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.82rem, 1.45vw, 1.1rem); font-variant-numeric: tabular-nums; }
+.score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.72rem, 1.2vw, .95rem); font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { background: #e45f26; color: #fff; }
 .score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem 0; border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); overflow: hidden; }
 .score-page__row .score-bar:last-child .score-bar__grid { border-right: 3px solid #4a382c; }
@@ -216,7 +250,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   position: absolute;
   z-index: 3;
   top: 0;
-  left: clamp(1.9rem, 2.9vw, 2.6rem);
+  left: clamp(1.1rem, 1.8vw, 1.4rem);
   transform: translate(-4px, -84%);
   border-radius: 7px;
   padding: .1rem .45rem;
@@ -229,21 +263,21 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   pointer-events: none;
 }
 
-.score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.25rem, 3.2vh, 1.7rem); pointer-events: none; }
+.score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.35rem, 3.4vh, 1.8rem); pointer-events: none; }
 .score-lyric[data-state="current"] { color: #a53e12; background: #fff0d8; border-radius: .3rem; }
-.score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #6d5340; font-size: clamp(.72rem, 1.5vw, .92rem); font-weight: 700; letter-spacing: .02em; }
+.score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: visible; color: #6d5340; font-size: clamp(.72rem, 1.5vw, .92rem); font-weight: 700; letter-spacing: .02em; }
 .score-lyric--timed { height: 1.7em; line-height: 1.7; overflow: visible; padding: 0; text-overflow: clip; }
 .score-lyric__char { position: absolute; transform: translateX(-50%); }
 
-/* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；空拍一个 0 */
+/* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；十六分音符双下划线清晰分离 */
 .score-beat { display: flex; align-items: stretch; justify-content: stretch; min-width: 0; width: 100%; border-right: 1px dashed rgb(80 61 46 / 10%); }
 .score-beat:last-child { border-right: none; }
 .score-beat--rest { align-items: flex-end; justify-content: center; }
 .score-rest { padding-bottom: .34rem; color: #cbb8a4; font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 600; line-height: 1; }
-.score-group { display: flex; width: 100%; align-items: flex-end; justify-content: stretch; padding: 0 0 .34rem; }
-.score-group--eighths { border-bottom: 3px solid #503d2e; }
+.score-group { display: flex; width: 100%; align-items: flex-end; justify-content: stretch; padding: 0 0 .55rem; position: relative; }
+.score-group--eighths { border-bottom: 2.5px solid #503d2e; }
 .score-note { position: relative; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
-.score-note[data-duration="sixteenth"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.9rem; border-bottom: 2px solid #503d2e; }
+.score-note[data-duration="sixteenth"]::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: -6px; border-bottom: 2.5px solid #503d2e; }
 .score-group--dense { gap: 0; padding-left: 0; padding-right: 0; width: 100%; }
 .score-group--dense .score-note { flex: 1; min-width: 0; text-align: center; }
 .score-group--dense .score-char { min-width: 0; }
@@ -263,26 +297,73 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 
 .score-playhead { position: absolute; top: -6px; bottom: -6px; width: 3px; margin-left: -1.5px; background: #e45f26; border-radius: 2px; box-shadow: 0 0 8px rgb(228 95 38 / 55%); z-index: 2; pointer-events: none; }
 
-.practice-controls { display: grid; grid-template-columns: 1.35fr 1fr; gap: .55rem; padding: .6rem .7rem; border: 1px solid #cbb7a1; border-radius: 16px; background: rgb(53 37 29 / 96%); color: #fff9f0; }
+/* 节奏型专项练习组件 */
+.rhythm-practice { display: flex; flex-direction: column; gap: 1rem; flex: 1; min-height: 0; }
+.rhythm-pattern-tabs { display: flex; gap: .6rem; overflow-x: auto; padding-bottom: .4rem; }
+.rhythm-pattern-tab {
+  display: flex; flex-direction: column; gap: .2rem; align-items: flex-start;
+  padding: .6rem .9rem; border: 1px solid #d4c2b0; border-radius: 12px;
+  background: #fdfaf6; color: #4a382c; cursor: pointer; min-width: 140px; text-align: left;
+  transition: all 160ms ease;
+}
+.rhythm-pattern-tab strong { font-size: .88rem; }
+.rhythm-pattern-tab span { font-size: .74rem; color: #8c7664; font-family: monospace; }
+.rhythm-pattern-tab--active {
+  background: #4a382c; color: #fff; border-color: #4a382c;
+  box-shadow: 0 4px 14px rgb(74 56 44 / 25%);
+}
+.rhythm-pattern-tab--active span { color: #f4dcc6; }
+
+.rhythm-practice__card {
+  display: flex; flex-direction: column; gap: 1rem; padding: 1.2rem;
+  border-radius: 18px; background: rgb(255 252 246 / 94%);
+  border: 1px solid #dfcfbe; box-shadow: 0 10px 30px rgb(60 40 25 / 6%);
+}
+.rhythm-practice__meta h2 { margin: 0; font-size: 1.25rem; color: #35251d; }
+.rhythm-practice__pattern-text { margin: .2rem 0 0; font-size: 1.05rem; font-weight: 800; color: #e45f26; letter-spacing: .04em; }
+.rhythm-practice__desc { margin: .3rem 0 0; font-size: .82rem; color: #7a6657; }
+.rhythm-practice__score { margin-top: .4rem; }
+.count-in--pattern { position: static; transform: none; margin: 0 auto; }
+
+.rhythm-practice__controls {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .8rem 1.2rem; border-radius: 16px; background: rgb(53 37 29 / 96%); color: #fff;
+  flex-wrap: wrap;
+}
+.rhythm-speed-controls { display: flex; align-items: center; gap: .5rem; font-size: .85rem; font-weight: 750; }
+.rhythm-speed-controls button { width: 36px; height: 36px; border-radius: 8px; border: 1px solid rgb(255 255 255 / 24%); background: transparent; color: #fff; font-size: .95rem; cursor: pointer; }
+.rhythm-bpm-display { min-width: 70px; text-align: center; font-size: 1rem; font-weight: 900; color: #f5a44d; }
+.rhythm-speed-presets { display: flex; gap: .35rem; margin-left: .5rem; }
+.preset-bpm-btn { width: auto !important; padding: 0 .45rem; font-size: .74rem !important; }
+.preset-bpm-btn--active { background: #e57032 !important; border-color: #e57032 !important; }
+.rhythm-play-btn { min-width: 130px; height: 44px; border-radius: 12px; border: 0; background: #e57032; color: #fff; font-weight: 800; font-size: .95rem; cursor: pointer; }
+.rhythm-play-btn--active { background: #2b8252; }
+
+/* 底部综合控制栏 */
+.practice-controls { display: flex; flex-direction: column; gap: .65rem; padding: .75rem .95rem; border: 1px solid #cbb7a1; border-radius: 16px; background: rgb(48 34 26 / 97%); color: #fff9f0; box-shadow: 0 8px 32px rgb(0 0 0 / 18%); }
+.controls-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.controls-row--sub { border-top: 1px solid rgb(255 249 240 / 14%); padding-top: .55rem; }
 .transport-controls, .loop-controls, .track-controls { display: flex; align-items: center; gap: .5rem; }
-.transport-controls { grid-column: 1; }
-.loop-controls { grid-column: 2; justify-content: end; }
-.track-controls { grid-column: 1 / -1; border-top: 1px solid rgb(255 249 240 / 18%); padding-top: .5rem; }
-.transport-controls button:not(.play-button) { width: 40px; height: 40px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 10px; background: transparent; color: inherit; font-size: 1.35rem; }
-.transport-controls output { min-width: 3.4rem; font-weight: 800; font-variant-numeric: tabular-nums; text-align: center; }
-.play-button { min-width: 72px; min-height: 40px; background: #e57032; }
-.progress-control { display: flex; flex: 1; align-items: center; gap: .45rem; min-width: 7rem; color: #eadccc; font-size: .74rem; }
-input[type="range"] { width: 100%; accent-color: #e57032; }
-.loop-controls label { display: grid; gap: .16rem; color: #eadccc; font-size: .68rem; }
-.loop-controls select { min-height: 30px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 8px; background: #48352b; color: #fff9f0; padding: 0 .35rem; }
-.loop-button { min-height: 36px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 10px; padding: 0 .7rem; background: transparent; color: #eadccc; font-weight: 800; }
+.speed-control-group { display: flex; align-items: center; gap: .3rem; }
+.speed-control-group button, .transport-controls button:not(.play-button) { width: 38px; height: 38px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 10px; background: transparent; color: inherit; font-size: 1.25rem; cursor: pointer; }
+.speed-control-group output, .transport-controls output { min-width: 3.2rem; font-weight: 800; font-variant-numeric: tabular-nums; text-align: center; }
+.play-button { min-width: 76px; min-height: 40px; border-radius: 10px; border: 0; background: #e57032; color: #fff; font-weight: 800; cursor: pointer; }
+.progress-bar-container { display: flex; flex-direction: column; gap: .25rem; flex: 1; min-width: 220px; }
+.progress-bar-header { display: flex; justify-content: space-between; font-size: .76rem; font-weight: 750; color: #ddd0c0; }
+input[type="range"] { width: 100%; accent-color: #e57032; cursor: pointer; }
+.loop-controls label { display: flex; align-items: center; gap: .25rem; color: #eadccc; font-size: .74rem; font-weight: 600; }
+.loop-controls select { min-height: 32px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 8px; background: #48352b; color: #fff9f0; padding: 0 .4rem; }
+.loop-button { min-height: 36px; border: 1px solid rgb(255 249 240 / 24%); border-radius: 10px; padding: 0 .75rem; background: transparent; color: #eadccc; font-weight: 800; cursor: pointer; }
 .loop-button[aria-pressed="true"] { border-color: #f5a44d; background: #f5a44d; color: #35251d; }
-.track-toggle { display: grid; grid-template-columns: auto minmax(80px, 1fr); align-items: center; gap: .5rem; min-width: 13rem; margin: 0; padding: 0; border: 0; }
-.track-toggle__button { display: grid; grid-template-columns: auto auto auto; align-items: center; gap: .4rem; min-height: 40px; border: 0; border-radius: 10px; padding: 0 .6rem; background: rgb(255 249 240 / 12%); color: #fff9f0; font-weight: 750; }
+.track-toggle { display: grid; grid-template-columns: auto auto; align-items: center; gap: .5rem; margin: 0; padding: 0; border: 0; }
+.track-toggle__button { display: inline-flex; align-items: center; gap: .35rem; min-height: 38px; border: 0; border-radius: 10px; padding: 0 .65rem; background: rgb(255 249 240 / 12%); color: #fff9f0; font-weight: 750; font-size: .8rem; cursor: pointer; }
 .track-toggle__button[aria-pressed="false"] { color: #bca89a; }
 .track-toggle__button small { color: #d8c8ba; font-size: .64rem; }
-.track-toggle__lamp { width: .62rem; height: .62rem; border-radius: 50%; background: #f5a44d; box-shadow: 0 0 0 3px rgb(245 164 77 / 16%); }
+.track-toggle__lamp { width: .58rem; height: .58rem; border-radius: 50%; background: #f5a44d; box-shadow: 0 0 0 3px rgb(245 164 77 / 16%); }
 .track-toggle__button[aria-pressed="false"] .track-toggle__lamp { background: #77645b; box-shadow: none; }
+.track-toggle__slider-wrap { display: flex; align-items: center; gap: .4rem; min-width: 120px; }
+.track-toggle__slider-wrap input[type="range"] { width: 85px; }
+.track-toggle__percent { font-size: .74rem; font-weight: 750; color: #f5a44d; min-width: 38px; }
 .wake-lock-status { margin-left: auto; color: #d8c8ba; font-size: .72rem; font-weight: 700; }
 
 @media (max-width: 760px), (orientation: portrait) {

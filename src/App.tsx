@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { AudioSourceManager } from "./components/AudioSourceManager";
 import { ScorePage } from "./components/ScorePage";
 import { TrackToggle } from "./components/TrackToggle";
+import { RhythmPatternPractice } from "./components/RhythmPatternPractice";
 import { songLibrary } from "./data/demoSong";
 import { clampPlaybackRate, getBarAtTime } from "./domain/timeline";
 import type { SongDefinition } from "./domain/song";
@@ -83,7 +84,6 @@ function SongLibrary({
       </header>
       <section className="library-intro">
         <h2>选一首歌，跟着鼓点练习</h2>
-        <p>横屏同时看三行谱面。原歌曲和示范鼓声都能独立开关。</p>
       </section>
       <section className="song-list" aria-label="曲目列表">
         {songLibrary.map((song) => (
@@ -110,12 +110,13 @@ function SongLibrary({
           </article>
         ))}
       </section>
-      <p className="library-note">之后可为每首真实歌曲从“文件”App导入本机音频，歌曲不会上传。</p>
     </main>
   );
 }
 
 function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => void }) {
+  const [practiceMode, setPracticeMode] = useState<"score" | "rhythm">("score");
+  const [showHands, setShowHands] = useState(true);
   const [loopStartBar, setLoopStartBar] = useState(1);
   const [loopEndBar, setLoopEndBar] = useState(4);
   const [loopEnabled, setLoopEnabled] = useState(false);
@@ -133,6 +134,11 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
   const countInBeat = snapshot.isCountingIn
     ? song.timeSignature[0] - snapshot.countInBeatsRemaining + 1
     : 0;
+
+  const firstDrumHit = useMemo(() => {
+    return effectiveSong.bars.flatMap((b) => b.hits).find((h) => h.atMs > 2000) ?? null;
+  }, [effectiveSong]);
+  const hasIntroRest = Boolean(firstDrumHit && firstDrumHit.atMs > 4000);
 
   const setSpeed = (candidate: number) => playback.setRate(clampPlaybackRate(candidate));
   const updateLoop = (startBar: number, endBar: number, enabled = loopEnabled) => {
@@ -185,9 +191,52 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
     <main className="practice-shell">
       <header className="practice-header">
         <button className="back-button" type="button" onClick={onBack}>返回曲目库</button>
-        <div>
+        <div className="practice-header__info">
           <p>正在练习</p>
-          <h1>{song.title}</h1>
+          <div className="practice-header__headline">
+            <h1>{song.title}</h1>
+            <div className="mode-pill-group" role="tablist" aria-label="练习模式切换">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={practiceMode === "score"}
+                className={`mode-pill ${practiceMode === "score" ? "mode-pill--active" : ""}`}
+                onClick={() => setPracticeMode("score")}
+              >
+                歌曲乐谱
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={practiceMode === "rhythm"}
+                className={`mode-pill ${practiceMode === "rhythm" ? "mode-pill--active" : ""}`}
+                onClick={() => setPracticeMode("rhythm")}
+              >
+                节奏型练习
+              </button>
+            </div>
+            <button
+              type="button"
+              className={`toggle-pill ${showHands ? "toggle-pill--active" : ""}`}
+              onClick={() => setShowHands((prev) => !prev)}
+              aria-label={showHands ? "隐藏左右手提示" : "显示左右手提示"}
+            >
+              左右手: {showHands ? "开" : "关"}
+            </button>
+            {practiceMode === "score" && hasIntroRest && (
+              <button
+                type="button"
+                className="quick-entry-btn"
+                onClick={() => {
+                  const drumBar = effectiveSong.bars.find((b) => b.startMs <= firstDrumHit!.atMs && b.endMs > firstDrumHit!.atMs) ?? effectiveSong.bars[0];
+                  void seekAndPlay(drumBar.startMs);
+                }}
+                title="跳过前奏，直接从第一个敲鼓点开始"
+              >
+                🥁 直达首个鼓点
+              </button>
+            )}
+          </div>
         </div>
         <div className="practice-position" aria-live="polite">
           <span>第 {activeBar.number} 小节</span>
@@ -195,85 +244,105 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
         </div>
       </header>
 
-      {song.variants && song.variants.length > 0 && (
-        <div className="variant-switch" role="group" aria-label="谱面版本">
-          <span className="variant-switch__label">谱面版本</span>
-          {song.variants.map((variant) => (
-            <button
-              key={variant.id}
-              type="button"
-              aria-pressed={variantId === variant.id}
-              onClick={() => setVariantId(variant.id)}
-            >
-              {variant.name}
-            </button>
-          ))}
-        </div>
+      {practiceMode === "rhythm" ? (
+        <RhythmPatternPractice song={effectiveSong} showHands={showHands} />
+      ) : (
+        <>
+          {song.variants && song.variants.length > 0 && (
+            <div className="variant-switch" role="group" aria-label="谱面版本">
+              <span className="variant-switch__label">谱面版本</span>
+              {song.variants.map((variant) => (
+                <button
+                  key={variant.id}
+                  type="button"
+                  aria-pressed={variantId === variant.id}
+                  onClick={() => setVariantId(variant.id)}
+                >
+                  {variant.name}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {snapshot.isCountingIn && (
+            <div className="count-in" role="status">
+              准备开始 {snapshot.countInBeatsRemaining}
+            </div>
+          )}
+          {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
+          <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
+          <ScorePage
+            bars={activeBars}
+            currentTimeMs={snapshot.currentTimeMs}
+            lyrics={effectiveSong.lyrics}
+            onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
+            countInBeat={countInBeat}
+            timeSignature={song.timeSignature}
+            bpm={song.bpm}
+            showHands={showHands}
+          />
+
+          <section className="practice-controls" aria-label="播放控制">
+            <div className="controls-row">
+              <div className="transport-controls">
+                <button
+                  className="play-button"
+                  type="button"
+                  aria-label={snapshot.isPlaying || snapshot.isCountingIn ? "暂停播放" : "开始播放"}
+                  onClick={() => void togglePlayback()}
+                >
+                  {snapshot.isPlaying || snapshot.isCountingIn ? "暂停" : "播放"}
+                </button>
+                <div className="speed-control-group">
+                  <button type="button" aria-label="减速" onClick={() => setSpeed(snapshot.playbackRate - 0.05)}>−</button>
+                  <output aria-label="当前速度">{snapshot.playbackRate.toFixed(2)}×</output>
+                  <button type="button" aria-label="加速" onClick={() => setSpeed(snapshot.playbackRate + 0.05)}>＋</button>
+                </div>
+              </div>
+              <div className="progress-bar-container">
+                <div className="progress-bar-header">
+                  <span>播放进度</span>
+                  <span>{formatTime(snapshot.currentTimeMs)} / {formatTime(song.expectedDurationMs)}</span>
+                </div>
+                <input
+                  aria-label="播放进度"
+                  type="range"
+                  min="0"
+                  max={song.expectedDurationMs}
+                  step="10"
+                  value={snapshot.currentTimeMs}
+                  onChange={(event) => playback.seek(Number(event.currentTarget.value))}
+                />
+              </div>
+            </div>
+
+            <div className="controls-row controls-row--sub">
+              <div className="loop-controls">
+                <button type="button" className="loop-button" aria-label="小节循环" aria-pressed={loopEnabled} onClick={toggleLoop}>
+                  小节循环
+                </button>
+                <label>
+                  从
+                  <select aria-label="循环起始小节" value={loopStartBar} onChange={(event) => updateLoop(Number(event.currentTarget.value), loopEndBar)}>
+                    {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 节</option>)}
+                  </select>
+                </label>
+                <label>
+                  到
+                  <select aria-label="循环结束小节" value={loopEndBar} onChange={(event) => updateLoop(loopStartBar, Number(event.currentTarget.value))}>
+                    {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 节</option>)}
+                  </select>
+                </label>
+              </div>
+              <div className="track-controls">
+                <TrackToggle label="原歌曲" enabled={!snapshot.songMuted} volume={snapshot.songVolume} onEnabledChange={(enabled) => playback.setTrackMuted("song", !enabled)} onVolumeChange={(songVolume) => playback.setVolumes({ song: songVolume })} />
+                <TrackToggle label="示范鼓声" enabled={!snapshot.drumMuted} volume={snapshot.drumVolume} onEnabledChange={(enabled) => playback.setTrackMuted("drums", !enabled)} onVolumeChange={(drumsVolume) => playback.setVolumes({ drums: drumsVolume })} />
+                {wakeLock.supported && <span className="wake-lock-status">{wakeLock.active ? "屏幕常亮" : "屏幕可休眠"}</span>}
+              </div>
+            </div>
+          </section>
+        </>
       )}
-
-      <p className="portrait-note">横屏可同时看到三行谱面</p>
-      {snapshot.isCountingIn && <div className="count-in" role="status">准备开始 {snapshot.countInBeatsRemaining}</div>}
-      {playbackError && <p className="playback-error" role="alert">{playbackError}</p>}
-      <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
-      <ScorePage
-        bars={activeBars}
-        currentTimeMs={snapshot.currentTimeMs}
-        lyrics={effectiveSong.lyrics}
-        onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
-        countInBeat={countInBeat}
-        timeSignature={song.timeSignature}
-        bpm={song.bpm}
-      />
-
-      <section className="practice-controls" aria-label="播放控制">
-        <div className="transport-controls">
-          <button type="button" aria-label="减速" onClick={() => setSpeed(snapshot.playbackRate - 0.05)}>−</button>
-          <output aria-label="当前速度">{snapshot.playbackRate.toFixed(2)}×</output>
-          <button type="button" aria-label="加速" onClick={() => setSpeed(snapshot.playbackRate + 0.05)}>＋</button>
-          <button
-            className="play-button"
-            type="button"
-            aria-label={snapshot.isPlaying || snapshot.isCountingIn ? "暂停播放" : "开始播放"}
-            onClick={() => void togglePlayback()}
-          >
-            {snapshot.isPlaying || snapshot.isCountingIn ? "暂停" : "播放"}
-          </button>
-          <label className="progress-control">
-            <span>进度</span>
-            <input
-              aria-label="播放进度"
-              type="range"
-              min="0"
-              max={song.expectedDurationMs}
-              step="10"
-              value={snapshot.currentTimeMs}
-              onChange={(event) => playback.seek(Number(event.currentTarget.value))}
-            />
-          </label>
-        </div>
-        <div className="loop-controls">
-          <button type="button" className="loop-button" aria-label="小节循环" aria-pressed={loopEnabled} onClick={toggleLoop}>
-            循环
-          </button>
-          <label>
-            循环从
-            <select aria-label="循环起始小节" value={loopStartBar} onChange={(event) => updateLoop(Number(event.currentTarget.value), loopEndBar)}>
-              {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
-            </select>
-          </label>
-          <label>
-            循环到
-            <select aria-label="循环结束小节" value={loopEndBar} onChange={(event) => updateLoop(loopStartBar, Number(event.currentTarget.value))}>
-              {effectiveSong.bars.map((bar) => <option key={bar.number} value={bar.number}>第 {bar.number} 小节</option>)}
-            </select>
-          </label>
-        </div>
-        <div className="track-controls">
-          <TrackToggle label="原歌曲" enabled={!snapshot.songMuted} volume={snapshot.songVolume} onEnabledChange={(enabled) => playback.setTrackMuted("song", !enabled)} onVolumeChange={(songVolume) => playback.setVolumes({ song: songVolume })} />
-          <TrackToggle label="示范鼓声" enabled={!snapshot.drumMuted} volume={snapshot.drumVolume} onEnabledChange={(enabled) => playback.setTrackMuted("drums", !enabled)} onVolumeChange={(drumsVolume) => playback.setVolumes({ drums: drumsVolume })} />
-          {wakeLock.supported && <span className="wake-lock-status">{wakeLock.active ? "屏幕常亮" : "屏幕可休眠"}</span>}
-        </div>
-      </section>
     </main>
   );
 }

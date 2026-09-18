@@ -43,8 +43,8 @@ describe("ScorePage", () => {
     expect(screen.getByLabelText("测试句子")).toHaveAttribute("data-state", "idle");
   });
   it("spreads every character once across a row boundary without ellipses or repeated lyrics", () => {
-    const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={4100}
-      lyrics={[{ startMs: 3000, endMs: 5000, text: "甲乙 丙丁" }]} />);
+    const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={3100}
+      lyrics={[{ startMs: 2000, endMs: 4000, text: "甲乙 丙丁" }]} />);
     const chars = [...container.querySelectorAll('.score-lyric__char')];
     expect(chars.map((char) => char.textContent).join('')).toBe('甲乙丙丁');
     expect(container.querySelectorAll('.score-lyrics')[0].textContent).toBe('甲乙');
@@ -52,6 +52,10 @@ describe("ScorePage", () => {
     expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(1);
     expect(container.querySelector('.score-page')!.textContent).not.toContain('…');
     expect(chars[0].getAttribute('style')).not.toBe(chars[1].getAttribute('style'));
+  });
+  it("hides hands when showHands is false", () => {
+    const { container } = render(<ScorePage bars={makeSong().bars.slice(0, 3)} currentTimeMs={0} showHands={false} />);
+    expect(container.querySelectorAll('.score-hand')).toHaveLength(0);
   });
   it("renders bars as staff rows with a stroke legend", () => {
     const song = makeSong();
