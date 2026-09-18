@@ -17,9 +17,15 @@ export function createAudioClock(
   audio: HTMLAudioElement,
   audioOffsetMs = 0,
 ): PlaybackClock {
+  let pendingSeekSeconds: number | null = null;
+  function applyPendingSeek(): void {
+    if (pendingSeekSeconds === null) return;
+    audio.currentTime = pendingSeekSeconds;
+    pendingSeekSeconds = null;
+  }
   return {
     getTimeMs() {
-      return Math.max(0, audio.currentTime * 1_000 - audioOffsetMs);
+      return Math.max(0, (pendingSeekSeconds ?? audio.currentTime) * 1_000 - audioOffsetMs);
     },
 
     getPlaybackRate() {
@@ -39,7 +45,16 @@ export function createAudioClock(
     },
 
     seek(timeMs: number) {
-      audio.currentTime = Math.max(0, timeMs + audioOffsetMs) / 1_000;
+      const seconds = Math.max(0, timeMs + audioOffsetMs) / 1_000;
+      if (audio.readyState === 0) {
+        // HAVE_NOTHING: 浏览器可能丢弃早于 metadata 的 currentTime 赋值。
+        // 同一个监听器只注册一次；连续点击时以最后一次目标为准。
+        pendingSeekSeconds = seconds;
+        audio.addEventListener("loadedmetadata", applyPendingSeek, { once: true });
+      } else {
+        pendingSeekSeconds = null;
+        audio.currentTime = seconds;
+      }
     },
 
     setPlaybackRate(rate: number) {

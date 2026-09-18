@@ -22,6 +22,20 @@ function makeAudio() {
 }
 
 describe("playback clocks", () => {
+  it("retains the latest early seek until audio metadata is loaded", () => {
+    const audio = Object.assign(new EventTarget(), { currentTime: 0, readyState: 0 });
+    const clock = createAudioClock(audio as unknown as HTMLAudioElement);
+    clock.seek(18000);
+    clock.seek(18250);
+    expect(clock.getTimeMs()).toBe(18250);
+    expect(audio.currentTime).toBe(0);
+    audio.readyState = 1;
+    audio.dispatchEvent(new Event('loadedmetadata'));
+    expect(audio.currentTime).toBe(18.25);
+    expect(clock.getTimeMs()).toBe(18250);
+    clock.seek(4000);
+    expect(audio.currentTime).toBe(4);
+  });
   it("maps score time through an audio pre-roll and keeps the audio element as master", async () => {
     const audio = makeAudio();
     const clock = createAudioClock(audio as unknown as HTMLAudioElement, 500);
