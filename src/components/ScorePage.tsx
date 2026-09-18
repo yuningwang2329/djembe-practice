@@ -23,22 +23,25 @@ const ACTIVE_WINDOW_MS = 150;
  * 歌词词组按小节对位（lyricSpan 跨几小节就居中于几小节下方）。
  * 速度参考「阿波非洲鼓」教学谱排版。
  */
-interface BeatPair {
-  first: HitEvent | null;
-  second: HitEvent | null;
-}
+interface BeatNote { hit: HitEvent | null; duration: number }
 
-function beatPairs(bar: Bar): BeatPair[] {
-  const eighthMs = (bar.endMs - bar.startMs) / bar.beats / 2;
-  const byEighth = new Map<number, HitEvent>();
+function beatPairs(bar: Bar): BeatNote[][] {
+  const sixteenthMs = (bar.endMs - bar.startMs) / bar.beats / 4;
+  const bySlot = new Map<number, HitEvent>();
   for (const hit of bar.hits) {
-    const index = Math.round((hit.atMs - bar.startMs) / eighthMs);
-    if (index >= 0 && index < bar.beats * 2) byEighth.set(index, hit);
+    const index = Math.round((hit.atMs - bar.startMs) / sixteenthMs);
+    if (index >= 0 && index < bar.beats * 4) bySlot.set(index, hit);
   }
-  return Array.from({ length: bar.beats }, (_, beat) => ({
-    first: byEighth.get(beat * 2) ?? null,
-    second: byEighth.get(beat * 2 + 1) ?? null,
-  }));
+  return Array.from({ length: bar.beats }, (_, beat) => {
+    const notes: BeatNote[] = [];
+    for (let slot = 0; slot < 4;) {
+      let end = slot + 1;
+      while (end < 4 && !bySlot.has(beat * 4 + end)) end++;
+      notes.push({ hit: bySlot.get(beat * 4 + slot) ?? null, duration: end - slot });
+      slot = end;
+    }
+    return notes;
+  });
 }
 
 function clamp01(value: number): number {
@@ -96,21 +99,23 @@ export function ScorePage({
       .filter((hit) => hit.atMs > currentTimeMs)
       .at(0) ?? null;
   const beatCount = bars[0]?.beats ?? 4;
+  const latestHit = activeBar?.hits.filter(hit => hit.atMs <= currentTimeMs).at(-1);
 
   function hitState(hit: HitEvent): "current" | "next" | "idle" {
-    if (Math.abs(currentTimeMs - hit.atMs) <= ACTIVE_WINDOW_MS) return "current";
+    if (latestHit === hit && currentTimeMs - hit.atMs <= ACTIVE_WINDOW_MS) return "current";
     if (nextHit && hit.atMs === nextHit.atMs) return "next";
     return "idle";
   }
 
   function strokeChar(hit: HitEvent) {
     const label = strokeLabels[hit.stroke];
+    const letter = hit.dynamics === "soft" ? label.letter.toLowerCase() : label.letter;
     return (
       <span
         className={`score-char score-char--${hit.stroke}`}
         data-hit-at={hit.atMs}
         data-state={hitState(hit)}
-        aria-label={`${label.name} ${label.letter}，${hit.hand} 手`}
+        aria-label={`${hit.dynamics === "soft" ? "轻击 " : ""}${label.name} ${letter}，${hit.hand} 手`}
         role={onSeekAndPlay ? "button" : undefined}
         tabIndex={onSeekAndPlay ? 0 : undefined}
         data-seekable={onSeekAndPlay ? "true" : undefined}
@@ -127,15 +132,15 @@ export function ScorePage({
           }
         } : undefined}
       >
-        <b className="score-char__letter">{label.letter}</b>
+        <b className="score-char__letter">{letter}</b>
         <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>
       </span>
     );
   }
 
-  function beatCell(pair: BeatPair, key: number) {
+  function beatCell(notes: BeatNote[], key: number) {
     // 空拍：只写一个 0，不占两个八分格
-    if (!pair.first && !pair.second) {
+    if (notes.every(note => !note.hit)) {
       return (
         <div className="score-beat score-beat--rest" key={key}>
           <span className="score-rest" aria-label="休止">
@@ -145,28 +150,22 @@ export function ScorePage({
       );
     }
     // 独音落在拍头：四分音符，不带下划线
-    const isQuarter = Boolean(pair.first && !pair.second);
+    const isQuarter = notes.length === 1;
     return (
       <div className="score-beat" key={key}>
         <span
           className={
-            isQuarter ? "score-group score-group--quarter" : "score-group score-group--eighths"
+            isQuarter ? "score-group score-group--quarter" : `score-group score-group--eighths${notes.some(note => note.duration === 1) ? " score-group--dense" : ""}${notes.length === 4 ? " score-group--four" : ""}`
           }
         >
-          {pair.first ? (
-            strokeChar(pair.first)
-          ) : (
-            <span className="score-char score-char--rest" aria-label="休止">
-              <b className="score-char__letter">0</b>
+          {notes.map((note, index) => (
+            <span className="score-note" key={index}
+              data-duration={note.duration === 1 ? "sixteenth" : note.duration === 2 ? "eighth" : "quarter"}>
+              {note.hit ? strokeChar(note.hit) : (
+                <span className="score-char score-char--rest" aria-label="休止"><b className="score-char__letter">0</b></span>
+              )}
             </span>
-          )}
-          {pair.second ? (
-            strokeChar(pair.second)
-          ) : isQuarter ? null : (
-            <span className="score-char score-char--rest" aria-label="休止">
-              <b className="score-char__letter">0</b>
-            </span>
-          )}
+          ))}
         </span>
       </div>
     );
@@ -181,6 +180,7 @@ export function ScorePage({
   return (
     <section className="score" aria-label="可跟练鼓谱">
       <div className="score-legend" aria-hidden="true">
+        {bars.some(bar => bar.hits.some(hit => hit.dynamics === "soft")) ? <span className="score-meta">小写 b/s：轻击</span> : null}
         {(["bass", "tone", "slap"] as Stroke[]).map((stroke) => (
           <span key={stroke} className={`score-legend__item score-legend__item--${stroke}`}>
             <b>{strokeLabels[stroke].letter}</b>

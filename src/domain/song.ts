@@ -5,6 +5,8 @@ export interface HitEvent {
   atMs: number;
   stroke: Stroke;
   hand: Hand;
+  /** 小写鼓音表示轻击；与 R/L 手序无关。省略为正常力度。 */
+  dynamics?: "soft";
 }
 
 export interface Bar {
@@ -71,6 +73,7 @@ export function validateSong(song: SongDefinition): string[] {
       const hitLabel = `${label}第 ${hitIndex + 1} 个鼓点`;
       if (!hands.has(hit.hand)) errors.push(`${hitLabel}左右手无效`);
       if (!strokes.has(hit.stroke)) errors.push(`${hitLabel}音色无效`);
+      if (hit.dynamics !== undefined && hit.dynamics !== "soft") errors.push(`${hitLabel}力度无效`);
       if (hit.atMs < bar.startMs || hit.atMs >= bar.endMs) {
         errors.push(`${hitLabel}不在小节范围内`);
       }

@@ -47,5 +47,6 @@ export const demoSong: SongDefinition = {
 };
 
 import { qiaobianguniang } from "./qiaobianguniang";
+import { gulou } from "./gulou";
 
-export const songLibrary: SongDefinition[] = [demoSong, qiaobianguniang];
+export const songLibrary: SongDefinition[] = [demoSong, qiaobianguniang, gulou];

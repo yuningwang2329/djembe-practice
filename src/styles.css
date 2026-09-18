@@ -241,6 +241,15 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-rest { padding-bottom: .34rem; color: #cbb8a4; font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 600; line-height: 1; }
 .score-group { display: inline-flex; align-items: flex-end; justify-content: center; gap: .5em; padding: 0 .18em .34rem; }
 .score-group--eighths { border-bottom: 3px solid #503d2e; }
+.score-note { position: relative; }
+.score-note[data-duration="sixteenth"]::after { content: ""; position: absolute; left: -.1em; right: -.1em; bottom: -.9rem; border-bottom: 2px solid #503d2e; }
+.score-group--dense { gap: 0; padding-left: 0; padding-right: 0; width: 100%; }
+.score-group--dense .score-note { flex: 1; min-width: 0; text-align: center; }
+.score-group--dense .score-char { min-width: 0; }
+.score-group--dense .score-char__letter { font-size: clamp(.9rem, 1.6vw, 1.2rem); }
+.score-group--dense .score-char__hand { font-size: .5rem; top: -.8em; right: -.25em; }
+.score-group--four .score-char__letter { font-size: clamp(.68rem, 1.1vw, .9rem); }
+.score-group--four .score-char__hand { font-size: .42rem; }
 .score-char { position: relative; display: inline-flex; justify-content: center; min-width: 1.1em; line-height: 1; }
 .score-char__letter { font-size: clamp(1.15rem, 3vh, 1.7rem); font-weight: 800; font-family: "Trebuchet MS", "PingFang SC", sans-serif; }
 .score-char--bass .score-char__letter { color: #7c4a1d; }

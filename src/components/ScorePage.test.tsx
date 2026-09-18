@@ -4,6 +4,23 @@ import { ScorePage } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
+  it("keeps all sixteenth hits, their beam lengths, soft letters, and exact seek positions", () => {
+    const onSeekAndPlay = vi.fn();
+    const bar = { number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [
+      { atMs: 0, stroke: "bass" as const, hand: "R" as const },
+      { atMs: 250, stroke: "slap" as const, hand: "L" as const, dynamics: "soft" as const },
+      { atMs: 375, stroke: "slap" as const, hand: "R" as const, dynamics: "soft" as const },
+      { atMs: 500, stroke: "bass" as const, hand: "R" as const, dynamics: "soft" as const },
+    ] };
+    const { container } = render(<ScorePage bars={[bar]} currentTimeMs={375} onSeekAndPlay={onSeekAndPlay} />);
+    expect(container.querySelectorAll('[data-hit-at]')).toHaveLength(4);
+    expect([...container.querySelectorAll('.score-char__letter')].map(el => el.textContent).join('')).toBe('Bssb');
+    expect(container.querySelectorAll('[data-duration="sixteenth"]')).toHaveLength(2);
+    expect(container.querySelectorAll('.score-char[data-state="current"]')).toHaveLength(1);
+    expect(container.querySelector('[data-hit-at="500"]')).toHaveAttribute('data-state', 'next');
+    fireEvent.click(container.querySelector('[data-hit-at="375"]')!);
+    expect(onSeekAndPlay).toHaveBeenLastCalledWith(375);
+  });
   it("seeks to a clicked hit without also seeking to its bar, and supports keyboard and blank bar clicks", () => {
     const onSeekAndPlay = vi.fn();
     const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={0} onSeekAndPlay={onSeekAndPlay} />);

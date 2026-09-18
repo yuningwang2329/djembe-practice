@@ -37,7 +37,7 @@ export function createDrumSynth(audioContext: AudioContext): DrumSynth {
       const gain = audioContext.createGain();
       const startTime = Math.max(audioContext.currentTime, atAudioTimeSeconds);
       const endTime = startTime + settings.durationSeconds;
-      const normalizedVolume = Math.min(1, Math.max(0, volume));
+      const normalizedVolume = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1);
 
       oscillator.type = hit.stroke === "slap" ? "square" : "sine";
       oscillator.frequency.setValueAtTime(settings.frequency, startTime);

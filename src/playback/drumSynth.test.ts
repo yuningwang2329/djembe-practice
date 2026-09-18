@@ -51,6 +51,13 @@ function makeAudioContext() {
 }
 
 describe("drum synth", () => {
+  it("plays lowercase soft strokes more quietly without changing their timbre or timing", () => {
+    const { context, gains, oscillators } = makeAudioContext();
+    const synth = createDrumSynth(context as unknown as AudioContext);
+    synth.schedule({ atMs: 0, stroke: "bass", hand: "L", dynamics: "soft" }, 7, 0.8);
+    expect(gains[0].gain.setValueAtTime).toHaveBeenCalledWith(0.8 * 0.45, 7);
+    expect(oscillators[0].frequency.setValueAtTime).toHaveBeenCalledWith(110, 7);
+  });
   it("schedules a bass voice at the requested Web Audio time and can cancel it", () => {
     const { context, oscillators, gains } = makeAudioContext();
     const synth = createDrumSynth(context as unknown as AudioContext);

@@ -97,7 +97,7 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
       const gain = context.createGain();
       const startTime = Math.max(context.currentTime, atAudioTimeSeconds);
       // 细微的力度变化，避免机器般的绝对均匀
-      const velocity = Math.min(1, Math.max(0, volume)) * (0.93 + Math.random() * 0.14);
+      const velocity = Math.min(1, Math.max(0, volume)) * (hit.dynamics === "soft" ? 0.45 : 1) * (0.93 + Math.random() * 0.14);
 
       gain.gain.setValueAtTime(velocity, startTime);
       source.connect(gain);
