@@ -313,7 +313,95 @@ export const tongnianLyrics = [
   }
 ];
 
+const tongnianBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }> = {
+  8: { lyric: "池塘边的", lyricBeats: ["池", "塘边", "的", ""] },
+  9: { lyric: "榕树上 知了在", lyricBeats: ["榕树", "上", "知了", "在"] },
+  10: { lyric: "声声叫着夏天", lyricBeats: ["声声", "叫着", "夏", "天"] },
+  11: { lyric: "", lyricBeats: ["", "", "", ""] },
+  12: { lyric: "操场边的", lyricBeats: ["", "操场", "边", "的"] },
+  13: { lyric: "秋千上 只有", lyricBeats: ["秋千", "上", "只有", "蝴"] },
+  14: { lyric: "蝴蝶停在上面", lyricBeats: ["蝶停", "在", "上面", ""] },
+  15: { lyric: "", lyricBeats: ["", "", "", ""] },
+  16: { lyric: "黑板上 老师的", lyricBeats: ["黑板", "上老", "师的", ""] },
+  17: { lyric: "粉笔还 在拼命", lyricBeats: ["粉笔", "还在", "拼命", ""] },
+  18: { lyric: "叽叽喳喳写个不停", lyricBeats: ["叽叽", "喳喳", "写个", "不停"] },
+  19: { lyric: "", lyricBeats: ["", "", "", ""] },
+  20: { lyric: "等待着下课", lyricBeats: ["等待", "着下", "课", ""] },
+  21: { lyric: "等待着放学", lyricBeats: ["等待", "着放", "学", ""] },
+  22: { lyric: "等待游戏的童", lyricBeats: ["等待", "游戏", "的童", ""] },
+  23: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+  24: { lyric: "福利社里面", lyricBeats: ["福利", "社里", "面", ""] },
+  25: { lyric: "什么都有 就是口", lyricBeats: ["什么", "都有", "就是", "口"] },
+  26: { lyric: "袋里没有半毛钱", lyricBeats: ["袋里", "没有", "半毛", "钱"] },
+  27: { lyric: "", lyricBeats: ["", "", "", ""] },
+  28: { lyric: "诸葛四郎和", lyricBeats: ["", "诸葛", "四郎", "和"] },
+  29: { lyric: "魔鬼党 到底谁", lyricBeats: ["魔鬼", "党到", "底谁", "抢"] },
+  30: { lyric: "抢到那只宝剑", lyricBeats: ["到那", "只宝", "剑", ""] },
+  31: { lyric: "", lyricBeats: ["", "", "", ""] },
+  32: { lyric: "隔壁班的那个", lyricBeats: ["隔壁", "班的", "那个", ""] },
+  33: { lyric: "女孩 怎么还没", lyricBeats: ["女孩", "怎么", "还没", ""] },
+  34: { lyric: "经过我的窗前", lyricBeats: ["经过", "我的", "窗前", ""] },
+  35: { lyric: "", lyricBeats: ["", "", "", ""] },
+  36: { lyric: "嘴里的零食", lyricBeats: ["嘴里", "的零", "食", ""] },
+  37: { lyric: "手里的漫画", lyricBeats: ["手里", "的漫", "画", ""] },
+  38: { lyric: "心里初恋的童", lyricBeats: ["心里", "初恋", "的童", ""] },
+  39: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+  40: { lyric: "总是要等到", lyricBeats: ["总是", "要等", "到", ""] },
+  41: { lyric: "睡觉前 才知道功", lyricBeats: ["睡觉", "前才", "知道", "功"] },
+  42: { lyric: "课只做了一点点", lyricBeats: ["课只", "做了", "一点", "点"] },
+  43: { lyric: "", lyricBeats: ["", "", "", ""] },
+  44: { lyric: "总是要等到", lyricBeats: ["", "总是", "要等", "到"] },
+  45: { lyric: "考试以后 才知道", lyricBeats: ["考试", "以后", "才知", "道"] },
+  46: { lyric: "该念的书都没有念", lyricBeats: ["该念", "的书", "都没", "有念"] },
+  47: { lyric: "", lyricBeats: ["", "", "", ""] },
+  48: { lyric: "一寸光阴一寸金", lyricBeats: ["一寸", "光阴", "一寸", "金"] },
+  49: { lyric: "老师说过寸金难买", lyricBeats: ["老师", "说过", "寸金", "难买"] },
+  50: { lyric: "寸光阴", lyricBeats: ["寸光", "阴", "", ""] },
+  51: { lyric: "", lyricBeats: ["", "", "", ""] },
+  52: { lyric: "一天又一天", lyricBeats: ["一天", "又一", "天", ""] },
+  53: { lyric: "一年又一年", lyricBeats: ["一年", "又一", "年", ""] },
+  54: { lyric: "迷迷糊糊的童", lyricBeats: ["迷迷", "糊糊", "的童", ""] },
+  55: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+  74: { lyric: "没有人知道", lyricBeats: ["没有", "人知", "道", ""] },
+  75: { lyric: "为什么 太阳总下", lyricBeats: ["为什", "么太", "阳总", "下"] },
+  76: { lyric: "到山的那一边", lyricBeats: ["到山", "的那", "一边", ""] },
+  77: { lyric: "", lyricBeats: ["", "", "", ""] },
+  78: { lyric: "没有人能够", lyricBeats: ["", "没有", "人能", "够"] },
+  79: { lyric: "告诉我 山里面有", lyricBeats: ["告诉", "我山", "里面", "有"] },
+  80: { lyric: "没有住着神仙", lyricBeats: ["没有", "住着", "神仙", ""] },
+  81: { lyric: "", lyricBeats: ["", "", "", ""] },
+  82: { lyric: "多少的日子里", lyricBeats: ["多少", "的日", "子里", ""] },
+  83: { lyric: "总是一个人面", lyricBeats: ["总是", "一个", "人面", ""] },
+  84: { lyric: "对着天空发呆", lyricBeats: ["对着", "天空", "发呆", ""] },
+  85: { lyric: "", lyricBeats: ["", "", "", ""] },
+  86: { lyric: "就这么好奇", lyricBeats: ["就这", "么好", "奇", ""] },
+  87: { lyric: "就这么幻想", lyricBeats: ["就这", "么幻", "想", ""] },
+  88: { lyric: "这么孤单的童", lyricBeats: ["这么", "孤单", "的童", ""] },
+  89: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+  90: { lyric: "阳光下蜻蜓", lyricBeats: ["阳光", "下蜻", "蜓", ""] },
+  91: { lyric: "飞过来 一片片绿", lyricBeats: ["飞过", "来一", "片片", "绿"] },
+  92: { lyric: "油油的稻田", lyricBeats: ["油油", "的稻", "田", ""] },
+  93: { lyric: "", lyricBeats: ["", "", "", ""] },
+  94: { lyric: "水彩蜡笔和", lyricBeats: ["", "水彩", "蜡笔", "和"] },
+  95: { lyric: "万花筒 画不出天", lyricBeats: ["万花", "筒画", "不出", "天"] },
+  96: { lyric: "边那一条彩虹", lyricBeats: ["边那", "一条", "彩虹", ""] },
+  97: { lyric: "", lyricBeats: ["", "", "", ""] },
+  98: { lyric: "什么时候才能", lyricBeats: ["什么", "时候", "才能", ""] },
+  99: { lyric: "像高年级的同学", lyricBeats: ["像高", "年级", "的同", "学"] },
+  100: { lyric: "有张成熟与长大的脸", lyricBeats: ["有张", "成熟", "与长", "大的脸"] },
+  101: { lyric: "", lyricBeats: ["", "", "", ""] },
+  102: { lyric: "盼望着假期", lyricBeats: ["盼望", "着假", "期", ""] },
+  103: { lyric: "盼望着明天", lyricBeats: ["盼望", "着明", "天", ""] },
+  104: { lyric: "盼望长大的童", lyricBeats: ["盼望", "长大", "的童", ""] },
+  105: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+  106: { lyric: "一天又一天", lyricBeats: ["一天", "又一", "天", ""] },
+  107: { lyric: "一年又一年", lyricBeats: ["一年", "又一", "年", ""] },
+  108: { lyric: "盼望长大的童", lyricBeats: ["盼望", "长大", "的童", ""] },
+  109: { lyric: "年", lyricBeats: ["年", "", "", ""] },
+};
+
 export const tongnianBars: Bar[] = specs.map((spec, index) => {
+  const barNum = index + 1;
   const barStart = Math.round(START_MS + index * BAR_MS);
   const barEnd = Math.round(START_MS + (index + 1) * BAR_MS);
   const sixteenthMs = (barEnd - barStart) / 16;
@@ -339,13 +427,16 @@ export const tongnianBars: Bar[] = specs.map((spec, index) => {
     }
   });
 
+  const lyricInfo = tongnianBarLyrics[barNum];
+
   return {
-    number: index + 1,
+    number: barNum,
     startMs: barStart,
     endMs: barEnd,
     beats: 4,
     hits,
     ...(spec.section ? { section: spec.section } : {}),
+    ...(lyricInfo ? lyricInfo : {}),
   };
 });
 

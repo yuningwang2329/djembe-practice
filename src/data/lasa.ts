@@ -269,7 +269,47 @@ export const lasaLyrics = [
   }
 ];
 
+const lasaBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }> = {
+  12: { lyric: "山有多高啊", lyricBeats: ["", "山有", "多高", "啊"] },
+  13: { lyric: "水有多长", lyricBeats: ["", "水有", "多长", ""] },
+  14: { lyric: "通往天堂的路太难", lyricBeats: ["通往", "天堂", "的路", "太难"] },
+  16: { lyric: "终于盼来啊", lyricBeats: ["终于", "盼来", "啊", ""] },
+  17: { lyric: "这条天路", lyricBeats: ["这条", "天路", "", ""] },
+  18: { lyric: "像巨龙飞在高原上", lyricBeats: ["像巨", "龙飞", "在高", "原上"] },
+  20: { lyric: "穿过草原啊", lyricBeats: ["", "穿过", "草原", "啊"] },
+  21: { lyric: "越过山川", lyricBeats: ["", "越过", "山川", ""] },
+  22: { lyric: "载着梦想和吉祥", lyricBeats: ["载着", "梦想", "和吉", "祥"] },
+  24: { lyric: "幸福的歌啊", lyricBeats: ["幸福", "的歌", "啊", ""] },
+  25: { lyric: "一路的唱", lyricBeats: ["一路", "的唱", "", ""] },
+  26: { lyric: "唱到了唐古拉山", lyricBeats: ["唱到", "了唐", "古拉", "山"] },
+  27: { lyric: "咳 巴扎 嘿", lyricBeats: ["", "咳", "巴扎", "嘿"] },
+  28: { lyric: "坐上了火车去拉萨", lyricBeats: ["坐上", "了火", "车去", "拉萨"] },
+  29: { lyric: "去看那神奇的布达拉", lyricBeats: ["去看", "那神", "奇的", "布达拉"] },
+  30: { lyric: "去看那最美的格桑花呀", lyricBeats: ["去看", "那最", "美的", "格桑花呀"] },
+  31: { lyric: "盛开在雪山下", lyricBeats: ["盛开", "在雪", "山下", ""] },
+  32: { lyric: "坐上了火车去拉萨", lyricBeats: ["坐上", "了火", "车去", "拉萨"] },
+  33: { lyric: "跳起那热烈的雪山朗玛", lyricBeats: ["跳起", "那热", "烈的", "雪山朗玛"] },
+  34: { lyric: "喝下那最香浓的青稞酒呀", lyricBeats: ["喝下", "那最", "香浓", "的青稞酒呀"] },
+  35: { lyric: "醉在神话天堂", lyricBeats: ["醉在", "神话", "天堂", ""] },
+  42: { lyric: "穿过草原啊", lyricBeats: ["", "穿过", "草原", "啊"] },
+  43: { lyric: "越过山川", lyricBeats: ["", "越过", "山川", ""] },
+  44: { lyric: "载着梦想和吉祥", lyricBeats: ["载着", "梦想", "和吉", "祥"] },
+  46: { lyric: "幸福的歌啊", lyricBeats: ["幸福", "的歌", "啊", ""] },
+  47: { lyric: "一路的唱", lyricBeats: ["一路", "的唱", "", ""] },
+  48: { lyric: "唱到了唐古拉山", lyricBeats: ["唱到", "了唐", "古拉", "山"] },
+  49: { lyric: "咳 巴扎 嘿", lyricBeats: ["", "咳", "巴扎", "嘿"] },
+  50: { lyric: "坐上了火车去拉萨", lyricBeats: ["坐上", "了火", "车去", "拉萨"] },
+  51: { lyric: "去看那神奇的布达拉", lyricBeats: ["去看", "那神", "奇的", "布达拉"] },
+  52: { lyric: "去看那最美的格桑花呀", lyricBeats: ["去看", "那最", "美的", "格桑花呀"] },
+  53: { lyric: "盛开在雪山下", lyricBeats: ["盛开", "在雪", "山下", ""] },
+  54: { lyric: "坐上了火车去拉萨", lyricBeats: ["坐上", "了火", "车去", "拉萨"] },
+  55: { lyric: "跳起那热烈的雪山朗玛", lyricBeats: ["跳起", "那热", "烈的", "雪山朗玛"] },
+  56: { lyric: "喝下那最香浓的青稞酒呀", lyricBeats: ["喝下", "那最", "香浓", "的青稞酒呀"] },
+  57: { lyric: "醉在神话天堂", lyricBeats: ["醉在", "神话", "天堂", ""] },
+};
+
 export const lasaBars: Bar[] = specs.map((spec, index) => {
+  const barNum = index + 1;
   const barStart = Math.round(START_MS + index * BAR_MS);
   const barEnd = Math.round(START_MS + (index + 1) * BAR_MS);
   const sixteenthMs = (barEnd - barStart) / 16;
@@ -295,13 +335,16 @@ export const lasaBars: Bar[] = specs.map((spec, index) => {
     }
   });
 
+  const lyricInfo = lasaBarLyrics[barNum];
+
   return {
-    number: index + 1,
+    number: barNum,
     startMs: barStart,
     endMs: barEnd,
     beats: 4,
     hits,
     ...(spec.section ? { section: spec.section } : {}),
+    ...(lyricInfo ? lyricInfo : {}),
   };
 });
 

@@ -59,7 +59,58 @@ add("outA", 1, "尾奏"); add("outB"); add("outC"); add("outD"); add("outE"); ad
 add("final"); // 63：谱末 "B 0" 收束
 add("rest", 20, "尾奏·休止"); // 64–83，长尾奏后半程鼓手休止
 
+const dayuBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }> = {
+  6: { lyric: "海浪无声将夜幕深", lyricBeats: ["海浪", "无声", "将夜幕", "深"] },
+  7: { lyric: "深淹没", lyricBeats: ["深", "淹", "没", ""] },
+  8: { lyric: "漫过天空尽头的", lyricBeats: ["漫过", "天空", "尽头的", ""] },
+  9: { lyric: "角落", lyricBeats: ["角", "落", "", ""] },
+  10: { lyric: "大鱼在梦境的缝隙", lyricBeats: ["大鱼", "在梦境", "的缝隙", ""] },
+  11: { lyric: "里游过", lyricBeats: ["里", "游", "过", ""] },
+  12: { lyric: "凝望你沉睡的", lyricBeats: ["凝望", "你沉", "睡的", ""] },
+  13: { lyric: "轮廓 看海", lyricBeats: ["轮", "廓", "", "看海"] },
+  14: { lyric: "天一色 听风起", lyricBeats: ["天一", "色", "听风", "起"] },
+  15: { lyric: "雨落 执子", lyricBeats: ["雨", "落", "执", "子"] },
+  16: { lyric: "手吹散苍茫茫", lyricBeats: ["手吹", "散苍", "茫茫", ""] },
+  17: { lyric: "烟波 大鱼", lyricBeats: ["烟", "波", "", "大鱼"] },
+  18: { lyric: "的翅膀 已经太", lyricBeats: ["的翅", "膀", "已经", "太"] },
+  19: { lyric: "辽阔", lyricBeats: ["辽", "阔", "", ""] },
+  20: { lyric: "我松开时间的", lyricBeats: ["我松", "开时", "间的", ""] },
+  21: { lyric: "绳索 怕你", lyricBeats: ["绳", "索", "", "怕你"] },
+  22: { lyric: "飞远去 怕你", lyricBeats: ["飞远", "去", "怕", "你"] },
+  23: { lyric: "离我而去 更怕", lyricBeats: ["离我", "而去", "更", "怕"] },
+  24: { lyric: "你永远停留在这里", lyricBeats: ["你永", "远停", "留在", "这里"] },
+  25: { lyric: "每一", lyricBeats: ["", "", "", "每一"] },
+  26: { lyric: "滴泪水 都向", lyricBeats: ["滴泪", "水", "都", "向"] },
+  27: { lyric: "你流淌去", lyricBeats: ["你流", "淌", "去", ""] },
+  28: { lyric: "倒流进天空的", lyricBeats: ["倒流", "进天", "空的", ""] },
+  29: { lyric: "海底", lyricBeats: ["海", "底", "", ""] },
+  34: { lyric: "海浪无声将夜幕深", lyricBeats: ["海浪", "无声", "将夜幕", "深"] },
+  35: { lyric: "深淹没", lyricBeats: ["深", "淹", "没", ""] },
+  36: { lyric: "漫过天空尽头的", lyricBeats: ["漫过", "天空", "尽头的", ""] },
+  37: { lyric: "角落", lyricBeats: ["角", "落", "", ""] },
+  38: { lyric: "大鱼在梦境的缝隙", lyricBeats: ["大鱼", "在梦境", "的缝隙", ""] },
+  39: { lyric: "里游过", lyricBeats: ["里", "游", "过", ""] },
+  40: { lyric: "凝望你沉睡的", lyricBeats: ["凝望", "你沉", "睡的", ""] },
+  41: { lyric: "轮廓 看海", lyricBeats: ["轮", "廓", "", "看海"] },
+  42: { lyric: "天一色 听风起", lyricBeats: ["天一", "色", "听风", "起"] },
+  43: { lyric: "雨落 执子", lyricBeats: ["雨", "落", "执", "子"] },
+  44: { lyric: "手吹散苍茫茫", lyricBeats: ["手吹", "散苍", "茫茫", ""] },
+  45: { lyric: "烟波 大鱼", lyricBeats: ["烟", "波", "", "大鱼"] },
+  46: { lyric: "的翅膀 已经太", lyricBeats: ["的翅", "膀", "已经", "太"] },
+  47: { lyric: "辽阔", lyricBeats: ["辽", "阔", "", ""] },
+  48: { lyric: "我松开时间的", lyricBeats: ["我松", "开时", "间的", ""] },
+  49: { lyric: "绳索 看你", lyricBeats: ["绳", "索", "", "看你"] },
+  50: { lyric: "飞远去 看你", lyricBeats: ["飞远", "去", "看", "你"] },
+  51: { lyric: "离我而去 原来", lyricBeats: ["离我", "而去", "原", "来"] },
+  52: { lyric: "你生来就属于天际", lyricBeats: ["你生", "来就", "属于", "天际"] },
+  53: { lyric: "每一", lyricBeats: ["", "", "", "每一"] },
+  54: { lyric: "滴泪水 都向", lyricBeats: ["滴泪", "水", "都", "向"] },
+  55: { lyric: "你流淌去", lyricBeats: ["你流", "淌", "去", ""] },
+  56: { lyric: "倒流回最初的相遇", lyricBeats: ["倒流", "回最", "初的", "相遇"] },
+};
+
 export const dayuBars: Bar[] = specs.map((spec, index) => {
+  const barNum = index + 1;
   const start = START_MS + index * BAR_MS;
   const hits: HitEvent[] = [];
   patterns[spec.pattern].forEach((slots, beat) => {
@@ -74,13 +125,15 @@ export const dayuBars: Bar[] = specs.map((spec, index) => {
       });
     });
   });
+  const lyricInfo = dayuBarLyrics[barNum];
   return {
-    number: index + 1,
+    number: barNum,
     startMs: Math.round(start),
     endMs: Math.round(start + BAR_MS),
     beats: 4,
     hits,
     ...(spec.section ? { section: spec.section } : {}),
+    ...(lyricInfo ? lyricInfo : {}),
   };
 });
 

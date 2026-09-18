@@ -453,7 +453,80 @@ export const shuishouLyrics = [
   }
 ];
 
+const shuishouBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }> = {
+  14: { lyric: "苦涩的沙吹痛", lyricBeats: ["苦涩", "的沙", "吹痛", ""] },
+  15: { lyric: "脸庞的感觉 像", lyricBeats: ["脸庞", "的感", "觉", "像"] },
+  16: { lyric: "父亲的责骂 母亲的哭泣", lyricBeats: ["父亲", "的责骂", "母亲", "的哭泣"] },
+  17: { lyric: "永远难忘记", lyricBeats: ["永远", "难忘", "记", ""] },
+  18: { lyric: "年少的我喜欢", lyricBeats: ["年少", "的我", "喜欢", ""] },
+  19: { lyric: "一个人在海边", lyricBeats: ["一个", "人在", "海边", ""] },
+  20: { lyric: "卷起裤管光着脚丫", lyricBeats: ["卷起", "裤管", "光着", "脚丫"] },
+  21: { lyric: "踩在沙滩上", lyricBeats: ["踩在", "沙滩", "上", ""] },
+  22: { lyric: "总是幻想海洋的尽头有", lyricBeats: ["总是", "幻想", "海洋的", "尽头有"] },
+  23: { lyric: "另一个世界", lyricBeats: ["另一", "个世", "界", ""] },
+  24: { lyric: "总是以为勇敢的水手是", lyricBeats: ["总是", "以为", "勇敢的", "水手是"] },
+  25: { lyric: "真正的男儿", lyricBeats: ["真正", "的男", "儿", ""] },
+  26: { lyric: "总是一副弱不禁风", lyricBeats: ["总是", "一副", "弱不", "禁风"] },
+  27: { lyric: "孬种的样子 在", lyricBeats: ["孬种", "的样子", "在", ""] },
+  28: { lyric: "受人欺负的时候 总是", lyricBeats: ["受人", "欺负", "的时候", "总是"] },
+  29: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
+  30: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  31: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  32: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  33: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  34: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  35: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  36: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  52: { lyric: "长大以后为了", lyricBeats: ["长大", "以后", "为了", ""] },
+  53: { lyric: "理想而努力", lyricBeats: ["理想", "而努", "力", ""] },
+  54: { lyric: "渐渐的忽略了 父亲母亲和", lyricBeats: ["渐渐", "的忽略", "了父", "亲母亲"] },
+  55: { lyric: "故乡的消息", lyricBeats: ["和故", "乡的", "消息", ""] },
+  56: { lyric: "如今的我生活", lyricBeats: ["如今", "的我", "生活", ""] },
+  57: { lyric: "就像在演戏", lyricBeats: ["就像", "在演", "戏", ""] },
+  58: { lyric: "说着言不由衷的话戴着", lyricBeats: ["说着", "言不由", "衷的", "话戴着"] },
+  59: { lyric: "伪善的面具", lyricBeats: ["伪善", "的面", "具", ""] },
+  60: { lyric: "总是拿着微不足道的", lyricBeats: ["总是", "拿着", "微不足", "道的"] },
+  61: { lyric: "成就来骗自己", lyricBeats: ["成就", "来骗", "自己", ""] },
+  62: { lyric: "总是莫名其妙", lyricBeats: ["总是", "莫名", "其妙", ""] },
+  63: { lyric: "感到一阵的空虚", lyricBeats: ["感到", "一阵", "的空", "虚"] },
+  64: { lyric: "总是靠一点酒精的麻醉", lyricBeats: ["总是", "靠一点", "酒精", "的麻醉"] },
+  65: { lyric: "才能够睡去 在", lyricBeats: ["才能", "够睡", "去在", ""] },
+  66: { lyric: "半睡半醒之间 仿佛又", lyricBeats: ["半睡", "半醒", "之间", "仿佛又"] },
+  67: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
+  68: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  69: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  70: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  71: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  72: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  73: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  74: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  90: { lyric: "寻寻觅觅寻不到", lyricBeats: ["寻寻", "觅觅", "寻不到", ""] },
+  91: { lyric: "活着的证据", lyricBeats: ["活着", "的证", "据", ""] },
+  92: { lyric: "都市的柏油路太硬", lyricBeats: ["都市", "的柏油", "路太", "硬"] },
+  93: { lyric: "踩不出足迹", lyricBeats: ["踩不", "出足", "迹", ""] },
+  94: { lyric: "骄傲无知的现代人", lyricBeats: ["骄傲", "无知的", "现代", "人"] },
+  95: { lyric: "不知道珍惜 那", lyricBeats: ["不知", "道珍", "惜", "那"] },
+  96: { lyric: "一片被文明糟蹋过的", lyricBeats: ["一片", "被文明", "糟蹋", "过的"] },
+  97: { lyric: "海洋和天地", lyricBeats: ["海洋", "和天", "地", ""] },
+  98: { lyric: "只有远离人群才能", lyricBeats: ["只有", "远离", "人群", "才能"] },
+  99: { lyric: "找回我自己 在", lyricBeats: ["找回", "我自", "己", "在"] },
+  100: { lyric: "带着咸味的空气中", lyricBeats: ["带着", "咸味", "的空气", "中"] },
+  101: { lyric: "自由的呼吸", lyricBeats: ["自由", "的呼", "吸", ""] },
+  102: { lyric: "耳畔又传来汽笛声和", lyricBeats: ["耳畔", "又传来", "汽笛", "声和"] },
+  103: { lyric: "水手的笑语", lyricBeats: ["水手", "的笑", "语", ""] },
+  104: { lyric: "永远在内心的最深处", lyricBeats: ["永远", "在内心", "的最", "深处"] },
+  105: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
+  106: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  107: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  108: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  109: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  110: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  111: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  112: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+};
+
 export const shuishouBars: Bar[] = specs.map((spec, index) => {
+  const barNum = index + 1;
   const barStart = Math.round(START_MS + index * BAR_MS);
   const barEnd = Math.round(START_MS + (index + 1) * BAR_MS);
   const sixteenthMs = (barEnd - barStart) / 16;
@@ -479,13 +552,16 @@ export const shuishouBars: Bar[] = specs.map((spec, index) => {
     }
   });
 
+  const lyricInfo = shuishouBarLyrics[barNum];
+
   return {
-    number: index + 1,
+    number: barNum,
     startMs: barStart,
     endMs: barEnd,
     beats: 4,
     hits,
     ...(spec.section ? { section: spec.section } : {}),
+    ...(lyricInfo ? lyricInfo : {}),
   };
 });
 

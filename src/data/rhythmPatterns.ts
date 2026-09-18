@@ -34,11 +34,23 @@ function parseSlotsToBar(
         dynamics = "soft";
         break;
       case "T":
+      case "M":
         stroke = "tone";
         hand = "R";
         break;
       case "t":
+      case "m":
         stroke = "tone";
+        hand = "L";
+        dynamics = "soft";
+        break;
+      case "X":
+        stroke = "tone";
+        hand = "R";
+        dynamics = "soft";
+        break;
+      case "x":
+        stroke = "slap";
         hand = "L";
         dynamics = "soft";
         break;
@@ -304,3 +316,148 @@ export const dayuPatterns: RhythmPattern[] = [
     "深海波涛式密集切分，烘托空灵高音",
   ),
 ];
+
+export const pingguoPatterns: RhythmPattern[] = [
+  createRhythmPattern(
+    "pingguo-a",
+    "节奏 A（主歌叙事）",
+    "Bs ｜ Xs ｜ BB ｜ Xss",
+    "Bs.Xs.BbXss.",
+    67.84,
+    "主歌温婉律动，轻柔托底",
+  ),
+  createRhythmPattern(
+    "pingguo-b",
+    "节奏 B（主歌加花推进）",
+    "Bs ｜ Xs ｜ BB ｜ SBB",
+    "Bs.Xs.BbSB.B",
+    67.84,
+    "主歌乐句收尾推进型，第 4 拍掌击引出低音",
+  ),
+  createRhythmPattern(
+    "pingguo-c",
+    "节奏 C（副歌深情）",
+    "Bs ｜ SsB ｜ BB ｜ Sss",
+    "Bs.S.sBB.bSss.",
+    67.84,
+    "副歌律动，柔和轻击富有歌唱感",
+  ),
+  createRhythmPattern(
+    "pingguo-d",
+    "节奏 D（前奏/过渡变拍）",
+    "2/4 拍  B ｜ 0",
+    "B000",
+    67.84,
+    "两拍留白过度，为起唱与进副歌留足呼吸",
+    2,
+    [2, 4],
+  ),
+];
+
+export const sarilangPatterns: RhythmPattern[] = [
+  createRhythmPattern(
+    "sarilang-a",
+    "节奏 A（全曲基石）",
+    "B ｜ SB ｜ B ｜ S",
+    "B0SbB0S0",
+    105.263,
+    "草原欢快律动，手序清晰有力",
+  ),
+  createRhythmPattern(
+    "sarilang-b",
+    "节奏 B（乐句过渡加花）",
+    "B ｜ SB ｜ 0B ｜ S SS",
+    "B0Sb0bS0Ss",
+    105.263,
+    "第 3 拍后半拍切入低音，第 4 拍双掌击加花",
+  ),
+  createRhythmPattern(
+    "sarilang-c",
+    "节奏 C（推进加重）",
+    "BB ｜ SB ｜ 0 ｜ SS SB",
+    "BbSb00SsSb",
+    105.263,
+    "第 1 拍双低音下潜，第 4 拍切分连击",
+  ),
+  createRhythmPattern(
+    "sarilang-d",
+    "节奏 D（副歌收束变奏）",
+    "B ｜ SB ｜ SB ｜ S SS",
+    "B0SbSbS0Ss",
+    105.263,
+    "副歌乐句结尾变奏，双重掌击与后半拍弹响",
+  ),
+];
+
+export const beijingPatterns: RhythmPattern[] = [
+  createRhythmPattern(
+    "beijing-a",
+    "节奏 A（主歌经典律动）",
+    "Bs ｜ SB ｜ Bs ｜ Ss",
+    "BsSbBsSs",
+    102.8,
+    "欢快跳跃的草原马蹄律动",
+  ),
+  createRhythmPattern(
+    "beijing-b",
+    "节奏 B（乐句推进变奏）",
+    "Bs ｜ SB ｜ BS ｜ SB",
+    "BsSbBSSb",
+    102.8,
+    "后半段双重重音交替，推动旋律上行",
+  ),
+  createRhythmPattern(
+    "beijing-c",
+    "节奏 C（主歌切分加花）",
+    "Bs ｜ SB ｜ BS ｜ SBS",
+    "BsSbBS.SBS.",
+    102.8,
+    "第 4 拍十六分密集切分，动感极强",
+  ),
+  createRhythmPattern(
+    "beijing-d",
+    "节奏 D（前奏引子 2/4 拍）",
+    "2/4 拍  S ｜ S",
+    "S0S0",
+    102.8,
+    "前奏两声清脆掌击起拍",
+    2,
+    [2, 4],
+  ),
+];
+
+export const chouchangkePatterns: RhythmPattern[] = [
+  createRhythmPattern(
+    "chouchangke-a",
+    "节奏 A（主歌中音叙事）",
+    "BbM ｜ XB ｜ bM ｜ X",
+    "BbM.XB.bM.X0",
+    65.0,
+    "中音开音与轻音交融，如诉如泣",
+  ),
+  createRhythmPattern(
+    "chouchangke-b",
+    "节奏 B（副歌深情律动）",
+    "BbB ｜ sSB ｜ bBbB ｜ Sbb",
+    "BbBsSbbBbBSbb.",
+    65.0,
+    "原谱红笔标注的高难度多层次弹击",
+  ),
+  createRhythmPattern(
+    "chouchangke-c",
+    "节奏 C（副歌高潮滚奏）",
+    "BbB ｜ shB ｜ bBbB ｜ Sssss",
+    "BbBshbbBbBSSSSS",
+    65.0,
+    "第 4 拍掌击细密滚奏，情感爆发",
+  ),
+  createRhythmPattern(
+    "chouchangke-d",
+    "节奏 D（间奏强力加花）",
+    "BBtB ｜ SSB ｜ tB ｜ S",
+    "BBtBSS.BtB.S0",
+    65.0,
+    "开音与掌击互锁，间奏推进型",
+  ),
+];
+

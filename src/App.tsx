@@ -38,10 +38,19 @@ export function App() {
           )}
         </aside>
       )}
+      {pwaStatus.checkMessage && (
+        <div className="pwa-check-toast" role="status" aria-live="polite">
+          <span>{pwaStatus.checkMessage}</span>
+        </div>
+      )}
       {activeSong ? (
         <PracticeRoom song={activeSong} onBack={() => setActiveSong(null)} />
       ) : (
-        <SongLibrary onOpenSong={setActiveSong} offlineReady={pwaStatus.offlineReady} />
+        <SongLibrary
+          onOpenSong={setActiveSong}
+          offlineReady={pwaStatus.offlineReady}
+          checking={pwaStatus.checking}
+        />
       )}
     </>
   );
@@ -50,9 +59,11 @@ export function App() {
 function SongLibrary({
   onOpenSong,
   offlineReady,
+  checking = false,
 }: {
   onOpenSong: (song: SongDefinition) => void;
   offlineReady: boolean;
+  checking?: boolean;
 }) {
   const [localSongIds, setLocalSongIds] = useState<Set<string>>(new Set());
   const [storageReadable, setStorageReadable] = useState(true);
@@ -80,7 +91,18 @@ function SongLibrary({
           <p>家庭非洲鼓</p>
           <h1>曲目库</h1>
         </div>
-        <span className="offline-pill">{offlineReady ? "已可离线使用" : "离线练习"}</span>
+        <div className="library-header__actions">
+          <button
+            type="button"
+            className="check-update-btn"
+            disabled={checking}
+            onClick={() => void pwaLifecycle.checkForUpdate()}
+            aria-label="检查更新"
+          >
+            {checking ? "⏳ 检查中..." : "🔄 检查更新"}
+          </button>
+          <span className="offline-pill">{offlineReady ? "已可离线使用" : "离线练习"}</span>
+        </div>
       </header>
       <section className="library-intro">
         <h2>选一首歌，跟着鼓点练习</h2>

@@ -52,6 +52,10 @@ import { dayu } from "./dayu";
 import { tongnianSong } from "./tongnian";
 import { shuishouSong } from "./shuishou";
 import { lasaSong } from "./lasa";
+import { pingguoxiang } from "./pingguoxiang";
+import { sarilang } from "./sarilang";
+import { beijing } from "./beijing";
+import { chouchangke } from "./chouchangke";
 
 export const songLibrary: SongDefinition[] = [
   demoSong,
@@ -61,4 +65,9 @@ export const songLibrary: SongDefinition[] = [
   tongnianSong,
   shuishouSong,
   lasaSong,
+  pingguoxiang,
+  sarilang,
+  beijing,
+  chouchangke,
 ];
+

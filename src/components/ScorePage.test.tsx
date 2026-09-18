@@ -115,32 +115,21 @@ describe("ScorePage", () => {
     expect(container.querySelector(".score-rest")).not.toHaveAttribute("data-state");
   });
 
-  it("sweeps the playhead across the active bar only", () => {
+  it("aligns the playhead directly over the sounding note's visual center in the active bar", () => {
     const song = makeSong();
+    // bar 0: startMs 0, endMs 1000, 4 beats. At 500ms (start of beat 3), playhead lands right on beat 3's note center (62.5%)
     const { container } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={500} />,
     );
 
     const playhead = container.querySelector(".score-playhead");
     expect(playhead).not.toBeNull();
-    expect(playhead).toHaveStyle({ left: "50%" });
+    expect(playhead).toHaveStyle({ left: "62.5%" });
 
     const { container: idleContainer } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={10_000} />,
     );
     expect(idleContainer.querySelector(".score-playhead")).toBeNull();
-  });
-
-  it("compensates display and audio latency with a visual lead when isPlaying is true", () => {
-    const song = makeSong();
-    // bar 0: startMs 0, endMs 1000. At 500ms with isPlaying=true, playhead is at (500 + 50) / 1000 = 55%
-    const { container } = render(
-      <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={500} isPlaying={true} />,
-    );
-
-    const playhead = container.querySelector(".score-playhead");
-    expect(playhead).not.toBeNull();
-    expect(playhead).toHaveStyle({ left: "55%" });
   });
 
   it("highlights the counted beat during count-in", () => {

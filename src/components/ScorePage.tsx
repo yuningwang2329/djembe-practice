@@ -17,7 +17,6 @@ interface ScorePageProps {
 }
 
 const ACTIVE_WINDOW_MS = 150;
-const VISUAL_LEAD_MS = 50;
 
 /**
  * 连续非洲鼓谱：每行 4 小节，视窗围绕当前行缓慢移动，提前露出下一行。
@@ -51,6 +50,67 @@ function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
+interface NoteVisualPoint {
+  attackMs: number;
+  centerPercent: number;
+}
+
+function getBarNoteVisualPoints(bar: Bar): NoteVisualPoint[] {
+  const points: NoteVisualPoint[] = [];
+  const pairs = beatPairs(bar);
+  const totalSixteenths = bar.beats * 4;
+  const barDuration = bar.endMs - bar.startMs;
+
+  let currentSlot = 0;
+  for (let beat = 0; beat < pairs.length; beat++) {
+    const notes = pairs[beat];
+    for (let n = 0; n < notes.length; n++) {
+      const note = notes[n];
+      const startSlot = currentSlot;
+      const endSlot = currentSlot + note.duration;
+      const attackMs = bar.startMs + (startSlot / totalSixteenths) * barDuration;
+      const centerPercent = ((startSlot + endSlot) / 2 / totalSixteenths) * 100;
+      points.push({ attackMs, centerPercent });
+      currentSlot = endSlot;
+    }
+  }
+  return points;
+}
+
+export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
+  if (timeMs <= bar.startMs) {
+    const points = getBarNoteVisualPoints(bar);
+    return points[0]?.centerPercent ?? 0;
+  }
+  if (timeMs >= bar.endMs) {
+    return 100;
+  }
+
+  const points = getBarNoteVisualPoints(bar);
+  if (points.length === 0) {
+    return clamp01((timeMs - bar.startMs) / (bar.endMs - bar.startMs)) * 100;
+  }
+
+  if (timeMs < points[0].attackMs) {
+    return points[0].centerPercent;
+  }
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const current = points[i];
+    const next = points[i + 1];
+    if (timeMs >= current.attackMs && timeMs < next.attackMs) {
+      const span = next.attackMs - current.attackMs;
+      const progress = span > 0 ? (timeMs - current.attackMs) / span : 0;
+      return current.centerPercent + progress * (next.centerPercent - current.centerPercent);
+    }
+  }
+
+  const last = points[points.length - 1];
+  const remainingTime = bar.endMs - last.attackMs;
+  const progress = remainingTime > 0 ? (timeMs - last.attackMs) / remainingTime : 1;
+  return last.centerPercent + progress * (100 - last.centerPercent);
+}
+
 export function ScorePage({
   bars,
   currentTimeMs,
@@ -62,7 +122,6 @@ export function ScorePage({
   showHands = true,
   isPlaying = false,
 }: ScorePageProps) {
-  const playheadTimeMs = isPlaying ? currentTimeMs + VISUAL_LEAD_MS : currentTimeMs;
   const viewportRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef(currentTimeMs);
   timeRef.current = currentTimeMs;
@@ -239,7 +298,6 @@ export function ScorePage({
           return (
             <div className="score-page__block" key={rowKey} data-start={rowStart} data-end={rowEnd}>
               <div className="score-page__beats" aria-hidden="true">
-                <span className="score-gutter" />
                 {rowBars.map((bar) => (
                   <div
                     className="score-page__bar-beats"
@@ -285,13 +343,11 @@ export function ScorePage({
                         }
                       } : undefined}
                     >
-                      {bar.section ? (
-                        <span className="score-section" aria-hidden="true">
-                          {bar.section}
-                        </span>
-                      ) : null}
-                      <div className="score-bar__no" aria-hidden="true">
-                        {bar.number}
+                      <div className="score-bar__header" aria-hidden="true">
+                        <span className="score-bar__no">{bar.number}</span>
+                        {bar.section && (
+                          <span className="score-section">{bar.section}</span>
+                        )}
                       </div>
                       <div className="score-bar__content">
                         {bar.timeSignature && (
@@ -309,7 +365,7 @@ export function ScorePage({
                             <div
                               className="score-playhead"
                               style={{
-                                left: `${Math.round(clamp01((playheadTimeMs - bar.startMs) / (bar.endMs - bar.startMs)) * 10000) / 100}%`,
+                                left: `${Math.round(getPlayheadPercentInBar(bar, currentTimeMs) * 100) / 100}%`,
                               }}
                               aria-hidden="true"
                             />
@@ -333,7 +389,6 @@ export function ScorePage({
                         key={`lyric-${bar.number}`}
                         style={{ flex: bar.beats }}
                       >
-                        <span className="score-gutter" />
                         {bar.timeSignature && (
                           <span className="score-page__meter-space" aria-hidden="true" />
                         )}
