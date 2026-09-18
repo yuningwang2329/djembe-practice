@@ -11,6 +11,7 @@ interface ScorePageProps {
   timeSignature?: [number, number];
   bpm?: number;
   lyrics?: SongDefinition["lyrics"];
+  onSeekAndPlay?: (timeMs: number) => void;
 }
 
 const ACTIVE_WINDOW_MS = 150;
@@ -51,6 +52,7 @@ export function ScorePage({
   timeSignature,
   bpm,
   lyrics,
+  onSeekAndPlay,
 }: ScorePageProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef(currentTimeMs);
@@ -109,6 +111,21 @@ export function ScorePage({
         data-hit-at={hit.atMs}
         data-state={hitState(hit)}
         aria-label={`${label.name} ${label.letter}，${hit.hand} 手`}
+        role={onSeekAndPlay ? "button" : undefined}
+        tabIndex={onSeekAndPlay ? 0 : undefined}
+        data-seekable={onSeekAndPlay ? "true" : undefined}
+        title={onSeekAndPlay ? "从这个鼓点播放" : undefined}
+        onClick={onSeekAndPlay ? (event) => {
+          event.stopPropagation();
+          onSeekAndPlay(hit.atMs);
+        } : undefined}
+        onKeyDown={onSeekAndPlay ? (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            event.stopPropagation();
+            onSeekAndPlay(hit.atMs);
+          }
+        } : undefined}
       >
         <b className="score-char__letter">{label.letter}</b>
         <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>
@@ -221,6 +238,16 @@ export function ScorePage({
                       className={isActive ? "score-bar score-bar--active" : "score-bar"}
                       key={bar.number}
                       aria-label={`第 ${bar.number} 小节`}
+                      tabIndex={onSeekAndPlay ? 0 : undefined}
+                      data-seekable={onSeekAndPlay ? "true" : undefined}
+                      title={onSeekAndPlay ? "点击从这里播放" : undefined}
+                      onClick={onSeekAndPlay ? () => onSeekAndPlay(bar.startMs) : undefined}
+                      onKeyDown={onSeekAndPlay ? (event) => {
+                        if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
+                          event.preventDefault();
+                          onSeekAndPlay(bar.startMs);
+                        }
+                      } : undefined}
                     >
                       {bar.section ? (
                         <span className="score-section" aria-hidden="true">

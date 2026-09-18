@@ -204,6 +204,9 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-page__row { display: flex; gap: clamp(.5rem, 1.6vw, 1.1rem); align-items: stretch; }
 .score-bar { position: relative; flex: 1; display: grid; grid-template-columns: clamp(1.9rem, 2.9vw, 2.6rem) minmax(0, 1fr); column-gap: 4px; align-items: stretch; opacity: .58; transition: opacity 180ms ease; }
 .score-bar--active { opacity: 1; }
+.score-bar[data-seekable], .score-char[data-seekable] { cursor: pointer; touch-action: manipulation; }
+.score-bar[data-seekable]:focus-visible, .score-char[data-seekable]:focus-visible { outline: 2px solid #e45f26; outline-offset: 4px; }
+.score-char[data-seekable]::after { content: ""; position: absolute; inset: -.6rem -.2rem; }
 .score-bar__no { display: flex; align-items: center; justify-content: center; border-radius: 9px; background: #efe2d2; color: #6d5340; font-weight: 800; font-size: clamp(.82rem, 1.45vw, 1.1rem); font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { background: #e45f26; color: #fff; }
 .score-bar__grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.35rem, 1.2vw, .8rem); min-height: clamp(2.8rem, 8.5vh, 4.4rem); padding: .3rem clamp(.6rem, 1.6vw, 1.1rem); border-left: 3px solid #4a382c; border-radius: 4px; background: rgb(255 252 246 / 88%); box-shadow: 0 8px 22px rgb(85 53 34 / 5%); }

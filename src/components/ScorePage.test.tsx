@@ -1,9 +1,23 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { ScorePage } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
+  it("seeks to a clicked hit without also seeking to its bar, and supports keyboard and blank bar clicks", () => {
+    const onSeekAndPlay = vi.fn();
+    const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={0} onSeekAndPlay={onSeekAndPlay} />);
+    fireEvent.click(container.querySelector('[data-hit-at="1500"]')!);
+    expect(onSeekAndPlay).toHaveBeenCalledTimes(1);
+    expect(onSeekAndPlay).toHaveBeenLastCalledWith(1500);
+    fireEvent.click(screen.getByLabelText('第 3 小节'));
+    expect(onSeekAndPlay).toHaveBeenLastCalledWith(2000);
+    fireEvent.keyDown(container.querySelector('[data-hit-at="1500"]')!, { key: ' ' });
+    expect(onSeekAndPlay).toHaveBeenCalledTimes(3);
+    expect(onSeekAndPlay).toHaveBeenLastCalledWith(1500);
+    fireEvent.keyDown(screen.getByLabelText('第 4 小节'), { key: 'Enter' });
+    expect(onSeekAndPlay).toHaveBeenLastCalledWith(3000);
+  });
   it("highlights timed lyrics only during their cue and clears them in a gap", () => {
     const props = { bars: makeSong().bars.slice(0, 4), lyrics: [{ startMs: 500, endMs: 1500, text: "测试句子" }] };
     const { rerender } = render(<ScorePage {...props} currentTimeMs={700} />);

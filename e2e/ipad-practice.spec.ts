@@ -1,6 +1,33 @@
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
+test("tapping a hit starts there and exits a loop that would pull playback elsewhere", async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: '开始练习 暖身律动' }).click();
+  await page.getByRole('button', { name: '小节循环' }).click();
+  await page.locator('[data-hit-at="18250"]').click();
+  await expect(page.getByRole('button', { name: '暂停播放' })).toBeVisible();
+  await expect(page.getByRole('button', { name: '小节循环' })).toHaveAttribute('aria-pressed', 'false');
+  const progress = page.getByLabel('播放进度');
+  await expect.poll(() => progress.inputValue()).toMatch(/^18\d{3}(\.\d+)?$/);
+  await page.getByRole('button', { name: '暂停播放' }).click();
+  await page.getByLabel('第 3 小节', { exact: true }).locator('.score-bar__no').click();
+  await expect(page.getByRole('button', { name: '暂停播放' })).toBeVisible();
+  await expect.poll(async () => Number(await progress.inputValue())).toBeGreaterThanOrEqual(4000);
+  expect(Number(await progress.inputValue())).toBeLessThan(5500);
+});
+
+test("tapping the score cancels count-in and plays immediately", async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: '开始练习 暖身律动' }).click();
+  await page.getByRole('button', { name: '开始播放', exact: true }).click();
+  await expect(page.locator('.count-in')).toBeVisible();
+  await page.locator('[data-hit-at="4000"]').click();
+  await expect(page.locator('.count-in')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: '暂停播放' })).toBeVisible();
+  await expect.poll(async () => Number(await page.getByLabel('播放进度').inputValue())).toBeGreaterThan(4000);
+});
+
 test("song lyric cues follow seeking and leave the instrumental gap clear", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: "开始练习 桥边姑娘" }).click();

@@ -166,6 +166,21 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
     }
   };
 
+  const seekAndPlay = async (timeMs: number) => {
+    setPlaybackError(null);
+    playback.pause(); // 也取消正在进行的倒数。
+    if (snapshot.loop && (timeMs < snapshot.loop.startMs || timeMs >= snapshot.loop.endMs)) {
+      setLoopEnabled(false);
+      playback.setLoop(null);
+    }
+    playback.seek(timeMs);
+    try {
+      await playback.play({ countInBeats: 0 });
+    } catch {
+      setPlaybackError("Safari 暂时无法播放，请再点一次播放键。");
+    }
+  };
+
   return (
     <main className="practice-shell">
       <header className="practice-header">
@@ -204,6 +219,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
         bars={activeBars}
         currentTimeMs={snapshot.currentTimeMs}
         lyrics={effectiveSong.lyrics}
+        onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
         countInBeat={countInBeat}
         timeSignature={song.timeSignature}
         bpm={song.bpm}
