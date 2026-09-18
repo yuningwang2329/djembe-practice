@@ -497,7 +497,6 @@ export const shuishouSong: SongDefinition = {
   timeSignature: [4, 4],
   audioOffsetMs: START_MS,
   expectedDurationMs: 316865,
-  builtInAudioUrl: "audio/songs/shuishou.mp3",
   bars: shuishouBars,
   lyrics: shuishouLyrics,
   rhythmPatterns: shuishouPatterns,

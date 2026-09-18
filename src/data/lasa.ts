@@ -313,7 +313,6 @@ export const lasaSong: SongDefinition = {
   timeSignature: [4, 4],
   audioOffsetMs: START_MS,
   expectedDurationMs: 211513,
-  builtInAudioUrl: "audio/songs/lasa.mp3",
   bars: lasaBars,
   lyrics: lasaLyrics,
   rhythmPatterns: lasaPatterns,

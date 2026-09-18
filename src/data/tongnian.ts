@@ -357,7 +357,6 @@ export const tongnianSong: SongDefinition = {
   timeSignature: [4, 4],
   audioOffsetMs: START_MS,
   expectedDurationMs: 233220,
-  builtInAudioUrl: "audio/songs/tongnian.mp3",
   bars: tongnianBars,
   lyrics: tongnianLyrics,
   rhythmPatterns: tongnianPatterns,
