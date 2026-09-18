@@ -204,6 +204,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
       <ScorePage
         bars={page}
         currentTimeMs={snapshot.currentTimeMs}
+        lyrics={effectiveSong.lyrics}
         countInBeat={countInBeat}
         timeSignature={song.timeSignature}
         bpm={song.bpm}

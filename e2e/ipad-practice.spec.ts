@@ -1,6 +1,22 @@
 import { expect, test } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 
+test("song lyric cues follow seeking and leave the instrumental gap clear", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "开始练习 桥边姑娘" }).click();
+  const progress = page.getByLabel("播放进度");
+  await progress.fill("18000");
+  const active = page.locator('.score-lyric[data-state="current"]');
+  await expect(active).toHaveCount(1);
+  await expect(active).toContainText("是谁家的姑娘");
+  await page.screenshot({ path: "test-results/qiao-lyrics-landscape.png" });
+  await progress.fill("90000");
+  await expect(active).toHaveCount(0);
+  await progress.fill("123000");
+  await expect(active).toHaveCount(1);
+  await expect(active).toContainText("落落大方");
+});
+
 test("iPad landscape practice controls stay large, independent and usable", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "曲目库" })).toBeVisible();

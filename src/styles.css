@@ -223,6 +223,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 }
 
 .score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.25rem, 3.2vh, 1.7rem); pointer-events: none; }
+.score-lyric[data-state="current"] { color: #a53e12; background: #fff0d8; border-radius: .3rem; }
 .score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #6d5340; font-size: clamp(.72rem, 1.5vw, .92rem); font-weight: 700; letter-spacing: .02em; }
 
 /* 一拍 = 一个记谱组：四分音符独占整拍，两个八分紧邻共一条下划线；空拍一个 0 */

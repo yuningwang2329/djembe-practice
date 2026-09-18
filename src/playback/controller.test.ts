@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { createAudioClock, createPerformanceClock } from "./clock";
 import { createPlaybackController } from "./controller";
 import { makeSong } from "../test/fixtures";
+import { qiaobianguniang } from "../data/qiaobianguniang";
 
 function makeSynth() {
   return {
@@ -38,6 +39,23 @@ function makeAudio(currentTime = 0) {
 }
 
 describe("playback controller", () => {
+  it.each([0.5, 1, 1.5])("aligns the real song's first and late hits with media time at rate %s", async (rate) => {
+    const audio = makeAudio();
+    const synth = makeSynth();
+    const controller = createPlaybackController({ song: qiaobianguniang, audio, synth, requestFrame: () => 1 });
+    controller.setRate(rate);
+    await controller.play({ countInBeats: 0 });
+    for (const index of [0, 24, 57]) {
+      const hit = qiaobianguniang.bars[index].hits[0];
+      synth.schedule.mockClear();
+      controller.seek(hit.atMs - 100);
+      expect(audio.currentTime).toBeCloseTo((hit.atMs - 100) / 1000, 5);
+      controller.tick();
+      expect(synth.schedule).toHaveBeenCalledWith(hit, 10 + 0.1 / rate, 0.8);
+      expect(controller.getSnapshot().currentTimeMs).toBeCloseTo(hit.atMs - 100, 5);
+    }
+    controller.destroy();
+  });
   afterEach(() => {
     vi.useRealTimers();
   });

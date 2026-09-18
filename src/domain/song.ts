@@ -31,6 +31,8 @@ export interface SongDefinition {
   expectedDurationMs: number;
   builtInAudioUrl?: string;
   bars: Bar[];
+  /** 独立于鼓谱小节的逐句歌词时间，使用与鼓点相同的时间轴。 */
+  lyrics?: Array<{ startMs: number; endMs: number; text: string }>;
   /** 同一首歌的可选谱面版本（如扒谱版、教材版），练习时可切换 */
   variants?: ScoreVariant[];
 }

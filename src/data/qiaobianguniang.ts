@@ -10,12 +10,10 @@ import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song
  * 歌词来源：百度百科《桥边姑娘》完整歌词（含第二段主歌
  * 「暖阳下的桥头旁 … 一个人在流浪」，共 24 句）。
  *
- * 音频对齐：全曲三处独立锚点实测——首个强拍 3.111s、副歌「桥边姑娘」
- * 进入 65.046s（= 第 21 小节）、58 小节终点 182.7s 与音频渐弱收尾一致；
- * 第一处人声起音 15.498s 恰好落在第 5 小节第 1 拍。逐句歌词按 2 小节
- * 对位展开为 58 小节：前奏 1–4 · 主歌一 5–12 · 主歌二 13–20 ·
- * 副歌 21–32 · 主歌三 33–48 · 副歌再现 49–52 · 尾奏 53–58。
- * （小节级对位由能量/起音分析推断，若跟唱时感觉错位可微调。）
+ * 时间坐标：小节和鼓点均使用录音绝对毫秒，播放器偏移为 0。
+ * 保留原有 77.5 BPM / 3.111s 鼓谱网格；能量峰不等于歌词起唱证据。
+ * 下方 specs 中的文字仅作为既有文本库，不再用于确定歌词时刻或段落。
+ * 歌词独立采用参考 LRC；尚待对本机 FLAC 逐句听校。
  *
  * DSL：8 个字符 = 一小节的 8 个八分位置；大写 = 右手，小写 = 左手；
  * B/T/S 为鼓音，0 为休止。记谱组由渲染层归并：独音独占一拍为四分音符，
@@ -167,9 +165,7 @@ export const qiaobianguniangBars: Bar[] = specs.map((barSpec, index) => {
     endMs: Math.round(startMs + BAR_MS),
     beats: 4,
     hits,
-    ...(barSpec.section ? { section: barSpec.section } : {}),
-    ...(barSpec.lyric ? { lyric: barSpec.lyric } : {}),
-    ...(barSpec.lyricSpan && barSpec.lyricSpan > 1 ? { lyricSpan: barSpec.lyricSpan } : {}),
+    ...(index === 0 ? { section: "前奏" } : {}),
   };
 });
 
@@ -179,7 +175,41 @@ export const qiaobianguniang: SongDefinition = {
   artist: "海伦",
   bpm: BPM,
   timeSignature: [4, 4],
-  audioOffsetMs: AUDIO_OFFSET_MS,
+  // bars/hits 已经包含录音开头的 3111ms，播放器不能再次扣除。
+  audioOffsetMs: 0,
   expectedDurationMs: EXPECTED_DURATION_MS,
   bars: qiaobianguniangBars,
+  lyrics: [],
 };
+
+// 参考时间戳：https://www.9ku.com/play/1000452.htm
+// 文本复用本项目已有歌词。参考 LRC 并非本机 FLAC 的逐句人工听校结果。
+// 每句独立计时，保留间奏和第二段重复，不用“每句两小节”推断时间。
+const lyricText = (bar: number) => specs[bar - 1].lyric!;
+const lyricCues: Array<[number, number, string]> = [
+  [17180, 22340, `${lyricText(5)} ${lyricText(7)}`],
+  [23190, 26280, lyricText(9)], [26280, 28330, lyricText(11)],
+  [29610, 34600, `${lyricText(13)} ${lyricText(15)}`],
+  [35770, 40930, `${lyricText(17)} ${lyricText(19)}`],
+  [42070, 47270, lyricText(21)], [48240, 53830, lyricText(23)],
+  [56760, 62660, lyricText(25)], [63780, 68870, lyricText(27)],
+  [69970, 75070, lyricText(29)], [76210, 81240, lyricText(31)],
+  [97980, 102950, `${lyricText(33)} ${lyricText(35)}`],
+  [103840, 109170, `${lyricText(37)} ${lyricText(39)}`],
+  [110290, 115490, `${lyricText(41)} ${lyricText(43)}`],
+  [116450, 121900, `${lyricText(45)} ${lyricText(47)}`],
+  [122670, 127910, lyricText(21)], [128830, 134500, lyricText(23)],
+  [137450, 143370, lyricText(49)], [144460, 149660, lyricText(51)],
+  [150680, 155700, lyricText(53)], [156790, 162500, lyricText(55)],
+];
+qiaobianguniang.lyrics = lyricCues.map(([startMs, endMs, text]) => ({ startMs, endMs, text }));
+
+// 段落标签跟随参考录音结构，允许进唱位于小节中途。
+for (const [atMs, section] of [
+  [17180, "主歌一"], [42070, "过渡"], [56760, "副歌"],
+  [84398, "间奏"], [97980, "主歌二"], [122670, "过渡"],
+  [137450, "副歌"], [164143, "尾奏"],
+] as const) {
+  const bar = qiaobianguniangBars.find((bar) => bar.startMs <= atMs && bar.endMs > atMs);
+  if (bar) bar.section = section;
+}

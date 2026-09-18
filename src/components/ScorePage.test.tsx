@@ -4,6 +4,13 @@ import { ScorePage } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
+  it("highlights timed lyrics only during their cue and clears them in a gap", () => {
+    const props = { bars: makeSong().bars.slice(0, 4), lyrics: [{ startMs: 500, endMs: 1500, text: "测试句子" }] };
+    const { rerender } = render(<ScorePage {...props} currentTimeMs={700} />);
+    expect(screen.getByText("测试句子")).toHaveAttribute("data-state", "current");
+    rerender(<ScorePage {...props} currentTimeMs={1500} />);
+    expect(screen.getByText("测试句子")).toHaveAttribute("data-state", "idle");
+  });
   it("renders bars as staff rows with a stroke legend", () => {
     const song = makeSong();
     render(<ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={0} />);

@@ -1,4 +1,4 @@
-import type { Bar, HitEvent, Stroke } from "../domain/song";
+import type { Bar, HitEvent, Stroke, SongDefinition } from "../domain/song";
 import { strokeLabels } from "../domain/song";
 
 interface ScorePageProps {
@@ -9,6 +9,7 @@ interface ScorePageProps {
   /** 拍号（如 4/4）与速度，显示在谱面上方 */
   timeSignature?: [number, number];
   bpm?: number;
+  lyrics?: SongDefinition["lyrics"];
 }
 
 const ACTIVE_WINDOW_MS = 150;
@@ -48,6 +49,7 @@ export function ScorePage({
   countInBeat = 0,
   timeSignature,
   bpm,
+  lyrics,
 }: ScorePageProps) {
   const activeBar =
     bars.find((bar) => currentTimeMs >= bar.startMs && currentTimeMs < bar.endMs) ?? null;
@@ -147,6 +149,9 @@ export function ScorePage({
       <div className="score-page">
         {rows.map((rowBars) => {
           const rowKey = rowBars[0]?.number ?? 0;
+          const rowStart = rowBars[0].startMs;
+          const rowEnd = rowBars[rowBars.length - 1].endMs;
+          const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
           return (
             <div className="score-page__block" key={rowKey}>
               <div className="score-page__beats" aria-hidden="true">
@@ -204,7 +209,20 @@ export function ScorePage({
                 })}
               </div>
 
-              {rowBars.some((bar) => bar.lyric) && (
+              {lyrics ? (
+                <div className="score-lyrics" aria-label="本行歌词">
+                  {rowLyrics?.map((cue) => (
+                    <p key={cue.startMs} className="score-lyric"
+                      data-state={currentTimeMs >= Math.max(cue.startMs, rowStart) && currentTimeMs < Math.min(cue.endMs, rowEnd) ? "current" : "idle"}
+                      style={{
+                        left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
+                        width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
+                      }}>
+                      {cue.startMs < rowStart ? "… " : ""}{cue.text}{cue.endMs > rowEnd ? " …" : ""}
+                    </p>
+                  ))}
+                </div>
+              ) : rowBars.some((bar) => bar.lyric) && (
                 <div className="score-lyrics" aria-hidden="true">
                   {rowBars.map((bar, index) => {
                     if (!bar.lyric) return null;

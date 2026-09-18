@@ -44,32 +44,18 @@ describe("qiaobianguniang", () => {
     expect(bar58.hits.map((hit) => hit.stroke)).toEqual(["bass"]);
   });
 
-  it("labels sections at their first bars and aligns all 24 lyric sentences", () => {
-    const sectionAt = (barNumber: number) => qiaobianguniangBars[barNumber - 1].section;
-    expect(sectionAt(1)).toBe("前奏");
-    expect(sectionAt(5)).toBe("主歌一");
-    expect(sectionAt(13)).toBe("主歌二");
-    expect(sectionAt(21)).toBe("副歌");
-    expect(sectionAt(33)).toBe("主歌三");
-    expect(sectionAt(49)).toBe("副歌");
-    expect(sectionAt(53)).toBe("尾奏");
-    expect(qiaobianguniangBars[1].section).toBeUndefined();
-
-    const lyricBars = qiaobianguniangBars.filter((bar) => bar.lyric);
-    // 26 句歌词，每句 2 小节，覆盖第 5–56 小节的人声部分
-    expect(lyricBars).toHaveLength(26);
-    for (const bar of lyricBars) expect(bar.lyricSpan).toBe(2);
-    expect(lyricBars[0].number).toBe(5);
-    expect(lyricBars.at(-1)!.number).toBe(55);
-
-    const lyricAt = (barNumber: number) => qiaobianguniangBars[barNumber - 1].lyric;
-    expect(lyricAt(5)).toBe("暖阳下 我迎芬芳");
-    expect(lyricAt(7)).toBe("是谁家的姑娘");
-    expect(lyricAt(27)).toBe("我把你放心上 刻在了我心膛");
-    expect(lyricAt(33)).toBe("暖阳下 的桥头旁");
-    expect(lyricAt(37)).toBe("她有着长长的乌黑发");
-    expect(lyricAt(47)).toBe("一个人在流浪");
-    expect(lyricAt(55)).toContain("不想让你流浪");
+  it("keeps reference lyric cues independent of bars, including the instrumental gap and reprise", () => {
+    const cues = qiaobianguniang.lyrics!;
+    expect(qiaobianguniangBars.every((bar) => !bar.lyric)).toBe(true);
+    expect(cues[0]).toMatchObject({ startMs: 17180, endMs: 22340 });
+    expect(cues[0].text).toContain("是谁家的姑娘");
+    expect(cues.some((cue) => cue.startMs <= 90000 && cue.endMs > 90000)).toBe(false);
+    expect(cues.filter((cue) => cue.text === "风华模样 你落落大方")).toHaveLength(2);
+    cues.forEach((cue, i) => {
+      expect(cue.endMs).toBeGreaterThan(cue.startMs);
+      expect(cue.endMs).toBeLessThanOrEqual(qiaobianguniang.expectedDurationMs);
+      if (i) expect(cue.startMs).toBeGreaterThanOrEqual(cues[i - 1].endMs);
+    });
   });
 
   it("covers the measured audio duration without overflowing", () => {
