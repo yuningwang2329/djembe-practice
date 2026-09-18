@@ -109,6 +109,22 @@ function registerBrowserServiceWorker(options: PwaRegistrationOptions): UpdateSe
       registration.addEventListener("updatefound", () => {
         if (registration?.installing) watchInstallingWorker(registration.installing);
       });
+
+      const triggerUpdate = () => {
+        if (registration) {
+          registration.update().catch(() => {});
+        }
+      };
+
+      if (typeof document !== "undefined") {
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "visible") triggerUpdate();
+        });
+      }
+      if (typeof window !== "undefined") {
+        window.addEventListener("focus", triggerUpdate);
+      }
+
       return registration;
     },
     (error): null => {
