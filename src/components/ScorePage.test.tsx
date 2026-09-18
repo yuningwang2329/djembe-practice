@@ -131,6 +131,18 @@ describe("ScorePage", () => {
     expect(idleContainer.querySelector(".score-playhead")).toBeNull();
   });
 
+  it("compensates display and audio latency with a visual lead when isPlaying is true", () => {
+    const song = makeSong();
+    // bar 0: startMs 0, endMs 1000. At 500ms with isPlaying=true, playhead is at (500 + 50) / 1000 = 55%
+    const { container } = render(
+      <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={500} isPlaying={true} />,
+    );
+
+    const playhead = container.querySelector(".score-playhead");
+    expect(playhead).not.toBeNull();
+    expect(playhead).toHaveStyle({ left: "55%" });
+  });
+
   it("highlights the counted beat during count-in", () => {
     const song = makeSong();
     const { container } = render(

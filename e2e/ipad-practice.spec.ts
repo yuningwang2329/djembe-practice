@@ -46,7 +46,7 @@ test("song lyric cues follow seeking and leave the instrumental gap clear", asyn
   await progress.fill("18000");
   const active = page.locator('.score-lyric[data-state="current"]');
   await expect(active).toHaveCount(1);
-  await expect(active).toContainText("暖阳下我迎芬芳");
+  await expect(active).toContainText("暖阳下");
   await page.screenshot({ path: "test-results/qiao-lyrics-landscape.png" });
   await progress.fill("90000");
   await expect(active).toHaveCount(0);

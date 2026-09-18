@@ -215,6 +215,7 @@ export function RhythmPatternPractice({ song, showHands }: RhythmPatternPractice
             timeSignature={[4, 4]}
             bpm={bpm}
             showHands={showHands}
+            isPlaying={isPlaying}
           />
         </div>
       </div>

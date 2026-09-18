@@ -280,6 +280,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
             timeSignature={song.timeSignature}
             bpm={song.bpm}
             showHands={showHands}
+            isPlaying={snapshot.isPlaying}
           />
 
           <section className="practice-controls" aria-label="播放控制">

@@ -19,6 +19,8 @@ export interface Bar {
   section?: string;
   /** 该行谱面对应的歌词，渲染在这一行谱面下方 */
   lyric?: string;
+  /** 按拍对位的歌词（每拍一个词组，保证词严格落在音符正下方） */
+  lyricBeats?: string[];
   /** 歌词跨越的小节数（从本小节起，默认 1），用于词组对位 */
   lyricSpan?: number;
   /** 拍号变化标记（如 [2, 4]），标在该小节起始处 */

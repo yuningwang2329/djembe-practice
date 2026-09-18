@@ -54,6 +54,8 @@ interface BarSpec {
   beats?: number;
   timeSignature?: [number, number];
   section?: string;
+  lyric?: string;
+  lyricBeats?: string[];
 }
 
 const spec = (pattern: PatternName, extra: Omit<BarSpec, "pattern"> = {}): BarSpec => ({
@@ -70,30 +72,30 @@ const specs: BarSpec[] = [
   spec("b_2_4", { beats: 2, timeSignature: [2, 4] }),
 
   // 主歌一 6–18（||: B SB B S [x3] | B SB BB S [x3] :|| B B B 0 |）
-  spec("a", { section: "主歌" }),
-  spec("a"),
-  spec("a"),
+  spec("a", { section: "主歌", lyric: "暖阳下", lyricBeats: ["暖", "阳", "下", ""] }),
+  spec("a", { lyric: "我迎芬芳", lyricBeats: ["我", "迎", "芬", "芳"] }),
+  spec("a", { lyric: "是谁家的姑娘", lyricBeats: ["是", "谁家", "的姑", "娘"] }),
+  spec("b", { lyric: "我走在了那座小桥上", lyricBeats: ["我走", "在了", "那座", "小桥上"] }),
+  spec("b", { lyric: "你抚琴奏忧伤", lyricBeats: ["你", "抚琴", "奏忧", "伤"] }),
   spec("b"),
-  spec("b"),
-  spec("b"),
-  spec("a"),
-  spec("a"),
-  spec("a"),
-  spec("b"),
-  spec("b"),
-  spec("b"),
-  spec("bbb0"),
+  spec("a", { lyric: "桥边歌唱的小姑娘", lyricBeats: ["桥边", "歌唱的", "小姑", "娘"] }),
+  spec("a", { lyric: "你眼角在流淌", lyricBeats: ["你", "眼角", "在流", "淌"] }),
+  spec("a", { lyric: "你说一个人在逞强", lyricBeats: ["你说", "一个人", "在逞", "强"] }),
+  spec("b", { lyric: "一个人念家乡", lyricBeats: ["一个", "人念", "家", "乡"] }),
+  spec("b", { lyric: "风华模样 你落落大方", lyricBeats: ["风华", "模样", "你落落", "大方"] }),
+  spec("b", { lyric: "坐在桥上", lyricBeats: ["坐在", "桥上", "", ""] }),
+  spec("bbb0", { lyric: "我听你歌唱", lyricBeats: ["我", "听你", "歌唱", ""] }),
 
   // 副歌一 19–29（||: B SB BB S [x3] | B SB BB SS [x2] :|| B SB BB S |）
-  spec("b", { section: "副歌" }),
-  spec("b"),
-  spec("b"),
+  spec("b", { section: "副歌", lyric: "我说桥边姑娘", lyricBeats: ["我说", "桥边", "姑娘", ""] }),
+  spec("b", { lyric: "你的芬芳", lyricBeats: ["你的", "芬", "芳", ""] }),
+  spec("b", { lyric: "我把你放心上", lyricBeats: ["我把", "你放", "心上", ""] }),
+  spec("bss", { lyric: "刻在了我心膛", lyricBeats: ["刻在", "了我", "心", "膛"] }),
   spec("bss"),
-  spec("bss"),
-  spec("b"),
-  spec("b"),
-  spec("b"),
-  spec("bss"),
+  spec("b", { lyric: "桥边姑娘", lyricBeats: ["桥边", "姑", "娘", ""] }),
+  spec("b", { lyric: "你的忧伤", lyricBeats: ["你的", "忧", "伤", ""] }),
+  spec("b", { lyric: "我把你放心房", lyricBeats: ["我把", "你放", "心", "房"] }),
+  spec("bss", { lyric: "不想让你流浪", lyricBeats: ["不想", "让你", "流", "浪"] }),
   spec("bss"),
   spec("b"),
 
@@ -104,30 +106,30 @@ const specs: BarSpec[] = [
   spec("rest"),
 
   // 主歌二 34–46（||: B SB B S [x3] | B SB BB S [x3] :|| B B B 0 |）
-  spec("a", { section: "主歌" }),
+  spec("a", { section: "主歌", lyric: "暖阳下 的桥头旁", lyricBeats: ["暖阳", "下的", "桥头", "旁"] }),
+  spec("a", { lyric: "有这样一姑娘", lyricBeats: ["有这", "样一", "姑", "娘"] }),
+  spec("a", { lyric: "她有着长长的乌黑发", lyricBeats: ["她有", "着长长的", "乌黑", "发"] }),
+  spec("b", { lyric: "一双眼明亮", lyricBeats: ["一双", "眼明", "亮", ""] }),
+  spec("b", { lyric: "姑娘你让我心荡漾", lyricBeats: ["姑娘", "你让我", "心荡", "漾"] }),
+  spec("b", { lyric: "小鹿在乱撞", lyricBeats: ["小鹿", "在乱", "撞", ""] }),
+  spec("a", { lyric: "你说无人在身旁", lyricBeats: ["你说", "无人在", "身", "旁"] }),
+  spec("a", { lyric: "一个人在流浪", lyricBeats: ["一个", "人在", "流", "浪"] }),
   spec("a"),
-  spec("a"),
-  spec("b"),
-  spec("b"),
-  spec("b"),
-  spec("a"),
-  spec("a"),
-  spec("a"),
-  spec("b"),
-  spec("b"),
-  spec("b"),
+  spec("b", { lyric: "风华模样 你落落大方", lyricBeats: ["风华", "模样", "你落落", "大方"] }),
+  spec("b", { lyric: "坐在桥上", lyricBeats: ["坐在", "桥上", "", ""] }),
+  spec("b", { lyric: "我听你歌唱", lyricBeats: ["我", "听你", "歌唱", ""] }),
   spec("bbb0"),
 
   // 副歌二 47–57（||: B SB BB S [x3] | B SB BB SS [x2] :|| B SB BB S |）
-  spec("b", { section: "副歌" }),
-  spec("b"),
-  spec("b"),
+  spec("b", { section: "副歌", lyric: "我说桥边姑娘", lyricBeats: ["我说", "桥边", "姑娘", ""] }),
+  spec("b", { lyric: "你的芬芳", lyricBeats: ["你的", "芬", "芳", ""] }),
+  spec("b", { lyric: "我把你放心上", lyricBeats: ["我把", "你放", "心上", ""] }),
+  spec("bss", { lyric: "刻在了我心膛", lyricBeats: ["刻在", "了我", "心", "膛"] }),
   spec("bss"),
-  spec("bss"),
-  spec("b"),
-  spec("b"),
-  spec("b"),
-  spec("bss"),
+  spec("b", { lyric: "桥边姑娘", lyricBeats: ["桥边", "姑", "娘", ""] }),
+  spec("b", { lyric: "你的忧伤", lyricBeats: ["你的", "忧", "伤", ""] }),
+  spec("b", { lyric: "我把你放心房", lyricBeats: ["我把", "你放", "心", "房"] }),
+  spec("bss", { lyric: "不想让你流浪", lyricBeats: ["不想", "让你", "流", "浪"] }),
   spec("bss"),
   spec("b"),
 
@@ -169,6 +171,8 @@ for (let index = 0; index < specs.length; index++) {
     hits,
     ...(barSpec.timeSignature ? { timeSignature: barSpec.timeSignature } : {}),
     ...(barSpec.section ? { section: barSpec.section } : {}),
+    ...(barSpec.lyric ? { lyric: barSpec.lyric } : {}),
+    ...(barSpec.lyricBeats ? { lyricBeats: barSpec.lyricBeats } : {}),
   });
 
   currentBarStartMs = endMs;

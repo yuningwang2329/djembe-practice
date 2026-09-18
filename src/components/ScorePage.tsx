@@ -13,9 +13,11 @@ interface ScorePageProps {
   lyrics?: SongDefinition["lyrics"];
   onSeekAndPlay?: (timeMs: number) => void;
   showHands?: boolean;
+  isPlaying?: boolean;
 }
 
 const ACTIVE_WINDOW_MS = 150;
+const VISUAL_LEAD_MS = 50;
 
 /**
  * 连续非洲鼓谱：每行 4 小节，视窗围绕当前行缓慢移动，提前露出下一行。
@@ -58,7 +60,9 @@ export function ScorePage({
   lyrics,
   onSeekAndPlay,
   showHands = true,
+  isPlaying = false,
 }: ScorePageProps) {
+  const playheadTimeMs = isPlaying ? currentTimeMs + VISUAL_LEAD_MS : currentTimeMs;
   const viewportRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef(currentTimeMs);
   timeRef.current = currentTimeMs;
@@ -264,9 +268,6 @@ export function ScorePage({
               <div className="score-page__row">
                 {rowBars.map((bar) => {
                   const isActive = activeBar?.number === bar.number;
-                  const progress = clamp01(
-                    (currentTimeMs - bar.startMs) / (bar.endMs - bar.startMs),
-                  );
                   return (
                     <article
                       className={isActive ? "score-bar score-bar--active" : "score-bar"}
@@ -292,7 +293,7 @@ export function ScorePage({
                       <div className="score-bar__no" aria-hidden="true">
                         {bar.number}
                       </div>
-                      <div className="score-bar__grid">
+                      <div className="score-bar__content">
                         {bar.timeSignature && (
                           <div
                             className="score-bar__meter"
@@ -302,21 +303,67 @@ export function ScorePage({
                             <span className="score-bar__meter-num">{bar.timeSignature[1]}</span>
                           </div>
                         )}
-                        {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
-                        {isActive && (
-                          <div
-                            className="score-playhead"
-                            style={{ left: `${progress * 100}%` }}
-                            aria-hidden="true"
-                          />
-                        )}
+                        <div className="score-bar__grid">
+                          {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
+                          {isActive && (
+                            <div
+                              className="score-playhead"
+                              style={{
+                                left: `${Math.round(clamp01((playheadTimeMs - bar.startMs) / (bar.endMs - bar.startMs)) * 10000) / 100}%`,
+                              }}
+                              aria-hidden="true"
+                            />
+                          )}
+                        </div>
                       </div>
                     </article>
                   );
                 })}
               </div>
 
-              {lyrics ? (
+              {rowBars.some((bar) => Boolean(bar.lyric || (bar.lyricBeats && bar.lyricBeats.length > 0))) ? (
+                <div className="score-lyrics score-lyrics--bar-aligned" aria-label="本行歌词">
+                  {rowBars.map((bar) => {
+                    const isCurrent = activeBar?.number === bar.number;
+                    const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
+                    const text = bar.lyric ?? "";
+                    return (
+                      <div
+                        className="score-bar-lyrics"
+                        key={`lyric-${bar.number}`}
+                        style={{ flex: bar.beats }}
+                      >
+                        <span className="score-gutter" />
+                        {bar.timeSignature && (
+                          <span className="score-page__meter-space" aria-hidden="true" />
+                        )}
+                        <p
+                          className="score-lyric score-lyric--timed"
+                          data-state={isCurrent && Boolean(text || hasBeats) ? "current" : "idle"}
+                          aria-label={text || undefined}
+                        >
+                          {hasBeats ? (
+                            <span className="score-lyric__beats">
+                              {Array.from({ length: bar.beats }, (_, bIdx) => {
+                                const char = bar.lyricBeats?.[bIdx] ?? "";
+                                return (
+                                  <span className="score-lyric__beat-cell" key={bIdx}>
+                                    <span className="score-lyric__char">{char}</span>
+                                  </span>
+                                );
+                              })}
+                            </span>
+                          ) : (
+                            <span className="score-lyric__phrase">
+                              <span className="score-lyric__char">{text}</span>
+                            </span>
+                          )}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : lyrics ? (
                 <div className="score-lyrics" aria-label="本行歌词">
                   {rowLyrics?.map((cue) => {
                     const characters = Array.from(cue.text.replace(/\s/g, ""));
@@ -339,26 +386,7 @@ export function ScorePage({
                     </p>;
                   })}
                 </div>
-              ) : rowBars.some((bar) => bar.lyric) && (
-                <div className="score-lyrics" aria-hidden="true">
-                  {rowBars.map((bar, index) => {
-                    if (!bar.lyric) return null;
-                    const span = Math.min(bar.lyricSpan ?? 1, rowBars.length - index);
-                    return (
-                      <p
-                        key={`lyric-${bar.number}`}
-                        className="score-lyric"
-                        style={{
-                          left: `${(index / rowBars.length) * 100}%`,
-                          width: `${(span / rowBars.length) * 100}%`,
-                        }}
-                      >
-                        {bar.lyric}
-                      </p>
-                    );
-                  })}
-                </div>
-              )}
+              ) : null}
             </div>
           );
         })}
