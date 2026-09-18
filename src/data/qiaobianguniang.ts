@@ -1,7 +1,7 @@
 import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song";
 
 /**
- * 《桥边姑娘》海伦 · 阿波非洲鼓供谱（节奏 4/4 · 速度 77.5 · 难度 2 星）
+ * 《桥边姑娘》海伦 · 阿波非洲鼓供谱（节奏 4/4 · 录音校准速度 77.329 · 难度 2 星）
  *
  * 谱面来源：机主提供的「阿波非洲鼓」教学谱图片，逐小节人工转录，
  * 含左右手标注（双音 SB / BB 中前音右手、后音左手；独音均为右手；
@@ -11,7 +11,8 @@ import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song
  * 「暖阳下的桥头旁 … 一个人在流浪」，共 24 句）。
  *
  * 时间坐标：小节和鼓点均使用录音绝对毫秒，播放器偏移为 0。
- * 保留原有 77.5 BPM / 3.111s 鼓谱网格；能量峰不等于歌词起唱证据。
+ * 鼓谱网格校准为 77.329 BPM / 3.111s：前段拟合，后段独立验证。
+ * 详见 docs/2026-09-18-tempo-calibration.md；能量峰不等于歌词起唱证据。
  * 下方 specs 中的文字仅作为既有文本库，不再用于确定歌词时刻或段落。
  * 歌词独立采用参考 LRC；尚待对本机 FLAC 逐句听校。
  *
@@ -20,7 +21,7 @@ import type { Bar, Hand, HitEvent, SongDefinition, Stroke } from "../domain/song
  * 两个八分紧邻共一条下划线，空拍只写一个 0（不并列两个 0）。
  */
 
-const BPM = 77.5;
+const BPM = 77.329;
 const BEAT_MS = 60000 / BPM;
 const BAR_MS = BEAT_MS * 4;
 const AUDIO_OFFSET_MS = 3111;

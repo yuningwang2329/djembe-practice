@@ -61,13 +61,13 @@ test("continuous score previews the next row and crosses the old page boundary w
   const progress = page.getByLabel("播放进度");
   const viewport = page.locator('.score-viewport');
   await expect(page.locator('.score-bar')).toHaveCount(58);
-  await progress.fill('40260');
+  await progress.fill('40340');
   const before = await viewport.evaluate((el) => el.scrollTop);
   const nextRow = await page.getByLabel('第 13 小节', { exact: true }).boundingBox();
   const view = await viewport.boundingBox();
   expect(nextRow!.y).toBeGreaterThan(view!.y);
   expect(nextRow!.y + nextRow!.height).toBeLessThan(view!.y + view!.height);
-  await progress.fill('40280');
+  await progress.fill('40360');
   const after = await viewport.evaluate((el) => el.scrollTop);
   expect(after).toBeGreaterThanOrEqual(before);
   expect(after - before).toBeLessThan(3);

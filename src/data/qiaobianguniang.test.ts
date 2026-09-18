@@ -3,6 +3,16 @@ import { validateSong } from "../domain/song";
 import { qiaobianguniang, qiaobianguniangBars } from "./qiaobianguniang";
 
 describe("qiaobianguniang", () => {
+  it("stays aligned with measured recording transients through the late chorus", () => {
+    // 22.05kHz PCM 的低频起音峰，单位 ms；不是用当前 BPM 公式生成的预期值。
+    // 包含 90 秒之后的独立验证点，防止微小速度误差累积成抢拍。
+    const anchors = [[1, 3106], [11, 34146], [21, 65180], [31, 96235], [41, 127249], [49, 152083]];
+    for (const [barNumber, measuredMs] of anchors) {
+      const hit = qiaobianguniangBars[barNumber - 1].hits[0];
+      expect(Math.abs(hit.atMs - measuredMs)).toBeLessThan(25);
+    }
+    expect(qiaobianguniang.audioOffsetMs).toBe(0);
+  });
   it("passes song validation", () => {
     expect(validateSong(qiaobianguniang)).toEqual([]);
   });

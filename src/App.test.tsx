@@ -57,7 +57,7 @@ describe("App", () => {
     await user.click(screen.getByRole("button", { name: "开始练习 桥边姑娘" }));
 
     expect(screen.getByText("前奏")).toBeInTheDocument();
-    expect(screen.getByText("节奏 4/4 · 速度 77.5")).toBeInTheDocument();
+    expect(screen.getByText("节奏 4/4 · 速度 77.329")).toBeInTheDocument();
     // 一行四小节，当前播放头落在第 1 小节
     expect(screen.getByLabelText("第 1 小节")).toBeInTheDocument();
     expect(screen.getByLabelText("第 4 小节")).toBeInTheDocument();
