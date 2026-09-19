@@ -67,11 +67,14 @@ interface PlacedChar {
  *
  * 有逐字数据时用它，字与字的横向间距就按真实演唱时值分布——均匀唱就等距，
  * 连着快唱就靠拢。没有数据时返回 null，回退到按拍位均匀排布。
+ *
+ * 注意：这里**不能**再加 lyricOffsetMs。逐字时刻是 CTC 强制对齐测出的真实演唱
+ * 时刻，而那个微调量是用来修正"按拍位估算"的偏差的；两者都加就是双重补偿
+ * （实测桥边姑娘会被推早 700ms、北京被推晚 1060ms）。
  */
 export function placedChars(
   bar: Bar,
   times: number[][] | undefined,
-  offsetMs: number,
 ): PlacedChar[] | null {
   if (!times || !bar.lyricBeats) return null;
   const flat: Array<{ ch: string; t: number }> = [];
@@ -88,8 +91,8 @@ export function placedChars(
   if (flat.length === 0) return null;
   return flat.map((c, i) => ({
     ch: c.ch,
-    startMs: c.t + offsetMs,
-    endMs: (i + 1 < flat.length ? flat[i + 1].t : c.t + 400) + offsetMs,
+    startMs: c.t,
+    endMs: i + 1 < flat.length ? flat[i + 1].t : c.t + 400,
   }));
 }
 
@@ -347,7 +350,7 @@ export function ScorePage({
                     const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
                     const text = bar.lyric ?? "";
                     const beatMs = (bar.endMs - bar.startMs) / bar.beats;
-                    const placed = placedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
+                    const placed = placedChars(bar, charTimes?.[bar.number]);
                     return (
                       <div
                         className="score-bar-lyrics"

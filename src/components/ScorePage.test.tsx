@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ScorePage } from "./ScorePage";
+import { ScorePage, placedChars } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
@@ -202,5 +202,22 @@ describe("ScorePage", () => {
 
     // 虚线外环已移除：小字+斜体+淡色足够区分，外环在小屏上会糊成一片
     expect(container.querySelector(".score-char__ghost-note")).toBeNull();
+  });
+
+  it("逐字时刻原样使用，不再叠加歌词微调（否则是双重补偿）", () => {
+    // 逐字时刻来自 CTC 强制对齐，本身就是真实演唱时刻；
+    // lyricOffsetMs 是用来修正"按拍位估算"的偏差的，两者都加会把歌词推偏。
+    const bar = {
+      number: 1,
+      startMs: 10_000,
+      endMs: 13_000,
+      beats: 4,
+      hits: [],
+      lyricBeats: ["甲乙", "丙", "", "丁"],
+    };
+    const placed = placedChars(bar, [[10_200, 10_600], [11_100], [], [12_400]]);
+    expect(placed?.map((c) => c.startMs)).toEqual([10_200, 10_600, 11_100, 12_400]);
+    // 结束时刻接下一个字的起始，呈单调
+    expect(placed?.map((c) => c.endMs)).toEqual([10_600, 11_100, 12_400, 12_800]);
   });
 });
