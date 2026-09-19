@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ScorePage, placedChars } from "./ScorePage";
+import { ScorePage, isUsableTimes, placedChars } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
@@ -219,5 +219,68 @@ describe("ScorePage", () => {
     expect(placed?.map((c) => c.startMs)).toEqual([10_200, 10_600, 11_100, 12_400]);
     // 结束时刻接下一个字的起始，呈单调
     expect(placed?.map((c) => c.endMs)).toEqual([10_600, 11_100, 12_400, 12_800]);
+  });
+
+  it("isUsableTimes 能够准确识别正常时刻并剔除异常坍缩与压缩伪造数据", () => {
+    // 正常递增数据
+    expect(isUsableTimes([[1000, 1500], [2000], [2500, 3000]])).toBe(true);
+
+    // 异常：时间倒退
+    expect(isUsableTimes([[2000, 1500]])).toBe(false);
+
+    // 异常：连续 ≥ 3 个时刻完全相同（如鼓楼 102-104 小节坍缩）
+    expect(isUsableTimes([[230762, 230762], [230762, 240000]])).toBe(false);
+
+    // 异常：连续 ≥ 3 个时刻等差 < 30ms 伪造压缩（如 20ms 退避假数据）
+    expect(isUsableTimes([[165790, 165810], [165830, 165850]])).toBe(false);
+  });
+
+  it("歌词按拍位(beat-cell)严密对齐鼓谱并在播放时实现逐字卡拉OK点亮", () => {
+    const bar = {
+      number: 1,
+      startMs: 0,
+      endMs: 2000,
+      beats: 4,
+      hits: [{ atMs: 500, stroke: "bass" as const, hand: "R" as const }],
+      lyricBeats: ["", "暖阳", "下", "我迎"],
+    };
+
+    // 在 0ms（第 1 拍空拍）：第一格为空，其余格有词
+    const { container, rerender } = render(
+      <ScorePage bars={[bar]} currentTimeMs={0} />,
+    );
+
+    const cells = container.querySelectorAll(".score-lyric__beat-cell");
+    expect(cells).toHaveLength(4);
+    expect(cells[0].textContent).toBe("");
+    expect(cells[1].textContent).toBe("暖阳");
+    expect(cells[2].textContent).toBe("下");
+    expect(cells[3].textContent).toBe("我迎");
+
+    // 在 600ms（第 2 拍进行中，第 1 个字正在唱）：检查高亮流转
+    rerender(
+      <ScorePage
+        bars={[bar]}
+        currentTimeMs={600}
+        charTimes={{ 1: [[], [500, 750], [1000], [1500, 1750]] }}
+      />,
+    );
+
+    const charSpans = container.querySelectorAll(".score-lyric__char");
+    // "暖" (500~750) 应该处于 current
+    const nuan = Array.from(charSpans).find((el) => el.textContent === "暖");
+    expect(nuan).toHaveAttribute("data-state", "current");
+
+    // 播放到 800ms 时，“暖”已唱过，应变为 past，“阳”应变为 current
+    rerender(
+      <ScorePage
+        bars={[bar]}
+        currentTimeMs={800}
+        charTimes={{ 1: [[], [500, 750], [1000], [1500, 1750]] }}
+      />,
+    );
+    expect(nuan).toHaveAttribute("data-state", "past");
+    const yang = Array.from(charSpans).find((el) => el.textContent === "阳");
+    expect(yang).toHaveAttribute("data-state", "current");
   });
 });

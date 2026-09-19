@@ -523,6 +523,18 @@ const shuishouBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }>
   110: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
   111: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
   112: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  113: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  114: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  115: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  116: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  117: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  118: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  119: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  120: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  121: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  122: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  123: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  124: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
 };
 
 export const shuishouBars: Bar[] = specs.map((spec, index) => {
