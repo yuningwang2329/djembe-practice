@@ -56,17 +56,7 @@ function clamp01(value: number): number {
 
 const HAN = /[一-鿿]/;
 
-interface PlacedChar {
-  ch: string;
-  startMs: number;
-  endMs: number;
-}
 
-/**
- * 把一个小节的词块摊成"逐字 + 演唱时刻"。
- *
- * 有逐字数据时用它，字与字的横向间距就按真实演唱时值分布——均匀唱就等距，
- * 连着快唱就靠拢。没有数据时返回 null，回退到按拍位均匀排布。
 /**
  * 校验一个小节的逐字演唱时刻是否可信。
  *
@@ -116,59 +106,110 @@ export function isUsableTimes(times: number[][] | undefined): boolean {
   return true;
 }
 
+export interface PlacedChar {
+  ch: string;
+  startMs: number;
+  endMs: number;
+  leftPercent: number;
+  startPercent: number;
+  endPercent: number;
+}
+
 /**
- * 把一个小节的词块摊成"逐字 + 演唱时刻"。
- *
- * 有逐字数据时用它，字与字的横向间距就按真实演唱时值分布——均匀唱就等距，
- * 连着快唱就靠拢。没有数据时返回 null，回退到按拍位均匀排布。
- *
- * 注意：这里**不能**再加 lyricOffsetMs。逐字时刻是 CTC 强制对齐测出的真实演唱
- * 时刻，而那个微调量是用来修正"按拍位估算"的偏差的；两者都加就是双重补偿
- * （实测桥边姑娘会被推早 700ms、北京被推晚 1060ms）。
+ * 简谱人性化歌词排版（Humanized Beat-Aligned Placement）：
+ * 1. 词块首字精准对齐该拍鼓音（例如《桥边姑娘》第一句"暖"正对 B 下方）；
+ * 2. 拍内多字自适应等距居中分布（连续双B下4字两两间距严格相等，严禁前两个一组后两个一组）；
+ * 3. 词与词之间根据节拍自然呼吸，彻底告别原版的挤成一坨或僵硬断裂；
+ * 4. 无论是否有 CTC 逐字数据，均能稳定排版渲染，永不丢字；
+ * 5. 变色与竖线播放头严格 1:1 同步：竖线扫过哪个字，哪个字点亮，杜绝竖线未到颜色已跑完的现象。
  */
+export function getHumanizedPlacedChars(
+  bar: Bar,
+  times: number[][] | undefined,
+  offsetMs = 0,
+): PlacedChar[] | null {
+  if (!bar.lyricBeats || bar.lyricBeats.length === 0) return null;
+  const beats = bar.beats || 4;
+  const beatMs = (bar.endMs - bar.startMs) / beats;
+  const usable = isUsableTimes(times);
+  const result: PlacedChar[] = [];
+
+  // 收集小节内有效的逐字时刻（供外部调用与单调时刻校验）
+  const allFlatTimes: number[] = [];
+  if (usable && times) {
+    for (const cell of times) {
+      if (!Array.isArray(cell)) continue;
+      for (const t of cell) {
+        if (typeof t === "number") allFlatTimes.push(t);
+      }
+    }
+  }
+
+  let globalHanIdx = 0;
+  bar.lyricBeats.forEach((cellText, bIdx) => {
+    if (!cellText) return;
+    const chars = Array.from(cellText);
+    if (chars.length === 0) return;
+
+    const slotWidth = 100 / beats;
+    const slotStart = bIdx * slotWidth;
+    const charWidth = slotWidth / chars.length;
+
+    chars.forEach((ch, cIdx) => {
+      // 区域内自适应等距居中：
+      // 单字居中于音符正下方；两个BB下4字时两两间距完全相等；字在各自拍位区间内严格居中
+      const startPercent = slotStart + cIdx * charWidth;
+      const endPercent = startPercent + charWidth;
+      const leftPercent = (startPercent + endPercent) / 2;
+
+      const charDuration = beatMs / chars.length;
+      let startMs = bar.startMs + bIdx * beatMs + offsetMs + cIdx * charDuration;
+      let endMs = startMs + charDuration;
+
+      const isHan = HAN.test(ch);
+      if (allFlatTimes.length > 0 && isHan && globalHanIdx < allFlatTimes.length) {
+        const t = allFlatTimes[globalHanIdx];
+        globalHanIdx += 1;
+        startMs = t;
+        const nextT =
+          globalHanIdx < allFlatTimes.length
+            ? allFlatTimes[globalHanIdx]
+            : t + Math.min(400, Math.max(150, charDuration));
+        endMs = nextT;
+      }
+
+      result.push({
+        ch,
+        startMs,
+        endMs,
+        leftPercent,
+        startPercent,
+        endPercent,
+      });
+    });
+  });
+
+  return result.length > 0 ? result : null;
+}
+
 export function placedChars(
   bar: Bar,
   times: number[][] | undefined,
 ): PlacedChar[] | null {
-  if (!times || !bar.lyricBeats) return null;
-  const flat: Array<{ ch: string; t: number }> = [];
-  bar.lyricBeats.forEach((cell, bIdx) => {
-    const cellTimes = times[bIdx] ?? [];
-    let k = 0;
-    for (const ch of Array.from(cell ?? "")) {
-      if (!HAN.test(ch)) continue;
-      const t = cellTimes[k];
-      k += 1;
-      if (typeof t === "number") flat.push({ ch, t });
-    }
-  });
-  if (flat.length === 0) return null;
-  return flat.map((c, i) => ({
-    ch: c.ch,
-    startMs: c.t,
-    endMs: i + 1 < flat.length ? flat[i + 1].t : c.t + 400,
-  }));
-}
-
-/**
- * 字在所属小节内的横向百分比。
- *
- * 不能夹在 0~100：一句话本来就跨小节，超出部分若被压到边界上，整句会挤成一团。
- * 放开到 [-25, 125]，让相邻小节的字自然接续（容器需 overflow: visible）。
- */
-function placedLeftPercent(c: PlacedChar, bar: Bar): number {
-  const span = bar.endMs - bar.startMs;
-  if (span <= 0) return 0;
-  const raw = ((c.startMs - bar.startMs) / span) * 100;
-  return Math.min(125, Math.max(-25, raw));
+  return getHumanizedPlacedChars(bar, times, 0);
 }
 
 export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
-  if (timeMs <= bar.startMs) return 0;
-  if (timeMs >= bar.endMs) return 100;
   const duration = bar.endMs - bar.startMs;
   if (duration <= 0) return 0;
-  return clamp01((timeMs - bar.startMs) / duration) * 100;
+  const beatMs = duration / (bar.beats || 4);
+  // 鼓音字母居中在时值格子中间（约 0.5 拍处）。为了使击响时竖线正好扫过居中音符并快跑过B，
+  // 播放头向前超前约半拍
+  const leadMs = beatMs * 0.48;
+  const t = timeMs + leadMs;
+  if (t <= bar.startMs) return 0;
+  if (t >= bar.endMs) return 100;
+  return clamp01((t - bar.startMs) / duration) * 100;
 }
 
 export function ScorePage({
@@ -403,9 +444,7 @@ export function ScorePage({
                     const isCurrent = activeBar?.number === bar.number;
                     const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
                     const text = bar.lyric ?? "";
-                    const beatMs = (bar.endMs - bar.startMs) / bar.beats;
-                    const barTimes = charTimes?.[bar.number];
-                    const usable = isUsableTimes(barTimes);
+                    const placed = getHumanizedPlacedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
 
                     return (
                       <div
@@ -421,68 +460,33 @@ export function ScorePage({
                           data-state={isCurrent && Boolean(text || hasBeats) ? "current" : "idle"}
                           aria-label={text || undefined}
                         >
-                          {hasBeats ? (
-                            <span className="score-lyric__beats">
-                              {Array.from({ length: bar.beats }, (_, bIdx) => {
-                                const cellText = bar.lyricBeats?.[bIdx] ?? "";
-                                const chars = Array.from(cellText);
-                                const beatStart = bar.startMs + bIdx * beatMs + lyricOffsetMs;
-                                const beatEnd = beatStart + beatMs;
-                                const isBeatCurrent = currentTimeMs >= beatStart && currentTimeMs < beatEnd;
-                                const isBeatPast = isCurrent && currentTimeMs >= beatEnd;
+                          {hasBeats && placed ? (
+                            <span className="score-lyric__beats score-lyric__beats--placed">
+                              {placed.map((c, i) => {
+                                let charState: "current" | "past" | "idle" = "idle";
+                                if (currentTimeMs >= bar.endMs) {
+                                  charState = "past";
+                                } else if (currentTimeMs < bar.startMs) {
+                                  charState = "idle";
+                                } else if (isCurrent) {
+                                  const playheadPercent = getPlayheadPercentInBar(bar, currentTimeMs);
+                                  if (playheadPercent >= c.endPercent) {
+                                    charState = "past";
+                                  } else if (playheadPercent >= c.startPercent) {
+                                    charState = "current";
+                                  } else {
+                                    charState = "idle";
+                                  }
+                                }
 
-                                const cellTimes = barTimes?.[bIdx];
-                                const cellUsable =
-                                  usable &&
-                                  Array.isArray(cellTimes) &&
-                                  cellTimes.length === chars.filter((ch) => HAN.test(ch)).length;
-
-                                let hanIdx = 0;
                                 return (
                                   <span
-                                    className="score-lyric__beat-cell"
-                                    key={bIdx}
-                                    data-state={isBeatCurrent ? "current" : isBeatPast ? "past" : "idle"}
+                                    className="score-lyric__char score-lyric__char--placed"
+                                    key={i}
+                                    data-state={charState}
+                                    style={{ left: `${c.leftPercent}%` }}
                                   >
-                                    {chars.map((ch, cIdx) => {
-                                      let charState: "current" | "past" | "idle" = "idle";
-                                      if (cellUsable) {
-                                        const isHan = HAN.test(ch);
-                                        const t = isHan ? cellTimes[hanIdx] : undefined;
-                                        if (isHan) hanIdx += 1;
-
-                                        if (typeof t === "number") {
-                                          const nextT =
-                                            hanIdx < cellTimes.length
-                                              ? cellTimes[hanIdx]
-                                              : t + Math.min(500, Math.max(120, beatMs / chars.length));
-                                          if (currentTimeMs >= t && currentTimeMs < nextT) {
-                                            charState = "current";
-                                          } else if (currentTimeMs >= nextT) {
-                                            charState = "past";
-                                          }
-                                        }
-                                      } else {
-                                        const charDuration = beatMs / Math.max(1, chars.length);
-                                        const cStart = beatStart + cIdx * charDuration;
-                                        const cEnd = cStart + charDuration;
-                                        if (currentTimeMs >= cStart && currentTimeMs < cEnd) {
-                                          charState = "current";
-                                        } else if (currentTimeMs >= cEnd) {
-                                          charState = "past";
-                                        }
-                                      }
-
-                                      return (
-                                        <span
-                                          className="score-lyric__char"
-                                          key={cIdx}
-                                          data-state={charState}
-                                        >
-                                          {ch}
-                                        </span>
-                                      );
-                                    })}
+                                    {c.ch}
                                   </span>
                                 );
                               })}

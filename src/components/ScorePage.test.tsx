@@ -117,14 +117,14 @@ describe("ScorePage", () => {
 
   it("moves the playhead at a constant speed across the active bar", () => {
     const song = makeSong();
-    // bar 0: startMs 0, endMs 1000, 4 beats. At 500ms (halfway), playhead is exactly at 50%
+    // bar 0: startMs 0, endMs 1000, 4 beats. 具备击响提前量 leadMs = beatMs * 0.48 = 120ms，在 500ms 时 playhead 处于 62%
     const { container } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={500} />,
     );
 
     const playhead = container.querySelector(".score-playhead");
     expect(playhead).not.toBeNull();
-    expect(playhead).toHaveStyle({ left: "50%" });
+    expect(playhead).toHaveStyle({ left: "62%" });
 
     const { container: idleContainer } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={10_000} />,
@@ -235,7 +235,7 @@ describe("ScorePage", () => {
     expect(isUsableTimes([[165790, 165810], [165830, 165850]])).toBe(false);
   });
 
-  it("歌词按拍位(beat-cell)严密对齐鼓谱并在播放时实现逐字卡拉OK点亮", () => {
+  it("歌词自适应居中排布并在播放时随播放头实现逐字卡拉OK点亮", () => {
     const bar = {
       number: 1,
       startMs: 0,
@@ -245,42 +245,37 @@ describe("ScorePage", () => {
       lyricBeats: ["", "暖阳", "下", "我迎"],
     };
 
-    // 在 0ms（第 1 拍空拍）：第一格为空，其余格有词
+    // 在 0ms（空拍待机状态）：所有字均渲染且为 idle
     const { container, rerender } = render(
       <ScorePage bars={[bar]} currentTimeMs={0} />,
     );
 
-    const cells = container.querySelectorAll(".score-lyric__beat-cell");
-    expect(cells).toHaveLength(4);
-    expect(cells[0].textContent).toBe("");
-    expect(cells[1].textContent).toBe("暖阳");
-    expect(cells[2].textContent).toBe("下");
-    expect(cells[3].textContent).toBe("我迎");
+    const chars = container.querySelectorAll(".score-lyric__char--placed");
+    expect(chars).toHaveLength(5);
+    const textList = Array.from(chars).map((c) => c.textContent);
+    expect(textList).toEqual(["暖", "阳", "下", "我", "迎"]);
 
-    // 在 600ms（第 2 拍进行中，第 1 个字正在唱）：检查高亮流转
+    // 在 400ms（播放头到达第 2 拍第 1 个字）：检查高亮流转
+    // beatMs = 500, leadMs = 240, t = 640ms, 位于 "暖" (500~750ms)
+    rerender(
+      <ScorePage
+        bars={[bar]}
+        currentTimeMs={400}
+      />,
+    );
+
+    const nuan = Array.from(chars).find((el) => el.textContent === "暖");
+    expect(nuan).toHaveAttribute("data-state", "current");
+
+    // 播放到 600ms 时（t = 840ms），“暖”已扫过变 past，“阳”被扫到变 current
     rerender(
       <ScorePage
         bars={[bar]}
         currentTimeMs={600}
-        charTimes={{ 1: [[], [500, 750], [1000], [1500, 1750]] }}
-      />,
-    );
-
-    const charSpans = container.querySelectorAll(".score-lyric__char");
-    // "暖" (500~750) 应该处于 current
-    const nuan = Array.from(charSpans).find((el) => el.textContent === "暖");
-    expect(nuan).toHaveAttribute("data-state", "current");
-
-    // 播放到 800ms 时，“暖”已唱过，应变为 past，“阳”应变为 current
-    rerender(
-      <ScorePage
-        bars={[bar]}
-        currentTimeMs={800}
-        charTimes={{ 1: [[], [500, 750], [1000], [1500, 1750]] }}
       />,
     );
     expect(nuan).toHaveAttribute("data-state", "past");
-    const yang = Array.from(charSpans).find((el) => el.textContent === "阳");
+    const yang = Array.from(chars).find((el) => el.textContent === "阳");
     expect(yang).toHaveAttribute("data-state", "current");
   });
 });
