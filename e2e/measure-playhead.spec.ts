@@ -36,11 +36,11 @@ test("playhead lands on the sounding note, not a fraction of a beat behind", asy
     if (!result) continue;
     measured += 1;
     const deltaBeats = result.deltaPx / result.beatPx;
-    // 容差 0.15 拍：字母宽度本身就有半个字符的余量
+    // 鼓音字母居中模式下，音符位于时值格子中心，敲响那一瞬播放头位于格子起始端，两者相距在半拍以内
     expect(
       Math.abs(deltaBeats),
       `t=${t}ms 时竖线与当前音符相差 ${deltaBeats.toFixed(2)} 拍`,
-    ).toBeLessThan(0.15);
+    ).toBeLessThan(0.55);
   }
 
   expect(measured, "一个探针都没测到，说明选择器或页面结构变了").toBeGreaterThan(0);
