@@ -455,3 +455,16 @@ input[type="range"] { width: 100%; accent-color: #e57032; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 1ms !important; animation-duration: 1ms !important; }
 }
+
+/* 逐字按演唱时刻摆放：字与字的横向间距 = 真实演唱时值之差。
+   均匀唱就等距，连着快唱就靠拢——不是按拍位平均分。 */
+.score-lyric__beats--placed { position: relative; display: block; width: 100%; min-height: 1.35em; }
+.score-lyric__char--placed {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  transform: translateX(-0.5em);
+}
+/* 逐字层可溢出所在小节：一句话跨小节时，字要能自然接到下一个小节去 */
+.score-bar-lyrics { overflow: visible; }
+.score-lyric__beats--placed { overflow: visible; }

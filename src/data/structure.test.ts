@@ -3,6 +3,7 @@ import { songLibrary } from "./demoSong";
 import { structureEdits } from "./structureEdits";
 import { structureEditsStage2 } from "./structureEditsStage2";
 import { lyricOffsets } from "./lyricOffsets";
+import { lyricCharTimes } from "./lyricCharTimes";
 import { validateSong } from "../domain/song";
 import { qiaobianguniang } from "./qiaobianguniang";
 import { tongnianSong } from "./tongnian";
@@ -21,6 +22,21 @@ describe("谱面结构校正", () => {
     for (const table of [structureEdits, structureEditsStage2]) {
       const orphans = Object.keys(table).filter((key) => !ids.has(key));
       expect(orphans, `这些键没有对应曲目，校正会被静默跳过: ${orphans.join(", ")}`).toEqual([]);
+    }
+  });
+
+  it("逐字时刻表的每个键能对应到曲目 id，且每小节的词块数对得上", () => {
+    const byId = new Map(songLibrary.map((song) => [song.id, song]));
+    for (const [id, perBar] of Object.entries(lyricCharTimes)) {
+      const song = byId.get(id);
+      expect(song, `逐字时刻表里的 ${id} 没有对应曲目，会被静默忽略`).toBeDefined();
+      if (!song) continue;
+      for (const [barNo, cells] of Object.entries(perBar)) {
+        const bar = song.bars.find((b) => b.number === Number(barNo));
+        expect(bar, `${id} 第 ${barNo} 小节不存在`).toBeDefined();
+        const beats = bar?.lyricBeats?.length ?? 0;
+        expect(cells.length, `${id} 第 ${barNo} 小节的词块数对不上`).toBe(beats);
+      }
     }
   });
 

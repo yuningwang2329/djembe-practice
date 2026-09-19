@@ -13,6 +13,8 @@ interface ScorePageProps {
   lyrics?: SongDefinition["lyrics"];
   /** 歌词高亮的整体微调（毫秒）。只动歌词，不动鼓点、播放头或实际播放。 */
   lyricOffsetMs?: number;
+  /** 逐字演唱时刻：小节号 -> 与 lyricBeats 等长的数组，每项是该词块内各字的毫秒时刻。 */
+  charTimes?: Record<number, number[][]>;
   onSeekAndPlay?: (timeMs: number) => void;
   showHands?: boolean;
   isPlaying?: boolean;
@@ -52,6 +54,58 @@ function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
+const HAN = /[一-鿿]/;
+
+interface PlacedChar {
+  ch: string;
+  startMs: number;
+  endMs: number;
+}
+
+/**
+ * 把一个小节的词块摊成"逐字 + 演唱时刻"。
+ *
+ * 有逐字数据时用它，字与字的横向间距就按真实演唱时值分布——均匀唱就等距，
+ * 连着快唱就靠拢。没有数据时返回 null，回退到按拍位均匀排布。
+ */
+export function placedChars(
+  bar: Bar,
+  times: number[][] | undefined,
+  offsetMs: number,
+): PlacedChar[] | null {
+  if (!times || !bar.lyricBeats) return null;
+  const flat: Array<{ ch: string; t: number }> = [];
+  bar.lyricBeats.forEach((cell, bIdx) => {
+    const cellTimes = times[bIdx] ?? [];
+    let k = 0;
+    for (const ch of Array.from(cell ?? "")) {
+      if (!HAN.test(ch)) continue;
+      const t = cellTimes[k];
+      k += 1;
+      if (typeof t === "number") flat.push({ ch, t });
+    }
+  });
+  if (flat.length === 0) return null;
+  return flat.map((c, i) => ({
+    ch: c.ch,
+    startMs: c.t + offsetMs,
+    endMs: (i + 1 < flat.length ? flat[i + 1].t : c.t + 400) + offsetMs,
+  }));
+}
+
+/**
+ * 字在所属小节内的横向百分比。
+ *
+ * 不能夹在 0~100：一句话本来就跨小节，超出部分若被压到边界上，整句会挤成一团。
+ * 放开到 [-25, 125]，让相邻小节的字自然接续（容器需 overflow: visible）。
+ */
+function placedLeftPercent(c: PlacedChar, bar: Bar): number {
+  const span = bar.endMs - bar.startMs;
+  if (span <= 0) return 0;
+  const raw = ((c.startMs - bar.startMs) / span) * 100;
+  return Math.min(125, Math.max(-25, raw));
+}
+
 export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
   if (timeMs <= bar.startMs) return 0;
   if (timeMs >= bar.endMs) return 100;
@@ -68,6 +122,7 @@ export function ScorePage({
   bpm,
   lyrics,
   lyricOffsetMs = 0,
+  charTimes,
   onSeekAndPlay,
   showHands = true,
   isPlaying = false,
@@ -292,6 +347,7 @@ export function ScorePage({
                     const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
                     const text = bar.lyric ?? "";
                     const beatMs = (bar.endMs - bar.startMs) / bar.beats;
+                    const placed = placedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
                     return (
                       <div
                         className="score-bar-lyrics"
@@ -306,7 +362,27 @@ export function ScorePage({
                           data-state={isCurrent && Boolean(text || hasBeats) ? "current" : "idle"}
                           aria-label={text || undefined}
                         >
-                          {hasBeats ? (
+                          {hasBeats && placed ? (
+                            <span className="score-lyric__beats score-lyric__beats--placed">
+                              {placed.map((c, i) => {
+                                const isCharCurrent =
+                                  currentTimeMs >= c.startMs && currentTimeMs < c.endMs;
+                                const isCharPast = isCurrent && currentTimeMs >= c.endMs;
+                                return (
+                                  <span
+                                    className="score-lyric__char score-lyric__char--placed"
+                                    key={i}
+                                    data-state={isCharCurrent ? "current" : isCharPast ? "past" : "idle"}
+                                    style={{
+                                      left: `${placedLeftPercent(c, bar)}%`,
+                                    }}
+                                  >
+                                    {c.ch}
+                                  </span>
+                                );
+                              })}
+                            </span>
+                          ) : hasBeats ? (
                             <span className="score-lyric__beats">
                               {Array.from({ length: bar.beats }, (_, bIdx) => {
                                 const char = bar.lyricBeats?.[bIdx] ?? "";

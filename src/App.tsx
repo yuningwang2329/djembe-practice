@@ -5,6 +5,7 @@ import { TrackToggle } from "./components/TrackToggle";
 import { RhythmPatternPractice } from "./components/RhythmPatternPractice";
 import { songLibrary } from "./data/demoSong";
 import { lyricOffsets } from "./data/lyricOffsets";
+import { lyricCharTimes } from "./data/lyricCharTimes";
 import { clampPlaybackRate, getBarAtTime } from "./domain/timeline";
 import type { SongDefinition } from "./domain/song";
 import { usePlaybackController } from "./hooks/usePlaybackController";
@@ -340,6 +341,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
             currentTimeMs={displayTimeMs}
             lyrics={effectiveSong.lyrics}
             lyricOffsetMs={lyricOffsets[song.id] ?? 0}
+            charTimes={lyricCharTimes[song.id]}
             onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
             countInBeat={countInBeat}
             timeSignature={song.timeSignature}
