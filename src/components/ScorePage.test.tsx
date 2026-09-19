@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { ScorePage, isUsableTimes, placedChars } from "./ScorePage";
+import { ScorePage, isUsableTimes, placedChars, getPlayheadBar } from "./ScorePage";
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
@@ -278,4 +278,56 @@ describe("ScorePage", () => {
     const yang = Array.from(chars).find((el) => el.textContent === "阳");
     expect(yang).toHaveAttribute("data-state", "current");
   });
+
+  it("跨小节播放头无缝连续过渡：上一小节 100% 结束时刻，下一小节正好从 0% 接棒，无停顿无瞬移", () => {
+    // 构造两小节：bar1 0~2000ms (4拍，beatMs=500, leadMs=240), bar2 2000~4000ms
+    const bar1 = { number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [] };
+    const bar2 = { number: 2, startMs: 2000, endMs: 4000, beats: 4, hits: [] };
+    const bars = [bar1, bar2];
+
+    // 分界时刻：bar2.startMs - leadMs = 2000 - 240 = 1760ms
+    // 在 1759ms 时，播放头还在 bar1，即将达到 100%
+    expect(getPlayheadBar(bars, 1759)?.number).toBe(1);
+
+    // 在 1760ms 时（上一小节 100% 的同一瞬间），播放头无缝切到 bar2
+    expect(getPlayheadBar(bars, 1760)?.number).toBe(2);
+
+    // 渲染测试：
+    const { container, rerender } = render(<ScorePage bars={bars} currentTimeMs={1759} />);
+    const bar1El = container.querySelector('[aria-label="第 1 小节"]');
+    const bar2El = container.querySelector('[aria-label="第 2 小节"]');
+    expect(bar1El).toHaveClass("score-bar--active");
+    expect(bar1El?.querySelector(".score-playhead")).not.toBeNull();
+    expect(bar2El?.querySelector(".score-playhead")).toBeNull();
+
+    // 在 1760ms 时，bar2 立即激活且播放头位于 0% 起步，绝不跳到 12%
+    rerender(<ScorePage bars={bars} currentTimeMs={1760} />);
+    expect(bar2El).toHaveClass("score-bar--active");
+    const playhead2 = bar2El?.querySelector(".score-playhead");
+    expect(playhead2).not.toBeNull();
+    expect(playhead2).toHaveStyle({ left: "0%" });
+  });
+
+  it("在密集十六分音符下，大写字母 B 仍完整渲染，不被缩小字体", () => {
+    // 一拍内包含 4 个十六分音符 (Bsss)
+    const bar = {
+      number: 1,
+      startMs: 0,
+      endMs: 2000,
+      beats: 4,
+      hits: [
+        { atMs: 0, stroke: "bass" as const, hand: "R" as const },
+        { atMs: 125, stroke: "slap" as const, hand: "L" as const, dynamics: "soft" as const },
+        { atMs: 250, stroke: "slap" as const, hand: "R" as const, dynamics: "soft" as const },
+        { atMs: 375, stroke: "slap" as const, hand: "L" as const, dynamics: "soft" as const },
+      ],
+    };
+    const { container } = render(<ScorePage bars={[bar]} currentTimeMs={0} />);
+    const letters = container.querySelectorAll(".score-char__letter");
+    expect(letters).toHaveLength(4);
+    expect(letters[0].textContent).toBe("B");
+    // 大B必须是大写B
+    expect(letters[0].parentElement).not.toHaveClass("score-char--soft");
+  });
 });
+

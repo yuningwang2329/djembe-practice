@@ -1,6 +1,6 @@
 import type { Bar, HitEvent, Stroke, SongDefinition } from "../domain/song";
 import { strokeLabels } from "../domain/song";
-import { useLayoutEffect, useRef } from "react";
+import { memo, useLayoutEffect, useMemo, useRef } from "react";
 
 interface ScorePageProps {
   bars: Bar[];
@@ -20,10 +20,8 @@ interface ScorePageProps {
   isPlaying?: boolean;
 }
 
-const ACTIVE_WINDOW_MS = 150;
-
 /**
- * 连续非洲鼓谱：每行 4 小节，视窗围绕当前行缓慢移动，提前露出下一行。
+ * 连续非洲鼓谱：每行 3 小节，视窗围绕当前行缓慢移动，提前露出下一行。
  * 独音独占一拍为四分音符（不带下划线）；两个八分紧邻共一条下划线；
  * 空拍只写一个 0；段落（前奏/进唱/副歌…）标在小节左上角；
  * 歌词词组按小节对位（lyricSpan 跨几小节就居中于几小节下方）。
@@ -50,12 +48,21 @@ function beatPairs(bar: Bar): BeatNote[][] {
   });
 }
 
+const beatPairsCache = new WeakMap<Bar, BeatNote[][]>();
+export function getCachedBeatPairs(bar: Bar): BeatNote[][] {
+  let cached = beatPairsCache.get(bar);
+  if (!cached) {
+    cached = beatPairs(bar);
+    beatPairsCache.set(bar, cached);
+  }
+  return cached;
+}
+
 function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
 const HAN = /[一-鿿]/;
-
 
 /**
  * 校验一个小节的逐字演唱时刻是否可信。
@@ -192,6 +199,24 @@ export function getHumanizedPlacedChars(
   return result.length > 0 ? result : null;
 }
 
+const placedCharsCache = new WeakMap<
+  Bar,
+  { times?: number[][]; offsetMs: number; result: PlacedChar[] | null }
+>();
+export function getCachedPlacedChars(
+  bar: Bar,
+  times: number[][] | undefined,
+  offsetMs = 0,
+): PlacedChar[] | null {
+  const cached = placedCharsCache.get(bar);
+  if (cached && cached.times === times && cached.offsetMs === offsetMs) {
+    return cached.result;
+  }
+  const result = getHumanizedPlacedChars(bar, times, offsetMs);
+  placedCharsCache.set(bar, { times, offsetMs, result });
+  return result;
+}
+
 export function placedChars(
   bar: Bar,
   times: number[][] | undefined,
@@ -199,12 +224,14 @@ export function placedChars(
   return getHumanizedPlacedChars(bar, times, 0);
 }
 
+/**
+ * 计算小节内播放头的百分比（带超前半拍击响提前量）。
+ * 保证在激活小节内从 0% 恒速滑行到 100%。
+ */
 export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
   const duration = bar.endMs - bar.startMs;
   if (duration <= 0) return 0;
   const beatMs = duration / (bar.beats || 4);
-  // 鼓音字母居中在时值格子中间（约 0.5 拍处）。为了使击响时竖线正好扫过居中音符并快跑过B，
-  // 播放头向前超前约半拍
   const leadMs = beatMs * 0.48;
   const t = timeMs + leadMs;
   if (t <= bar.startMs) return 0;
@@ -212,64 +239,122 @@ export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
   return clamp01((t - bar.startMs) / duration) * 100;
 }
 
-export function ScorePage({
-  bars,
+/**
+ * 精准无缝的跨小节播放头定位器：
+ * 将时间轴划分为无空隙、无重叠的小节活跃区间。
+ * 上一个小节到达 100% 的同一时刻，下一个小节正好以 0% 起步，
+ * 彻底消灭停留在小节右边沿卡顿以及下一小节跳出 12% 的不连贯现象。
+ */
+export function getPlayheadBar(bars: Bar[], currentTimeMs: number): Bar | null {
+  for (let i = 0; i < bars.length; i++) {
+    const bar = bars[i];
+    const beatMs = (bar.endMs - bar.startMs) / (bar.beats || 4);
+    const leadMs = beatMs * 0.48;
+    const nextBar = bars[i + 1];
+    const nextLeadMs = nextBar
+      ? ((nextBar.endMs - nextBar.startMs) / (nextBar.beats || 4)) * 0.48
+      : leadMs;
+    const endWindow = nextBar ? nextBar.startMs - nextLeadMs : bar.endMs - leadMs;
+    const startWindow = i === 0 ? bar.startMs - leadMs : undefined;
+    if (currentTimeMs < endWindow) {
+      if (startWindow !== undefined && currentTimeMs < startWindow) {
+        return null;
+      }
+      return bar;
+    }
+  }
+  return null;
+}
+
+interface BlockMetric {
+  start: number;
+  end: number;
+  offsetTop: number;
+  offsetHeight: number;
+  stride: number;
+}
+
+interface ScoreRowBlockProps {
+  rowBars: Bar[];
+  playheadBarNumber: number | null;
+  playheadPercent: number;
+  currentTimeMs: number;
+  latestHit: HitEvent | null;
+  nextHit: HitEvent | null;
+  activeWindowMs: number;
+  lyrics?: SongDefinition["lyrics"];
+  lyricOffsetMs?: number;
+  charTimes?: Record<number, number[][]>;
+  onSeekAndPlay?: (timeMs: number) => void;
+  showHands?: boolean;
+}
+
+function areRowPropsEqual(prev: ScoreRowBlockProps, next: ScoreRowBlockProps): boolean {
+  if (prev.rowBars !== next.rowBars) return false;
+  if (prev.onSeekAndPlay !== next.onSeekAndPlay) return false;
+  if (prev.showHands !== next.showHands) return false;
+  if (prev.charTimes !== next.charTimes) return false;
+  if (prev.lyricOffsetMs !== next.lyricOffsetMs) return false;
+  if (prev.lyrics !== next.lyrics) return false;
+
+  const rowBars = prev.rowBars;
+  const rowStart = rowBars[0].startMs;
+  const rowEnd = rowBars[rowBars.length - 1].endMs;
+
+  const prevHasPlayhead = rowBars.some((b) => b.number === prev.playheadBarNumber);
+  const nextHasPlayhead = rowBars.some((b) => b.number === next.playheadBarNumber);
+  if (prevHasPlayhead || nextHasPlayhead) return false;
+
+  const prevHasLatestHit = prev.latestHit && rowBars.some((b) => b.hits.includes(prev.latestHit!));
+  const nextHasLatestHit = next.latestHit && rowBars.some((b) => b.hits.includes(next.latestHit!));
+  if (prevHasLatestHit || nextHasLatestHit) return false;
+
+  const prevHasNextHit = prev.nextHit && rowBars.some((b) => b.hits.includes(prev.nextHit!));
+  const nextHasNextHit = next.nextHit && rowBars.some((b) => b.hits.includes(next.nextHit!));
+  if (prevHasNextHit || nextHasNextHit) return false;
+
+  const firstBar = rowBars[0];
+  const beatMs = (firstBar.endMs - firstBar.startMs) / (firstBar.beats || 4);
+  const leadMs = beatMs * 0.48;
+
+  const prevPlayheadTime = prev.currentTimeMs + leadMs;
+  const nextPlayheadTime = next.currentTimeMs + leadMs;
+
+  const prevPast = prevPlayheadTime >= rowEnd;
+  const nextPast = nextPlayheadTime >= rowEnd;
+  if (prevPast !== nextPast) return false;
+
+  const prevFuture = prevPlayheadTime < rowStart;
+  const nextFuture = nextPlayheadTime < rowStart;
+  if (prevFuture !== nextFuture) return false;
+
+  if (prev.lyrics && prev.lyrics.length > 0) {
+    const prevInCue = prev.currentTimeMs >= rowStart && prev.currentTimeMs < rowEnd;
+    const nextInCue = next.currentTimeMs >= rowStart && next.currentTimeMs < rowEnd;
+    if (prevInCue || nextInCue) return false;
+  }
+
+  return true;
+}
+
+const ScoreRowBlock = memo(function ScoreRowBlock({
+  rowBars,
+  playheadBarNumber,
+  playheadPercent,
   currentTimeMs,
-  countInBeat = 0,
-  timeSignature,
-  bpm,
+  latestHit,
+  nextHit,
+  activeWindowMs,
   lyrics,
   lyricOffsetMs = 0,
   charTimes,
   onSeekAndPlay,
   showHands = true,
-  isPlaying = false,
-}: ScorePageProps) {
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const timeRef = useRef(currentTimeMs);
-  timeRef.current = currentTimeMs;
-  const followRef = useRef<() => void>(() => {});
-
-  useLayoutEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return;
-    const follow = () => {
-      viewport.style.setProperty("--viewport-height", `${viewport.clientHeight}px`);
-      const blocks = Array.from(viewport.querySelectorAll<HTMLElement>(".score-page__block"));
-      if (!blocks.length) return;
-      const time = timeRef.current;
-      const found = blocks.findIndex((block) => time < Number(block.dataset.end));
-      const index = found < 0 ? blocks.length - 1 : found;
-      const block = blocks[index];
-      const start = Number(block.dataset.start);
-      const end = Number(block.dataset.end);
-      const stride = blocks[index + 1]
-        ? blocks[index + 1].offsetTop - block.offsetTop
-        : index > 0 ? block.offsetTop - blocks[index - 1].offsetTop : block.offsetHeight;
-      // 每行播放期间只移动一行高度，换行处连续；跳转和循环直接跟随音频位置。
-      const progress = clamp01((time - start) / (end - start));
-      viewport.scrollTop = Math.max(0, block.offsetTop + block.offsetHeight / 2
-        - viewport.clientHeight * 0.4 + (progress - 0.5) * stride);
-    };
-    followRef.current = follow;
-    follow();
-    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(follow);
-    observer?.observe(viewport);
-    return () => { observer?.disconnect(); followRef.current = () => {}; };
-  }, [bars]);
-
-  useLayoutEffect(() => { followRef.current(); }, [currentTimeMs]);
-  const activeBar =
-    bars.find((bar) => currentTimeMs >= bar.startMs && currentTimeMs < bar.endMs) ?? null;
-  const nextHit =
-    bars
-      .flatMap((bar) => bar.hits)
-      .filter((hit) => hit.atMs > currentTimeMs)
-      .at(0) ?? null;
-  const beatCount = bars[0]?.beats ?? 4;
-  const latestHit = activeBar?.hits.filter(hit => hit.atMs <= currentTimeMs).at(-1);
-  const sixteenthMs = bpm ? Math.round(60_000 / bpm / 4) : 125;
-  const activeWindowMs = Math.min(140, Math.max(70, Math.round(sixteenthMs * 0.85)));
+}: ScoreRowBlockProps) {
+  const rowKey = rowBars[0]?.number ?? 0;
+  const rowStart = rowBars[0].startMs;
+  const rowEnd = rowBars[rowBars.length - 1].endMs;
+  const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
 
   function hitState(hit: HitEvent): "current" | "next" | "idle" {
     if (latestHit === hit && currentTimeMs - hit.atMs <= activeWindowMs) return "current";
@@ -310,8 +395,7 @@ export function ScorePage({
   }
 
   function beatCell(notes: BeatNote[], key: number) {
-    // 空拍：只写一个 0，不占两个八分格
-    if (notes.every(note => !note.hit)) {
+    if (notes.every((note) => !note.hit)) {
       return (
         <div className="score-beat score-beat--rest" key={key}>
           <span className="score-rest" aria-label="休止">
@@ -320,22 +404,29 @@ export function ScorePage({
         </div>
       );
     }
-    // 独音落在拍头：四分音符，不带下划线
     const isQuarter = notes.length === 1;
     return (
       <div className="score-beat" key={key}>
         <span
           className={
-            isQuarter ? "score-group score-group--quarter" : `score-group score-group--eighths${notes.some(note => note.duration === 1) ? " score-group--dense" : ""}${notes.length === 4 ? " score-group--four" : ""}`
+            isQuarter
+              ? "score-group score-group--quarter"
+              : `score-group score-group--eighths${notes.some((note) => note.duration === 1) ? " score-group--dense" : ""}${notes.length === 4 ? " score-group--four" : ""}`
           }
         >
           {notes.map((note, index) => (
-            <span className="score-note" key={index}
+            <span
+              className="score-note"
+              key={index}
               data-duration={note.duration === 1 ? "sixteenth" : note.duration === 2 ? "eighth" : "quarter"}
               style={{ flex: note.duration }}
             >
-              {note.hit ? strokeChar(note.hit) : (
-                <span className="score-char score-char--rest" aria-label="休止"><b className="score-char__letter">0</b></span>
+              {note.hit ? (
+                strokeChar(note.hit)
+              ) : (
+                <span className="score-char score-char--rest" aria-label="休止">
+                  <b className="score-char__letter">0</b>
+                </span>
               )}
             </span>
           ))}
@@ -344,16 +435,298 @@ export function ScorePage({
     );
   }
 
+  return (
+    <div className="score-page__block" key={rowKey} data-start={rowStart} data-end={rowEnd}>
+      <div className="score-page__row">
+        {rowBars.map((bar) => {
+          const isActive = playheadBarNumber === bar.number;
+          return (
+            <article
+              className={isActive ? "score-bar score-bar--active" : "score-bar"}
+              key={bar.number}
+              style={{ flex: bar.beats }}
+              aria-label={`第 ${bar.number} 小节`}
+              tabIndex={onSeekAndPlay ? 0 : undefined}
+              data-seekable={onSeekAndPlay ? "true" : undefined}
+              title={onSeekAndPlay ? "点击从这里播放" : undefined}
+              onClick={onSeekAndPlay ? () => onSeekAndPlay(bar.startMs) : undefined}
+              onKeyDown={onSeekAndPlay ? (event) => {
+                if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
+                  event.preventDefault();
+                  onSeekAndPlay(bar.startMs);
+                }
+              } : undefined}
+            >
+              <div className="score-bar__header" aria-hidden="true">
+                <span className="score-bar__no">{bar.number}</span>
+                {bar.section && (
+                  <span className="score-section">{bar.section}</span>
+                )}
+              </div>
+              <div className="score-bar__content">
+                {bar.timeSignature && (
+                  <div
+                    className="score-bar__meter"
+                    aria-label={`拍号切换 ${bar.timeSignature[0]}/${bar.timeSignature[1]}`}
+                  >
+                    <span className="score-bar__meter-num">{bar.timeSignature[0]}</span>
+                    <span className="score-bar__meter-num">{bar.timeSignature[1]}</span>
+                  </div>
+                )}
+                <div className="score-bar__grid">
+                  {getCachedBeatPairs(bar).map((pair, index) => beatCell(pair, index))}
+                  {isActive && (
+                    <div
+                      className="score-playhead"
+                      style={{
+                        left: `${Math.round(playheadPercent * 100) / 100}%`,
+                      }}
+                      aria-hidden="true"
+                    />
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      {rowBars.some((bar) => Boolean(bar.lyric || (bar.lyricBeats && bar.lyricBeats.length > 0))) ? (
+        <div className="score-lyrics score-lyrics--bar-aligned" aria-label="本行歌词">
+          {rowBars.map((bar) => {
+            const isCurrentBar = playheadBarNumber === bar.number;
+            const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
+            const text = bar.lyric ?? "";
+            const placed = getCachedPlacedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
+            const beatMs = (bar.endMs - bar.startMs) / (bar.beats || 4);
+            const leadMs = beatMs * 0.48;
+            const playheadTimeMs = currentTimeMs + leadMs;
+
+            return (
+              <div
+                className="score-bar-lyrics"
+                key={`lyric-${bar.number}`}
+                style={{ flex: bar.beats }}
+              >
+                {bar.timeSignature && (
+                  <span className="score-page__meter-space" aria-hidden="true" />
+                )}
+                <p
+                  className="score-lyric score-lyric--timed"
+                  data-state={isCurrentBar && Boolean(text || hasBeats) ? "current" : "idle"}
+                  aria-label={text || undefined}
+                >
+                  {hasBeats && placed ? (
+                    <span className="score-lyric__beats score-lyric__beats--placed">
+                      {placed.map((c, i) => {
+                        let charState: "current" | "past" | "idle" = "idle";
+                        if (playheadTimeMs >= bar.endMs) {
+                          charState = "past";
+                        } else if (playheadTimeMs < bar.startMs) {
+                          charState = "idle";
+                        } else if (isCurrentBar) {
+                          if (playheadPercent >= c.endPercent) {
+                            charState = "past";
+                          } else if (playheadPercent >= c.startPercent) {
+                            charState = "current";
+                          } else {
+                            charState = "idle";
+                          }
+                        }
+
+                        return (
+                          <span
+                            className="score-lyric__char score-lyric__char--placed"
+                            key={i}
+                            data-state={charState}
+                            style={{ left: `${c.leftPercent}%` }}
+                          >
+                            {c.ch}
+                          </span>
+                        );
+                      })}
+                    </span>
+                  ) : (
+                    <span className="score-lyric__phrase">
+                      <span className="score-lyric__char">{text}</span>
+                    </span>
+                  )}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      ) : lyrics ? (
+        <div className="score-lyrics" aria-label="本行歌词">
+          {rowLyrics?.map((cue) => {
+            const characters = Array.from(cue.text.replace(/\s/g, ""));
+            const positions = characters.map((char, i) => ({
+              char,
+              at: cue.startMs + (i + 0.5) / characters.length * (cue.endMs - cue.startMs),
+            })).filter(({ at }) => at >= rowStart && at < rowEnd);
+            if (!positions.length) return null;
+            const start = Math.max(cue.startMs, rowStart);
+            const end = Math.min(cue.endMs, rowEnd);
+            return (
+              <p
+                key={cue.startMs}
+                className="score-lyric score-lyric--timed"
+                aria-label={positions.map(({ char }) => char).join("")}
+                data-state={currentTimeMs >= Math.max(cue.startMs, rowStart) && currentTimeMs < Math.min(cue.endMs, rowEnd) ? "current" : "idle"}
+                style={{
+                  left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
+                  width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
+                }}
+              >
+                {positions.map(({ char, at }, i) => (
+                  <span
+                    className="score-lyric__char"
+                    key={i}
+                    style={{ left: `${(at - start) / (end - start) * 100}%` }}
+                  >
+                    {char}
+                  </span>
+                ))}
+              </p>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
+  );
+}, areRowPropsEqual);
+
+export function ScorePage({
+  bars,
+  currentTimeMs,
+  countInBeat = 0,
+  timeSignature,
+  bpm,
+  lyrics,
+  lyricOffsetMs = 0,
+  charTimes,
+  onSeekAndPlay,
+  showHands = true,
+  isPlaying = false,
+}: ScorePageProps) {
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const timeRef = useRef(currentTimeMs);
+  timeRef.current = currentTimeMs;
+  const blockMetricsRef = useRef<BlockMetric[]>([]);
+  const viewportHeightRef = useRef<number>(0);
+
+  const measureBlocks = () => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    viewportHeightRef.current = viewport.clientHeight;
+    const blockEls = Array.from(viewport.querySelectorAll<HTMLElement>(".score-page__block"));
+    if (!blockEls.length) return;
+
+    const metrics: BlockMetric[] = [];
+    for (let i = 0; i < blockEls.length; i++) {
+      const el = blockEls[i];
+      const nextEl = blockEls[i + 1];
+      const prevEl = blockEls[i - 1];
+      const offsetTop = el.offsetTop;
+      const offsetHeight = el.offsetHeight;
+      const stride = nextEl
+        ? nextEl.offsetTop - offsetTop
+        : prevEl
+        ? offsetTop - prevEl.offsetTop
+        : offsetHeight;
+      metrics.push({
+        start: Number(el.dataset.start),
+        end: Number(el.dataset.end),
+        offsetTop,
+        offsetHeight,
+        stride,
+      });
+    }
+    blockMetricsRef.current = metrics;
+  };
+
+  const follow = () => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    let list = blockMetricsRef.current;
+    if (!list.length) {
+      measureBlocks();
+      list = blockMetricsRef.current;
+      if (!list.length) return;
+    }
+    const time = timeRef.current;
+    const found = list.findIndex((m) => time < m.end);
+    const index = found < 0 ? list.length - 1 : found;
+    const m = list[index];
+    const progress = clamp01((time - m.start) / (m.end - m.start));
+    const vh = viewportHeightRef.current || viewport.clientHeight;
+    viewport.scrollTop = Math.max(
+      0,
+      m.offsetTop + m.offsetHeight / 2 - vh * 0.4 + (progress - 0.5) * m.stride,
+    );
+  };
+
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+    measureBlocks();
+    follow();
+    const observer =
+      typeof ResizeObserver === "undefined"
+        ? null
+        : new ResizeObserver(() => {
+            measureBlocks();
+            follow();
+          });
+    observer?.observe(viewport);
+    return () => {
+      observer?.disconnect();
+    };
+  }, [bars]);
+
+  useLayoutEffect(() => {
+    follow();
+  }, [currentTimeMs]);
+
+  // 计算连续、平滑的播放头所在小节及百分比
+  const playheadBar = getPlayheadBar(bars, currentTimeMs);
+  const playheadPercent = playheadBar ? getPlayheadPercentInBar(playheadBar, currentTimeMs) : 0;
+
+  // 定位击响音符与下一次击响音符
+  const sixteenthMs = bpm ? Math.round(60_000 / bpm / 4) : 125;
+  const activeWindowMs = Math.min(140, Math.max(70, Math.round(sixteenthMs * 0.85)));
+
+  const currentAudioBarIdx = bars.findIndex(
+    (b) => currentTimeMs >= b.startMs && currentTimeMs < b.endMs,
+  );
+  const activeHitsWindow = currentAudioBarIdx >= 0
+    ? [bars[currentAudioBarIdx - 1], bars[currentAudioBarIdx]].filter(Boolean).flatMap((b) => b.hits)
+    : bars.slice(0, 2).flatMap((b) => b.hits);
+  const latestHit = activeHitsWindow
+    .filter((hit) => hit.atMs <= currentTimeMs && currentTimeMs - hit.atMs <= activeWindowMs)
+    .at(-1) ?? null;
+
+  const futureBars = currentAudioBarIdx >= 0
+    ? bars.slice(currentAudioBarIdx, currentAudioBarIdx + 3)
+    : bars.slice(0, 3);
+  const nextHit = futureBars
+    .flatMap((b) => b.hits)
+    .filter((hit) => hit.atMs > currentTimeMs && hit.atMs - currentTimeMs <= 1500)
+    .at(0) ?? null;
+
   /** 全曲连续排版，每行 3 小节（适配竖屏紧凑与长行视野） */
-  const rows: Bar[][] = [];
-  for (let index = 0; index < bars.length; index += 3) {
-    rows.push(bars.slice(index, index + 3));
-  }
+  const rows = useMemo(() => {
+    const r: Bar[][] = [];
+    for (let index = 0; index < bars.length; index += 3) {
+      r.push(bars.slice(index, index + 3));
+    }
+    return r;
+  }, [bars]);
 
   return (
     <section className="score" aria-label="可跟练鼓谱">
       <div className="score-legend" aria-hidden="true">
-        {bars.some(bar => bar.hits.some(hit => hit.dynamics === "soft")) ? (
+        {bars.some((bar) => bar.hits.some((hit) => hit.dynamics === "soft")) ? (
           <span className="score-meta">小写 b/s：轻击</span>
         ) : null}
         {(["bass", "tone", "slap"] as Stroke[]).map((stroke) => (
@@ -375,160 +748,31 @@ export function ScorePage({
         )}
       </div>
 
-      <div className="score-viewport" ref={viewportRef} tabIndex={0} aria-label="连续鼓谱，暂停后可上下滑动">
-      <div className="score-page">
-        {rows.map((rowBars) => {
-          const rowKey = rowBars[0]?.number ?? 0;
-          const rowStart = rowBars[0].startMs;
-          const rowEnd = rowBars[rowBars.length - 1].endMs;
-          const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
-          return (
-            <div className="score-page__block" key={rowKey} data-start={rowStart} data-end={rowEnd}>
-              <div className="score-page__row">
-                {rowBars.map((bar) => {
-                  const isActive = activeBar?.number === bar.number;
-                  return (
-                    <article
-                      className={isActive ? "score-bar score-bar--active" : "score-bar"}
-                      key={bar.number}
-                      style={{ flex: bar.beats }}
-                      aria-label={`第 ${bar.number} 小节`}
-                      tabIndex={onSeekAndPlay ? 0 : undefined}
-                      data-seekable={onSeekAndPlay ? "true" : undefined}
-                      title={onSeekAndPlay ? "点击从这里播放" : undefined}
-                      onClick={onSeekAndPlay ? () => onSeekAndPlay(bar.startMs) : undefined}
-                      onKeyDown={onSeekAndPlay ? (event) => {
-                        if (event.target === event.currentTarget && (event.key === "Enter" || event.key === " ")) {
-                          event.preventDefault();
-                          onSeekAndPlay(bar.startMs);
-                        }
-                      } : undefined}
-                    >
-                      <div className="score-bar__header" aria-hidden="true">
-                        <span className="score-bar__no">{bar.number}</span>
-                        {bar.section && (
-                          <span className="score-section">{bar.section}</span>
-                        )}
-                      </div>
-                      <div className="score-bar__content">
-                        {bar.timeSignature && (
-                          <div
-                            className="score-bar__meter"
-                            aria-label={`拍号切换 ${bar.timeSignature[0]}/${bar.timeSignature[1]}`}
-                          >
-                            <span className="score-bar__meter-num">{bar.timeSignature[0]}</span>
-                            <span className="score-bar__meter-num">{bar.timeSignature[1]}</span>
-                          </div>
-                        )}
-                        <div className="score-bar__grid">
-                          {beatPairs(bar).map((pair, index) => beatCell(pair, index))}
-                          {isActive && (
-                            <div
-                              className="score-playhead"
-                              style={{
-                                left: `${Math.round(getPlayheadPercentInBar(bar, currentTimeMs) * 100) / 100}%`,
-                              }}
-                              aria-hidden="true"
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-
-              {rowBars.some((bar) => Boolean(bar.lyric || (bar.lyricBeats && bar.lyricBeats.length > 0))) ? (
-                <div className="score-lyrics score-lyrics--bar-aligned" aria-label="本行歌词">
-                  {rowBars.map((bar) => {
-                    const isCurrent = activeBar?.number === bar.number;
-                    const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
-                    const text = bar.lyric ?? "";
-                    const placed = getHumanizedPlacedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
-
-                    return (
-                      <div
-                        className="score-bar-lyrics"
-                        key={`lyric-${bar.number}`}
-                        style={{ flex: bar.beats }}
-                      >
-                        {bar.timeSignature && (
-                          <span className="score-page__meter-space" aria-hidden="true" />
-                        )}
-                        <p
-                          className="score-lyric score-lyric--timed"
-                          data-state={isCurrent && Boolean(text || hasBeats) ? "current" : "idle"}
-                          aria-label={text || undefined}
-                        >
-                          {hasBeats && placed ? (
-                            <span className="score-lyric__beats score-lyric__beats--placed">
-                              {placed.map((c, i) => {
-                                let charState: "current" | "past" | "idle" = "idle";
-                                if (currentTimeMs >= bar.endMs) {
-                                  charState = "past";
-                                } else if (currentTimeMs < bar.startMs) {
-                                  charState = "idle";
-                                } else if (isCurrent) {
-                                  const playheadPercent = getPlayheadPercentInBar(bar, currentTimeMs);
-                                  if (playheadPercent >= c.endPercent) {
-                                    charState = "past";
-                                  } else if (playheadPercent >= c.startPercent) {
-                                    charState = "current";
-                                  } else {
-                                    charState = "idle";
-                                  }
-                                }
-
-                                return (
-                                  <span
-                                    className="score-lyric__char score-lyric__char--placed"
-                                    key={i}
-                                    data-state={charState}
-                                    style={{ left: `${c.leftPercent}%` }}
-                                  >
-                                    {c.ch}
-                                  </span>
-                                );
-                              })}
-                            </span>
-                          ) : (
-                            <span className="score-lyric__phrase">
-                              <span className="score-lyric__char">{text}</span>
-                            </span>
-                          )}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : lyrics ? (
-                <div className="score-lyrics" aria-label="本行歌词">
-                  {rowLyrics?.map((cue) => {
-                    const characters = Array.from(cue.text.replace(/\s/g, ""));
-                    // 均匀铺字用于视觉预读，不把它宣称为逐字人声识别时间。
-                    const positions = characters.map((char, i) => ({ char,
-                      at: cue.startMs + (i + 0.5) / characters.length * (cue.endMs - cue.startMs),
-                    })).filter(({ at }) => at >= rowStart && at < rowEnd);
-                    if (!positions.length) return null;
-                    const start = Math.max(cue.startMs, rowStart);
-                    const end = Math.min(cue.endMs, rowEnd);
-                    return <p key={cue.startMs} className="score-lyric score-lyric--timed"
-                      aria-label={positions.map(({ char }) => char).join("")}
-                      data-state={currentTimeMs >= Math.max(cue.startMs, rowStart) && currentTimeMs < Math.min(cue.endMs, rowEnd) ? "current" : "idle"}
-                      style={{
-                        left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
-                        width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
-                      }}>
-                      {positions.map(({ char, at }, i) => <span className="score-lyric__char" key={i}
-                        style={{ left: `${(at - start) / (end - start) * 100}%` }}>{char}</span>)}
-                    </p>;
-                  })}
-                </div>
-              ) : null}
-            </div>
-          );
-        })}
-      </div>
+      <div
+        className="score-viewport"
+        ref={viewportRef}
+        tabIndex={0}
+        aria-label="连续鼓谱，暂停后可上下滑动"
+      >
+        <div className="score-page">
+          {rows.map((rowBars) => (
+            <ScoreRowBlock
+              key={rowBars[0]?.number ?? 0}
+              rowBars={rowBars}
+              playheadBarNumber={playheadBar?.number ?? null}
+              playheadPercent={playheadPercent}
+              currentTimeMs={currentTimeMs}
+              latestHit={latestHit}
+              nextHit={nextHit}
+              activeWindowMs={activeWindowMs}
+              lyrics={lyrics}
+              lyricOffsetMs={lyricOffsetMs}
+              charTimes={charTimes}
+              onSeekAndPlay={onSeekAndPlay}
+              showHands={showHands}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

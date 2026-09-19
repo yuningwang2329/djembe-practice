@@ -260,7 +260,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 
 /* 竖屏优先连续排版：每行 3 小节，紧凑紧密，可同时纵览 6 行左右，下方歌词逐拍对准 */
 .score-page { position: relative; display: flex; flex-direction: column; gap: clamp(.4rem, 1vh, .7rem); padding-block: clamp(1rem, 3.5vh, 2rem); }
-.score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.35rem, 2.6vh, 1.75rem); }
+.score-page__block { position: relative; flex-shrink: 0; padding-bottom: clamp(1.6rem, 3.2vh, 2.1rem); }
 
 .score-page__row { display: flex; gap: 0; align-items: stretch; }
 .score-bar { position: relative; flex: 1; display: flex; flex-direction: column; opacity: .68; transition: opacity 180ms ease; }
@@ -269,14 +269,14 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-bar[data-seekable]:focus-visible, .score-char[data-seekable]:focus-visible { outline: 2px solid #e45f26; outline-offset: 4px; }
 .score-char[data-seekable]::after { content: ""; position: absolute; inset: -.5rem -.2rem; }
 .score-bar__header { display: flex; align-items: center; gap: .3rem; padding: 0 .2rem .1rem; min-height: 1.1rem; }
-.score-bar__no { font-size: clamp(.68rem, 1.05vw, .82rem); font-weight: 800; color: #8c7362; font-variant-numeric: tabular-nums; }
+.score-bar__no { font-size: clamp(.75rem, 1.15vw, .92rem); font-weight: 850; color: #8c7362; font-variant-numeric: tabular-nums; }
 .score-bar--active .score-bar__no { color: #e45f26; font-weight: 900; }
 .score-section {
   border-radius: 3px;
-  padding: .02rem .3rem;
+  padding: .05rem .35rem;
   background: #e45f26;
   color: #fff;
-  font-size: clamp(.52rem, .85vw, .62rem);
+  font-size: clamp(.58rem, .95vw, .72rem);
   font-weight: 800;
   letter-spacing: .03em;
   white-space: nowrap;
@@ -284,21 +284,21 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 }
 .score-bar__content { display: flex; align-items: stretch; min-width: 0; position: relative; flex: 1; }
 .score-bar__content .score-bar__meter + .score-bar__grid { border-left: none; }
-.score-bar__grid { position: relative; flex: 1; display: flex; align-items: stretch; gap: 0; min-height: clamp(2.3rem, 5.4vh, 3.2rem); padding: .25rem 0; border-left: 2px solid #503d2e; background: rgb(255 252 246 / 88%); box-shadow: 0 4px 14px rgb(85 53 34 / 4%); overflow: hidden; }
+.score-bar__grid { position: relative; flex: 1; display: flex; align-items: stretch; gap: 0; min-height: clamp(2.8rem, 6.2vh, 3.6rem); padding: .25rem 0 .5rem; border-left: 2px solid #503d2e; background: rgb(255 252 246 / 88%); box-shadow: 0 4px 14px rgb(85 53 34 / 4%); overflow: hidden; }
 .score-page__row .score-bar:last-child .score-bar__grid { border-right: 2px solid #503d2e; }
 .score-page__row .score-bar:first-child .score-bar__grid { border-top-left-radius: 4px; border-bottom-left-radius: 4px; }
 .score-page__row .score-bar:last-child .score-bar__grid { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
 .score-bar__meter { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; width: clamp(1.1rem, 1.6vw, 1.35rem); padding: 0 .12rem; border-left: 2px solid #503d2e; border-right: 1.5px solid #6d5340; background: rgba(228, 95, 38, 0.08); color: #4a382c; font-family: inherit; font-weight: 900; font-size: clamp(.65rem, 1vw, .8rem); line-height: 1.05; user-select: none; }
 .score-bar__meter-num { display: block; text-align: center; }
 
-.score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.15rem, 2.4vh, 1.45rem); pointer-events: none; }
+.score-lyrics { position: absolute; left: 0; right: 0; bottom: 0; height: clamp(1.4rem, 2.9vh, 1.9rem); pointer-events: none; }
 .score-lyrics--bar-aligned { display: flex; gap: 0; align-items: center; }
 .score-bar-lyrics { display: flex; align-items: center; min-width: 0; height: 100%; }
 .score-bar-lyrics .score-lyric { position: relative; bottom: auto; flex: 1; display: flex; align-items: center; margin: 0; padding: 0; width: 100%; height: 100%; transform: none; }
 .score-lyric__beats { display: flex; align-items: center; width: 100%; height: 100%; }
 .score-lyric__beat-cell { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; gap: 2px; min-width: 0; height: 100%; }
 .score-lyric__phrase { display: flex; align-items: center; justify-content: space-around; width: 100%; height: 100%; }
-.score-bar-lyrics .score-lyric__char { position: static; transform: none; font-size: clamp(.72rem, 1.25vw, .9rem); font-weight: 750; color: #6d5340; transition: color 80ms ease, font-weight 80ms ease; }
+.score-bar-lyrics .score-lyric__char { position: static; transform: none; font-size: clamp(1.0rem, 1.8vw, 1.25rem); font-weight: 800; color: #6d5340; transition: color 80ms ease, font-weight 80ms ease; }
 .score-bar-lyrics .score-lyric[data-state="current"] { background: rgba(228, 95, 38, 0.06); border-radius: 5px; }
 .score-bar-lyrics .score-lyric__char[data-state="current"],
 .score-lyric__beat-cell[data-state="current"] .score-lyric__char { color: #e45f26; font-weight: 900; }
@@ -306,7 +306,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-lyric__beat-cell[data-state="past"] .score-lyric__char { color: rgba(228, 95, 38, 0.55); font-weight: 800; }
 .score-bar-lyrics .score-lyric__char[data-state="idle"] { color: #6d5340; font-weight: 750; }
 .score-lyric[data-state="current"] { color: #a53e12; background: #fff0d8; border-radius: .3rem; }
-.score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: visible; color: #6d5340; font-size: clamp(.72rem, 1.4vw, .9rem); font-weight: 700; letter-spacing: .02em; }
+.score-lyric { position: absolute; bottom: 0; margin: 0; padding: 0 .2rem; text-align: center; white-space: nowrap; overflow: visible; color: #6d5340; font-size: clamp(1.0rem, 1.8vw, 1.25rem); font-weight: 800; letter-spacing: .02em; }
 .score-lyric--timed { height: 1.6em; line-height: 1.6; overflow: visible; padding: 0; text-overflow: clip; }
 .score-lyric__char { position: absolute; transform: translateX(-50%); }
 
@@ -314,7 +314,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-beat { display: flex; align-items: stretch; justify-content: stretch; min-width: 0; flex: 1; border-right: 1px dashed rgb(80 61 46 / 10%); }
 .score-beat:last-child { border-right: none; }
 .score-beat--rest { align-items: flex-end; justify-content: center; }
-.score-rest { padding-bottom: .28rem; color: #cbb8a4; font-size: clamp(1.05rem, 2.6vh, 1.5rem); font-weight: 600; line-height: 1; }
+.score-rest { padding-bottom: .28rem; color: #cbb8a4; font-size: clamp(1.35rem, 2.8vw, 1.85rem); font-weight: 700; line-height: 1; }
 .score-group { display: flex; width: 100%; align-items: flex-end; justify-content: stretch; padding: 0 0 .45rem; position: relative; }
 /* 八分音符的横梁。必须用绝对定位画，不能用 border-bottom——
    加边框会让元素外框变高，而父级是 align-items: flex-end，
@@ -335,12 +335,10 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-group--dense { gap: 0; padding-left: 0; padding-right: 0; width: 100%; }
 .score-group--dense .score-note { flex: 1; min-width: 0; text-align: center; }
 .score-group--dense .score-char { min-width: 0; }
-.score-group--dense .score-char__letter { font-size: clamp(.85rem, 1.5vw, 1.12rem); }
 .score-group--dense .score-char__hand { font-size: .48rem; top: -.75em; right: -.25em; }
-.score-group--four .score-char__letter { font-size: clamp(.65rem, 1.05vw, .85rem); }
-.score-group--four .score-char__hand { font-size: .4rem; }
-.score-char { position: relative; display: inline-flex; justify-content: center; align-items: center; min-width: 1.1em; line-height: 1; }
-.score-char__letter { font-size: clamp(1.1rem, 2.7vh, 1.55rem); font-weight: 850; font-family: "Trebuchet MS", "PingFang SC", sans-serif; display: inline-flex; align-items: center; justify-content: center; }
+.score-group--four .score-char__hand { font-size: .42rem; top: -.75em; right: -.25em; }
+.score-char { position: relative; display: inline-flex; justify-content: center; align-items: center; min-width: 0; line-height: 1; }
+.score-char__letter { font-size: clamp(1.35rem, 2.8vw, 1.85rem); font-weight: 900; font-family: "Trebuchet MS", "PingFang SC", sans-serif; display: inline-flex; align-items: center; justify-content: center; }
 .score-char--bass .score-char__letter { color: #7c4a1d; }
 .score-char--tone .score-char__letter { color: #8f6c14; }
 .score-char--slap .score-char__letter { color: #147055; font-weight: 900; }
@@ -349,8 +347,8 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 /* 弱音/轻击：小写 s / b 用小字号 + 斜体 + 淡色，大写 S / B 坚挺实心，一眼即辨。
    不再加虚线外环——外环在小屏上会糊成一片，反而不好认。 */
 .score-char--soft .score-char__letter {
-  font-size: clamp(.82rem, 1.9vh, 1.08rem);
-  font-weight: 700;
+  font-size: clamp(1.12rem, 2.2vw, 1.5rem);
+  font-weight: 750;
   font-style: italic;
 }
 .score-char--slap.score-char--soft .score-char__letter {
@@ -449,7 +447,7 @@ input[type="range"] { width: 100%; accent-color: #e57032; cursor: pointer; }
   .practice-header { align-items: center; }
   .practice-position { gap: .3rem; font-size: .84rem; }
   .portrait-note { display: none; }
-  .score-bar__grid { min-height: clamp(2.3rem, 5.2vh, 3.2rem); }
+  .score-bar__grid { min-height: clamp(2.6rem, 5.8vh, 3.4rem); }
   .score-page__row { display: flex; flex-direction: row; }
   .track-toggle { width: auto; }
 }
@@ -472,8 +470,8 @@ input[type="range"] { width: 100%; accent-color: #e57032; cursor: pointer; }
   top: 50%;
   transform: translate(-50%, -50%);
   white-space: nowrap;
-  font-size: clamp(.72rem, 1.25vw, .9rem);
-  font-weight: 750;
+  font-size: clamp(1.0rem, 1.8vw, 1.25rem);
+  font-weight: 800;
   color: #6d5340;
   transition: color 80ms ease, font-weight 80ms ease;
 }
