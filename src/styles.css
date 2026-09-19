@@ -313,7 +313,19 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-beat--rest { align-items: flex-end; justify-content: center; }
 .score-rest { padding-bottom: .28rem; color: #cbb8a4; font-size: clamp(1.05rem, 2.6vh, 1.5rem); font-weight: 600; line-height: 1; }
 .score-group { display: flex; width: 100%; align-items: flex-end; justify-content: stretch; padding: 0 0 .45rem; position: relative; }
-.score-group--eighths { border-bottom: 2.5px solid #503d2e; }
+/* 八分音符的横梁。必须用绝对定位画，不能用 border-bottom——
+   加边框会让元素外框变高，而父级是 align-items: flex-end，
+   于是有横梁的音符被顶高 2.5px，与没有横梁的音符底边对不齐。
+   实测同一行里 B 比 S 低 2px，就是这个引起的。 */
+.score-group--eighths::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 2.5px solid #503d2e;
+  pointer-events: none;
+}
 /* 字母画在自己时值格子的"开头"，也就是它的敲响时刻。
    居中会让字母落在时值正中，敲响那一瞬播放头还差约 0.4 拍才追到字母。 */
 .score-note { position: relative; display: flex; align-items: flex-end; justify-content: flex-start; min-width: 0; }
