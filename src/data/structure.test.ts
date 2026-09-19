@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { songLibrary } from "./demoSong";
 import { structureEdits } from "./structureEdits";
+import { lyricOffsets } from "./lyricOffsets";
 import { validateSong } from "../domain/song";
 import { qiaobianguniang } from "./qiaobianguniang";
 import { tongnianSong } from "./tongnian";
@@ -18,6 +19,21 @@ describe("谱面结构校正", () => {
     const ids = new Set(songLibrary.map((song) => song.id));
     const orphans = Object.keys(structureEdits).filter((key) => !ids.has(key));
     expect(orphans, `这些键没有对应曲目，校正会被静默跳过: ${orphans.join(", ")}`).toEqual([]);
+  });
+
+  it("歌词微调表的每个键也能对应到曲目 id", () => {
+    const ids = new Set(songLibrary.map((song) => song.id));
+    const orphans = Object.keys(lyricOffsets).filter((key) => !ids.has(key));
+    expect(orphans, `这些键没有对应曲目，微调会静默失效: ${orphans.join(", ")}`).toEqual([]);
+  });
+
+  it("歌词微调量保持在合理范围（不到一小节的一半）", () => {
+    for (const song of songLibrary) {
+      const offset = lyricOffsets[song.id];
+      if (offset === undefined) continue;
+      const barMs = Math.max(...song.bars.map((bar) => bar.endMs - bar.startMs));
+      expect(Math.abs(offset), `${song.id} 微调量过大，应该改用整小节校正`).toBeLessThan(barMs / 2);
+    }
   });
 
   it("校正后每首曲目的小节编号连续、时间不重叠、鼓点在小节内", () => {

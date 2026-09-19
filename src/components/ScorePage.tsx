@@ -11,6 +11,8 @@ interface ScorePageProps {
   timeSignature?: [number, number];
   bpm?: number;
   lyrics?: SongDefinition["lyrics"];
+  /** 歌词高亮的整体微调（毫秒）。只动歌词，不动鼓点、播放头或实际播放。 */
+  lyricOffsetMs?: number;
   onSeekAndPlay?: (timeMs: number) => void;
   showHands?: boolean;
   isPlaying?: boolean;
@@ -65,6 +67,7 @@ export function ScorePage({
   timeSignature,
   bpm,
   lyrics,
+  lyricOffsetMs = 0,
   onSeekAndPlay,
   showHands = true,
   isPlaying = false,
@@ -147,9 +150,7 @@ export function ScorePage({
           }
         } : undefined}
       >
-        <b className="score-char__letter">
-          {isSoft ? <span className="score-char__ghost-note">{letter}</span> : letter}
-        </b>
+        <b className="score-char__letter">{letter}</b>
         {showHands && <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>}
       </span>
     );
@@ -309,7 +310,8 @@ export function ScorePage({
                             <span className="score-lyric__beats">
                               {Array.from({ length: bar.beats }, (_, bIdx) => {
                                 const char = bar.lyricBeats?.[bIdx] ?? "";
-                                const beatStart = bar.startMs + bIdx * beatMs;
+                                // 歌词整体微调：整小节增删之后剩下的"不到一小节"的偏差
+                                const beatStart = bar.startMs + bIdx * beatMs + lyricOffsetMs;
                                 const beatEnd = beatStart + beatMs;
                                 const isBeatCurrent = currentTimeMs >= beatStart && currentTimeMs < beatEnd;
                                 const isBeatPast = isCurrent && currentTimeMs >= beatEnd;

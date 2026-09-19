@@ -169,7 +169,7 @@ describe("ScorePage", () => {
     expect(article).toHaveStyle({ flex: "2" });
   });
 
-  it("applies ghost-note soft styling for s and b so they are easily distinguished from S and B", () => {
+  it("distinguishes soft s/b from strong S/B by the soft class alone — no dashed ring", () => {
     const bar = {
       number: 1,
       startMs: 0,
@@ -182,22 +182,25 @@ describe("ScorePage", () => {
         { atMs: 1500, stroke: "bass" as const, hand: "L" as const, dynamics: "soft" as const },
       ],
     };
-    const { container } = render(<ScorePage bars={[bar]} currentTimeMs={0} />);
+    const { container } = render(<ScorePage bars={[bar]} currentTimeMs={0} showHands={false} />);
 
-    // 强击 S 和 B 没有 soft 类和 ghost-note
     const strongSlap = container.querySelector('[data-hit-at="0"]');
     expect(strongSlap).not.toHaveClass("score-char--soft");
-    expect(strongSlap?.querySelector(".score-char__ghost-note")).toBeNull();
+    expect(strongSlap?.textContent).toBe("S");
 
-    // 弱击 s 和 b 有 soft 类和 ghost-note 装饰环
     const softSlap = container.querySelector('[data-hit-at="500"]');
     expect(softSlap).toHaveClass("score-char--soft");
-    expect(softSlap?.querySelector(".score-char__ghost-note")).not.toBeNull();
-    expect(softSlap?.textContent).toContain("s");
+    expect(softSlap?.textContent).toBe("s");
+
+    const strongBass = container.querySelector('[data-hit-at="1000"]');
+    expect(strongBass).not.toHaveClass("score-char--soft");
+    expect(strongBass?.textContent).toBe("B");
 
     const softBass = container.querySelector('[data-hit-at="1500"]');
     expect(softBass).toHaveClass("score-char--soft");
-    expect(softBass?.querySelector(".score-char__ghost-note")).not.toBeNull();
-    expect(softBass?.textContent).toContain("b");
+    expect(softBass?.textContent).toBe("b");
+
+    // 虚线外环已移除：小字+斜体+淡色足够区分，外环在小屏上会糊成一片
+    expect(container.querySelector(".score-char__ghost-note")).toBeNull();
   });
 });

@@ -330,30 +330,18 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-char--slap .score-char__letter { color: #147055; font-weight: 900; }
 .score-char--rest .score-char__letter { color: #cbb8a4; font-weight: 600; }
 
-/* 弱音/轻击强化：针对小写 s（及小写 b），使用小字号与精致虚线外环，大写 S 坚挺实心，一眼即辩 */
+/* 弱音/轻击：小写 s / b 用小字号 + 斜体 + 淡色，大写 S / B 坚挺实心，一眼即辨。
+   不再加虚线外环——外环在小屏上会糊成一片，反而不好认。 */
 .score-char--soft .score-char__letter {
   font-size: clamp(.82rem, 1.9vh, 1.08rem);
   font-weight: 700;
+  font-style: italic;
 }
 .score-char--slap.score-char--soft .score-char__letter {
   color: #3b8871;
 }
 .score-char--bass.score-char--soft .score-char__letter {
   color: #936e4f;
-}
-.score-char__ghost-note {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.45em;
-  height: 1.45em;
-  border-radius: 50%;
-  border: 1.5px dashed currentColor;
-  background: rgb(255 255 255 / 65%);
-  box-shadow: 0 1px 4px rgb(0 0 0 / 5%);
-  line-height: 1;
-  padding: 0;
-  margin: -1px;
 }
 .score-char--soft .score-char__hand {
   opacity: .82;
@@ -417,6 +405,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .speed-control-group button, .transport-controls button:not(.play-button) { width: 32px; height: 32px; border: 0; border-radius: 7px; background: transparent; color: inherit; font-size: 1.15rem; cursor: pointer; display: grid; place-items: center; }
 .speed-control-group button:hover, .transport-controls button:not(.play-button):hover { background: rgb(255 255 255 / 12%); }
 .speed-control-group output, .transport-controls output { min-width: 2.8rem; font-weight: 800; font-variant-numeric: tabular-nums; text-align: center; font-size: .84rem; color: #f5a44d; }
+.visual-lead-group output { min-width: 4.6rem; font-size: .78rem; }
 .play-button { min-width: 72px; min-height: 36px; border-radius: 9px; border: 0; background: #e57032; color: #fff; font-weight: 800; font-size: .88rem; cursor: pointer; transition: transform 100ms ease; }
 .play-button:active { transform: scale(.97); }
 .progress-bar-container { display: flex; flex-direction: column; gap: .15rem; flex: 1; min-width: 180px; }

@@ -4,6 +4,7 @@ import { ScorePage } from "./components/ScorePage";
 import { TrackToggle } from "./components/TrackToggle";
 import { RhythmPatternPractice } from "./components/RhythmPatternPractice";
 import { songLibrary } from "./data/demoSong";
+import { lyricOffsets } from "./data/lyricOffsets";
 import { clampPlaybackRate, getBarAtTime } from "./domain/timeline";
 import type { SongDefinition } from "./domain/song";
 import { usePlaybackController } from "./hooks/usePlaybackController";
@@ -136,9 +137,34 @@ function SongLibrary({
   );
 }
 
+/**
+ * 画面提前量：把播放头和高亮整体往前挪一点，抵消"听到的声音"与"屏幕上的位置"之间的
+ * 延迟（蓝牙音箱、系统音频缓冲、画面渲染都会贡献这个延迟）。听感是主观的，
+ * 所以做成可调的，自己听着舒服为准。只影响画面，不影响实际播放和进度条。
+ */
+const VISUAL_LEAD_KEY = "djembe.visualLeadMs";
+const VISUAL_LEAD_MIN = 0;
+const VISUAL_LEAD_MAX = 600;
+const VISUAL_LEAD_STEP = 20;
+/** 首次使用的默认值：略微前移。给 0 的话画面不会有任何变化，等于没改。 */
+const VISUAL_LEAD_DEFAULT = 120;
+
+function readVisualLead(): number {
+  try {
+    const stored = globalThis.localStorage?.getItem(VISUAL_LEAD_KEY);
+    if (stored === null || stored === undefined) return VISUAL_LEAD_DEFAULT;
+    const raw = Number(stored);
+    if (!Number.isFinite(raw)) return VISUAL_LEAD_DEFAULT;
+    return Math.min(VISUAL_LEAD_MAX, Math.max(VISUAL_LEAD_MIN, Math.round(raw)));
+  } catch {
+    return VISUAL_LEAD_DEFAULT;
+  }
+}
+
 function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => void }) {
   const [practiceMode, setPracticeMode] = useState<"score" | "rhythm">("score");
   const [showHands, setShowHands] = useState(true);
+  const [visualLeadMs, setVisualLeadMs] = useState(readVisualLead);
   const [loopStartBar, setLoopStartBar] = useState(1);
   const [loopEndBar, setLoopEndBar] = useState(4);
   const [loopEnabled, setLoopEnabled] = useState(false);
@@ -152,7 +178,9 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
   const { snapshot } = playback;
   const wakeLock = useWakeLock(snapshot.isPlaying || snapshot.isCountingIn);
 
-  const activeBar = getBarAtTime(effectiveSong, snapshot.currentTimeMs) ?? effectiveSong.bars[0];
+  // 画面用的时间：实际播放时间 + 提前量。进度条仍显示真实时间，不受影响。
+  const displayTimeMs = snapshot.currentTimeMs + visualLeadMs;
+  const activeBar = getBarAtTime(effectiveSong, displayTimeMs) ?? effectiveSong.bars[0];
   const countInBeat = snapshot.isCountingIn
     ? song.timeSignature[0] - snapshot.countInBeatsRemaining + 1
     : 0;
@@ -163,6 +191,17 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
   const hasIntroRest = Boolean(firstDrumHit && firstDrumHit.atMs > 4000);
 
   const setSpeed = (candidate: number) => playback.setRate(clampPlaybackRate(candidate));
+  const shiftVisualLead = (delta: number) => {
+    setVisualLeadMs((prev) => {
+      const next = Math.min(VISUAL_LEAD_MAX, Math.max(VISUAL_LEAD_MIN, prev + delta));
+      try {
+        globalThis.localStorage?.setItem(VISUAL_LEAD_KEY, String(next));
+      } catch {
+        // 隐私模式下可能写不了，忽略即可，本次会话内仍然生效
+      }
+      return next;
+    });
+  };
   const updateLoop = (startBar: number, endBar: number, enabled = loopEnabled) => {
     const normalizedEnd = Math.max(startBar, endBar);
     setLoopStartBar(startBar);
@@ -294,8 +333,9 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
           <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
           <ScorePage
             bars={activeBars}
-            currentTimeMs={snapshot.currentTimeMs}
+            currentTimeMs={displayTimeMs}
             lyrics={effectiveSong.lyrics}
+            lyricOffsetMs={lyricOffsets[song.id] ?? 0}
             onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
             countInBeat={countInBeat}
             timeSignature={song.timeSignature}
@@ -319,6 +359,28 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
                   <button type="button" aria-label="减速" onClick={() => setSpeed(snapshot.playbackRate - 0.05)}>−</button>
                   <output aria-label="当前速度">{snapshot.playbackRate.toFixed(2)}×</output>
                   <button type="button" aria-label="加速" onClick={() => setSpeed(snapshot.playbackRate + 0.05)}>＋</button>
+                </div>
+                <div className="speed-control-group visual-lead-group">
+                  <button
+                    type="button"
+                    aria-label="画面提前量减少"
+                    onClick={() => shiftVisualLead(-VISUAL_LEAD_STEP)}
+                  >
+                    −
+                  </button>
+                  <output
+                    aria-label="画面提前量"
+                    title="播放头和高亮整体前移的毫秒数。觉得画面慢半拍就加大它，听到和看到对齐即可。"
+                  >
+                    提前 {visualLeadMs}ms
+                  </output>
+                  <button
+                    type="button"
+                    aria-label="画面提前量增加"
+                    onClick={() => shiftVisualLead(VISUAL_LEAD_STEP)}
+                  >
+                    ＋
+                  </button>
                 </div>
               </div>
               <div className="progress-bar-container">
