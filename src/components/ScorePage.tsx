@@ -148,7 +148,7 @@ export function ScorePage({
         } : undefined}
       >
         <b className="score-char__letter">
-          {letter}
+          {isSoft ? <span className="score-char__ghost-note">{letter}</span> : letter}
         </b>
         {showHands && <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>}
       </span>

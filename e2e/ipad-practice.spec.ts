@@ -110,6 +110,7 @@ test("portrait remains operable", async ({ page }) => {
 
   await expect(page.getByLabel("可跟练鼓谱")).toBeVisible();
   await expect(page.getByRole("button", { name: "开始播放" })).toBeVisible();
+  await page.screenshot({ path: "/Users/wangyuning/.gemini/antigravity/brain/a10bbffc-5acb-44ad-a396-07837d408051/portrait-6rows-preview.png" });
 });
 
 test("an imported family track remains available after reopening the app", async ({ page }) => {
