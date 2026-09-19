@@ -459,7 +459,11 @@ input[type="range"] { width: 100%; accent-color: #e57032; cursor: pointer; }
 /* 逐字按演唱时刻摆放：字与字的横向间距 = 真实演唱时值之差。
    均匀唱就等距，连着快唱就靠拢——不是按拍位平均分。 */
 .score-lyric__beats--placed { position: relative; display: block; width: 100%; min-height: 1.35em; }
-.score-lyric__char--placed {
+/* 必须写成 .score-bar-lyrics .score-lyric__char--placed：
+   上面有一条 .score-bar-lyrics .score-lyric__char { position: static } 是"两个类"的
+   权重，只写一个类会输给它，position 落回 static，left 百分比被完全忽略——
+   字符就挤成一坨。这条同样两个类、且在文件末尾，才能赢。 */
+.score-bar-lyrics .score-lyric__char--placed {
   position: absolute;
   top: 0;
   white-space: nowrap;
