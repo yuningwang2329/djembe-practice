@@ -329,30 +329,18 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-char--slap .score-char__letter { color: #147055; font-weight: 900; }
 .score-char--rest .score-char__letter { color: #cbb8a4; font-weight: 600; }
 
-/* 弱音/轻击强化：针对小写 s（及小写 b），使用小字号与精致虚线外环，大写 S 坚挺实心，一眼即辩 */
+/* 弱音/轻击强化：针对小写 s 与小写 b，彻底去除圈圈，采用纯净斜体、适度缩小子号与中等字重，干净利落，与大写 S/B 一眼即辨 */
 .score-char--soft .score-char__letter {
-  font-size: clamp(.82rem, 1.9vh, 1.08rem);
-  font-weight: 700;
+  font-size: clamp(.8rem, 1.8vh, 1.02rem);
+  font-weight: 600;
+  font-style: italic;
+  display: inline-flex;
 }
 .score-char--slap.score-char--soft .score-char__letter {
   color: #3b8871;
 }
 .score-char--bass.score-char--soft .score-char__letter {
-  color: #936e4f;
-}
-.score-char__ghost-note {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.45em;
-  height: 1.45em;
-  border-radius: 50%;
-  border: 1.5px dashed currentColor;
-  background: rgb(255 255 255 / 65%);
-  box-shadow: 0 1px 4px rgb(0 0 0 / 5%);
-  line-height: 1;
-  padding: 0;
-  margin: -1px;
+  color: #9c7352;
 }
 .score-char--soft .score-char__hand {
   opacity: .82;
