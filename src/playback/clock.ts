@@ -18,14 +18,10 @@ export function createAudioClock(
   audioOffsetMs = 0,
 ): PlaybackClock {
   let pendingSeekSeconds: number | null = null;
-  let lastAudioTimeSeconds = audio.currentTime;
-  let lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
 
   function applyPendingSeek(): void {
     if (pendingSeekSeconds === null) return;
     audio.currentTime = pendingSeekSeconds;
-    lastAudioTimeSeconds = pendingSeekSeconds;
-    lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
     pendingSeekSeconds = null;
   }
 
@@ -34,27 +30,10 @@ export function createAudioClock(
       if (pendingSeekSeconds !== null) {
         return Math.max(0, pendingSeekSeconds * 1_000 - audioOffsetMs);
       }
-      const isAudioPaused = audio.paused !== false;
-      const playbackRate = Number.isFinite(audio.playbackRate) ? audio.playbackRate : 1;
       const currentTime = Number.isFinite(audio.currentTime) ? audio.currentTime : 0;
-      const isRealMedia = typeof audio.canPlayType === "function";
-
-      if (!isRealMedia || isAudioPaused || typeof performance === "undefined") {
-        lastAudioTimeSeconds = currentTime;
-        lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
-        return Math.max(0, currentTime * 1_000 - audioOffsetMs);
-      }
-
-      const now = performance.now();
-      if (currentTime !== lastAudioTimeSeconds) {
-        lastAudioTimeSeconds = currentTime;
-        lastPerfTimeMs = now;
-      }
-      const elapsedMs = (now - lastPerfTimeMs) * playbackRate;
-      const estimatedSeconds = lastAudioTimeSeconds + elapsedMs / 1_000;
-      const diff = Math.abs(estimatedSeconds - currentTime);
-      const effectiveSeconds = diff > 0.35 ? currentTime : estimatedSeconds;
-      return Math.max(0, effectiveSeconds * 1_000 - audioOffsetMs);
+      // A stalled/quantized media clock must not produce fictitious future drum events.
+      // The intentional visual lead is applied in ScorePage, never to this audio clock.
+      return Math.max(0, currentTime * 1_000 - audioOffsetMs);
     },
 
     getPlaybackRate() {
@@ -70,8 +49,6 @@ export function createAudioClock(
     },
 
     play() {
-      lastAudioTimeSeconds = audio.currentTime;
-      lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
       return audio.play();
     },
 
@@ -83,16 +60,12 @@ export function createAudioClock(
       } else {
         pendingSeekSeconds = null;
         audio.currentTime = seconds;
-        lastAudioTimeSeconds = seconds;
-        lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
       }
     },
 
     setPlaybackRate(rate: number) {
       const nextRate = clampPlaybackRate(rate);
       audio.playbackRate = nextRate;
-      lastAudioTimeSeconds = audio.currentTime;
-      lastPerfTimeMs = typeof performance !== "undefined" ? performance.now() : 0;
       return nextRate;
     },
   };

@@ -1,0 +1,14 @@
+{
+  "gulou": [
+    {"line":15,"text":"唯有我倚着围栏 对过往说晚安","endMs":139700,"method":"asr-and-vocal-boundary","reason":"局部 ASR 的晚为 136.52 s、安为 137.2 s，人声在 139.7 s 附近消失；CTC 将晚安错误贴至 141 s。"},
+    {"line":23,"text":"我在鼓楼","startMs":208433,"method":"repeat-anchor-estimate","reason":"在的声学峰为 208913 ms，采用其他同句首字间隔约 480 ms；弱我不能借用上一句延音。"},
+    {"line":26,"text":"我在鼓楼","startMs":224713,"method":"repeat-anchor-estimate","reason":"在的声学峰为 225193 ms，首字采用重复句间隔约 480 ms。"},
+    {"line":27,"text":"我在鼓楼","startMs":228773,"method":"repeat-anchor-estimate","reason":"在的声学峰为 229253 ms，首字采用重复句间隔约 480 ms。"}
+  ],
+  "chouchangke": [
+    {"line":16,"text":"无靠无依","endMs":89700,"method":"repeat-and-vocal-boundary","reason":"其他同句前三字的相对时距支持依在约 87.6 s；89.7–90.2 s 人声能量降至近零。91.9 s 的 CTC 依落在间奏中。"}
+  ],
+  "lasa": [
+    {"line":19,"text":"醉在神话天堂","endMs":104900,"method":"repeat-and-vocal-boundary","reason":"与第二遍同句前五字相差 91.2 s，堂应约 102.97 s；104.75 s 人声尾部衰减。105.9 s 的 CTC 堂为低分晚贴。"}
+  ]
+}

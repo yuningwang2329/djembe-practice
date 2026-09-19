@@ -8,6 +8,7 @@ export interface StoredAudio {
   size: number;
   durationMs: number;
   updatedAt: number;
+  sha256?: string;
 }
 
 export type AudioMetadata = Omit<StoredAudio, "blob">;

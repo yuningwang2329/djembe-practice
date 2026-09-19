@@ -1,0 +1,650 @@
+{
+  "qiao-bian-gu-niang": {
+    "sha256": "500afd9383eb1766243890d28c43e7548d63c7fd83a7a3260b83e8745d2e8f3d",
+    "oldBpm": 77.329,
+    "newBpm": 77.329,
+    "oldStartMs": 3111,
+    "newStartMs": 3106,
+    "durationMs": 183141,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 16,
+        "medianMs": -9.5,
+        "p90Ms": 12.2
+      },
+      {
+        "from": 30,
+        "n": 19,
+        "medianMs": -8.3,
+        "p90Ms": 8.8
+      },
+      {
+        "from": 60,
+        "n": 16,
+        "medianMs": -7.5,
+        "p90Ms": 9.5
+      },
+      {
+        "from": 90,
+        "n": 14,
+        "medianMs": -7.9,
+        "p90Ms": 11.9
+      },
+      {
+        "from": 120,
+        "n": 20,
+        "medianMs": -6.9,
+        "p90Ms": 10.0
+      },
+      {
+        "from": 150,
+        "n": 10,
+        "medianMs": -8.1,
+        "p90Ms": 8.7
+      },
+      {
+        "from": 180,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "gu-lou-zhao-lei": {
+    "sha256": "4d2da6b7aae17512252b834ee5a41f1158c5c8c5c8aa7b411ea98d4e46e1a8e3",
+    "oldBpm": 118,
+    "newBpm": 118,
+    "oldStartMs": 10610,
+    "newStartMs": 10610,
+    "durationMs": 281003,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 17,
+        "medianMs": -9.8,
+        "p90Ms": 13.5
+      },
+      {
+        "from": 30,
+        "n": 30,
+        "medianMs": -6.5,
+        "p90Ms": 10.9
+      },
+      {
+        "from": 60,
+        "n": 29,
+        "medianMs": -6.6,
+        "p90Ms": 11.6
+      },
+      {
+        "from": 90,
+        "n": 29,
+        "medianMs": -8.7,
+        "p90Ms": 11.7
+      },
+      {
+        "from": 120,
+        "n": 20,
+        "medianMs": -6.9,
+        "p90Ms": 15.3
+      },
+      {
+        "from": 150,
+        "n": 24,
+        "medianMs": -13.2,
+        "p90Ms": 46.6
+      },
+      {
+        "from": 180,
+        "n": 29,
+        "medianMs": -8.4,
+        "p90Ms": 11.1
+      },
+      {
+        "from": 210,
+        "n": 26,
+        "medianMs": -10.9,
+        "p90Ms": 19.0
+      },
+      {
+        "from": 240,
+        "n": 17,
+        "medianMs": -8.7,
+        "p90Ms": 11.7
+      },
+      {
+        "from": 270,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "da-yu-zhou-shen": {
+    "sha256": "666e0e016d875390e964c609552ebde5dfbe5476d1cbefdd4332bcd07adb5ec2",
+    "oldBpm": 70.63,
+    "newBpm": 70,
+    "oldStartMs": 26220,
+    "newStartMs": 25978,
+    "durationMs": 313724,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      },
+      {
+        "from": 30,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      },
+      {
+        "from": 60,
+        "n": 4,
+        "medianMs": -108.5,
+        "p90Ms": 109.9
+      },
+      {
+        "from": 90,
+        "n": 10,
+        "medianMs": -9.2,
+        "p90Ms": 56.8
+      },
+      {
+        "from": 120,
+        "n": 3,
+        "medianMs": -19.5,
+        "p90Ms": 64.0
+      },
+      {
+        "from": 150,
+        "n": 6,
+        "medianMs": -62.0,
+        "p90Ms": 78.3
+      },
+      {
+        "from": 180,
+        "n": 13,
+        "medianMs": -33.8,
+        "p90Ms": 81.0
+      },
+      {
+        "from": 210,
+        "n": 17,
+        "medianMs": -34.8,
+        "p90Ms": 42.1
+      },
+      {
+        "from": 240,
+        "n": 16,
+        "medianMs": -30.1,
+        "p90Ms": 37.0
+      },
+      {
+        "from": 270,
+        "n": 13,
+        "medianMs": -15.9,
+        "p90Ms": 28.8
+      },
+      {
+        "from": 300,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "tongnian": {
+    "sha256": "f5ad742066d37e580090669d21095d3765b05c40ddfd2e09e10a90b2217385e4",
+    "oldBpm": 116.33,
+    "newBpm": 116.3,
+    "oldStartMs": 344,
+    "newStartMs": 372,
+    "durationMs": 233173,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 28,
+        "medianMs": -9.1,
+        "p90Ms": 60.9
+      },
+      {
+        "from": 30,
+        "n": 29,
+        "medianMs": -5.8,
+        "p90Ms": 37.3
+      },
+      {
+        "from": 60,
+        "n": 29,
+        "medianMs": -9.0,
+        "p90Ms": 51.2
+      },
+      {
+        "from": 90,
+        "n": 29,
+        "medianMs": -9.9,
+        "p90Ms": 23.8
+      },
+      {
+        "from": 120,
+        "n": 29,
+        "medianMs": -10.3,
+        "p90Ms": 16.9
+      },
+      {
+        "from": 150,
+        "n": 29,
+        "medianMs": -8.4,
+        "p90Ms": 33.2
+      },
+      {
+        "from": 180,
+        "n": 29,
+        "medianMs": -2.5,
+        "p90Ms": 53.9
+      },
+      {
+        "from": 210,
+        "n": 18,
+        "medianMs": -7.2,
+        "p90Ms": 60.6
+      }
+    ]
+  },
+  "shuishou": {
+    "sha256": "784417e0efe377a1e2ada3b00dd1055edcd54b6559b8ddf19754f397082826a3",
+    "oldBpm": 99.46,
+    "newBpm": 99.47,
+    "oldStartMs": 120,
+    "newStartMs": 288,
+    "durationMs": 316824,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 16,
+        "medianMs": -11.2,
+        "p90Ms": 13.0
+      },
+      {
+        "from": 30,
+        "n": 23,
+        "medianMs": -10.2,
+        "p90Ms": 13.9
+      },
+      {
+        "from": 60,
+        "n": 24,
+        "medianMs": -8.8,
+        "p90Ms": 29.9
+      },
+      {
+        "from": 90,
+        "n": 22,
+        "medianMs": -11.7,
+        "p90Ms": 14.1
+      },
+      {
+        "from": 120,
+        "n": 25,
+        "medianMs": -10.8,
+        "p90Ms": 22.5
+      },
+      {
+        "from": 150,
+        "n": 22,
+        "medianMs": -10.0,
+        "p90Ms": 28.6
+      },
+      {
+        "from": 180,
+        "n": 25,
+        "medianMs": -10.9,
+        "p90Ms": 12.9
+      },
+      {
+        "from": 210,
+        "n": 25,
+        "medianMs": -12.7,
+        "p90Ms": 37.8
+      },
+      {
+        "from": 240,
+        "n": 25,
+        "medianMs": -9.3,
+        "p90Ms": 25.3
+      },
+      {
+        "from": 270,
+        "n": 24,
+        "medianMs": -9.1,
+        "p90Ms": 27.7
+      },
+      {
+        "from": 300,
+        "n": 8,
+        "medianMs": -9.4,
+        "p90Ms": 15.7
+      }
+    ]
+  },
+  "lasa": {
+    "sha256": "97f120d6c6da7585f634a305aac87f9c2effbbc063afb49113f6ae5bfca02615",
+    "oldBpm": 100,
+    "newBpm": 100,
+    "oldStartMs": 15,
+    "newStartMs": 364,
+    "durationMs": 211480,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 20,
+        "medianMs": 0.5,
+        "p90Ms": 3.4
+      },
+      {
+        "from": 30,
+        "n": 25,
+        "medianMs": 0.3,
+        "p90Ms": 87.3
+      },
+      {
+        "from": 60,
+        "n": 25,
+        "medianMs": -0.2,
+        "p90Ms": 92.5
+      },
+      {
+        "from": 90,
+        "n": 24,
+        "medianMs": 0.7,
+        "p90Ms": 23.3
+      },
+      {
+        "from": 120,
+        "n": 25,
+        "medianMs": 0.8,
+        "p90Ms": 105.7
+      },
+      {
+        "from": 150,
+        "n": 25,
+        "medianMs": 1.3,
+        "p90Ms": 93.8
+      },
+      {
+        "from": 180,
+        "n": 22,
+        "medianMs": 2.6,
+        "p90Ms": 25.5
+      },
+      {
+        "from": 210,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "ping-guo-xiang": {
+    "sha256": "7112b479a2548439f5f77ea895acedbde688a3375118e9c15a6229150d3c71d0",
+    "oldBpm": 67.99,
+    "newBpm": 68,
+    "oldStartMs": 1740,
+    "newStartMs": 1767,
+    "durationMs": 230963,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 12,
+        "medianMs": -5.8,
+        "p90Ms": 7.9
+      },
+      {
+        "from": 30,
+        "n": 17,
+        "medianMs": -5.9,
+        "p90Ms": 7.0
+      },
+      {
+        "from": 60,
+        "n": 16,
+        "medianMs": -5.2,
+        "p90Ms": 7.7
+      },
+      {
+        "from": 90,
+        "n": 17,
+        "medianMs": -6.4,
+        "p90Ms": 8.3
+      },
+      {
+        "from": 120,
+        "n": 16,
+        "medianMs": -6.0,
+        "p90Ms": 8.0
+      },
+      {
+        "from": 150,
+        "n": 15,
+        "medianMs": -6.7,
+        "p90Ms": 9.7
+      },
+      {
+        "from": 180,
+        "n": 12,
+        "medianMs": -6.9,
+        "p90Ms": 76.3
+      },
+      {
+        "from": 210,
+        "n": 1,
+        "medianMs": 84.8,
+        "p90Ms": 84.8
+      }
+    ]
+  },
+  "huo-hong-de-sa-ri-lang": {
+    "sha256": "fb5eb491eece9e86dd042f2544024e616ff787f2169c7dbe14edfb38dbbdbc3e",
+    "oldBpm": 105.987,
+    "newBpm": 106,
+    "oldStartMs": 21570,
+    "newStartMs": 21565,
+    "durationMs": 246239,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 4,
+        "medianMs": -13.1,
+        "p90Ms": 20.0
+      },
+      {
+        "from": 30,
+        "n": 16,
+        "medianMs": -10.0,
+        "p90Ms": 112.3
+      },
+      {
+        "from": 60,
+        "n": 15,
+        "medianMs": 40.2,
+        "p90Ms": 116.7
+      },
+      {
+        "from": 90,
+        "n": 15,
+        "medianMs": -12.8,
+        "p90Ms": 75.9
+      },
+      {
+        "from": 120,
+        "n": 16,
+        "medianMs": -11.4,
+        "p90Ms": 78.1
+      },
+      {
+        "from": 150,
+        "n": 18,
+        "medianMs": 16.5,
+        "p90Ms": 117.3
+      },
+      {
+        "from": 180,
+        "n": 18,
+        "medianMs": -10.4,
+        "p90Ms": 90.9
+      },
+      {
+        "from": 210,
+        "n": 16,
+        "medianMs": -21.5,
+        "p90Ms": 72.1
+      },
+      {
+        "from": 240,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "zhan-zai-cao-yuan-wang-bei-jing": {
+    "sha256": "9c8fa9d6f33fc5b1142d71a4bdbb8f5fdb985c3d832f4bb06442865b25df2bbf",
+    "oldBpm": 102.8,
+    "newBpm": 100,
+    "oldStartMs": 365,
+    "newStartMs": 327,
+    "durationMs": 248200,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 25,
+        "medianMs": -3.6,
+        "p90Ms": 5.8
+      },
+      {
+        "from": 30,
+        "n": 25,
+        "medianMs": -2.6,
+        "p90Ms": 36.0
+      },
+      {
+        "from": 60,
+        "n": 25,
+        "medianMs": -5.2,
+        "p90Ms": 27.9
+      },
+      {
+        "from": 90,
+        "n": 25,
+        "medianMs": -5.6,
+        "p90Ms": 12.9
+      },
+      {
+        "from": 120,
+        "n": 25,
+        "medianMs": -3.6,
+        "p90Ms": 35.8
+      },
+      {
+        "from": 150,
+        "n": 25,
+        "medianMs": -0.3,
+        "p90Ms": 5.9
+      },
+      {
+        "from": 180,
+        "n": 25,
+        "medianMs": 0.2,
+        "p90Ms": 64.6
+      },
+      {
+        "from": 210,
+        "n": 24,
+        "medianMs": -0.3,
+        "p90Ms": 48.0
+      },
+      {
+        "from": 240,
+        "n": 0,
+        "medianMs": null,
+        "p90Ms": null
+      }
+    ]
+  },
+  "wo-shi-ren-jian-chou-chang-ke": {
+    "sha256": "422028764c1d1c195c614f5e524ea5140caa673f1e4268a7fb8e79b2cb616346",
+    "oldBpm": 65,
+    "newBpm": 65,
+    "oldStartMs": 1700,
+    "newStartMs": 1465,
+    "durationMs": 208240,
+    "validationMethod": "odd-beat high-band transient residuals within +/-120ms; not human-labelled ground truth",
+    "humanListeningVerified": false,
+    "segments": [
+      {
+        "from": 0,
+        "n": 15,
+        "medianMs": -18.3,
+        "p90Ms": 40.2
+      },
+      {
+        "from": 30,
+        "n": 16,
+        "medianMs": -11.8,
+        "p90Ms": 73.4
+      },
+      {
+        "from": 60,
+        "n": 17,
+        "medianMs": -10.6,
+        "p90Ms": 36.0
+      },
+      {
+        "from": 90,
+        "n": 16,
+        "medianMs": -23.1,
+        "p90Ms": 35.9
+      },
+      {
+        "from": 120,
+        "n": 16,
+        "medianMs": -21.8,
+        "p90Ms": 44.3
+      },
+      {
+        "from": 150,
+        "n": 16,
+        "medianMs": -32.6,
+        "p90Ms": 39.2
+      },
+      {
+        "from": 180,
+        "n": 11,
+        "medianMs": -33.5,
+        "p90Ms": 38.3
+      }
+    ]
+  }
+}

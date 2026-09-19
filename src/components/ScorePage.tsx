@@ -5,12 +5,15 @@ import { memo, useLayoutEffect, useMemo, useRef } from "react";
 interface ScorePageProps {
   bars: Bar[];
   currentTimeMs: number;
+  /** 额外视觉提前量：只移动竖线和视窗，不移动鼓音放大或歌词高亮。 */
+  visualLeadMs?: number;
   /** 倒数中的拍号（1 起），0 表示不在倒数 */
   countInBeat?: number;
   /** 拍号（如 4/4）与速度，显示在谱面上方 */
   timeSignature?: [number, number];
   bpm?: number;
   lyrics?: SongDefinition["lyrics"];
+  preferTimedLyrics?: boolean;
   /** 歌词高亮的整体微调（毫秒）。只动歌词，不动鼓点、播放头或实际播放。 */
   lyricOffsetMs?: number;
   /** 逐字演唱时刻：小节号 -> 与 lyricBeats 等长的数组，每项是该词块内各字的毫秒时刻。 */
@@ -128,7 +131,7 @@ export interface PlacedChar {
  * 2. 拍内多字自适应等距居中分布（连续双B下4字两两间距严格相等，严禁前两个一组后两个一组）；
  * 3. 词与词之间根据节拍自然呼吸，彻底告别原版的挤成一坨或僵硬断裂；
  * 4. 无论是否有 CTC 逐字数据，均能稳定排版渲染，永不丢字；
- * 5. 变色与竖线播放头严格 1:1 同步：竖线扫过哪个字，哪个字点亮，杜绝竖线未到颜色已跑完的现象。
+ * 5. 布局与演唱时间分离：歌词按录音时间变色，竖线保留独立的视觉提前量。
  */
 export function getHumanizedPlacedChars(
   bar: Bar,
@@ -283,6 +286,7 @@ interface ScoreRowBlockProps {
   nextHit: HitEvent | null;
   activeWindowMs: number;
   lyrics?: SongDefinition["lyrics"];
+  preferTimedLyrics?: boolean;
   lyricOffsetMs?: number;
   charTimes?: Record<number, number[][]>;
   onSeekAndPlay?: (timeMs: number) => void;
@@ -296,6 +300,9 @@ function areRowPropsEqual(prev: ScoreRowBlockProps, next: ScoreRowBlockProps): b
   if (prev.charTimes !== next.charTimes) return false;
   if (prev.lyricOffsetMs !== next.lyricOffsetMs) return false;
   if (prev.lyrics !== next.lyrics) return false;
+  if (prev.preferTimedLyrics !== next.preferTimedLyrics) return false;
+  // Singing can be ahead of/behind its notated bar; don't memoize it by the visual cursor.
+  if (!prev.preferTimedLyrics && prev.currentTimeMs !== next.currentTimeMs && prev.rowBars.some(b => b.lyricBeats?.some(Boolean))) return false;
 
   const rowBars = prev.rowBars;
   const rowStart = rowBars[0].startMs;
@@ -332,6 +339,10 @@ function areRowPropsEqual(prev: ScoreRowBlockProps, next: ScoreRowBlockProps): b
     const prevInCue = prev.currentTimeMs >= rowStart && prev.currentTimeMs < rowEnd;
     const nextInCue = next.currentTimeMs >= rowStart && next.currentTimeMs < rowEnd;
     if (prevInCue || nextInCue) return false;
+    // The first letter may be laid out on the next row while its voice has already begun.
+    if (prev.lyrics.some(cue=>cue.startMs<rowEnd && cue.endMs>rowStart &&
+      ((prev.currentTimeMs>=cue.startMs && prev.currentTimeMs<cue.endMs) ||
+       (next.currentTimeMs>=cue.startMs && next.currentTimeMs<cue.endMs)))) return false;
   }
 
   return true;
@@ -346,6 +357,7 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
   nextHit,
   activeWindowMs,
   lyrics,
+  preferTimedLyrics = false,
   lyricOffsetMs = 0,
   charTimes,
   onSeekAndPlay,
@@ -491,16 +503,13 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
         })}
       </div>
 
-      {rowBars.some((bar) => Boolean(bar.lyric || (bar.lyricBeats && bar.lyricBeats.length > 0))) ? (
+      {!preferTimedLyrics && rowBars.some((bar) => Boolean(bar.lyric || (bar.lyricBeats && bar.lyricBeats.length > 0))) ? (
         <div className="score-lyrics score-lyrics--bar-aligned" aria-label="本行歌词">
           {rowBars.map((bar) => {
             const isCurrentBar = playheadBarNumber === bar.number;
             const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
             const text = bar.lyric ?? "";
             const placed = getCachedPlacedChars(bar, charTimes?.[bar.number], lyricOffsetMs);
-            const beatMs = (bar.endMs - bar.startMs) / (bar.beats || 4);
-            const leadMs = beatMs * 0.48;
-            const playheadTimeMs = currentTimeMs + leadMs;
 
             return (
               <div
@@ -520,18 +529,10 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
                     <span className="score-lyric__beats score-lyric__beats--placed">
                       {placed.map((c, i) => {
                         let charState: "current" | "past" | "idle" = "idle";
-                        if (playheadTimeMs >= bar.endMs) {
+                        if (currentTimeMs >= c.endMs) {
                           charState = "past";
-                        } else if (playheadTimeMs < bar.startMs) {
-                          charState = "idle";
-                        } else if (isCurrentBar) {
-                          if (playheadPercent >= c.endPercent) {
-                            charState = "past";
-                          } else if (playheadPercent >= c.startPercent) {
-                            charState = "current";
-                          } else {
-                            charState = "idle";
-                          }
+                        } else if (currentTimeMs >= c.startMs) {
+                          charState = "current";
                         }
 
                         return (
@@ -560,19 +561,24 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
         <div className="score-lyrics" aria-label="本行歌词">
           {rowLyrics?.map((cue) => {
             const characters = Array.from(cue.text.replace(/\s/g, ""));
-            const positions = characters.map((char, i) => ({
+            const allPositions = characters.map((char, i) => ({
               char,
               at: cue.startMs + (i + 0.5) / characters.length * (cue.endMs - cue.startMs),
-            })).filter(({ at }) => at >= rowStart && at < rowEnd);
+            }));
+            const positions=allPositions.filter(({ at }) => at >= rowStart && at < rowEnd);
             if (!positions.length) return null;
             const start = Math.max(cue.startMs, rowStart);
             const end = Math.min(cue.endMs, rowEnd);
+            const activeStart=positions[0]===allPositions[0] ? cue.startMs : start;
+            const activeEnd=positions.at(-1)===allPositions.at(-1) ? cue.endMs : end;
             return (
               <p
                 key={cue.startMs}
                 className="score-lyric score-lyric--timed"
+                data-cue-start={cue.startMs}
+                data-cue-end={cue.endMs}
                 aria-label={positions.map(({ char }) => char).join("")}
-                data-state={currentTimeMs >= Math.max(cue.startMs, rowStart) && currentTimeMs < Math.min(cue.endMs, rowEnd) ? "current" : "idle"}
+                data-state={currentTimeMs >= activeStart && currentTimeMs < activeEnd ? "current" : "idle"}
                 style={{
                   left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
                   width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
@@ -599,10 +605,12 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
 export function ScorePage({
   bars,
   currentTimeMs,
+  visualLeadMs = 0,
   countInBeat = 0,
   timeSignature,
   bpm,
   lyrics,
+  preferTimedLyrics = false,
   lyricOffsetMs = 0,
   charTimes,
   onSeekAndPlay,
@@ -610,8 +618,9 @@ export function ScorePage({
   isPlaying = false,
 }: ScorePageProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const timeRef = useRef(currentTimeMs);
-  timeRef.current = currentTimeMs;
+  const visualTimeMs = currentTimeMs + visualLeadMs;
+  const timeRef = useRef(visualTimeMs);
+  timeRef.current = visualTimeMs;
   const blockMetricsRef = useRef<BlockMetric[]>([]);
   const viewportHeightRef = useRef<number>(0);
 
@@ -686,11 +695,11 @@ export function ScorePage({
 
   useLayoutEffect(() => {
     follow();
-  }, [currentTimeMs]);
+  }, [visualTimeMs]);
 
   // 计算连续、平滑的播放头所在小节及百分比
-  const playheadBar = getPlayheadBar(bars, currentTimeMs);
-  const playheadPercent = playheadBar ? getPlayheadPercentInBar(playheadBar, currentTimeMs) : 0;
+  const playheadBar = getPlayheadBar(bars, visualTimeMs);
+  const playheadPercent = playheadBar ? getPlayheadPercentInBar(playheadBar, visualTimeMs) : 0;
 
   // 定位击响音符与下一次击响音符
   const sixteenthMs = bpm ? Math.round(60_000 / bpm / 4) : 125;
@@ -766,6 +775,7 @@ export function ScorePage({
               nextHit={nextHit}
               activeWindowMs={activeWindowMs}
               lyrics={lyrics}
+              preferTimedLyrics={preferTimedLyrics}
               lyricOffsetMs={lyricOffsetMs}
               charTimes={charTimes}
               onSeekAndPlay={onSeekAndPlay}

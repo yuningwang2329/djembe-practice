@@ -5,7 +5,7 @@ import { songLibrary } from "./demoSong";
 
 describe("鼓楼 / 用户提供录音与马丁教学谱", () => {
   it("registers 128 bars with the printed repeats and leaves the unscored lead-in intact", () => {
-    expect(songLibrary).toContain(gulou);
+    expect(songLibrary.find(s=>s.id===gulou.id)?.bars).toHaveLength(128);
     expect(validateSong(gulou)).toEqual([]);
     expect(gulou.bars).toHaveLength(128);
     expect(gulou.bars[0].startMs).toBe(10610);

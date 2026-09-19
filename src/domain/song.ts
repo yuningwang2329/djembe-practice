@@ -36,9 +36,13 @@ export interface SongDefinition {
   audioOffsetMs: number;
   expectedDurationMs: number;
   builtInAudioUrl?: string;
+  /** 校准所依据的原始文件 SHA-256，仅用于本地版本检查。 */
+  recordingSha256?: string;
   bars: Bar[];
   /** 独立于鼓谱小节的逐句歌词时间，使用与鼓点相同的时间轴。 */
-  lyrics?: Array<{ startMs: number; endMs: number; text: string }>;
+  lyrics?: Array<{ startMs: number; endMs: number; text: string; timingMethod?: string; reviewRequired?: boolean }>;
+  /** 新录音级时间表优先于旧的小节附词；布局不能反过来决定演唱时间。 */
+  lyricTiming?: 'recording';
   /** 同一首歌的可选谱面版本（如扒谱版、教材版），练习时可切换 */
   variants?: ScoreVariant[];
   /** 歌曲的核心常用节奏型，供专项节奏型循环练习 */
@@ -96,6 +100,13 @@ export function validateSong(song: SongDefinition): string[] {
     });
   });
 
+  song.lyrics?.forEach((cue,index,cues)=>{
+    const label=`第 ${index+1} 句歌词`;
+    if (!Number.isFinite(cue.startMs) || !Number.isFinite(cue.endMs) || cue.startMs<0 || cue.endMs<=cue.startMs || cue.endMs>song.expectedDurationMs) {
+      errors.push(`${label}时间范围无效`);
+    }
+    if(index && cue.startMs<cues[index-1].endMs) errors.push(`${label}与前一句重叠`);
+  });
   return errors;
 }
 

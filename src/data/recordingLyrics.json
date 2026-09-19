@@ -1,0 +1,2607 @@
+{
+  "qiao-bian-gu-niang": {
+    "sha256": "500afd9383eb1766243890d28c43e7548d63c7fd83a7a3260b83e8745d2e8f3d",
+    "cues": [
+      {
+        "text": "暖阳下 我迎芬芳 是谁家的姑娘",
+        "startMs": 16993,
+        "endMs": 22433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我走在了那座小桥上",
+        "startMs": 23013,
+        "endMs": 26073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你抚琴奏忧伤",
+        "startMs": 26153,
+        "endMs": 28613,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "桥边歌唱的小姑娘 你眼角在流淌",
+        "startMs": 29393,
+        "endMs": 34453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你说一个人在逞强 一个人念家乡",
+        "startMs": 35633,
+        "endMs": 41013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "风华模样 你落落大方",
+        "startMs": 41853,
+        "endMs": 47313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "坐在桥上 我听你歌唱",
+        "startMs": 48053,
+        "endMs": 53853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "我说桥边姑娘 你的芬芳",
+        "startMs": 56593,
+        "endMs": 62793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我把你放心上 刻在了我心膛",
+        "startMs": 63553,
+        "endMs": 68973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "桥边姑娘 你的忧伤",
+        "startMs": 69733,
+        "endMs": 75193,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我把你放心房 不想让你流浪",
+        "startMs": 75913,
+        "endMs": 81453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "暖阳下 的桥头旁 有这样一姑娘",
+        "startMs": 97673,
+        "endMs": 103133,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "她有着长长的乌黑发 一双眼明亮",
+        "startMs": 103733,
+        "endMs": 109333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "姑娘你让我心荡漾 小鹿在乱撞",
+        "startMs": 110153,
+        "endMs": 115553,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你说无人在身旁 一个人在流浪",
+        "startMs": 116333,
+        "endMs": 122173,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "风华模样 你落落大方",
+        "startMs": 122553,
+        "endMs": 128033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "坐在桥上 我听你歌唱",
+        "startMs": 128753,
+        "endMs": 134553,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我说桥边姑娘 你的芬芳",
+        "startMs": 137293,
+        "endMs": 143493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我把你放心上 刻在了我心膛",
+        "startMs": 144253,
+        "endMs": 149673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "桥边姑娘 你的忧伤",
+        "startMs": 150433,
+        "endMs": 155893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我把你放心房 不想让你流浪",
+        "startMs": 156593,
+        "endMs": 162153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "gu-lou-zhao-lei": {
+    "sha256": "4d2da6b7aae17512252b834ee5a41f1158c5c8c5c8aa7b411ea98d4e46e1a8e3",
+    "cues": [
+      {
+        "text": "我走在鼓楼下面 路在堵着",
+        "startMs": 25833,
+        "endMs": 33693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "雨后的阳光洒落 人们都出来了",
+        "startMs": 34013,
+        "endMs": 40593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "执着的迷惘的文艺青年很多",
+        "startMs": 42173,
+        "endMs": 50013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "如果我无聊了就会来这里坐坐",
+        "startMs": 50273,
+        "endMs": 56393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我是个沉默不语的",
+        "startMs": 58173,
+        "endMs": 61653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "靠着墙壁晒太阳的过客",
+        "startMs": 61733,
+        "endMs": 66293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "如果我有些倦意了",
+        "startMs": 66373,
+        "endMs": 69793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "就让我在这里独自醒过",
+        "startMs": 69873,
+        "endMs": 74733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在鼓楼上面",
+        "startMs": 74973,
+        "endMs": 78733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一切繁华与我无关",
+        "startMs": 79313,
+        "endMs": 82813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "这是个拥挤的地方 而我却很平凡",
+        "startMs": 83073,
+        "endMs": 89433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我走在鼓楼下面 淋湿的咖啡馆",
+        "startMs": 107073,
+        "endMs": 115273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "睡不着的后海边 月亮还在抽着烟",
+        "startMs": 115353,
+        "endMs": 121733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "喝醉的亲吻着 快活的人不眠",
+        "startMs": 123473,
+        "endMs": 130853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "唯有我倚着围栏 对过往说晚安",
+        "startMs": 131613,
+        "endMs": 139700,
+        "timingMethod": "asr-and-vocal-boundary",
+        "reviewRequired": true
+      },
+      {
+        "text": "我是个沉默不语的",
+        "startMs": 171993,
+        "endMs": 175553,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "靠着车窗想念你的乘客",
+        "startMs": 175633,
+        "endMs": 180133,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "当一零七 路再次经过",
+        "startMs": 180213,
+        "endMs": 184193,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "时间是带走青春的电车",
+        "startMs": 184273,
+        "endMs": 188593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在什刹海边一切甜蜜与我无关",
+        "startMs": 188833,
+        "endMs": 196693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "这是个拥挤的地方 而我却很孤单",
+        "startMs": 196973,
+        "endMs": 203093,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 204353,
+        "endMs": 206633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 208433,
+        "endMs": 210693,
+        "timingMethod": "repeat-anchor-estimate",
+        "reviewRequired": true
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 212533,
+        "endMs": 214733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 220653,
+        "endMs": 222873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 224713,
+        "endMs": 226933,
+        "timingMethod": "repeat-anchor-estimate",
+        "reviewRequired": true
+      },
+      {
+        "text": "我在鼓楼",
+        "startMs": 228773,
+        "endMs": 231033,
+        "timingMethod": "repeat-anchor-estimate",
+        "reviewRequired": true
+      }
+    ]
+  },
+  "da-yu-zhou-shen": {
+    "sha256": "666e0e016d875390e964c609552ebde5dfbe5476d1cbefdd4332bcd07adb5ec2",
+    "cues": [
+      {
+        "text": "海浪无声将夜幕深深淹没",
+        "startMs": 43093,
+        "endMs": 48993,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "漫过天空尽头的角落",
+        "startMs": 50033,
+        "endMs": 55013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "大鱼在梦境的缝隙里游过",
+        "startMs": 56793,
+        "endMs": 62753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "凝望你沉睡的轮廓",
+        "startMs": 63673,
+        "endMs": 68033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "看海天一色 听风起雨落",
+        "startMs": 69613,
+        "endMs": 76353,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "执子手吹散苍茫茫烟波",
+        "startMs": 76473,
+        "endMs": 82293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "大鱼的翅膀 已经太辽阔",
+        "startMs": 83413,
+        "endMs": 90073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我松开时间的绳索",
+        "startMs": 91073,
+        "endMs": 95293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "怕你飞远去 怕你离我而去",
+        "startMs": 97073,
+        "endMs": 103793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "更怕你永远停留在这里",
+        "startMs": 103933,
+        "endMs": 109093,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "每一滴泪水 都向你流淌去",
+        "startMs": 110753,
+        "endMs": 117533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "倒流进天空的海底",
+        "startMs": 118593,
+        "endMs": 122893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "海浪无声将夜幕深深淹没",
+        "startMs": 139053,
+        "endMs": 144953,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "漫过天空尽头的角落",
+        "startMs": 145933,
+        "endMs": 151033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "大鱼在梦境的缝隙里游过",
+        "startMs": 152793,
+        "endMs": 158753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "凝望你沉睡的轮廓",
+        "startMs": 159633,
+        "endMs": 163973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "看海天一色 听风起雨落",
+        "startMs": 165593,
+        "endMs": 172353,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "执子手吹散苍茫茫烟波",
+        "startMs": 172533,
+        "endMs": 178313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "大鱼的翅膀 已经太辽阔",
+        "startMs": 179393,
+        "endMs": 186073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我松开时间的绳索",
+        "startMs": 187053,
+        "endMs": 191353,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "看你飞远去 看你离我而去",
+        "startMs": 193053,
+        "endMs": 199773,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "原来你生来就属于天际",
+        "startMs": 199913,
+        "endMs": 205053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "每一滴泪水 都向你流淌去",
+        "startMs": 206793,
+        "endMs": 213553,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "倒流回最初的相遇",
+        "startMs": 214553,
+        "endMs": 218853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      }
+    ]
+  },
+  "tongnian": {
+    "sha256": "f5ad742066d37e580090669d21095d3765b05c40ddfd2e09e10a90b2217385e4",
+    "cues": [
+      {
+        "text": "池塘边的榕树上",
+        "startMs": 15293,
+        "endMs": 18073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "知了在声声叫着夏天",
+        "startMs": 18153,
+        "endMs": 21673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "操场边的秋千上",
+        "startMs": 23493,
+        "endMs": 26533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "只有蝴蝶停在上面",
+        "startMs": 26613,
+        "endMs": 29893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "黑板上老师的粉笔",
+        "startMs": 31233,
+        "endMs": 34013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "还在拼命叽叽喳喳写个不停",
+        "startMs": 34093,
+        "endMs": 38153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "等待着下课等待着放学",
+        "startMs": 39533,
+        "endMs": 43533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "等待游戏的童年",
+        "startMs": 43613,
+        "endMs": 46433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "福利社里面什么都有",
+        "startMs": 50333,
+        "endMs": 53373,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "就是口袋里没有半毛钱",
+        "startMs": 53453,
+        "endMs": 56993,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "诸葛四郎和魔鬼党",
+        "startMs": 58573,
+        "endMs": 61633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "到底谁抢到那支宝剑",
+        "startMs": 61713,
+        "endMs": 64993,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "隔壁班的那个女孩",
+        "startMs": 66353,
+        "endMs": 69093,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "怎么还没经过我的窗前",
+        "startMs": 69173,
+        "endMs": 73293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "嘴里的零食手里的漫画",
+        "startMs": 74573,
+        "endMs": 78593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "心里初恋的童年",
+        "startMs": 78673,
+        "endMs": 81493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "总是要等到睡觉前",
+        "startMs": 83313,
+        "endMs": 86093,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "才知道功课只做了一点点",
+        "startMs": 86173,
+        "endMs": 90033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "总是要等到考试后",
+        "startMs": 91593,
+        "endMs": 94353,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "才知道该念的书都没有念",
+        "startMs": 94433,
+        "endMs": 98013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一寸光阴一寸金",
+        "startMs": 99313,
+        "endMs": 101833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "老师说过寸金难买寸光阴",
+        "startMs": 101913,
+        "endMs": 106173,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一天又一天一年又一年",
+        "startMs": 107593,
+        "endMs": 111593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "迷迷糊糊的童年",
+        "startMs": 111673,
+        "endMs": 114533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "没有人知道为什么",
+        "startMs": 153453,
+        "endMs": 156253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "太阳总下到山的那一边",
+        "startMs": 156333,
+        "endMs": 160193,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "没有人能够告诉我",
+        "startMs": 161713,
+        "endMs": 164513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "山里面有没有住着神仙",
+        "startMs": 164593,
+        "endMs": 168133,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "多少的日子里总是",
+        "startMs": 169473,
+        "endMs": 172313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一个人面对着天空发呆",
+        "startMs": 172393,
+        "endMs": 176413,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "就这么好奇就这么幻想",
+        "startMs": 177753,
+        "endMs": 181813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "这么孤单的童年",
+        "startMs": 181893,
+        "endMs": 184673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "阳光下蜻蜓飞过来",
+        "startMs": 188533,
+        "endMs": 191353,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一片片绿油油的稻田",
+        "startMs": 191433,
+        "endMs": 194953,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "水彩蜡笔和万花筒",
+        "startMs": 196773,
+        "endMs": 199593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "画不出天边那一条彩虹",
+        "startMs": 199673,
+        "endMs": 203233,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "什么时候才能像高年级的同学",
+        "startMs": 204573,
+        "endMs": 208093,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "有张成熟与长大的脸",
+        "startMs": 208173,
+        "endMs": 211513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "盼望着假期盼望着明天",
+        "startMs": 212813,
+        "endMs": 216853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "盼望长大的童年",
+        "startMs": 216933,
+        "endMs": 219733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "一天又一天一年又一年",
+        "startMs": 221053,
+        "endMs": 225113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "盼望长大的童年",
+        "startMs": 225193,
+        "endMs": 227993,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      }
+    ]
+  },
+  "shuishou": {
+    "sha256": "784417e0efe377a1e2ada3b00dd1055edcd54b6559b8ddf19754f397082826a3",
+    "cues": [
+      {
+        "text": "苦涩的沙",
+        "startMs": 34593,
+        "endMs": 36333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "吹痛脸庞的感觉",
+        "startMs": 36413,
+        "endMs": 39013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "像父亲的责骂",
+        "startMs": 39333,
+        "endMs": 40573,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "母亲的哭泣",
+        "startMs": 40653,
+        "endMs": 41773,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "永远难忘记",
+        "startMs": 41853,
+        "endMs": 43873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "年少的我",
+        "startMs": 44313,
+        "endMs": 46073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "喜欢一个人在海边",
+        "startMs": 46153,
+        "endMs": 48693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "卷起裤管光着脚丫踩在沙滩上",
+        "startMs": 49133,
+        "endMs": 53433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "总是幻想海洋的尽头有另一个世界",
+        "startMs": 53973,
+        "endMs": 58333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "总是以为勇敢的水手是真正的男儿",
+        "startMs": 58773,
+        "endMs": 63113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "总是一副弱不禁风孬种的样子",
+        "startMs": 63573,
+        "endMs": 67933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "在受人欺负的时候总是听见水手说",
+        "startMs": 68293,
+        "endMs": 72553,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 72633,
+        "endMs": 77373,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 77453,
+        "endMs": 79813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 79893,
+        "endMs": 82173,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 82253,
+        "endMs": 87013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 87093,
+        "endMs": 89393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 89473,
+        "endMs": 90813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "长大以后",
+        "startMs": 94973,
+        "endMs": 96693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "为了理想而努力",
+        "startMs": 96773,
+        "endMs": 99333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "渐渐的忽略了",
+        "startMs": 99773,
+        "endMs": 100873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "父亲母亲和故乡的消息",
+        "startMs": 100953,
+        "endMs": 104153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "如今的我",
+        "startMs": 104653,
+        "endMs": 106313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "生活就像在演戏",
+        "startMs": 106393,
+        "endMs": 109033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "说着言不由衷的话",
+        "startMs": 109453,
+        "endMs": 111473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "戴着伪善的面具",
+        "startMs": 111553,
+        "endMs": 113793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "总是拿着微不足道的成就来骗自己",
+        "startMs": 114253,
+        "endMs": 118633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "总是莫名其妙感到一阵的空虚",
+        "startMs": 119073,
+        "endMs": 123473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "总是靠一点酒精的麻醉才能够睡去",
+        "startMs": 123873,
+        "endMs": 128233,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "在半睡半醒之间仿佛又听见水手说",
+        "startMs": 128593,
+        "endMs": 132853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 132933,
+        "endMs": 137693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 137773,
+        "endMs": 140113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 140193,
+        "endMs": 142493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 142573,
+        "endMs": 147373,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 147453,
+        "endMs": 149773,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 149853,
+        "endMs": 151173,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "寻寻觅觅寻不到",
+        "startMs": 179353,
+        "endMs": 181733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "活着的证据",
+        "startMs": 181813,
+        "endMs": 183753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "都市的柏油路太硬",
+        "startMs": 184253,
+        "endMs": 186513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "踩不出足迹",
+        "startMs": 186593,
+        "endMs": 188573,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "骄傲无知的现代人",
+        "startMs": 189053,
+        "endMs": 191393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "不知道珍惜",
+        "startMs": 191473,
+        "endMs": 193453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "那一片被文明糟蹋过的海洋和天地",
+        "startMs": 193773,
+        "endMs": 198253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "只有远离人群才能找回我自己",
+        "startMs": 198793,
+        "endMs": 203073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "在带着咸味的空气中自由的呼吸",
+        "startMs": 203373,
+        "endMs": 207873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "耳畔又传来汽笛声和水手的笑语",
+        "startMs": 208433,
+        "endMs": 212753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "永远在内心的最深处听见水手说",
+        "startMs": 213193,
+        "endMs": 217333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 217413,
+        "endMs": 222153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 222233,
+        "endMs": 224593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 224673,
+        "endMs": 226973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 227053,
+        "endMs": 231833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 231913,
+        "endMs": 234233,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 234313,
+        "endMs": 235653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 236733,
+        "endMs": 241473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 241553,
+        "endMs": 243893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 243973,
+        "endMs": 246273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 246353,
+        "endMs": 251113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 251193,
+        "endMs": 253513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 253593,
+        "endMs": 254933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 256013,
+        "endMs": 260793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 260873,
+        "endMs": 263213,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 263293,
+        "endMs": 265593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 265673,
+        "endMs": 270453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 270533,
+        "endMs": 272853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 272933,
+        "endMs": 274253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 275313,
+        "endMs": 280113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 280193,
+        "endMs": 282533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 282613,
+        "endMs": 284913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 284993,
+        "endMs": 289733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要问",
+        "startMs": 289813,
+        "endMs": 292153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "为什么",
+        "startMs": 292233,
+        "endMs": 293593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "他说风雨中这点痛算什么",
+        "startMs": 294633,
+        "endMs": 299413,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "擦干泪不要怕",
+        "startMs": 299493,
+        "endMs": 301813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "至少我们还有梦",
+        "startMs": 301893,
+        "endMs": 308973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "lasa": {
+    "sha256": "97f120d6c6da7585f634a305aac87f9c2effbbc063afb49113f6ae5bfca02615",
+    "cues": [
+      {
+        "text": "山有多高啊",
+        "startMs": 26413,
+        "endMs": 28633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "水有多长",
+        "startMs": 28853,
+        "endMs": 30453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "通往天堂的路太难",
+        "startMs": 31253,
+        "endMs": 34073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "终于盼来啊",
+        "startMs": 36053,
+        "endMs": 38273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "这条天路",
+        "startMs": 38453,
+        "endMs": 40113,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "象巨龙飞在高原上",
+        "startMs": 40833,
+        "endMs": 43673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "穿过草原啊",
+        "startMs": 45613,
+        "endMs": 47973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "越过山川",
+        "startMs": 48053,
+        "endMs": 49653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "载着梦想和吉祥",
+        "startMs": 50453,
+        "endMs": 53273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "幸福的歌啊一路的唱",
+        "startMs": 55193,
+        "endMs": 59253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "唱到了唐古拉山",
+        "startMs": 60033,
+        "endMs": 62853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "坐上了火车去拉萨",
+        "startMs": 66973,
+        "endMs": 71313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "去看那神奇的布达拉",
+        "startMs": 71773,
+        "endMs": 76133,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "去看那最美的格桑花呀",
+        "startMs": 76833,
+        "endMs": 81533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "盛开在雪山下",
+        "startMs": 81633,
+        "endMs": 84493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "坐上了火车去拉萨",
+        "startMs": 86153,
+        "endMs": 90493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "跳起那热烈的雪山朗玛",
+        "startMs": 90953,
+        "endMs": 95293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "喝下那最香浓的青稞酒呀",
+        "startMs": 96053,
+        "endMs": 100753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "醉在神话天堂",
+        "startMs": 100853,
+        "endMs": 104900,
+        "timingMethod": "repeat-and-vocal-boundary",
+        "reviewRequired": true
+      },
+      {
+        "text": "山有多高啊",
+        "startMs": 117613,
+        "endMs": 119493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "水有多长",
+        "startMs": 120033,
+        "endMs": 121653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "通往天堂的路太难",
+        "startMs": 122453,
+        "endMs": 125293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "终于盼来啊",
+        "startMs": 127253,
+        "endMs": 129493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "这条天路",
+        "startMs": 129653,
+        "endMs": 131313,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "象巨龙飞在高原上",
+        "startMs": 132033,
+        "endMs": 134873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "穿过草原啊",
+        "startMs": 136813,
+        "endMs": 139073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "越过山川",
+        "startMs": 139233,
+        "endMs": 140873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "载着梦想和吉祥",
+        "startMs": 141653,
+        "endMs": 144453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "幸福的歌啊一路的唱",
+        "startMs": 146393,
+        "endMs": 150433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "唱到了唐古拉山",
+        "startMs": 151233,
+        "endMs": 154053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "坐上了火车去拉萨",
+        "startMs": 158153,
+        "endMs": 162493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "去看那神奇的布达拉",
+        "startMs": 162973,
+        "endMs": 167333,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "去看那最美的格桑花呀",
+        "startMs": 168033,
+        "endMs": 172733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "盛开在雪山下",
+        "startMs": 172833,
+        "endMs": 175713,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "坐上了火车去拉萨",
+        "startMs": 177353,
+        "endMs": 181693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "跳起那热烈的雪山朗玛",
+        "startMs": 182153,
+        "endMs": 186493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "喝下那最香浓的青稞酒呀",
+        "startMs": 187253,
+        "endMs": 191633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "醉在神话天堂",
+        "startMs": 192053,
+        "endMs": 194913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "ping-guo-xiang": {
+    "sha256": "7112b479a2548439f5f77ea895acedbde688a3375118e9c15a6229150d3c71d0",
+    "cues": [
+      {
+        "text": "红嘴雁啊飞回  芦苇随风摆",
+        "startMs": 17613,
+        "endMs": 23733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "河对面的莎吾烈泰 今天在不在",
+        "startMs": 24693,
+        "endMs": 30753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "那年我饮马来到了 你的白毡房",
+        "startMs": 31773,
+        "endMs": 37813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我曾看到你弹着冬布拉 听过你把歌唱",
+        "startMs": 38373,
+        "endMs": 44833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "单纯的相逢 平凡的晚上",
+        "startMs": 47613,
+        "endMs": 53733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "我就在那个时候啊 傻傻的等到了天亮",
+        "startMs": 54693,
+        "endMs": 60533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "月亮作证 你毡帽上的羽毛",
+        "startMs": 61753,
+        "endMs": 67813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "亲吻着晚风飘啊飘 啊飘到了我的心上",
+        "startMs": 68873,
+        "endMs": 74913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "六星街里还传来 巴扬琴声吗",
+        "startMs": 84713,
+        "endMs": 90773,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "阿力克桑德的面包房 列巴出炉了吗",
+        "startMs": 91733,
+        "endMs": 97813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "南苑卤香是舌尖上的故事啊",
+        "startMs": 98853,
+        "endMs": 104913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你让浪迹天涯的孩子啊 梦中回家吧",
+        "startMs": 105413,
+        "endMs": 111913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "儿时的万花筒里 有野鸽在飞翔",
+        "startMs": 114753,
+        "endMs": 120813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "这让我想起二哥 和他心爱的弹弓叉",
+        "startMs": 121793,
+        "endMs": 127793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "湖蓝色的院墙 我生命里的院落",
+        "startMs": 128833,
+        "endMs": 134893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我的妈妈在那里给我的爱 叫我永生不忘啊",
+        "startMs": 135413,
+        "endMs": 141893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "心中有个地方 刻进了你的名字",
+        "startMs": 174653,
+        "endMs": 180813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原 河谷 月季花香 都是我的歌",
+        "startMs": 181753,
+        "endMs": 187833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "儿时离开你 正逢花开时",
+        "startMs": 188873,
+        "endMs": 194893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "如今往事 远了 模糊了 我却忘不了苹果香",
+        "startMs": 195413,
+        "endMs": 201893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "如今往事 远了 模糊了 我却忘不了苹果香",
+        "startMs": 204253,
+        "endMs": 211613,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "huo-hong-de-sa-ri-lang": {
+    "sha256": "fb5eb491eece9e86dd042f2544024e616ff787f2169c7dbe14edfb38dbbdbc3e",
+    "cues": [
+      {
+        "text": "天下有多大 随它去宽广",
+        "startMs": 32013,
+        "endMs": 35913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "大路有多远 幸福有多长",
+        "startMs": 35993,
+        "endMs": 39513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "听惯了牧马人悠扬的琴声",
+        "startMs": 40493,
+        "endMs": 44933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "爱上这水草丰美的牧场",
+        "startMs": 45013,
+        "endMs": 48893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "花开一抹红 尽情的怒放",
+        "startMs": 50133,
+        "endMs": 54013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "河流有多远 幸福有多长",
+        "startMs": 54093,
+        "endMs": 57653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "习惯了游牧人自由的生活",
+        "startMs": 58593,
+        "endMs": 63053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "爱人在身边随处是天堂",
+        "startMs": 63133,
+        "endMs": 66973,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 67953,
+        "endMs": 72153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "一梦到天涯遍地是花香",
+        "startMs": 72233,
+        "endMs": 75753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "流浪的人啊心上有了她",
+        "startMs": 77013,
+        "endMs": 81173,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "千里万里也会 回头望",
+        "startMs": 81253,
+        "endMs": 85153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 86073,
+        "endMs": 90253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "火一样热烈 火一样奔放",
+        "startMs": 90333,
+        "endMs": 93893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "痴情的人啊心上有了她",
+        "startMs": 95133,
+        "endMs": 99293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "有种幸福叫地久天长",
+        "startMs": 99373,
+        "endMs": 103233,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "天下有多大 随它去宽广",
+        "startMs": 113553,
+        "endMs": 117413,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "大路有多远 幸福有多长",
+        "startMs": 117493,
+        "endMs": 121033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "听惯了牧马人悠扬的琴声",
+        "startMs": 122013,
+        "endMs": 126453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "爱上这水草丰美的牧场",
+        "startMs": 126533,
+        "endMs": 130393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "花开一抹红 尽情的怒放",
+        "startMs": 131633,
+        "endMs": 135533,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "河流有多远 幸福有多长",
+        "startMs": 135613,
+        "endMs": 139153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "习惯了游牧人自由的生活",
+        "startMs": 140173,
+        "endMs": 144573,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "爱人在身边随处是天堂",
+        "startMs": 144653,
+        "endMs": 148493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 149473,
+        "endMs": 153653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "一梦到天涯遍地是花香",
+        "startMs": 153733,
+        "endMs": 157253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "流浪的人啊心上有了她",
+        "startMs": 158653,
+        "endMs": 162673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "千里万里也会 回头望",
+        "startMs": 162753,
+        "endMs": 166653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 167573,
+        "endMs": 171713,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "火一样热烈 火一样奔放",
+        "startMs": 171793,
+        "endMs": 175393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "痴情的人啊心上有了她",
+        "startMs": 176653,
+        "endMs": 180773,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "有种幸福叫地久天长",
+        "startMs": 180853,
+        "endMs": 184733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 185693,
+        "endMs": 189893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "一梦到天涯遍地是花香",
+        "startMs": 189973,
+        "endMs": 193493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "流浪的人啊心上有了她",
+        "startMs": 194753,
+        "endMs": 198913,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "千里万里也会 回头望",
+        "startMs": 198993,
+        "endMs": 202073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "草原最美的花 火红的萨日朗",
+        "startMs": 202153,
+        "endMs": 207993,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "火一样热烈 火一样奔放",
+        "startMs": 208073,
+        "endMs": 211633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "痴情的人啊心上有了她",
+        "startMs": 212853,
+        "endMs": 217033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "有种幸福叫地久天长",
+        "startMs": 217113,
+        "endMs": 220933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "有种幸福叫地久天长",
+        "startMs": 221673,
+        "endMs": 225493,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "zhan-zai-cao-yuan-wang-bei-jing": {
+    "sha256": "9c8fa9d6f33fc5b1142d71a4bdbb8f5fdb985c3d832f4bb06442865b25df2bbf",
+    "cues": [
+      {
+        "text": "瓦蓝蓝的天上飞雄鹰",
+        "startMs": 20113,
+        "endMs": 24433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我在高岗眺望北京",
+        "startMs": 24873,
+        "endMs": 28073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "侧耳倾听母亲的声音",
+        "startMs": 29713,
+        "endMs": 34033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "放眼欲穿崇山峻岭",
+        "startMs": 34513,
+        "endMs": 37693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "绿波波的草场骏马行",
+        "startMs": 39373,
+        "endMs": 43653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "我在草原歌唱北京",
+        "startMs": 44093,
+        "endMs": 47273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "谁的眼睛掠过了风景",
+        "startMs": 48873,
+        "endMs": 53253,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "迎风高唱五星红旗",
+        "startMs": 53653,
+        "endMs": 56833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 58493,
+        "endMs": 62853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一望无际国泰安宁",
+        "startMs": 63313,
+        "endMs": 66433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "唱出草原的豪情和美丽",
+        "startMs": 68073,
+        "endMs": 72473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "让这歌声回荡紫禁",
+        "startMs": 72913,
+        "endMs": 76053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 77693,
+        "endMs": 82073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "青青山岗心旷神怡",
+        "startMs": 82533,
+        "endMs": 85693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "让心放飞着喜悦的心情",
+        "startMs": 87293,
+        "endMs": 91653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "吉祥彩云献给你",
+        "startMs": 92133,
+        "endMs": 95273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "瓦蓝蓝的天上飞雄鹰",
+        "startMs": 116113,
+        "endMs": 120433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我在高岗眺望北京",
+        "startMs": 120873,
+        "endMs": 124053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "侧耳倾听母亲的声音",
+        "startMs": 125713,
+        "endMs": 130033,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "放眼欲穿崇山峻岭",
+        "startMs": 130513,
+        "endMs": 133693,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "绿波波的草场骏马行",
+        "startMs": 135373,
+        "endMs": 139633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "我在草原歌唱北京",
+        "startMs": 140073,
+        "endMs": 143273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "谁的眼睛掠过了风景",
+        "startMs": 144873,
+        "endMs": 149233,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "迎风高唱五星红旗",
+        "startMs": 149653,
+        "endMs": 152833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 154493,
+        "endMs": 158853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "一望无际国泰安宁",
+        "startMs": 159273,
+        "endMs": 162433,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "唱出草原的豪情和美丽",
+        "startMs": 164073,
+        "endMs": 168473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "让这歌声回荡紫禁",
+        "startMs": 168893,
+        "endMs": 172053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 173693,
+        "endMs": 178073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "青青山岗心旷神怡",
+        "startMs": 178533,
+        "endMs": 181673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "让心放飞着喜悦的心情",
+        "startMs": 183273,
+        "endMs": 187653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "吉祥彩云献给你",
+        "startMs": 188133,
+        "endMs": 191273,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 192893,
+        "endMs": 196653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "一望无际国泰安宁",
+        "startMs": 197693,
+        "endMs": 200833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "唱出草原的豪情和美丽",
+        "startMs": 202473,
+        "endMs": 206873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "让这歌声回荡紫禁",
+        "startMs": 207293,
+        "endMs": 210453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我站在草原望北京",
+        "startMs": 212093,
+        "endMs": 216473,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "青青山岗心旷神怡",
+        "startMs": 216933,
+        "endMs": 220073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "让心放飞着喜悦的心情",
+        "startMs": 221673,
+        "endMs": 226053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "吉祥彩云献给你",
+        "startMs": 226533,
+        "endMs": 229673,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "吉祥彩云献给献给你",
+        "startMs": 231293,
+        "endMs": 236853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      }
+    ]
+  },
+  "wo-shi-ren-jian-chou-chang-ke": {
+    "sha256": "422028764c1d1c195c614f5e524ea5140caa673f1e4268a7fb8e79b2cb616346",
+    "cues": [
+      {
+        "text": "我是漂泊的孩子",
+        "startMs": 30753,
+        "endMs": 33413,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "生来就无家可归",
+        "startMs": 34293,
+        "endMs": 36733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "八万四千法门",
+        "startMs": 38713,
+        "endMs": 40873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "没有一扇为我开启",
+        "startMs": 41053,
+        "endMs": 43653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我是远方的孩子",
+        "startMs": 45733,
+        "endMs": 48373,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "风是唯一的知己",
+        "startMs": 48553,
+        "endMs": 51413,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "走过千山万水",
+        "startMs": 53653,
+        "endMs": 55793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "却没能走出我自己",
+        "startMs": 56193,
+        "endMs": 58853,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你不明白",
+        "startMs": 60193,
+        "endMs": 61933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我为何倚门独立",
+        "startMs": 63753,
+        "endMs": 66133,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 67673,
+        "endMs": 69833,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 71493,
+        "endMs": 73513,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你不明白",
+        "startMs": 75113,
+        "endMs": 76793,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我为何逆风哭泣",
+        "startMs": 78633,
+        "endMs": 80933,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 82533,
+        "endMs": 84653,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 86353,
+        "endMs": 89700,
+        "timingMethod": "repeat-and-vocal-boundary",
+        "reviewRequired": true
+      },
+      {
+        "text": "我是迷途的星子",
+        "startMs": 105133,
+        "endMs": 107733,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "只知道燃烧自己",
+        "startMs": 108633,
+        "endMs": 111193,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "银河浩瀚如经文",
+        "startMs": 112513,
+        "endMs": 115213,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "没有一句渡我皈依",
+        "startMs": 115293,
+        "endMs": 117453,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我是断线的风筝",
+        "startMs": 119913,
+        "endMs": 122073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "飘摇在冷雨黄昏",
+        "startMs": 122693,
+        "endMs": 126013,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "三千世界如长绳",
+        "startMs": 126373,
+        "endMs": 129213,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "没有一根系我浮生",
+        "startMs": 130073,
+        "endMs": 132873,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你不明白",
+        "startMs": 134253,
+        "endMs": 135953,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我为何倚门独立",
+        "startMs": 137773,
+        "endMs": 140153,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 141693,
+        "endMs": 143813,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 145473,
+        "endMs": 147593,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "你不明白",
+        "startMs": 149073,
+        "endMs": 150753,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "我为何逆风哭泣",
+        "startMs": 152553,
+        "endMs": 154893,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 156453,
+        "endMs": 158573,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 160213,
+        "endMs": 162293,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 167493,
+        "endMs": 169633,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 171253,
+        "endMs": 173073,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      },
+      {
+        "text": "因为我在人间",
+        "startMs": 174853,
+        "endMs": 177053,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": false
+      },
+      {
+        "text": "无靠无依",
+        "startMs": 184313,
+        "endMs": 186393,
+        "timingMethod": "ordered-ctc-sentence",
+        "reviewRequired": true
+      }
+    ]
+  }
+}

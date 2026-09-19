@@ -11,6 +11,7 @@ test-results/
 *.aac
 *.flac
 user-audio/
+__pycache__/
 # 内置鼓声音色采样需要进入版本库
 !public/audio/drums/
 !public/audio/drums/*.mp3

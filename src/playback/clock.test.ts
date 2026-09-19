@@ -22,6 +22,15 @@ function makeAudio() {
 }
 
 describe("playback clocks", () => {
+  it("does not run ahead of a stalled media clock while the playhead may independently lead", () => {
+    const now=vi.spyOn(performance,'now').mockReturnValue(1000);
+    const audio={currentTime:3,playbackRate:1,paused:false,canPlayType:()=>''};
+    const clock=createAudioClock(audio as unknown as HTMLAudioElement);
+    expect(clock.getTimeMs()).toBe(3000);
+    now.mockReturnValue(1200);
+    expect(clock.getTimeMs()).toBe(3000);
+    now.mockRestore();
+  });
   it("retains the latest early seek until audio metadata is loaded", () => {
     const audio = Object.assign(new EventTarget(), { currentTime: 0, readyState: 0 });
     const clock = createAudioClock(audio as unknown as HTMLAudioElement);

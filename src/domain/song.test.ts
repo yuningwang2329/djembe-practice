@@ -4,6 +4,11 @@ import { validateSong } from "./song";
 import { makeSong } from "../test/fixtures";
 
 describe("validateSong", () => {
+  it('rejects non-finite, overlapping or out-of-recording lyric cues', () => {
+    const song=makeSong();
+    song.lyrics=[{text:'甲',startMs:100,endMs:500},{text:'乙',startMs:400,endMs:9000},{text:'丙',startMs:NaN,endMs:600}];
+    expect(validateSong(song)).toEqual(expect.arrayContaining(['第 2 句歌词与前一句重叠','第 2 句歌词时间范围无效','第 3 句歌词时间范围无效']));
+  });
   it("accepts a complete, ordered score", () => {
     expect(validateSong(makeSong())).toEqual([]);
   });

@@ -25,6 +25,15 @@ function makeServices(overrides: Partial<AudioSourceServices> = {}): AudioSource
 }
 
 describe("AudioSourceManager", () => {
+  it('warns about a different recording even if its duration matches, without deleting the audio', async () => {
+    const user=userEvent.setup();
+    const services=makeServices({fingerprint:vi.fn().mockResolvedValue('different-hash')});
+    render(<AudioSourceManager song={{...demoSong,recordingSha256:'reference-hash'}} onAudioUrlChange={vi.fn()} services={services}/>);
+    await user.upload(screen.getByLabelText('导入原歌曲'),new File(['audio'],'other.mp3',{type:'audio/mpeg'}));
+    expect(await screen.findByText(/与校准用的原文件不同/)).toBeInTheDocument();
+    expect(services.repository.save).toHaveBeenCalledOnce();
+    expect(services.repository.remove).not.toHaveBeenCalled();
+  });
   it("uses the built-in demo when no imported audio exists", async () => {
     const onAudioUrlChange = vi.fn();
     render(<AudioSourceManager song={demoSong} onAudioUrlChange={onAudioUrlChange} services={makeServices()} />);

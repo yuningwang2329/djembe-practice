@@ -1,6 +1,8 @@
 import type { Hand, SongDefinition, Stroke } from "../domain/song";
 import { applyStructureEdits } from "./structure";
-import { applyTempoCorrection } from "./tempo";
+import grids from './recordingGrids.json';
+import { alignScoreToRecording, attachRecordingLyrics, type RecordingGrid, type RecordingLyrics } from './recordingSync';
+import recordingLyrics from './recordingLyrics.json';
 
 const barDurationMs = 2_000;
 const subdivisionMs = 250;
@@ -72,7 +74,13 @@ export const songLibrary: SongDefinition[] = [
   beijing,
   chouchangke,
 ]
-  // 顺序要紧：先按实测速度重排时间轴，再按录音段落增删小节
-  .map(applyTempoCorrection)
-  .map(applyStructureEdits);
-
+  // Preserve the existing arrangement, then apply one recording timeline exactly once.
+  // Legacy tempoCorrections / lyricOffsets are not additional timing authorities.
+  .map(applyStructureEdits)
+  .map(song => {
+    const grid = (grids as Record<string, RecordingGrid>)[song.id];
+    if (!grid) return song;
+    const aligned=alignScoreToRecording(song, grid);
+    const lyrics=(recordingLyrics as Record<string, RecordingLyrics>)[song.id];
+    return lyrics ? attachRecordingLyrics(aligned,lyrics,grid) : aligned;
+  });

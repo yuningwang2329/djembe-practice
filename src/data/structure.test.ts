@@ -11,6 +11,7 @@ import { shuishouSong } from "./shuishou";
 import { lasaSong } from "./lasa";
 import { pingguoxiang } from "./pingguoxiang";
 import { beijing } from "./beijing";
+import { applyStructureEdits } from './structure';
 
 /**
  * 结构校正的护栏。曾经因为编辑表用了"文件短名"当键、而运行期查的是 song.id，
@@ -63,17 +64,10 @@ describe("谱面结构校正", () => {
   });
 
   it("校正后小节数等于原始小节数加上净增删量", () => {
-    const originals: Record<string, number> = {
-      "qiao-bian-gu-niang": qiaobianguniang.bars.length,
-      tongnian: tongnianSong.bars.length,
-      shuishou: shuishouSong.bars.length,
-      lasa: lasaSong.bars.length,
-      "ping-guo-xiang": pingguoxiang.bars.length,
-      "zhan-zai-cao-yuan-wang-bei-jing": beijing.bars.length,
-    };
-    for (const song of songLibrary) {
-      const base = originals[song.id];
-      if (base === undefined) continue;
+    // Test the structure stage itself; recording alignment subsequently excludes bars after audio EOF.
+    for (const original of [qiaobianguniang,tongnianSong,shuishouSong,lasaSong,pingguoxiang,beijing]) {
+      const song=applyStructureEdits(original);
+      const base=original.bars.length;
       const net = [...(structureEdits[song.id] ?? []), ...(structureEditsStage2[song.id] ?? [])]
         .reduce((sum, edit) => sum + edit.delta, 0);
       expect(song.bars.length, `${song.id} 小节数不符`).toBe(base + net);

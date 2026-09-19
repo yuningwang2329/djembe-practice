@@ -139,9 +139,8 @@ function SongLibrary({
 }
 
 /**
- * 画面提前量：把播放头和高亮整体往前挪一点，抵消"听到的声音"与"屏幕上的位置"之间的
- * 延迟（蓝牙音箱、系统音频缓冲、画面渲染都会贡献这个延迟）。听感是主观的，
- * 所以做成可调的，自己听着舒服为准。只影响画面，不影响实际播放和进度条。
+ * 视觉提前量：用户偏好竖线先于正在放大的音符。只移动竖线/视窗；
+ * 不用它补偿歌曲的拍点或歌词错误，也不作为蓝牙延迟校准值。
  */
 const VISUAL_LEAD_KEY = "djembe.visualLeadMs";
 const VISUAL_LEAD_MIN = 0;
@@ -338,10 +337,12 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
           <AudioSourceManager song={song} onAudioUrlChange={setAudioUrl} />
           <ScorePage
             bars={activeBars}
-            currentTimeMs={displayTimeMs}
+            currentTimeMs={snapshot.currentTimeMs}
+            visualLeadMs={visualLeadMs}
             lyrics={effectiveSong.lyrics}
-            lyricOffsetMs={lyricOffsets[song.id] ?? 0}
-            charTimes={lyricCharTimes[song.id]}
+            preferTimedLyrics={effectiveSong.lyricTiming === 'recording'}
+            lyricOffsetMs={effectiveSong.lyricTiming === 'recording' ? 0 : lyricOffsets[song.id] ?? 0}
+            charTimes={effectiveSong.lyricTiming === 'recording' ? undefined : lyricCharTimes[song.id]}
             onSeekAndPlay={(timeMs) => void seekAndPlay(timeMs)}
             countInBeat={countInBeat}
             timeSignature={song.timeSignature}
@@ -376,7 +377,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
                   </button>
                   <output
                     aria-label="画面提前量"
-                    title="播放头和高亮整体前移的毫秒数。觉得画面慢半拍就加大它，听到和看到对齐即可。"
+                    title="只让竖线和视窗提前，不改变实际鼓声、音符放大和歌词时间。"
                   >
                     提前 {visualLeadMs}ms
                   </output>

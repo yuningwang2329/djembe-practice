@@ -29,6 +29,7 @@ export interface AudioSourceServices {
   readAudioDurationMs: (file: File) => Promise<number>;
   requestPersistentStorage: () => Promise<boolean>;
   now: () => number;
+  fingerprint?: (blob: Blob) => Promise<string | undefined>;
 }
 
 const defaultServices: AudioSourceServices = {
@@ -39,6 +40,13 @@ const defaultServices: AudioSourceServices = {
   readAudioDurationMs,
   requestPersistentStorage,
   now: () => Date.now(),
+  fingerprint: async blob => {
+    if (!globalThis.crypto?.subtle) return undefined;
+    try {
+      const digest=await crypto.subtle.digest('SHA-256',await blob.arrayBuffer());
+      return [...new Uint8Array(digest)].map(n=>n.toString(16).padStart(2,'0')).join('');
+    } catch { return undefined; }
+  },
 };
 
 function formatMegabytes(bytes: number | undefined): string | null {
@@ -68,6 +76,7 @@ export function AudioSourceManager({
   const [pendingMismatch, setPendingMismatch] = useState<StoredAudio | null>(null);
   const [estimate, setEstimate] = useState<StorageEstimate>({});
   const [hasLocalAudio, setHasLocalAudio] = useState(false);
+  const [versionWarning,setVersionWarning]=useState(false);
   const localUrlRef = useRef<string | null>(null);
 
   const useAudioBlob = (blob: Blob) => {
@@ -89,6 +98,10 @@ export function AudioSourceManager({
           useAudioBlob(record.blob);
           setHasLocalAudio(true);
           setStatus("已保存到此 iPad · 离线可用");
+          if (song.recordingSha256) {
+            void (record.sha256 ? Promise.resolve(record.sha256) : services.fingerprint?.(record.blob) ?? Promise.resolve(undefined))
+              .then(hash=>{if(!cancelled)setVersionWarning(Boolean(hash && hash!==song.recordingSha256));});
+          }
           return;
         }
         onAudioUrlChange(song.builtInAudioUrl);
@@ -109,7 +122,7 @@ export function AudioSourceManager({
         localUrlRef.current = null;
       }
     };
-  }, [onAudioUrlChange, services, song.builtInAudioUrl, song.id]);
+  }, [onAudioUrlChange, services, song.builtInAudioUrl, song.id, song.recordingSha256]);
 
   const finishSave = async (record: StoredAudio, allowDurationMismatch: boolean) => {
     await services.repository.save(record, {
@@ -121,6 +134,7 @@ export function AudioSourceManager({
     setPendingMismatch(null);
     setError(null);
     setStatus("已保存到此 iPad · 离线可用");
+    setVersionWarning(Boolean(record.sha256 && song.recordingSha256 && record.sha256!==song.recordingSha256));
     await services.requestPersistentStorage();
     setEstimate(await services.getStorageEstimate());
   };
@@ -148,6 +162,7 @@ export function AudioSourceManager({
         size: file.size,
         durationMs,
         updatedAt: services.now(),
+        sha256: song.recordingSha256 ? await services.fingerprint?.(file) : undefined,
       };
       try {
         await finishSave(record, false);
@@ -188,6 +203,7 @@ export function AudioSourceManager({
         localUrlRef.current = null;
       }
       setHasLocalAudio(false);
+      setVersionWarning(false);
       onAudioUrlChange(song.builtInAudioUrl);
       setStatus(song.builtInAudioUrl ? "内置伴奏 · 离线可用" : "未导入原歌曲");
       setEstimate(await services.getStorageEstimate());
@@ -234,6 +250,7 @@ export function AudioSourceManager({
         </button>
       )}
       {error && <p className="audio-source__error" role="alert">{error}</p>}
+      {versionWarning && <p className="audio-source__error" role="status">这份音频与校准用的原文件不同（转码也会改变指纹），可能影响同步。请优先导入当时提供的原版 MP3；现有音频仍可播放。</p>}
     </section>
   );
 }

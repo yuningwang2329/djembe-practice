@@ -4,6 +4,40 @@ import { ScorePage, isUsableTimes, placedChars, getPlayheadBar } from "./ScorePa
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
+  it('does not lose lyric highlighting when a cue starts just before the next row but its first letter is on that row', () => {
+    const props={bars:makeSong().bars,preferTimedLyrics:true,lyrics:[{startMs:2900,endMs:4000,text:'甲乙'}]};
+    const {container,rerender}=render(<ScorePage {...props} currentTimeMs={2800}/>);
+    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(0);
+    rerender(<ScorePage {...props} currentTimeMs={2950}/>);
+    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(1);
+    expect(screen.getByLabelText('甲乙')).toHaveAttribute('data-state','current');
+  });
+  it('uses recording lyric cues instead of stale bar-attached words, with clear vocal gaps', () => {
+    const bars=makeSong().bars.map(b=>({...b,lyric:'旧词错误位置',lyricBeats:['旧','词','','']}));
+    const props={bars,preferTimedLyrics:true,lyrics:[{startMs:1200,endMs:2100,text:'实际演唱'}]};
+    const {container,rerender}=render(<ScorePage {...props} currentTimeMs={1400}/>);
+    expect(container.textContent).not.toContain('旧词错误位置');
+    expect(screen.getByLabelText('实际演唱')).toHaveAttribute('data-state','current');
+    rerender(<ScorePage {...props} currentTimeMs={2300}/>);
+    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(0);
+  });
+  it('applies additional visual lead only to the cursor, not the sounding hit or lyric cue', () => {
+    const bar = {number:1,startMs:0,endMs:2000,beats:4,hits:[{atMs:500,stroke:'bass' as const,hand:'R' as const}]};
+    const {container} = render(<ScorePage bars={[bar]} currentTimeMs={500} visualLeadMs={300}
+      lyrics={[{startMs:750,endMs:1500,text:'尚未开唱'}]}/>);
+    expect(container.querySelector('.score-playhead')).toHaveStyle({left:'52%'});
+    expect(container.querySelector('[data-hit-at="500"]')).toHaveAttribute('data-state','current');
+    expect(screen.getByLabelText('尚未开唱')).toHaveAttribute('data-state','idle');
+  });
+  it("keeps the visual lead but highlights lyrics from recording timestamps, not cursor position", () => {
+    const bar = {number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [], lyricBeats: ['甲乙', '', '', '']};
+    const props = {bars: [bar], charTimes: {1: [[1000, 1400], [], [], []]}};
+    const {container, rerender} = render(<ScorePage {...props} currentTimeMs={700}/>);
+    expect(container.querySelector('.score-playhead')).toHaveStyle({left: '47%'});
+    expect(container.querySelectorAll('.score-lyric__char--placed')[0]).toHaveAttribute('data-state','idle');
+    rerender(<ScorePage {...props} currentTimeMs={1100}/>);
+    expect(container.querySelectorAll('.score-lyric__char--placed')[0]).toHaveAttribute('data-state','current');
+  });
   it("keeps all sixteenth hits, their beam lengths, soft letters, and exact seek positions", () => {
     const onSeekAndPlay = vi.fn();
     const bar = { number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [
@@ -235,7 +269,7 @@ describe("ScorePage", () => {
     expect(isUsableTimes([[165790, 165810], [165830, 165850]])).toBe(false);
   });
 
-  it("歌词自适应居中排布并在播放时随播放头实现逐字卡拉OK点亮", () => {
+  it("歌词居中排布，但不受视觉播放头提前量影响", () => {
     const bar = {
       number: 1,
       startMs: 0,
@@ -265,7 +299,7 @@ describe("ScorePage", () => {
     );
 
     const nuan = Array.from(chars).find((el) => el.textContent === "暖");
-    expect(nuan).toHaveAttribute("data-state", "current");
+    expect(nuan).toHaveAttribute("data-state", "idle");
 
     // 播放到 600ms 时（t = 840ms），“暖”已扫过变 past，“阳”被扫到变 current
     rerender(
@@ -274,9 +308,9 @@ describe("ScorePage", () => {
         currentTimeMs={600}
       />,
     );
-    expect(nuan).toHaveAttribute("data-state", "past");
+    expect(nuan).toHaveAttribute("data-state", "current");
     const yang = Array.from(chars).find((el) => el.textContent === "阳");
-    expect(yang).toHaveAttribute("data-state", "current");
+    expect(yang).toHaveAttribute("data-state", "idle");
   });
 
   it("跨小节播放头无缝连续过渡：上一小节 100% 结束时刻，下一小节正好从 0% 接棒，无停顿无瞬移", () => {
@@ -330,4 +364,3 @@ describe("ScorePage", () => {
     expect(letters[0].parentElement).not.toHaveClass("score-char--soft");
   });
 });
-

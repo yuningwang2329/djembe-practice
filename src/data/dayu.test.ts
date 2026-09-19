@@ -5,7 +5,7 @@ import { songLibrary } from "./demoSong";
 
 describe("大鱼 / 用户提供录音与马丁教学谱", () => {
   it("registers 83 bars with the printed sections and leaves the piano lead-in intact", () => {
-    expect(songLibrary).toContain(dayu);
+    expect(songLibrary.find(s=>s.id===dayu.id)?.bars).toHaveLength(83);
     expect(validateSong(dayu)).toEqual([]);
     expect(dayu.bars).toHaveLength(83);
     expect(dayu.bars[0].startMs).toBe(26220);
