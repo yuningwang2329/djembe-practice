@@ -146,8 +146,12 @@ const VISUAL_LEAD_KEY = "djembe.visualLeadMs";
 const VISUAL_LEAD_MIN = 0;
 const VISUAL_LEAD_MAX = 600;
 const VISUAL_LEAD_STEP = 20;
-/** 首次使用的默认值：略微前移。给 0 的话画面不会有任何变化，等于没改。 */
-const VISUAL_LEAD_DEFAULT = 120;
+/**
+ * 默认 0：原先以为"画面慢半拍"是设备延迟，后来定位到真因是音符字母画在时值格子
+ * 正中、而竖线按时间走（实测差 0.38 拍），已改为字母对齐拍点。这一项留着给
+ * 蓝牙音箱之类的设备延迟用，按需调整即可。
+ */
+const VISUAL_LEAD_DEFAULT = 0;
 
 function readVisualLead(): number {
   try {
