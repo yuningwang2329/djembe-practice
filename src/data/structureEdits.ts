@@ -28,29 +28,7 @@ export const structureEdits: Record<string, StructureEdit[]> = {
     { atBar: 90, delta: 1 },
     { atBar: 102, delta: -1, targets: [101] },
   ],
-  "shuishou": [
-    { atBar: 18, delta: 1 },
-    { atBar: 52, delta: -13, targets: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51] },
-    { atBar: 65, delta: 1 },
-    { atBar: 90, delta: -3, targets: [87, 88, 89] },
-    { atBar: 99, delta: 1 },
-  ],
-  "lasa": [
-    { atBar: 28, delta: 1 },
-    { atBar: 30, delta: 2 },
-    { atBar: 32, delta: 2 },
-    { atBar: 34, delta: 2 },
-    { atBar: 42, delta: 9 },
-    { atBar: 50, delta: 1 },
-    { atBar: 52, delta: 2 },
-    { atBar: 54, delta: 2 },
-    { atBar: 56, delta: 2 },
-  ],
   "ping-guo-xiang": [
     { atBar: 58, delta: 1 },
-  ],
-  "zhan-zai-cao-yuan-wang-bei-jing": [
-    { atBar: 10, delta: -1, targets: [9] },
-    { atBar: 50, delta: 2 },
   ],
 };

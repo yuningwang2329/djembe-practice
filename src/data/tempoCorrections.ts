@@ -16,7 +16,10 @@ export const tempoCorrections: Record<string, number> = {
    * 三重独立验证：鼓轨 99.546 / 人声轨 99.384 / 混音 99.398。
    * 细扫得分 0.1708 对 0.0981。316 秒里原本累积漂移 3.3 秒。
    */
-  shuishou: 99.546,
+  shuishou: 99.46,
+  tongnian: 116.33,
+  "zhan-zai-cao-yuan-wang-bei-jing": 102.8,
+  lasa: 100.0,
 
   /**
    * 谱面 105.263 → 实测 105.987。

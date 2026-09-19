@@ -9,7 +9,7 @@ import { beijingPatterns } from "./rhythmPatterns";
 
 const BPM = 102.8;
 const BEAT_MS = 60000 / BPM;
-const START_MS = 1440;
+const START_MS = 365;
 const EXPECTED_DURATION_MS = 248200;
 
 interface StrokeSpec {
@@ -122,8 +122,9 @@ const barConfigs: BarConfig[] = [
   { pattern: "a", lyric: "吉祥彩云", lyricBeats: ["吉祥", "彩云", "", ""] },
   { pattern: "c_sbs", lyric: "献给你", lyricBeats: ["献给", "你", "", ""] },
 
-  // 间奏 42–49（手写谱：7 小节 B B B SB + 1 小节 B B B 0）
+  // 间奏 42–50（音频实测 9 小节：8 小节 B B B SB + 1 小节 B B B 0）
   { pattern: "chorus_inter", section: "间奏" },
+  { pattern: "chorus_inter" },
   { pattern: "chorus_inter" },
   { pattern: "chorus_inter" },
   { pattern: "chorus_inter" },

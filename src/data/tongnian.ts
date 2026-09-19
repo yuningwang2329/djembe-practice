@@ -5,8 +5,8 @@ import { tongnianPatterns } from "./rhythmPatterns";
  * 《童年》罗大佑 · 马丁非洲鼓教学谱（4/4 拍 · 标称速度 116 · 实测 116.2 BPM）
  * 转录自 raw/童年.jpeg，鼓点节奏与录音及歌词毫秒级对齐。
  */
-const BPM = 116.2;
-const START_MS = 384;
+const BPM = 116.33;
+const START_MS = 344;
 const BEAT_MS = 60000 / BPM;
 const BAR_MS = BEAT_MS * 4;
 

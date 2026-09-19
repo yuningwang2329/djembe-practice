@@ -5,7 +5,7 @@ import { shuishouPatterns } from "./rhythmPatterns";
  * 《水手》郑智化 · 马丁非洲鼓教学谱（4/4 拍 · 速度 97 · 录音网格校准 98.5 BPM）
  * 转录自 raw/水手1.jpeg, raw/水手2.jpg, raw/水手3.jpeg。
  */
-const BPM = 98.5;
+const BPM = 99.46;
 const START_MS = 120; // 录音起点
 const BEAT_MS = 60000 / BPM;
 const BAR_MS = BEAT_MS * 4;
@@ -55,14 +55,7 @@ add("patA", 2, "副歌一");
 add("patA", 1); add("patB", 1);
 add("patA", 2);
 add("patA", 1); add("patB", 2);
-
-// 间奏一：A*3 + B + A*3 + B*2 + A + B (11 小节)
-add("patA", 3, "间奏一");
-add("patB", 1);
-add("patA", 3);
-add("patB", 2);
-add("patA", 1);
-add("patB", 1);
+add("patA", 1); add("patB", 1);
 
 // 主歌二：长大以后 为了理想而努力... (16 小节)
 add("patA", 2, "主歌二");
@@ -79,9 +72,10 @@ add("patA", 2, "副歌二");
 add("patA", 1); add("patB", 1);
 add("patA", 2);
 add("patA", 1); add("patB", 2);
+add("patA", 1); add("patB", 1);
 
-// 间奏二：A*3 + B + A*3 + B*2 + A + B (11 小节)
-add("patA", 3, "间奏二");
+// 间奏：吉他独奏 (11 小节)
+add("patA", 3, "间奏");
 add("patB", 1);
 add("patA", 3);
 add("patB", 2);
@@ -98,16 +92,24 @@ add("patA", 1); add("patC", 1);
 add("patA", 2);
 add("patA", 1); add("patC", 1);
 
-// 副歌三与尾奏连击 (24 小节)
+// 副歌三与尾奏连击 (37 小节)
 add("patA", 2, "副歌三");
 add("patA", 1); add("patB", 1);
 add("patA", 2);
+add("patA", 1); add("patB", 2);
 add("patA", 1); add("patB", 1);
-add("patA", 2);
+
+add("patA", 2, "重复副歌");
 add("patA", 1); add("patB", 1);
 add("patA", 2);
 add("patA", 1); add("patB", 2);
-add("patA", 6, "尾奏渐弱");
+add("patA", 1); add("patB", 1);
+
+add("patA", 2, "尾奏渐弱");
+add("patA", 1); add("patB", 1);
+add("patA", 2);
+add("patA", 1); add("patB", 1);
+add("patA", 6);
 add("final", 1);
 
 export const shuishouLyrics = [
@@ -477,64 +479,64 @@ const shuishouBarLyrics: Record<number, { lyric: string; lyricBeats: string[] }>
   34: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
   35: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
   36: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
-  52: { lyric: "长大以后为了", lyricBeats: ["长大", "以后", "为了", ""] },
-  53: { lyric: "理想而努力", lyricBeats: ["理想", "而努", "力", ""] },
-  54: { lyric: "渐渐的忽略了 父亲母亲和", lyricBeats: ["渐渐", "的忽略", "了父", "亲母亲"] },
-  55: { lyric: "故乡的消息", lyricBeats: ["和故", "乡的", "消息", ""] },
-  56: { lyric: "如今的我生活", lyricBeats: ["如今", "的我", "生活", ""] },
-  57: { lyric: "就像在演戏", lyricBeats: ["就像", "在演", "戏", ""] },
-  58: { lyric: "说着言不由衷的话戴着", lyricBeats: ["说着", "言不由", "衷的", "话戴着"] },
-  59: { lyric: "伪善的面具", lyricBeats: ["伪善", "的面", "具", ""] },
-  60: { lyric: "总是拿着微不足道的", lyricBeats: ["总是", "拿着", "微不足", "道的"] },
-  61: { lyric: "成就来骗自己", lyricBeats: ["成就", "来骗", "自己", ""] },
-  62: { lyric: "总是莫名其妙", lyricBeats: ["总是", "莫名", "其妙", ""] },
-  63: { lyric: "感到一阵的空虚", lyricBeats: ["感到", "一阵", "的空", "虚"] },
-  64: { lyric: "总是靠一点酒精的麻醉", lyricBeats: ["总是", "靠一点", "酒精", "的麻醉"] },
-  65: { lyric: "才能够睡去 在", lyricBeats: ["才能", "够睡", "去在", ""] },
-  66: { lyric: "半睡半醒之间 仿佛又", lyricBeats: ["半睡", "半醒", "之间", "仿佛又"] },
-  67: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
-  68: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  69: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  70: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
-  71: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
-  72: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  73: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  74: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
-  90: { lyric: "寻寻觅觅寻不到", lyricBeats: ["寻寻", "觅觅", "寻不到", ""] },
-  91: { lyric: "活着的证据", lyricBeats: ["活着", "的证", "据", ""] },
-  92: { lyric: "都市的柏油路太硬", lyricBeats: ["都市", "的柏油", "路太", "硬"] },
-  93: { lyric: "踩不出足迹", lyricBeats: ["踩不", "出足", "迹", ""] },
-  94: { lyric: "骄傲无知的现代人", lyricBeats: ["骄傲", "无知的", "现代", "人"] },
-  95: { lyric: "不知道珍惜 那", lyricBeats: ["不知", "道珍", "惜", "那"] },
-  96: { lyric: "一片被文明糟蹋过的", lyricBeats: ["一片", "被文明", "糟蹋", "过的"] },
-  97: { lyric: "海洋和天地", lyricBeats: ["海洋", "和天", "地", ""] },
-  98: { lyric: "只有远离人群才能", lyricBeats: ["只有", "远离", "人群", "才能"] },
-  99: { lyric: "找回我自己 在", lyricBeats: ["找回", "我自", "己", "在"] },
-  100: { lyric: "带着咸味的空气中", lyricBeats: ["带着", "咸味", "的空气", "中"] },
-  101: { lyric: "自由的呼吸", lyricBeats: ["自由", "的呼", "吸", ""] },
-  102: { lyric: "耳畔又传来汽笛声和", lyricBeats: ["耳畔", "又传来", "汽笛", "声和"] },
-  103: { lyric: "水手的笑语", lyricBeats: ["水手", "的笑", "语", ""] },
-  104: { lyric: "永远在内心的最深处", lyricBeats: ["永远", "在内心", "的最", "深处"] },
-  105: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
-  106: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  107: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  108: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
-  109: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
-  110: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  111: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  112: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
-  113: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
-  114: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  115: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  116: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  41: { lyric: "长大以后为了", lyricBeats: ["长大", "以后", "为了", ""] },
+  42: { lyric: "理想而努力", lyricBeats: ["理想", "而努", "力", ""] },
+  43: { lyric: "渐渐的忽略了 父亲母亲和", lyricBeats: ["渐渐", "的忽略", "了父", "亲母亲"] },
+  44: { lyric: "故乡的消息", lyricBeats: ["和故", "乡的", "消息", ""] },
+  45: { lyric: "如今的我生活", lyricBeats: ["如今", "的我", "生活", ""] },
+  46: { lyric: "就像在演戏", lyricBeats: ["就像", "在演", "戏", ""] },
+  47: { lyric: "说着言不由衷的话戴着", lyricBeats: ["说着", "言不由", "衷的", "话戴着"] },
+  48: { lyric: "伪善的面具", lyricBeats: ["伪善", "的面", "具", ""] },
+  49: { lyric: "总是拿着微不足道的", lyricBeats: ["总是", "拿着", "微不足", "道的"] },
+  50: { lyric: "成就来骗自己", lyricBeats: ["成就", "来骗", "自己", ""] },
+  51: { lyric: "总是莫名其妙", lyricBeats: ["总是", "莫名", "其妙", ""] },
+  52: { lyric: "感到一阵的空虚", lyricBeats: ["感到", "一阵", "的空", "虚"] },
+  53: { lyric: "总是靠一点酒精的麻醉", lyricBeats: ["总是", "靠一点", "酒精", "的麻醉"] },
+  54: { lyric: "才能够睡去 在", lyricBeats: ["才能", "够睡", "去在", ""] },
+  55: { lyric: "半睡半醒之间 仿佛又", lyricBeats: ["半睡", "半醒", "之间", "仿佛又"] },
+  56: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
+  57: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  58: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  59: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  60: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  61: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  62: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  63: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  79: { lyric: "寻寻觅觅寻不到", lyricBeats: ["寻寻", "觅觅", "寻不到", ""] },
+  80: { lyric: "活着的证据", lyricBeats: ["活着", "的证", "据", ""] },
+  81: { lyric: "都市的柏油路太硬", lyricBeats: ["都市", "的柏油", "路太", "硬"] },
+  82: { lyric: "踩不出足迹", lyricBeats: ["踩不", "出足", "迹", ""] },
+  83: { lyric: "骄傲无知的现代人", lyricBeats: ["骄傲", "无知的", "现代", "人"] },
+  84: { lyric: "不知道珍惜 那", lyricBeats: ["不知", "道珍", "惜", "那"] },
+  85: { lyric: "一片被文明糟蹋过的", lyricBeats: ["一片", "被文明", "糟蹋", "过的"] },
+  86: { lyric: "海洋和天地", lyricBeats: ["海洋", "和天", "地", ""] },
+  87: { lyric: "只有远离人群才能", lyricBeats: ["只有", "远离", "人群", "才能"] },
+  88: { lyric: "找回我自己 在", lyricBeats: ["找回", "我自", "己", "在"] },
+  89: { lyric: "带着咸味的空气中", lyricBeats: ["带着", "咸味", "的空气", "中"] },
+  90: { lyric: "自由的呼吸", lyricBeats: ["自由", "的呼", "吸", ""] },
+  91: { lyric: "耳畔又传来汽笛声和", lyricBeats: ["耳畔", "又传来", "汽笛", "声和"] },
+  92: { lyric: "水手的笑语", lyricBeats: ["水手", "的笑", "语", ""] },
+  93: { lyric: "永远在内心的最深处", lyricBeats: ["永远", "在内心", "的最", "深处"] },
+  94: { lyric: "听见水手说 他说", lyricBeats: ["听见", "水手", "说", "他说"] },
+  95: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  96: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  97: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  98: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  99: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  100: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  101: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
+  106: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  107: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  108: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  109: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  110: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
+  111: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
+  112: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
+  113: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
   117: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
   118: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
   119: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  120: { lyric: "问为什么", lyricBeats: ["问", "为什", "么", ""] },
-  121: { lyric: "他说", lyricBeats: ["", "", "", "他说"] },
-  122: { lyric: "风雨中这点痛", lyricBeats: ["风雨", "中这", "点痛", ""] },
-  123: { lyric: "算什么 擦干泪不要", lyricBeats: ["算什", "么", "擦干", "泪不要"] },
-  124: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
+  120: { lyric: "怕 至少我们还有梦", lyricBeats: ["怕", "至少", "我们", "还有梦"] },
 };
 
 export const shuishouBars: Bar[] = specs.map((spec, index) => {

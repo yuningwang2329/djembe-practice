@@ -7,13 +7,4 @@
  */
 import type { StructureEdit } from "./structureEdits";
 
-export const structureEditsStage2: Record<string, StructureEdit[]> = {
-  "shuishou": [
-    { atBar: 89, delta: -1, targets: [85] },
-    { atBar: 94, delta: 1 },
-  ],
-  "lasa": [
-    { atBar: 38, delta: 1 },
-    { atBar: 58, delta: -1, targets: [57] },
-  ],
-};
+export const structureEditsStage2: Record<string, StructureEdit[]> = {};
