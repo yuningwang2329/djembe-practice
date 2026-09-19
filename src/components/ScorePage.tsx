@@ -290,6 +290,7 @@ export function ScorePage({
                     const isCurrent = activeBar?.number === bar.number;
                     const hasBeats = Boolean(bar.lyricBeats && bar.lyricBeats.length > 0);
                     const text = bar.lyric ?? "";
+                    const beatMs = (bar.endMs - bar.startMs) / bar.beats;
                     return (
                       <div
                         className="score-bar-lyrics"
@@ -308,8 +309,16 @@ export function ScorePage({
                             <span className="score-lyric__beats">
                               {Array.from({ length: bar.beats }, (_, bIdx) => {
                                 const char = bar.lyricBeats?.[bIdx] ?? "";
+                                const beatStart = bar.startMs + bIdx * beatMs;
+                                const beatEnd = beatStart + beatMs;
+                                const isBeatCurrent = currentTimeMs >= beatStart && currentTimeMs < beatEnd;
+                                const isBeatPast = isCurrent && currentTimeMs >= beatEnd;
                                 return (
-                                  <span className="score-lyric__beat-cell" key={bIdx}>
+                                  <span
+                                    className="score-lyric__beat-cell"
+                                    key={bIdx}
+                                    data-state={isBeatCurrent ? "current" : isBeatPast ? "past" : "idle"}
+                                  >
                                     <span className="score-lyric__char">{char}</span>
                                   </span>
                                 );

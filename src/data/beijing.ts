@@ -267,7 +267,7 @@ export const beijing: SongDefinition = {
   id: "zhan-zai-cao-yuan-wang-bei-jing",
   title: "站在草原望北京",
   artist: "乌兰图雅",
-  bpm: 103,
+  bpm: BPM,
   timeSignature: [4, 4],
   audioOffsetMs: 0,
   expectedDurationMs: EXPECTED_DURATION_MS,

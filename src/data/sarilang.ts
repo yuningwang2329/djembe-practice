@@ -252,7 +252,7 @@ export const sarilang: SongDefinition = {
   id: "huo-hong-de-sa-ri-lang",
   title: "火红的萨日朗",
   artist: "乌兰托娅",
-  bpm: 105,
+  bpm: BPM,
   timeSignature: [4, 4],
   audioOffsetMs: 0,
   expectedDurationMs: EXPECTED_DURATION_MS,
