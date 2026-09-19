@@ -1,0 +1,7860 @@
+{
+  "qiao-bian-gu-niang": {
+    "sha256": "500afd9383eb1766243890d28c43e7548d63c7fd83a7a3260b83e8745d2e8f3d",
+    "vocalSha256": "d0fad1f34f41f9cdcb84c7d856dd2f1aa8022943432e6867932b23f868b23970",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "暖阳下 我迎芬芳 是谁家的姑娘",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.1703,
+          -3.9512,
+          -2.0566,
+          -0.1249,
+          -8.7656,
+          -5.5508,
+          -0.4358,
+          -0.0343,
+          -0.0216,
+          -0.239,
+          -0.0025,
+          -0.8457,
+          -0.0019
+        ]
+      },
+      {
+        "line": 2,
+        "text": "我走在了那座小桥上",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2177,
+          -1.8271,
+          -6.4023,
+          -0.6577,
+          -0.1805,
+          -4.4766,
+          -1.0547,
+          -0.932,
+          -3.3301
+        ]
+      },
+      {
+        "line": 3,
+        "text": "你抚琴奏忧伤",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.675,
+          -5.0625,
+          -0.7202,
+          -5.25,
+          -1.1919,
+          -0.9219
+        ]
+      },
+      {
+        "line": 4,
+        "text": "桥边歌唱的小姑娘 你眼角在流淌",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.5707,
+          -0.5342,
+          -5.3945,
+          -8.7266,
+          -0.8438,
+          -0.1005,
+          -3.8242,
+          -0.0513,
+          -1.334,
+          -7.2109,
+          -3.873,
+          -0.0191,
+          -1.8252
+        ]
+      },
+      {
+        "line": 5,
+        "text": "你说一个人在逞强 一个人念家乡",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.8242,
+          -0.0013,
+          -0.2717,
+          -0.5645,
+          -0.0085,
+          -0.0166,
+          -4.3711,
+          -1.5352,
+          -2.5996,
+          -0.0056,
+          -0.3875,
+          -0.0494,
+          -2.4121
+        ]
+      },
+      {
+        "line": 6,
+        "text": "风华模样 你落落大方",
+        "rejectedCharacterIndices": [
+          1,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.9819,
+          -8.2734,
+          -1.9258,
+          -3.873,
+          -4.6328,
+          -8.7422,
+          -4.6758,
+          -4.4492,
+          -0.5986
+        ]
+      },
+      {
+        "line": 7,
+        "text": "坐在桥上 我听你歌唱",
+        "rejectedCharacterIndices": [
+          0,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.4219,
+          -0.1111,
+          -2.0488,
+          -1.6582,
+          -5.0703,
+          -4.2031,
+          -6.2305,
+          -5.3906,
+          -6.4414
+        ]
+      },
+      {
+        "line": 8,
+        "text": "我说桥边姑娘 你的芬芳",
+        "rejectedCharacterIndices": [
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0073,
+          -0.0004,
+          -5.0,
+          -0.0029,
+          -0.2754,
+          -0.0013,
+          -1.1025,
+          -0.0015,
+          -6.7812,
+          -0.9399
+        ]
+      },
+      {
+        "line": 9,
+        "text": "我把你放心上 刻在了我心膛",
+        "rejectedCharacterIndices": [
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0859,
+          -0.0432,
+          -1.3213,
+          -0.016,
+          -2.2754,
+          -0.0182,
+          -2.5449,
+          -2.623,
+          -0.0349,
+          -0.0207,
+          -0.3098,
+          -6.1367
+        ]
+      },
+      {
+        "line": 10,
+        "text": "桥边姑娘 你的忧伤",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.8994,
+          -0.9624,
+          -3.6211,
+          -0.087,
+          -4.0508,
+          -1.582,
+          -1.6299,
+          -0.3328
+        ]
+      },
+      {
+        "line": 11,
+        "text": "我把你放心房 不想让你流浪",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -2.7266,
+          -1.0156,
+          -4.4688,
+          -1.877,
+          -3.0879,
+          -1.5869,
+          -0.0745,
+          -3.1855,
+          -0.3174,
+          -0.3967,
+          -1.2568,
+          -1.6758
+        ]
+      },
+      {
+        "line": 12,
+        "text": "暖阳下 的桥头旁 有这样一姑娘",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.7612,
+          -3.0293,
+          -5.8906,
+          -0.0287,
+          -0.0317,
+          -0.4751,
+          -0.1898,
+          -0.003,
+          -0.728,
+          -0.0106,
+          -1.8867,
+          -0.5122,
+          -0.0011
+        ]
+      },
+      {
+        "line": 13,
+        "text": "她有着长长的乌黑发 一双眼明亮",
+        "rejectedCharacterIndices": [
+          0,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.8359,
+          -2.3809,
+          -5.9648,
+          -2.7148,
+          -4.0703,
+          -0.0455,
+          -3.6211,
+          -0.0316,
+          -0.5444,
+          -6.4609,
+          -0.0062,
+          -3.9102,
+          -0.2476,
+          -2.3496
+        ]
+      },
+      {
+        "line": 14,
+        "text": "姑娘你让我心荡漾 小鹿在乱撞",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.3418,
+          -2.6172,
+          -2.334,
+          -0.4597,
+          -2.4258,
+          -4.375,
+          -2.4766,
+          -6.0078,
+          -3.2676,
+          -5.9258,
+          -9.8828
+        ]
+      },
+      {
+        "line": 15,
+        "text": "你说无人在身旁 一个人在流浪",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.8828,
+          -0.1371,
+          -8.0703,
+          -1.3721,
+          -1.1396,
+          -0.1497,
+          -0.6772,
+          -1.877,
+          -0.1232,
+          -0.0298,
+          -0.0212,
+          -0.5127,
+          -4.168
+        ]
+      },
+      {
+        "line": 16,
+        "text": "风华模样 你落落大方",
+        "rejectedCharacterIndices": [
+          1,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6309,
+          -7.6602,
+          -2.8379,
+          -4.3477,
+          -4.0586,
+          -8.1562,
+          -4.5703,
+          -4.5156,
+          -0.8643
+        ]
+      },
+      {
+        "line": 17,
+        "text": "坐在桥上 我听你歌唱",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.2148,
+          -0.0762,
+          -0.3125,
+          -0.9292,
+          -3.7266,
+          -1.8926,
+          -7.8789,
+          -3.8105,
+          -3.8887
+        ]
+      },
+      {
+        "line": 18,
+        "text": "我说桥边姑娘 你的芬芳",
+        "rejectedCharacterIndices": [
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0068,
+          -0.0029,
+          -5.4922,
+          -0.0019,
+          -0.5669,
+          -0.0021,
+          -0.2178,
+          -0.0022,
+          -7.6914,
+          -1.8008
+        ]
+      },
+      {
+        "line": 19,
+        "text": "我把你放心上 刻在了我心膛",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0424,
+          -0.0671,
+          -2.5742,
+          -0.0115,
+          -2.457,
+          -0.0054,
+          -2.3105,
+          -1.8027,
+          -0.0443,
+          -0.006,
+          -0.0856,
+          -5.9023
+        ]
+      },
+      {
+        "line": 20,
+        "text": "桥边姑娘 你的忧伤",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.415,
+          -0.4502,
+          -3.4082,
+          -0.1722,
+          -4.0078,
+          -0.6577,
+          -0.6865,
+          -0.1622
+        ]
+      },
+      {
+        "line": 21,
+        "text": "我把你放心房 不想让你流浪",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.6729,
+          -0.3882,
+          -2.1465,
+          -2.3691,
+          -6.5898,
+          -0.9248,
+          -0.2445,
+          -2.8633,
+          -3.4766,
+          -0.1748,
+          -1.7031,
+          -1.9482
+        ]
+      }
+    ]
+  },
+  "gu-lou-zhao-lei": {
+    "sha256": "4d2da6b7aae17512252b834ee5a41f1158c5c8c5c8aa7b411ea98d4e46e1a8e3",
+    "vocalSha256": "2fbc7f940e6717b64b4461b26a90e8244bd2a40b5fd65226870bdd5f4a42dbcc",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "我走在鼓楼下面 路在堵着",
+        "rejectedCharacterIndices": [
+          4,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6411,
+          -5.207,
+          -0.2421,
+          -3.5723,
+          -10.1875,
+          -0.4111,
+          -0.0253,
+          -6.7344,
+          -4.1172,
+          -5.6055,
+          -0.2278
+        ]
+      },
+      {
+        "line": 2,
+        "text": "雨后的阳光洒落 人们都出来了",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.1641,
+          -1.2822,
+          -2.6406,
+          -1.1484,
+          -2.4922,
+          -14.4531,
+          -4.25,
+          -0.0041,
+          -0.0813,
+          -0.0002,
+          -0.0024,
+          -0.0068,
+          -0.0883
+        ]
+      },
+      {
+        "line": 3,
+        "text": "执着的迷惘的文艺青年很多",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.875,
+          -0.2756,
+          -0.0186,
+          -2.4258,
+          -0.0268,
+          -0.1926,
+          -7.2695,
+          -0.064,
+          -0.0117,
+          -0.0003,
+          -0.0229
+        ]
+      },
+      {
+        "line": 4,
+        "text": "如果我无聊了就会来这里坐坐",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.1838,
+          -0.6553,
+          -8.7031,
+          -2.7656,
+          -7.7891,
+          -2.9062,
+          -9.2422,
+          -2.1719,
+          -0.0434,
+          -5.3242,
+          -9.0859,
+          -3.918,
+          -3.5137
+        ]
+      },
+      {
+        "line": 5,
+        "text": "我是个沉默不语的",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6694,
+          -0.5449,
+          -1.9141,
+          -2.0938,
+          -6.9922,
+          -3.8047,
+          -5.4219,
+          -4.457
+        ]
+      },
+      {
+        "line": 6,
+        "text": "靠着墙壁晒太阳的过客",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          5,
+          6,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.7852,
+          -0.1337,
+          -3.4375,
+          -6.082,
+          -6.6875,
+          -9.2812,
+          -10.1172,
+          -0.0532,
+          -3.832,
+          -8.6172
+        ]
+      },
+      {
+        "line": 7,
+        "text": "如果我有些倦意了",
+        "rejectedCharacterIndices": [
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.8545,
+          -1.1055,
+          -3.3203,
+          -2.6953,
+          -7.2539,
+          -5.2734,
+          -8.8906,
+          -3.9375
+        ]
+      },
+      {
+        "line": 8,
+        "text": "就让我在这里独自醒过",
+        "rejectedCharacterIndices": [
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.4785,
+          -1.0527,
+          -3.4395,
+          -2.209,
+          -0.5801,
+          -1.4297,
+          -3.6211,
+          -6.5195,
+          -8.4922,
+          -3.8164
+        ]
+      },
+      {
+        "line": 9,
+        "text": "我站在鼓楼上面",
+        "rejectedCharacterIndices": [
+          2,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.4688,
+          -4.7656,
+          -7.6172,
+          -3.6543,
+          -7.5547,
+          -0.1122,
+          -4.8867
+        ]
+      },
+      {
+        "line": 10,
+        "text": "一切繁华与我无关",
+        "rejectedCharacterIndices": [
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.1445,
+          -5.0938,
+          -12.2188,
+          -1.9326,
+          -0.6812,
+          -6.793,
+          -2.1553,
+          -0.9771
+        ]
+      },
+      {
+        "line": 11,
+        "text": "这是个拥挤的地方 而我却很平凡",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.7339,
+          -0.0274,
+          -0.0762,
+          -6.3516,
+          -10.7109,
+          -0.0055,
+          -2.4805,
+          -0.048,
+          -0.5894,
+          -2.8691,
+          -4.9766,
+          -8.4062,
+          -4.6289,
+          -4.4023
+        ]
+      },
+      {
+        "line": 12,
+        "text": "我走在鼓楼下面 淋湿的咖啡馆",
+        "rejectedCharacterIndices": [
+          7,
+          8,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.9521,
+          -5.7539,
+          -0.8525,
+          -3.709,
+          -3.2168,
+          -4.0996,
+          -0.0777,
+          -15.1719,
+          -12.1406,
+          -0.4595,
+          -0.4932,
+          -0.5127,
+          -7.1602
+        ]
+      },
+      {
+        "line": 13,
+        "text": "睡不着的后海边 月亮还在抽着烟",
+        "rejectedCharacterIndices": [
+          0,
+          8,
+          9,
+          12,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.6406,
+          -2.4727,
+          -1.7598,
+          -4.6719,
+          -0.0892,
+          -0.8806,
+          -3.0098,
+          -2.625,
+          -6.25,
+          -9.0312,
+          -0.8989,
+          -4.0508,
+          -8.7656,
+          -6.4023
+        ]
+      },
+      {
+        "line": 14,
+        "text": "喝醉的亲吻着 快活的人不眠",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.6875,
+          -5.0391,
+          -0.0385,
+          -0.3708,
+          -0.0076,
+          -2.7637,
+          -2.0039,
+          -3.0195,
+          -0.2907,
+          -1.2529,
+          -0.3801
+        ]
+      },
+      {
+        "line": 15,
+        "text": "唯有我倚着围栏 对过往说晚安",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.5,
+          -0.667,
+          -9.4141,
+          -4.4531,
+          -11.5938,
+          -3.9727,
+          -0.0929,
+          -0.0262,
+          -1.7207,
+          -0.0043,
+          -0.0338,
+          -0.3835
+        ]
+      },
+      {
+        "line": 16,
+        "text": "我是个沉默不语的",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -12.9453,
+          -0.122,
+          -0.2297,
+          -5.2734,
+          -3.7109,
+          -1.0186,
+          -4.6172,
+          -0.646
+        ]
+      },
+      {
+        "line": 17,
+        "text": "靠着车窗想念你的乘客",
+        "rejectedCharacterIndices": [
+          5,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.375,
+          -3.5449,
+          -0.0248,
+          -1.0785,
+          -2.5117,
+          -7.6719,
+          -4.8711,
+          -0.1198,
+          -2.2559,
+          -6.2891
+        ]
+      },
+      {
+        "line": 18,
+        "text": "当一零七 路再次经过",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.1953,
+          -8.5234,
+          -7.4492,
+          -15.3359,
+          -2.9414,
+          -6.2812,
+          -1.8018,
+          -2.0957,
+          -2.1699
+        ]
+      },
+      {
+        "line": 19,
+        "text": "时间是带走青春的电车",
+        "rejectedCharacterIndices": [
+          4,
+          6,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.7725,
+          -0.918,
+          -0.5663,
+          -0.8022,
+          -11.0781,
+          -1.6904,
+          -6.375,
+          -0.0541,
+          -1.6377,
+          -7.7266
+        ]
+      },
+      {
+        "line": 20,
+        "text": "我站在什刹海边一切甜蜜与我无关",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.1035,
+          -8.0469,
+          -3.7012,
+          -10.4766,
+          -4.9648,
+          -10.2266,
+          -3.3516,
+          -3.5918,
+          -7.1914,
+          -3.6035,
+          -4.1758,
+          -4.5742,
+          -0.4707,
+          -0.3975
+        ]
+      },
+      {
+        "line": 21,
+        "text": "这是个拥挤的地方 而我却很孤单",
+        "rejectedCharacterIndices": [
+          4,
+          11,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.8691,
+          -0.2744,
+          -0.2937,
+          -3.2734,
+          -9.625,
+          -0.0495,
+          -0.5127,
+          -0.7368,
+          -0.0757,
+          -1.9697,
+          -2.3105,
+          -6.4727,
+          -1.5947,
+          -15.4453
+        ]
+      },
+      {
+        "line": 22,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -3.084,
+          -0.1235,
+          -2.5117,
+          -2.5801
+        ]
+      },
+      {
+        "line": 23,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.8438,
+          -0.2666,
+          -3.3184,
+          -2.1348
+        ]
+      },
+      {
+        "line": 24,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -4.3984,
+          -0.2673,
+          -3.4375,
+          -1.0439
+        ]
+      },
+      {
+        "line": 25,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [
+          0,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.1406,
+          -1.5166,
+          -5.0469,
+          -6.5781
+        ]
+      },
+      {
+        "line": 26,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.8906,
+          -0.5391,
+          -4.6953,
+          -1.6348
+        ]
+      },
+      {
+        "line": 27,
+        "text": "我在鼓楼",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.8516,
+          -1.1406,
+          -3.2129,
+          -3.6426
+        ]
+      }
+    ]
+  },
+  "da-yu-zhou-shen": {
+    "sha256": "666e0e016d875390e964c609552ebde5dfbe5476d1cbefdd4332bcd07adb5ec2",
+    "vocalSha256": "4b2984c23e2249fc7b3655698aebfd9dd9495f3459c67724c27d10ae944f751a",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "海浪无声将夜幕深深淹没",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0011,
+          -3.7871,
+          -8.7969,
+          -0.1395,
+          -5.1289,
+          -9.5938,
+          -3.9473,
+          -8.3203,
+          -7.4336,
+          -4.4336
+        ]
+      },
+      {
+        "line": 2,
+        "text": "漫过天空尽头的角落",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.4453,
+          -5.1484,
+          -0.0932,
+          -0.0011,
+          -12.9375,
+          -2.9082,
+          -0.0113,
+          -7.9453,
+          -6.1797
+        ]
+      },
+      {
+        "line": 3,
+        "text": "大鱼在梦境的缝隙里游过",
+        "rejectedCharacterIndices": [
+          4,
+          6,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.4023,
+          -5.375,
+          -0.6304,
+          -1.0459,
+          -6.0391,
+          -0.0006,
+          -7.5898,
+          -8.6562,
+          -0.6138,
+          -7.8945,
+          -1.0791
+        ]
+      },
+      {
+        "line": 4,
+        "text": "凝望你沉睡的轮廓",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.2734,
+          -7.8828,
+          -5.2461,
+          -10.3203,
+          -4.0742,
+          -0.1627,
+          -6.9219,
+          -9.5391
+        ]
+      },
+      {
+        "line": 5,
+        "text": "看海天一色 听风起雨落",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.375,
+          -6.1914,
+          -1.6143,
+          -8.0156,
+          -2.4863,
+          -5.7656,
+          -3.6055,
+          -8.5781,
+          -5.6172,
+          -3.4453
+        ]
+      },
+      {
+        "line": 6,
+        "text": "执子手吹散苍茫茫烟波",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.125,
+          -3.1348,
+          -6.9805,
+          -4.7891,
+          -6.4336,
+          -6.1914,
+          -14.1562,
+          -5.4297
+        ]
+      },
+      {
+        "line": 7,
+        "text": "大鱼的翅膀 已经太辽阔",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.8398,
+          -1.8398,
+          -5.3359,
+          -4.0977,
+          -6.3438,
+          -5.5625,
+          -1.7607,
+          -4.7461,
+          -6.0625
+        ]
+      },
+      {
+        "line": 8,
+        "text": "我松开时间的绳索",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0496,
+          -0.1353,
+          -8.6797,
+          -1.4775,
+          -5.457,
+          -0.0172,
+          -4.793,
+          -1.873
+        ]
+      },
+      {
+        "line": 9,
+        "text": "怕你飞远去 怕你离我而去",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.0156,
+          -5.8359,
+          -9.0547,
+          -19.8125,
+          -0.8242,
+          -9.7656,
+          -5.1562,
+          -6.0938,
+          -0.6733,
+          -8.4766,
+          -1.3164
+        ]
+      },
+      {
+        "line": 10,
+        "text": "更怕你永远停留在这里",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -2.6543,
+          -1.2148,
+          -2.584,
+          -2.3438,
+          -4.5312,
+          -4.1406,
+          -0.0373,
+          -0.0912,
+          -0.4167,
+          -4.7852
+        ]
+      },
+      {
+        "line": 11,
+        "text": "每一滴泪水 都向你流淌去",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.9258,
+          -5.4258,
+          -7.5625,
+          -14.6172,
+          -1.4492,
+          -0.0021,
+          -1.8545,
+          -0.6196,
+          -3.3066,
+          -2.3691
+        ]
+      },
+      {
+        "line": 12,
+        "text": "倒流进天空的海底",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.7227,
+          -9.1328,
+          -10.7031,
+          -0.0688,
+          -1.7793,
+          -0.5972,
+          -0.9009,
+          -8.7266
+        ]
+      },
+      {
+        "line": 13,
+        "text": "海浪无声将夜幕深深淹没",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.4521,
+          -3.6816,
+          -9.0938,
+          -0.4204,
+          -0.2651,
+          -11.6719,
+          -1.8457,
+          -6.7852,
+          -7.207,
+          -6.8086
+        ]
+      },
+      {
+        "line": 14,
+        "text": "漫过天空尽头的角落",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.25,
+          -5.6289,
+          -0.0258,
+          -0.0061,
+          -9.5938,
+          -2.4062,
+          -0.0524,
+          -7.6445,
+          -7.3438
+        ]
+      },
+      {
+        "line": 15,
+        "text": "大鱼在梦境的缝隙里游过",
+        "rejectedCharacterIndices": [
+          1,
+          6,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.8276,
+          -6.5977,
+          -0.0015,
+          -0.8716,
+          -5.5117,
+          -0.0009,
+          -8.1094,
+          -8.0938,
+          -1.4629,
+          -8.0859,
+          -4.7734
+        ]
+      },
+      {
+        "line": 16,
+        "text": "凝望你沉睡的轮廓",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.9258,
+          -7.957,
+          -8.3984,
+          -11.9141,
+          -0.9297,
+          -0.2094,
+          -6.7148,
+          -12.3594
+        ]
+      },
+      {
+        "line": 17,
+        "text": "看海天一色 听风起雨落",
+        "rejectedCharacterIndices": [
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.8682,
+          -2.2832,
+          -3.4941,
+          -8.3359,
+          -4.5781,
+          -2.9883,
+          -3.2461,
+          -7.8086,
+          -5.2773,
+          -3.9375
+        ]
+      },
+      {
+        "line": 18,
+        "text": "执子手吹散苍茫茫烟波",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.2344,
+          -4.1172,
+          -7.6523,
+          -2.5098,
+          -6.7617,
+          -6.1719,
+          -3.1035,
+          -0.1057
+        ]
+      },
+      {
+        "line": 19,
+        "text": "大鱼的翅膀 已经太辽阔",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.7871,
+          -2.5273,
+          -1.7695,
+          -6.0195,
+          -4.5508,
+          -1.7168,
+          -3.1758,
+          -10.8906,
+          -4.8945
+        ]
+      },
+      {
+        "line": 20,
+        "text": "我松开时间的绳索",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.2852,
+          -0.0294,
+          -9.1719,
+          -11.25,
+          -3.6953,
+          -0.005,
+          -5.207,
+          -6.6602
+        ]
+      },
+      {
+        "line": 21,
+        "text": "看你飞远去 看你离我而去",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          7,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.5195,
+          -9.2969,
+          -9.3828,
+          -22.1562,
+          -5.6484,
+          -8.0547,
+          -4.7539,
+          -11.7109,
+          -5.7578,
+          -7.0742,
+          -6.3281
+        ]
+      },
+      {
+        "line": 22,
+        "text": "原来你生来就属于天际",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          5,
+          6,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0943,
+          -4.3828,
+          -7.3438,
+          -1.3965,
+          -7.4844,
+          -10.8906,
+          -8.2031,
+          -0.0875,
+          -0.0038,
+          -10.1094
+        ]
+      },
+      {
+        "line": 23,
+        "text": "每一滴泪水 都向你流淌去",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.043,
+          -4.0078,
+          -5.2734,
+          -14.5391,
+          -3.7988,
+          -0.008,
+          -3.1855,
+          -2.9199,
+          -0.0741,
+          -3.7734
+        ]
+      },
+      {
+        "line": 24,
+        "text": "倒流回最初的相遇",
+        "rejectedCharacterIndices": [
+          0,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.0469,
+          -4.7812,
+          -0.8164,
+          -0.0452,
+          -0.1484,
+          -0.0121,
+          -2.1914,
+          -10.4141
+        ]
+      }
+    ]
+  },
+  "tongnian": {
+    "sha256": "f5ad742066d37e580090669d21095d3765b05c40ddfd2e09e10a90b2217385e4",
+    "vocalSha256": "3c711364bc55ea702dbe9a0ac43beff78ff6b29efcc5043ac77ea2a600427bd3",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "池塘边的榕树上",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.1133,
+          -6.0078,
+          -0.136,
+          -5.5977,
+          -2.1484,
+          -4.4102,
+          -0.0129
+        ]
+      },
+      {
+        "line": 2,
+        "text": "知了在声声叫着夏天",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -3.207,
+          -4.168,
+          -1.2686,
+          -3.8672,
+          -3.8496,
+          -1.96,
+          -1.1309,
+          -4.332,
+          -0.0095
+        ]
+      },
+      {
+        "line": 3,
+        "text": "操场边的秋千上",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.0,
+          -11.9688,
+          -0.3577,
+          -2.7168,
+          -3.4941,
+          -3.9238,
+          -0.8213
+        ]
+      },
+      {
+        "line": 4,
+        "text": "只有蝴蝶停在上面",
+        "rejectedCharacterIndices": [
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.8667,
+          -1.1924,
+          -4.2188,
+          -3.127,
+          -8.1641,
+          -7.7734,
+          -0.7173,
+          -3.1523
+        ]
+      },
+      {
+        "line": 5,
+        "text": "黑板上老师的粉笔",
+        "rejectedCharacterIndices": [
+          1,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.9688,
+          -11.5703,
+          -3.4609,
+          -0.6436,
+          -3.2188,
+          -1.5488,
+          -6.7344,
+          -3.127
+        ]
+      },
+      {
+        "line": 6,
+        "text": "还在拼命叽叽喳喳写个不停",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.0781,
+          -0.1702,
+          -12.4766,
+          -1.2471,
+          -4.3867,
+          -0.196,
+          -4.668,
+          -12.1641
+        ]
+      },
+      {
+        "line": 7,
+        "text": "等待着下课等待着放学",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4492,
+          -5.2305,
+          -3.5527,
+          -0.9575,
+          -4.9727,
+          -1.915,
+          -1.4209,
+          -0.0913,
+          -0.0727,
+          -1.5957
+        ]
+      },
+      {
+        "line": 8,
+        "text": "等待游戏的童年",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0294,
+          -0.4312,
+          -0.0197,
+          -0.026,
+          -0.1021,
+          -7.582,
+          -0.0052
+        ]
+      },
+      {
+        "line": 9,
+        "text": "福利社里面什么都有",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.0195,
+          -2.2383,
+          -0.1126,
+          -11.0781,
+          -13.1094,
+          -0.009,
+          -0.0009,
+          -8.3359,
+          -4.4688
+        ]
+      },
+      {
+        "line": 10,
+        "text": "就是口袋里没有半毛钱",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.003,
+          -0.2544,
+          -0.017,
+          -4.9688,
+          -7.2656,
+          -2.5391,
+          -0.2385,
+          -0.1689,
+          -5.168,
+          -3.2891
+        ]
+      },
+      {
+        "line": 11,
+        "text": "诸葛四郎和魔鬼党",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.1914,
+          -7.1055,
+          -7.9609,
+          -2.6289,
+          -9.1641,
+          -3.8926,
+          -7.082,
+          -10.9688
+        ]
+      },
+      {
+        "line": 12,
+        "text": "到底谁抢到那支宝剑",
+        "rejectedCharacterIndices": [
+          3,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.01,
+          -1.0264,
+          -0.1133,
+          -8.9531,
+          -2.6543,
+          -0.0361,
+          -9.4922,
+          -5.2344,
+          -7.5312
+        ]
+      },
+      {
+        "line": 13,
+        "text": "隔壁班的那个女孩",
+        "rejectedCharacterIndices": [
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.5635,
+          -4.2734,
+          -6.0312,
+          -6.1016,
+          -1.8857,
+          -1.6787,
+          -0.0091,
+          -1.3115
+        ]
+      },
+      {
+        "line": 14,
+        "text": "怎么还没经过我的窗前",
+        "rejectedCharacterIndices": [
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.6738,
+          -0.1799,
+          -0.037,
+          -0.3599,
+          -2.4297,
+          -0.324,
+          -1.2461,
+          -0.1379,
+          -16.4219,
+          -5.6211
+        ]
+      },
+      {
+        "line": 15,
+        "text": "嘴里的零食手里的漫画",
+        "rejectedCharacterIndices": [
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.6328,
+          -5.793,
+          -0.0112,
+          -11.0781,
+          -8.5781,
+          -5.0586,
+          -3.7402,
+          -0.0084,
+          -1.0762,
+          -0.8169
+        ]
+      },
+      {
+        "line": 16,
+        "text": "心里初恋的童年",
+        "rejectedCharacterIndices": [
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2927,
+          -1.9023,
+          -12.3672,
+          -5.1133,
+          -2.377,
+          -6.3984,
+          -1.3193
+        ]
+      },
+      {
+        "line": 17,
+        "text": "总是要等到睡觉前",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4492,
+          -8.8594,
+          -0.9395,
+          -1.9561,
+          -2.916,
+          -6.3086,
+          -4.7617,
+          -2.9609
+        ]
+      },
+      {
+        "line": 18,
+        "text": "才知道功课只做了一点点",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.4504,
+          -1.1904,
+          -0.3318,
+          -4.8789,
+          -10.2969,
+          -4.7227,
+          -4.3555,
+          -0.0475,
+          -0.0609,
+          -0.0017,
+          -5.5195
+        ]
+      },
+      {
+        "line": 19,
+        "text": "总是要等到考试后",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0427,
+          -4.7734,
+          -1.2744,
+          -0.4316,
+          -0.0704,
+          -0.0327,
+          -0.2922,
+          -0.0167
+        ]
+      },
+      {
+        "line": 20,
+        "text": "才知道该念的书都没有念",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.6069,
+          -1.626,
+          -2.1855,
+          -4.4883,
+          -1.457,
+          -0.0033,
+          -3.4355,
+          -1.082,
+          -0.0814,
+          -3.373,
+          -2.209
+        ]
+      },
+      {
+        "line": 21,
+        "text": "一寸光阴一寸金",
+        "rejectedCharacterIndices": [
+          1,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.4707,
+          -9.8906,
+          -0.0654,
+          -6.0,
+          -4.4023,
+          -7.6445,
+          -0.3508
+        ]
+      },
+      {
+        "line": 22,
+        "text": "老师说过寸金难买寸光阴",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.0664,
+          -3.1328,
+          -8.7656,
+          -7.3008,
+          -9.3672,
+          -0.3804,
+          -5.4648,
+          -4.75,
+          -5.9297,
+          -0.0077,
+          -5.1758
+        ]
+      },
+      {
+        "line": 23,
+        "text": "一天又一天一年又一年",
+        "rejectedCharacterIndices": [
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.873,
+          -0.4431,
+          -6.957,
+          -0.9028,
+          -3.2773,
+          -1.7568,
+          -1.8379,
+          -6.0859,
+          -0.7007,
+          -5.9062
+        ]
+      },
+      {
+        "line": 24,
+        "text": "迷迷糊糊的童年",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4746,
+          -3.7871,
+          -16.9688,
+          -11.1406,
+          -11.5156,
+          -10.2656,
+          -0.0105
+        ]
+      },
+      {
+        "line": 25,
+        "text": "没有人知道为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -2.7441,
+          -1.8623,
+          -2.1895,
+          -0.6787,
+          -4.1523,
+          -4.2891,
+          -4.9648,
+          -1.0127
+        ]
+      },
+      {
+        "line": 26,
+        "text": "太阳总下到山的那一边",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -2.8086,
+          -1.04,
+          -2.9336,
+          -4.0195,
+          -0.4038,
+          -0.0301,
+          -2.8145,
+          -0.0577,
+          -0.162,
+          -0.0667
+        ]
+      },
+      {
+        "line": 27,
+        "text": "没有人能够告诉我",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -1.1064,
+          -3.8184,
+          -0.015,
+          -0.0072,
+          -0.0799,
+          -2.3887,
+          -0.6025,
+          -1.46
+        ]
+      },
+      {
+        "line": 28,
+        "text": "山里面有没有住着神仙",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.293,
+          -3.3574,
+          -1.6328,
+          -1.29,
+          -0.0007,
+          -0.009,
+          -1.5703,
+          -0.6675,
+          -0.0109,
+          -5.4023
+        ]
+      },
+      {
+        "line": 29,
+        "text": "多少的日子里总是",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.1406,
+          -4.7969,
+          -9.875,
+          -0.3538,
+          -1.5811,
+          -2.2988,
+          -0.0125,
+          -5.1406
+        ]
+      },
+      {
+        "line": 30,
+        "text": "一个人面对着天空发呆",
+        "rejectedCharacterIndices": [
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.4209,
+          -0.0033,
+          -0.0014,
+          -5.4297,
+          -0.0156,
+          -0.152,
+          -0.0259,
+          -9.6484,
+          -0.1273,
+          -7.9336
+        ]
+      },
+      {
+        "line": 31,
+        "text": "就这么好奇就这么幻想",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          5,
+          6,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.918,
+          -4.543,
+          -0.2952,
+          -0.9678,
+          -6.4336,
+          -8.5938,
+          -6.6523,
+          -0.6289,
+          -2.332,
+          -6.0078
+        ]
+      },
+      {
+        "line": 32,
+        "text": "这么孤单的童年",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.7539,
+          -0.1346,
+          -5.3711,
+          -2.6406,
+          -1.2451,
+          -4.9883,
+          -0.1754
+        ]
+      },
+      {
+        "line": 33,
+        "text": "阳光下蜻蜓飞过来",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4238,
+          -0.0103,
+          -2.0234,
+          -4.043,
+          -5.9727,
+          -0.0739
+        ]
+      },
+      {
+        "line": 34,
+        "text": "一片片绿油油的稻田",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0841,
+          -7.1055,
+          -11.0234,
+          -5.2891,
+          -5.3789,
+          -5.1367,
+          -3.8047,
+          -6.7891,
+          -5.2266
+        ]
+      },
+      {
+        "line": 35,
+        "text": "水彩蜡笔和万花筒",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.8047,
+          -7.0195,
+          -8.5781,
+          -3.6328,
+          -6.4219,
+          -8.7656,
+          -1.2207,
+          -6.0938
+        ]
+      },
+      {
+        "line": 36,
+        "text": "画不出天边那一条彩虹",
+        "rejectedCharacterIndices": [
+          2,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.707,
+          -1.7812,
+          -8.7188,
+          -3.5332,
+          -0.2394,
+          -2.3047,
+          -4.3008,
+          -1.4424,
+          -11.7109,
+          -2.2402
+        ]
+      },
+      {
+        "line": 37,
+        "text": "什么时候才能像高年级的同学",
+        "rejectedCharacterIndices": [
+          3,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0005,
+          -0.0006,
+          -4.168,
+          -6.7109,
+          -5.8711,
+          -1.0615,
+          -7.5312,
+          -0.2563,
+          -0.0237,
+          -2.1895,
+          -2.9883,
+          -0.0952,
+          -0.2837
+        ]
+      },
+      {
+        "line": 38,
+        "text": "有张成熟与长大的脸",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.2305,
+          -0.0284,
+          -2.8926,
+          -8.3516,
+          -6.8672,
+          -5.1562,
+          -0.0029,
+          -4.8633,
+          -8.1797
+        ]
+      },
+      {
+        "line": 39,
+        "text": "盼望着假期盼望着明天",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.0938,
+          -6.3398,
+          -7.6953,
+          -9.8516,
+          -0.1687,
+          -8.8828,
+          -6.7812,
+          -1.1211,
+          -7.4844,
+          -2.1543
+        ]
+      },
+      {
+        "line": 40,
+        "text": "盼望长大的童年",
+        "rejectedCharacterIndices": [
+          0,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.5078,
+          -5.75,
+          -0.2152,
+          -0.0099,
+          -7.6523,
+          -4.0703,
+          -0.2175
+        ]
+      },
+      {
+        "line": 41,
+        "text": "一天又一天一年又一年",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.1094,
+          -1.7324,
+          -6.9258,
+          -0.5952,
+          -6.3516,
+          -0.8169,
+          -0.0034,
+          -9.2656,
+          -0.036,
+          -1.876
+        ]
+      },
+      {
+        "line": 42,
+        "text": "盼望长大的童年",
+        "rejectedCharacterIndices": [
+          0,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -15.3672,
+          -5.7852,
+          -5.9297,
+          -0.0005,
+          -2.1992,
+          -7.4297,
+          -0.1226
+        ]
+      }
+    ]
+  },
+  "shuishou": {
+    "sha256": "784417e0efe377a1e2ada3b00dd1055edcd54b6559b8ddf19754f397082826a3",
+    "vocalSha256": "8127f79e651077152f955571cc2446c26ba73302c8754c8690f59068d30a63aa",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "苦涩的沙",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4141,
+          -4.6523,
+          -0.0445,
+          -2.1309
+        ]
+      },
+      {
+        "line": 2,
+        "text": "吹痛脸庞的感觉",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.6328,
+          -9.0234,
+          -5.6914,
+          -9.4453,
+          -3.9492,
+          -0.5552,
+          -0.0013
+        ]
+      },
+      {
+        "line": 3,
+        "text": "像父亲的责骂",
+        "rejectedCharacterIndices": [
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.6875,
+          -2.0664,
+          -0.2474,
+          -0.0413,
+          -8.8594,
+          -13.1328
+        ]
+      },
+      {
+        "line": 4,
+        "text": "母亲的哭泣",
+        "rejectedCharacterIndices": [
+          0,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.875,
+          -3.2168,
+          -2.4199,
+          -4.4258,
+          -6.3516
+        ]
+      },
+      {
+        "line": 5,
+        "text": "永远难忘记",
+        "rejectedCharacterIndices": [
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0047,
+          -0.0799,
+          -1.1914,
+          -6.543,
+          -8.6328
+        ]
+      },
+      {
+        "line": 6,
+        "text": "年少的我",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.7969,
+          -7.1094,
+          -0.0837,
+          -0.0085
+        ]
+      },
+      {
+        "line": 7,
+        "text": "喜欢一个人在海边",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0621,
+          -0.04,
+          -0.054,
+          -0.0086,
+          -0.0006,
+          -5.1445,
+          -3.0332,
+          -5.5117
+        ]
+      },
+      {
+        "line": 8,
+        "text": "卷起裤管光着脚丫踩在沙滩上",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          6,
+          7,
+          8,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.9336,
+          -6.6445,
+          -7.6289,
+          -0.5356,
+          -0.1993,
+          -0.1097,
+          -9.3594,
+          -6.125,
+          -6.2031,
+          -4.375,
+          -1.3564,
+          -6.9922,
+          -5.1992
+        ]
+      },
+      {
+        "line": 9,
+        "text": "总是幻想海洋的尽头有另一个世界",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.4453,
+          -1.0967,
+          -6.6602,
+          -2.6094,
+          -0.208,
+          -0.3989,
+          -0.051,
+          -5.3438,
+          -4.6523,
+          -1.0322,
+          -4.9062,
+          -0.0409,
+          -1.3271,
+          -0.0049,
+          -0.0033
+        ]
+      },
+      {
+        "line": 10,
+        "text": "总是以为勇敢的水手是真正的男儿",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          7,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.1183,
+          -3.6465,
+          -7.6445,
+          -4.7656,
+          -7.0,
+          -1.8643,
+          -0.0093,
+          -7.1836,
+          -3.9336,
+          -1.6934,
+          -1.7148,
+          -3.6211,
+          -4.082,
+          -0.6919,
+          -6.0625
+        ]
+      },
+      {
+        "line": 11,
+        "text": "总是一副弱不禁风孬种的样子",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -12.7266,
+          -9.125,
+          -0.212,
+          -9.4766,
+          -5.9766,
+          -3.1172,
+          -4.8906,
+          -0.4756,
+          -5.2305,
+          -0.009,
+          -0.0033,
+          -1.6533
+        ]
+      },
+      {
+        "line": 12,
+        "text": "在受人欺负的时候总是听见水手说",
+        "rejectedCharacterIndices": [
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.6094,
+          -7.0352,
+          -0.1078,
+          -4.0742,
+          -2.2422,
+          -0.0294,
+          -1.377,
+          -1.1055,
+          -0.1069,
+          -0.728,
+          -4.832,
+          -3.1406,
+          -5.9258,
+          -0.0501,
+          -1.1104
+        ]
+      },
+      {
+        "line": 13,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.3125,
+          -0.0192,
+          -1.0732,
+          -3.5547,
+          -3.5039,
+          -5.7578,
+          -8.4297,
+          -7.8359,
+          -4.9414,
+          -5.3164,
+          -0.3997
+        ]
+      },
+      {
+        "line": 14,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.2031,
+          -3.2656,
+          -7.6797,
+          -0.6511,
+          -3.6895,
+          -4.1133
+        ]
+      },
+      {
+        "line": 15,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0961,
+          -0.4722,
+          -0.2717,
+          -0.0143,
+          -0.135,
+          -8.5859,
+          -4.3398
+        ]
+      },
+      {
+        "line": 16,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.832,
+          -0.0015,
+          -2.127,
+          -5.6016,
+          -1.3994,
+          -0.1967,
+          -0.0161,
+          -8.6797,
+          -3.4609,
+          -7.2031,
+          -0.5464
+        ]
+      },
+      {
+        "line": 17,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -13.2188,
+          -0.0687,
+          -6.3516,
+          -3.6152,
+          -10.3047,
+          -9.0547
+        ]
+      },
+      {
+        "line": 18,
+        "text": "为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.2446,
+          -3.7695,
+          -0.0093
+        ]
+      },
+      {
+        "line": 19,
+        "text": "长大以后",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.1039,
+          -0.9868,
+          -4.2227,
+          -3.5352
+        ]
+      },
+      {
+        "line": 20,
+        "text": "为了理想而努力",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2322,
+          -0.0201,
+          -2.0781,
+          -9.6719,
+          -5.8711,
+          -0.5093,
+          -4.8164
+        ]
+      },
+      {
+        "line": 21,
+        "text": "渐渐的忽略了",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.6211,
+          -8.4688,
+          -0.0086,
+          -1.4971,
+          -1.4014,
+          -4.1719
+        ]
+      },
+      {
+        "line": 22,
+        "text": "父亲母亲和故乡的消息",
+        "rejectedCharacterIndices": [
+          3,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.7144,
+          -0.0107,
+          -2.1387,
+          -10.3438,
+          -4.3359,
+          -7.3438,
+          -4.0195,
+          -0.8716,
+          -0.0762,
+          -0.118
+        ]
+      },
+      {
+        "line": 23,
+        "text": "如今的我",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.5371,
+          -4.6016,
+          -9.0547,
+          -0.0592
+        ]
+      },
+      {
+        "line": 24,
+        "text": "生活就像在演戏",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.2344,
+          -5.1094,
+          -11.0391,
+          -1.9316,
+          -3.7246,
+          -4.0938,
+          -6.1914
+        ]
+      },
+      {
+        "line": 25,
+        "text": "说着言不由衷的话",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0442,
+          -0.3821,
+          -2.9082,
+          -0.8936,
+          -1.1465,
+          -6.6016,
+          -0.0265,
+          -0.004
+        ]
+      },
+      {
+        "line": 26,
+        "text": "戴着伪善的面具",
+        "rejectedCharacterIndices": [
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4922,
+          -0.0681,
+          -8.0703,
+          -8.0547,
+          -0.0125,
+          -5.5234,
+          -5.9375
+        ]
+      },
+      {
+        "line": 27,
+        "text": "总是拿着微不足道的成就来骗自己",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -12.6406,
+          -0.4019,
+          -1.9326,
+          -0.0298,
+          -1.9463,
+          -0.939,
+          -0.0412,
+          -1.8574,
+          -0.0094,
+          -0.0534,
+          -0.5063,
+          -0.0181,
+          -5.0977,
+          -4.0469,
+          -2.7051
+        ]
+      },
+      {
+        "line": 28,
+        "text": "总是莫名其妙感到一阵的空虚",
+        "rejectedCharacterIndices": [
+          0,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.2188,
+          -1.167,
+          -4.0,
+          -0.8584,
+          -5.5547,
+          -3.8027,
+          -1.0078,
+          -4.5508,
+          -2.2383,
+          -7.6211,
+          -3.5312,
+          -1.0547,
+          -1.3301
+        ]
+      },
+      {
+        "line": 29,
+        "text": "总是靠一点酒精的麻醉才能够睡去",
+        "rejectedCharacterIndices": [
+          0,
+          9,
+          10,
+          12,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.3594,
+          -3.8828,
+          -4.082,
+          -0.0448,
+          -0.4292,
+          -2.9824,
+          -4.8398,
+          -0.0189,
+          -1.2373,
+          -12.1875,
+          -6.2227,
+          -5.8164,
+          -10.3594,
+          -4.6406,
+          -10.2422
+        ]
+      },
+      {
+        "line": 30,
+        "text": "在半睡半醒之间仿佛又听见水手说",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          8,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.7871,
+          -3.168,
+          -5.5625,
+          -6.0781,
+          -9.8359,
+          -0.0009,
+          -0.0001,
+          -3.5,
+          -8.9297,
+          -0.562,
+          -0.5913,
+          -9.4453,
+          -5.5625,
+          -1.3867,
+          -4.5039
+        ]
+      },
+      {
+        "line": 31,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          3,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6172,
+          -0.0013,
+          -5.8984,
+          -7.3438,
+          -5.0352,
+          -0.5474,
+          -0.1895,
+          -9.8281,
+          -2.5273,
+          -6.9492,
+          -4.4648
+        ]
+      },
+      {
+        "line": 32,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -13.0469,
+          -0.0442,
+          -7.4961,
+          -2.2285,
+          -3.8086,
+          -6.4609
+        ]
+      },
+      {
+        "line": 33,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.9648,
+          -4.7812,
+          -0.0548,
+          -2.6855,
+          -0.9756,
+          -9.9219,
+          -4.1562
+        ]
+      },
+      {
+        "line": 34,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.5625,
+          -0.0039,
+          -7.6211,
+          -5.4258,
+          -2.6113,
+          -0.207,
+          -2.4297,
+          -10.2422,
+          -3.6914,
+          -12.3438,
+          -3.6055
+        ]
+      },
+      {
+        "line": 35,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -17.1094,
+          -0.0754,
+          -9.6641,
+          -2.3613,
+          -5.0273,
+          -4.9453
+        ]
+      },
+      {
+        "line": 36,
+        "text": "为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0142,
+          -2.3848,
+          -0.062
+        ]
+      },
+      {
+        "line": 37,
+        "text": "寻寻觅觅寻不到",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4883,
+          -4.1602,
+          -3.1504,
+          -13.3828,
+          -4.1562,
+          -4.3789,
+          -4.5156
+        ]
+      },
+      {
+        "line": 38,
+        "text": "活着的证据",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -4.2969,
+          -3.3047,
+          -0.0072,
+          -0.8008,
+          -0.0461
+        ]
+      },
+      {
+        "line": 39,
+        "text": "都市的柏油路太硬",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.3359,
+          -5.5586,
+          -0.17,
+          -6.7109,
+          -5.4141,
+          -2.959,
+          -3.3398,
+          -8.3594
+        ]
+      },
+      {
+        "line": 40,
+        "text": "踩不出足迹",
+        "rejectedCharacterIndices": [
+          0,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.4844,
+          -2.7344,
+          -0.1854,
+          -5.0078,
+          -9.7344
+        ]
+      },
+      {
+        "line": 41,
+        "text": "骄傲无知的现代人",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.5234,
+          -9.5,
+          -7.6758,
+          -1.5898,
+          -0.0029,
+          -4.2227,
+          -0.3228,
+          -0.0005
+        ]
+      },
+      {
+        "line": 42,
+        "text": "不知道珍惜",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -1.3516,
+          -0.5132,
+          -0.9727,
+          -5.6172,
+          -5.5391
+        ]
+      },
+      {
+        "line": 43,
+        "text": "那一片被文明糟蹋过的海洋和天地",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.0811,
+          -0.0085,
+          -5.6211,
+          -0.0317,
+          -1.4512,
+          -7.4922,
+          -5.2773,
+          -5.8633,
+          -0.0399,
+          -0.2632,
+          -1.4492,
+          -4.0859,
+          -6.6992,
+          -3.9004
+        ]
+      },
+      {
+        "line": 44,
+        "text": "只有远离人群才能找回我自己",
+        "rejectedCharacterIndices": [
+          5,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.5566,
+          -3.0371,
+          -4.7891,
+          -0.0498,
+          -0.0226,
+          -8.6406,
+          -2.7324,
+          -3.2598,
+          -9.6016,
+          -1.5918,
+          -0.0352,
+          -1.9893,
+          -3.002
+        ]
+      },
+      {
+        "line": 45,
+        "text": "在带着咸味的空气中自由的呼吸",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.3594,
+          -6.7031,
+          -8.2266,
+          -10.2031,
+          -5.0898,
+          -0.0031,
+          -0.6855,
+          -2.7852,
+          -0.022,
+          -0.4197,
+          -3.75,
+          -3.8145,
+          -3.7031,
+          -1.5361
+        ]
+      },
+      {
+        "line": 46,
+        "text": "耳畔又传来汽笛声和水手的笑语",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5,
+          6,
+          9,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.0625,
+          -5.3828,
+          -6.4961,
+          -0.1765,
+          -0.9038,
+          -10.3516,
+          -7.6094,
+          -1.793,
+          -3.0371,
+          -8.9922,
+          -2.9609,
+          -0.7715,
+          -1.8916,
+          -10.6875
+        ]
+      },
+      {
+        "line": 47,
+        "text": "永远在内心的最深处听见水手说",
+        "rejectedCharacterIndices": [
+          2,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.5166,
+          -4.0703,
+          -9.0547,
+          -1.001,
+          -0.1974,
+          -0.3534,
+          -1.8398,
+          -0.5435,
+          -7.9062,
+          -6.9453,
+          -10.9297,
+          -2.1855,
+          -0.3862,
+          -0.0087
+        ]
+      },
+      {
+        "line": 48,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          7,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.2812,
+          -0.0007,
+          -1.4043,
+          -3.8262,
+          -1.1494,
+          -4.0117,
+          -0.8374,
+          -7.0898,
+          -0.6992,
+          -7.0078,
+          -6.4648
+        ]
+      },
+      {
+        "line": 49,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -20.0625,
+          -0.04,
+          -9.9531,
+          -6.8711,
+          -3.7227,
+          -2.8184
+        ]
+      },
+      {
+        "line": 50,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.9077,
+          -2.8848,
+          -0.0219,
+          -0.0764,
+          -1.0107,
+          -11.1406,
+          -3.6699
+        ]
+      },
+      {
+        "line": 51,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.6289,
+          -0.0649,
+          -3.1699,
+          -3.6758,
+          -1.7744,
+          -0.0059,
+          -3.0098,
+          -4.2773,
+          -5.6797,
+          -7.2188,
+          -0.3936
+        ]
+      },
+      {
+        "line": 52,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -17.8906,
+          -0.0938,
+          -10.7109,
+          -6.6406,
+          -6.7031,
+          -6.1055
+        ]
+      },
+      {
+        "line": 53,
+        "text": "为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0132,
+          -0.1321,
+          -0.108
+        ]
+      },
+      {
+        "line": 54,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.3594,
+          -3.2246,
+          -2.9922,
+          -6.9492,
+          -0.6064,
+          -4.1211,
+          -6.4414,
+          -8.7578,
+          -10.4219,
+          -8.125,
+          -2.2266
+        ]
+      },
+      {
+        "line": 55,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -18.7344,
+          -0.0265,
+          -7.9805,
+          -2.5625,
+          -2.8906,
+          -3.875
+        ]
+      },
+      {
+        "line": 56,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6245,
+          -1.4043,
+          -0.0214,
+          -0.0019,
+          -2.1211,
+          -6.0391,
+          -5.7188
+        ]
+      },
+      {
+        "line": 57,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.1328,
+          -0.0053,
+          -3.5586,
+          -4.5078,
+          -2.6934,
+          -0.0596,
+          -0.4551,
+          -9.4531,
+          -4.1289,
+          -7.3828,
+          -2.209
+        ]
+      },
+      {
+        "line": 58,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -18.6562,
+          -0.0524,
+          -11.4297,
+          -5.4219,
+          -4.1445,
+          -7.7109
+        ]
+      },
+      {
+        "line": 59,
+        "text": "为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0089,
+          -0.646,
+          -0.0215
+        ]
+      },
+      {
+        "line": 60,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.3438,
+          -0.0006,
+          -2.9961,
+          -4.6914,
+          -0.4236,
+          -2.2441,
+          -0.9824,
+          -8.6094,
+          -1.8223,
+          -7.8984,
+          -0.9565
+        ]
+      },
+      {
+        "line": 61,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -17.9062,
+          -0.1179,
+          -6.125,
+          -3.5391,
+          -4.8828,
+          -1.9336
+        ]
+      },
+      {
+        "line": 62,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.7056,
+          -0.8765,
+          -0.1963,
+          -0.0245,
+          -0.0451,
+          -8.4844,
+          -4.4258
+        ]
+      },
+      {
+        "line": 63,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.4609,
+          -0.0196,
+          -2.0684,
+          -3.3887,
+          -0.8013,
+          -0.0604,
+          -2.418,
+          -5.7266,
+          -1.4502,
+          -9.7422,
+          -1.2695
+        ]
+      },
+      {
+        "line": 64,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.0469,
+          -0.4321,
+          -6.3945,
+          -1.4014,
+          -3.2578,
+          -3.7031
+        ]
+      },
+      {
+        "line": 65,
+        "text": "为什么",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0052,
+          -1.7109,
+          -0.0414
+        ]
+      },
+      {
+        "line": 66,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.6172,
+          -0.0851,
+          -4.6758,
+          -6.1211,
+          -1.1748,
+          -0.0902,
+          -5.9922,
+          -10.1094,
+          -2.6621,
+          -5.5156,
+          -0.0836
+        ]
+      },
+      {
+        "line": 67,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -19.0,
+          -0.0911,
+          -9.2031,
+          -6.9766,
+          -5.4961,
+          -2.8848
+        ]
+      },
+      {
+        "line": 68,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.292,
+          -2.457,
+          -0.0115,
+          -0.0114,
+          -0.3054,
+          -7.9922,
+          -3.0996
+        ]
+      },
+      {
+        "line": 69,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.6055,
+          -0.3364,
+          -0.4209,
+          -3.8945,
+          -2.8496,
+          -0.4231,
+          -0.0679,
+          -11.0547,
+          -3.7188,
+          -4.7734,
+          -1.0029
+        ]
+      },
+      {
+        "line": 70,
+        "text": "擦干泪不要问",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.6328,
+          -0.1482,
+          -8.4531,
+          -4.957,
+          -7.1445,
+          -10.6562
+        ]
+      },
+      {
+        "line": 71,
+        "text": "为什么",
+        "rejectedCharacterIndices": [
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2595,
+          -6.8789,
+          -2.1211
+        ]
+      },
+      {
+        "line": 72,
+        "text": "他说风雨中这点痛算什么",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          7,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.1836,
+          -4.0938,
+          -8.6094,
+          -8.1953,
+          -4.293,
+          -0.0017,
+          -0.173,
+          -12.7969,
+          -3.4512,
+          -7.4023,
+          -3.7422
+        ]
+      },
+      {
+        "line": 73,
+        "text": "擦干泪不要怕",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -15.5547,
+          -0.1185,
+          -7.2812,
+          -3.0898,
+          -3.2559,
+          -6.1602
+        ]
+      },
+      {
+        "line": 74,
+        "text": "至少我们还有梦",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.1594,
+          -0.2458,
+          -0.0997,
+          -0.0399,
+          -1.4854,
+          -4.8438,
+          -9.9219
+        ]
+      }
+    ]
+  },
+  "lasa": {
+    "sha256": "97f120d6c6da7585f634a305aac87f9c2effbbc063afb49113f6ae5bfca02615",
+    "vocalSha256": "f407b8427c8ed7f86e385c48e6c7c4a1e4538a55912894a75c00cb17256be6ac",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "山有多高啊",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.3906,
+          -6.832,
+          -0.6997,
+          -0.8413,
+          -7.3711
+        ]
+      },
+      {
+        "line": 2,
+        "text": "水有多长",
+        "rejectedCharacterIndices": [
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.6523,
+          -6.3125,
+          -1.2637,
+          -3.7578
+        ]
+      },
+      {
+        "line": 3,
+        "text": "通往天堂的路太难",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.769,
+          -3.248,
+          -0.0018,
+          -5.7891,
+          -0.3835,
+          -0.1886,
+          -6.4258,
+          -3.7754
+        ]
+      },
+      {
+        "line": 4,
+        "text": "终于盼来啊",
+        "rejectedCharacterIndices": [
+          0,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.5938,
+          -5.9883,
+          -15.3828,
+          -5.2773,
+          -3.3789
+        ]
+      },
+      {
+        "line": 5,
+        "text": "这条天路",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.9023,
+          -6.6992,
+          -7.1719,
+          -4.2266
+        ]
+      },
+      {
+        "line": 6,
+        "text": "象巨龙飞在高原上",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -12.7031,
+          -7.0898,
+          -0.117,
+          -3.5156,
+          -1.7598,
+          -11.0078,
+          -5.2656,
+          -9.2734
+        ]
+      },
+      {
+        "line": 7,
+        "text": "穿过草原啊",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.8438,
+          -3.5195,
+          -11.2891,
+          -4.2969,
+          -11.75
+        ]
+      },
+      {
+        "line": 8,
+        "text": "越过山川",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.0312,
+          -9.0469,
+          -6.7891,
+          -8.9219
+        ]
+      },
+      {
+        "line": 9,
+        "text": "载着梦想和吉祥",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          3,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.2656,
+          -7.9922,
+          -1.3506,
+          -7.7461,
+          -5.2891,
+          -8.9922,
+          -7.4414
+        ]
+      },
+      {
+        "line": 10,
+        "text": "幸福的歌啊一路的唱",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -15.6562,
+          -9.3203,
+          -0.7925,
+          -3.1973,
+          -5.4922,
+          -4.9102,
+          -0.8237,
+          -0.0773,
+          -8.1719
+        ]
+      },
+      {
+        "line": 11,
+        "text": "唱到了唐古拉山",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.4219,
+          -4.0469,
+          -1.207,
+          -8.0625,
+          -13.6328,
+          -10.0938,
+          -1.4082
+        ]
+      },
+      {
+        "line": 12,
+        "text": "坐上了火车去拉萨",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.5547,
+          -3.6113,
+          -8.7266,
+          -9.2578,
+          -1.3857,
+          -6.7852,
+          -0.1575,
+          -5.0664
+        ]
+      },
+      {
+        "line": 13,
+        "text": "去看那神奇的布达拉",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.9648,
+          -0.0293,
+          -8.9297,
+          -7.5781,
+          -3.6504,
+          -3.9512,
+          -3.6934,
+          -6.8984,
+          -2.7402
+        ]
+      },
+      {
+        "line": 14,
+        "text": "去看那最美的格桑花呀",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          4,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.8672,
+          -9.4297,
+          -8.9844,
+          -5.9883,
+          -10.0703,
+          -1.2881,
+          -4.3164,
+          -3.2129,
+          -13.9531,
+          -2.9727
+        ]
+      },
+      {
+        "line": 15,
+        "text": "盛开在雪山下",
+        "rejectedCharacterIndices": [
+          0,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.9844,
+          -4.3672,
+          -3.1523,
+          -9.9141,
+          -5.0781,
+          -4.0391
+        ]
+      },
+      {
+        "line": 16,
+        "text": "坐上了火车去拉萨",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -16.25,
+          -7.8672,
+          -13.7422,
+          -8.9531,
+          -8.8594,
+          -9.1484,
+          -3.0391,
+          -6.9922
+        ]
+      },
+      {
+        "line": 17,
+        "text": "跳起那热烈的雪山朗玛",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.6016,
+          -7.4688,
+          -11.1641,
+          -8.6875,
+          -7.8281,
+          -3.5449,
+          -7.4023,
+          -7.4961,
+          -10.0625,
+          -9.9688
+        ]
+      },
+      {
+        "line": 18,
+        "text": "喝下那最香浓的青稞酒呀",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.7422,
+          -6.0469,
+          -2.6113,
+          -4.9414,
+          -3.8672,
+          -13.0078,
+          -0.1396,
+          -13.9219,
+          -8.7734,
+          -11.8359
+        ]
+      },
+      {
+        "line": 19,
+        "text": "醉在神话天堂",
+        "rejectedCharacterIndices": [
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.5938,
+          -0.8848,
+          -7.0977,
+          -5.9336,
+          -0.0211,
+          -9.2109
+        ]
+      },
+      {
+        "line": 20,
+        "text": "山有多高啊",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.6016,
+          -7.4961,
+          -0.3943,
+          -2.4746,
+          -9.2188
+        ]
+      },
+      {
+        "line": 21,
+        "text": "水有多长",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -12.0312,
+          -6.4961,
+          -3.1973,
+          -7.2344
+        ]
+      },
+      {
+        "line": 22,
+        "text": "通往天堂的路太难",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.4768,
+          -4.8633,
+          -0.0024,
+          -4.0156,
+          -0.1204,
+          -0.0424,
+          -6.3125,
+          -3.7363
+        ]
+      },
+      {
+        "line": 23,
+        "text": "终于盼来啊",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.5781,
+          -6.0508,
+          -14.8906,
+          -4.4062,
+          -3.5586
+        ]
+      },
+      {
+        "line": 24,
+        "text": "这条天路",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -4.8008,
+          -5.5273,
+          -4.8359,
+          -0.0666
+        ]
+      },
+      {
+        "line": 25,
+        "text": "象巨龙飞在高原上",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -13.0781,
+          -6.1094,
+          -0.1486,
+          -2.418,
+          -0.7236,
+          -9.8203,
+          -6.125,
+          -6.9102
+        ]
+      },
+      {
+        "line": 26,
+        "text": "穿过草原啊",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.4609,
+          -6.0625,
+          -11.5391,
+          -0.9678,
+          -11.9688
+        ]
+      },
+      {
+        "line": 27,
+        "text": "越过山川",
+        "rejectedCharacterIndices": [
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.9023,
+          -7.8359,
+          -4.332,
+          -3.2715
+        ]
+      },
+      {
+        "line": 28,
+        "text": "载着梦想和吉祥",
+        "rejectedCharacterIndices": [
+          3,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.5996,
+          -1.1104,
+          -1.9521,
+          -7.4688,
+          -1.042,
+          -9.4141,
+          -0.8062
+        ]
+      },
+      {
+        "line": 29,
+        "text": "幸福的歌啊一路的唱",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          4,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.1016,
+          -6.8945,
+          -0.1624,
+          -5.4609,
+          -6.6328,
+          -4.9062,
+          -0.6514,
+          -0.5898,
+          -13.2109
+        ]
+      },
+      {
+        "line": 30,
+        "text": "唱到了唐古拉山",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.2812,
+          -5.9102,
+          -1.459,
+          -13.1875,
+          -9.7656,
+          -4.4727,
+          -7.9961
+        ]
+      },
+      {
+        "line": 31,
+        "text": "坐上了火车去拉萨",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.6094,
+          -9.1641,
+          -12.1719,
+          -11.4844,
+          -10.0938,
+          -8.0938,
+          -0.7417,
+          -6.5039
+        ]
+      },
+      {
+        "line": 32,
+        "text": "去看那神奇的布达拉",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.9766,
+          -4.7461,
+          -10.6016,
+          -9.5859,
+          -9.7578,
+          -6.0273,
+          -2.2676,
+          -9.2344,
+          -5.0195
+        ]
+      },
+      {
+        "line": 33,
+        "text": "去看那最美的格桑花呀",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          4,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.0625,
+          -10.5391,
+          -8.1797,
+          -4.4258,
+          -10.1953,
+          -0.9395,
+          -6.7422,
+          -4.0586,
+          -16.3594,
+          -0.1846
+        ]
+      },
+      {
+        "line": 34,
+        "text": "盛开在雪山下",
+        "rejectedCharacterIndices": [
+          0,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.3203,
+          -4.4297,
+          -0.0614,
+          -8.4141,
+          -2.209,
+          -3.9434
+        ]
+      },
+      {
+        "line": 35,
+        "text": "坐上了火车去拉萨",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -14.6875,
+          -7.6523,
+          -9.8516,
+          -12.0625,
+          -8.0469,
+          -9.25,
+          -0.5586,
+          -7.8984
+        ]
+      },
+      {
+        "line": 36,
+        "text": "跳起那热烈的雪山朗玛",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.3516,
+          -10.0391,
+          -7.5508,
+          -7.6797,
+          -8.6172,
+          -0.3513,
+          -7.4805,
+          -5.5312,
+          -9.3594,
+          -6.5039
+        ]
+      },
+      {
+        "line": 37,
+        "text": "喝下那最香浓的青稞酒呀",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.4453,
+          -7.8516,
+          -11.5781,
+          -10.6484,
+          -4.3359,
+          -12.625,
+          -1.9111,
+          -11.3203,
+          -5.7109,
+          -14.375
+        ]
+      },
+      {
+        "line": 38,
+        "text": "醉在神话天堂",
+        "rejectedCharacterIndices": [
+          0,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4883,
+          -0.4246,
+          -4.582,
+          -4.9648,
+          -1.0146,
+          -10.0234
+        ]
+      }
+    ]
+  },
+  "ping-guo-xiang": {
+    "sha256": "7112b479a2548439f5f77ea895acedbde688a3375118e9c15a6229150d3c71d0",
+    "vocalSha256": "999e0262574eee21cccaf47eb8749cc12abfaee56213b0b6b662ce92130144b0",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "红嘴雁啊飞回  芦苇随风摆",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2441,
+          -2.7949,
+          -13.4219,
+          -9.4297,
+          -2.2188,
+          -0.0806,
+          -3.709,
+          -2.7559,
+          -6.4336,
+          -12.8516
+        ]
+      },
+      {
+        "line": 2,
+        "text": "河对面的莎吾烈泰 今天在不在",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.8594,
+          -0.4055,
+          -2.1973,
+          -0.7812,
+          -6.1172,
+          -12.4297,
+          -4.25,
+          -2.6836,
+          -0.2393,
+          -0.3677,
+          -12.3047,
+          -2.0996
+        ]
+      },
+      {
+        "line": 3,
+        "text": "那年我饮马来到了 你的白毡房",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.8613,
+          -7.1992,
+          -0.0089,
+          -7.6875,
+          -8.0078,
+          -8.6328,
+          -7.4727,
+          -8.6875,
+          -3.2207,
+          -0.033,
+          -4.6562,
+          -6.3516,
+          -3.8145
+        ]
+      },
+      {
+        "line": 4,
+        "text": "我曾看到你弹着冬布拉 听过你把歌唱",
+        "rejectedCharacterIndices": [
+          5,
+          8,
+          9,
+          12,
+          15
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0013,
+          -0.2059,
+          -0.088,
+          -3.1543,
+          -5.2617,
+          -13.0,
+          -0.0775,
+          -5.7422,
+          -8.5234,
+          -6.0234,
+          -1.2676,
+          -3.1523,
+          -7.9492,
+          -3.7246,
+          -4.7031,
+          -7.1914
+        ]
+      },
+      {
+        "line": 5,
+        "text": "单纯的相逢 平凡的晚上",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          5,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -13.4453,
+          -4.3789,
+          -0.043,
+          -4.4648,
+          -13.0234,
+          -7.4492,
+          -4.25,
+          -7.3516,
+          -8.6953,
+          -2.7129
+        ]
+      },
+      {
+        "line": 6,
+        "text": "我就在那个时候啊 傻傻的等到了天亮",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          6,
+          8,
+          11,
+          15
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.168,
+          -6.3516,
+          -0.0013,
+          -0.0077,
+          -0.4263,
+          -2.0059,
+          -10.6406,
+          -2.5527,
+          -14.2578,
+          -3.9121,
+          -0.1075,
+          -10.9219,
+          -4.2031,
+          -3.4258,
+          -5.7969,
+          -11.8359
+        ]
+      },
+      {
+        "line": 7,
+        "text": "月亮作证 你毡帽上的羽毛",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.4717,
+          -0.1534,
+          -2.6328,
+          -7.0391,
+          -8.3516,
+          -11.375,
+          -0.8203,
+          -0.8755,
+          -3.6855,
+          -9.9453
+        ]
+      },
+      {
+        "line": 8,
+        "text": "亲吻着晚风飘啊飘 啊飘到了我的心上",
+        "rejectedCharacterIndices": [
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          15
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.583,
+          -4.832,
+          -1.3145,
+          -7.4961,
+          -0.791,
+          -7.3359,
+          -10.4531,
+          -7.1523,
+          -6.7578,
+          -8.7266,
+          -3.082,
+          -0.0014,
+          -0.0001,
+          -0.0004,
+          -1.916,
+          -6.9492
+        ]
+      },
+      {
+        "line": 9,
+        "text": "六星街里还传来 巴扬琴声吗",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5,
+          7,
+          9,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.3047,
+          -0.1229,
+          -10.5,
+          -2.8301,
+          -0.0104,
+          -9.1016,
+          -0.0515,
+          -6.3516,
+          -2.2119,
+          -8.75,
+          -9.8672,
+          -5.1445
+        ]
+      },
+      {
+        "line": 10,
+        "text": "阿力克桑德的面包房 列巴出炉了吗",
+        "rejectedCharacterIndices": [
+          1,
+          4,
+          6,
+          11,
+          13,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.5938,
+          -9.4688,
+          -4.1797,
+          -2.8281,
+          -8.5234,
+          -4.0078,
+          -7.1875,
+          -0.0041,
+          -3.2461,
+          -3.1699,
+          -0.3774,
+          -6.2461,
+          -1.5332,
+          -7.9648,
+          -12.6797
+        ]
+      },
+      {
+        "line": 11,
+        "text": "南苑卤香是舌尖上的故事啊",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.6719,
+          -3.957,
+          -15.5234,
+          -0.2206,
+          -13.9844,
+          -6.0469,
+          -0.1523,
+          -5.5273,
+          -0.4417,
+          -2.8809,
+          -6.9102
+        ]
+      },
+      {
+        "line": 12,
+        "text": "你让浪迹天涯的孩子啊 梦中回家吧",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          7,
+          9,
+          13
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.3594,
+          -7.207,
+          -8.3828,
+          -8.8125,
+          -1.6455,
+          -4.0742,
+          -0.1865,
+          -6.2109,
+          -2.0957,
+          -9.3203,
+          -4.0352,
+          -0.1266,
+          -0.0379,
+          -7.8477,
+          -3.0391
+        ]
+      },
+      {
+        "line": 13,
+        "text": "儿时的万花筒里 有野鸽在飞翔",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4648,
+          -12.1016,
+          -3.7695,
+          -5.7188,
+          -5.082,
+          -14.625,
+          -12.8438,
+          -12.2656,
+          -15.0312,
+          -9.7656,
+          -4.2461,
+          -6.9023,
+          -15.3438
+        ]
+      },
+      {
+        "line": 14,
+        "text": "这让我想起二哥 和他心爱的弹弓叉",
+        "rejectedCharacterIndices": [
+          13,
+          14
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.9961,
+          -0.4204,
+          -0.0021,
+          -3.0762,
+          -5.5703,
+          -4.8164,
+          -0.0076,
+          -4.3867,
+          -0.4629,
+          -0.7793,
+          -3.9863,
+          -0.0072,
+          -0.6548,
+          -7.5273,
+          -10.4922
+        ]
+      },
+      {
+        "line": 15,
+        "text": "湖蓝色的院墙 我生命里的院落",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.377,
+          -4.6172,
+          -5.9805,
+          -7.5156,
+          -6.1523,
+          -6.5859,
+          -9.9922,
+          -3.8066,
+          -4.8906,
+          -3.0293,
+          -0.3181,
+          -5.8516,
+          -5.0586
+        ]
+      },
+      {
+        "line": 16,
+        "text": "我的妈妈在那里给我的爱 叫我永生不忘啊",
+        "rejectedCharacterIndices": [
+          10,
+          16
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.2124,
+          -3.041,
+          -5.7852,
+          -5.5234,
+          -5.2227,
+          -2.9902,
+          -0.6797,
+          -0.0052,
+          -3.3418,
+          -0.017,
+          -14.3203,
+          -4.5703,
+          -4.7539,
+          -2.8027,
+          -5.4844,
+          -4.0703,
+          -7.8398,
+          -4.4922
+        ]
+      },
+      {
+        "line": 17,
+        "text": "心中有个地方 刻进了你的名字",
+        "rejectedCharacterIndices": [
+          6,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.4609,
+          -0.0008,
+          -2.2656,
+          -1.9072,
+          -0.004,
+          -0.0075,
+          -11.5547,
+          -7.4297,
+          -11.8594,
+          -5.5469,
+          -0.7739,
+          -0.0731,
+          -1.2275
+        ]
+      },
+      {
+        "line": 18,
+        "text": "草原 河谷 月季花香 都是我的歌",
+        "rejectedCharacterIndices": [
+          1,
+          5,
+          6,
+          7,
+          11,
+          12
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.707,
+          -7.8281,
+          -5.4453,
+          -1.1748,
+          -2.625,
+          -12.5625,
+          -11.6016,
+          -6.0781,
+          -5.793,
+          -4.0586,
+          -0.2437,
+          -6.1914,
+          -6.6641
+        ]
+      },
+      {
+        "line": 19,
+        "text": "儿时离开你 正逢花开时",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.0625,
+          -6.9375,
+          -4.2969,
+          -9.9219,
+          -8.2031,
+          -8.1484,
+          -10.4922,
+          -5.043,
+          -0.9014,
+          -3.5605
+        ]
+      },
+      {
+        "line": 20,
+        "text": "如今往事 远了 模糊了 我却忘不了苹果香",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.1035,
+          -4.4648,
+          -7.832,
+          -4.3867,
+          -7.6797,
+          -0.728,
+          -2.3652,
+          -2.8027,
+          -0.1887,
+          -2.627,
+          -2.5801,
+          -8.8984,
+          -3.0605,
+          -1.5898,
+          -5.4883,
+          -4.9609,
+          -3.8906
+        ]
+      },
+      {
+        "line": 21,
+        "text": "如今往事 远了 模糊了 我却忘不了苹果香",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          10,
+          11
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.1602,
+          -8.5859,
+          -6.9688,
+          -4.1562,
+          -4.5469,
+          -0.998,
+          -2.4434,
+          -4.2383,
+          -5.5312,
+          -0.1752,
+          -7.4141,
+          -12.0781,
+          -4.9453,
+          -5.1914,
+          -4.3164,
+          -2.4004,
+          -3.248
+        ]
+      }
+    ]
+  },
+  "huo-hong-de-sa-ri-lang": {
+    "sha256": "fb5eb491eece9e86dd042f2544024e616ff787f2169c7dbe14edfb38dbbdbc3e",
+    "vocalSha256": "a918c57c907a5acc4089e279c50ed95575226d5517e94bc1b0ebf8f622419c16",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "天下有多大 随它去宽广",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.3672,
+          -6.9375,
+          -0.1792,
+          -1.6543,
+          -1.3359,
+          -1.4316,
+          -4.0039,
+          -3.6816,
+          -2.2051,
+          -1.5771
+        ]
+      },
+      {
+        "line": 2,
+        "text": "大路有多远 幸福有多长",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0402,
+          -5.6055,
+          -4.7383,
+          -0.0556,
+          -9.4141,
+          -6.7812,
+          -4.8906,
+          -13.2891,
+          -0.1927,
+          -3.4395
+        ]
+      },
+      {
+        "line": 3,
+        "text": "听惯了牧马人悠扬的琴声",
+        "rejectedCharacterIndices": [
+          3,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.6387,
+          -5.5664,
+          -0.8867,
+          -8.375,
+          -0.2703,
+          -0.0642,
+          -9.0391,
+          -4.3789,
+          -0.0412,
+          -4.0117,
+          -10.1328
+        ]
+      },
+      {
+        "line": 4,
+        "text": "爱上这水草丰美的牧场",
+        "rejectedCharacterIndices": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.3669,
+          -3.3926,
+          -7.9688,
+          -4.0312,
+          -9.5859,
+          -1.9404,
+          -7.6562,
+          -0.0658,
+          -6.0938,
+          -4.4258
+        ]
+      },
+      {
+        "line": 5,
+        "text": "花开一抹红 尽情的怒放",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.7305,
+          -9.3047,
+          -7.3203,
+          -11.0234,
+          -3.0703,
+          -7.5234,
+          -7.9219,
+          -0.004,
+          -5.3359,
+          -9.4609
+        ]
+      },
+      {
+        "line": 6,
+        "text": "河流有多远 幸福有多长",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.0039,
+          -1.5977,
+          -4.5625,
+          -0.014,
+          -7.4688,
+          -8.1562,
+          -7.2969,
+          -9.4609,
+          -2.7812,
+          -4.0664
+        ]
+      },
+      {
+        "line": 7,
+        "text": "习惯了游牧人自由的生活",
+        "rejectedCharacterIndices": [
+          3,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.125,
+          -5.918,
+          -0.6001,
+          -8.5078,
+          -5.1484,
+          -1.0479,
+          -6.5898,
+          -6.0547,
+          -1.3887,
+          -2.9629,
+          -3.3848
+        ]
+      },
+      {
+        "line": 8,
+        "text": "爱人在身边随处是天堂",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -3.2324,
+          -0.0628,
+          -0.5278,
+          -3.1484,
+          -1.2251,
+          -5.375,
+          -5.5195,
+          -5.3242,
+          -5.3359,
+          -5.5938
+        ]
+      },
+      {
+        "line": 9,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.0977,
+          -9.0547,
+          -10.6719,
+          -8.8281,
+          -9.8594,
+          -13.5469,
+          -5.5586,
+          -4.9844,
+          -0.1762,
+          -3.707,
+          -6.9492,
+          -1.4385
+        ]
+      },
+      {
+        "line": 10,
+        "text": "一梦到天涯遍地是花香",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.8359,
+          -6.4062,
+          -8.1172,
+          -8.125,
+          -6.457,
+          -14.7656,
+          -0.0975,
+          -2.0684,
+          -8.8516,
+          -4.668
+        ]
+      },
+      {
+        "line": 11,
+        "text": "流浪的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4355,
+          -6.5547,
+          -8.5469,
+          -10.1328,
+          -10.5391,
+          -11.5078,
+          -4.0977,
+          -2.1562,
+          -4.3828,
+          -0.7646
+        ]
+      },
+      {
+        "line": 12,
+        "text": "千里万里也会 回头望",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4453,
+          -3.8223,
+          -0.0024,
+          -8.2812,
+          -0.0249,
+          -4.7344,
+          -0.0028,
+          -10.3125,
+          -4.2617
+        ]
+      },
+      {
+        "line": 13,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.7031,
+          -8.4453,
+          -11.1562,
+          -5.5156,
+          -8.1641,
+          -11.0703,
+          -10.4453,
+          -6.3047,
+          -0.6172,
+          -3.0625,
+          -5.9102,
+          -4.8672
+        ]
+      },
+      {
+        "line": 14,
+        "text": "火一样热烈 火一样奔放",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -5.3086,
+          -3.2227,
+          -0.1703,
+          -3.4238,
+          -5.7656,
+          -4.9453,
+          -3.291,
+          -1.001,
+          -5.6172,
+          -5.8945
+        ]
+      },
+      {
+        "line": 15,
+        "text": "痴情的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.2344,
+          -4.5547,
+          -7.6133,
+          -11.6172,
+          -6.8438,
+          -7.6172,
+          -3.7637,
+          -0.9688,
+          -0.119,
+          -0.9639
+        ]
+      },
+      {
+        "line": 16,
+        "text": "有种幸福叫地久天长",
+        "rejectedCharacterIndices": [
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.1508,
+          -0.0267,
+          -6.9062,
+          -4.832,
+          -4.8008,
+          -3.5234,
+          -0.499,
+          -12.0859,
+          -3.543
+        ]
+      },
+      {
+        "line": 17,
+        "text": "天下有多大 随它去宽广",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          6,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.7539,
+          -8.7891,
+          -3.6094,
+          -0.007,
+          -2.502,
+          -1.0332,
+          -6.7305,
+          -8.7812,
+          -8.4453,
+          -2.8594
+        ]
+      },
+      {
+        "line": 18,
+        "text": "大路有多远 幸福有多长",
+        "rejectedCharacterIndices": [
+          1,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.8496,
+          -10.3203,
+          -5.4492,
+          -4.2031,
+          -6.5508,
+          -7.043,
+          -10.4688,
+          -11.0547,
+          -2.875,
+          -3.9766
+        ]
+      },
+      {
+        "line": 19,
+        "text": "听惯了牧马人悠扬的琴声",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.0762,
+          -5.9844,
+          -1.2227,
+          -7.5625,
+          -6.1797,
+          -1.9961,
+          -11.9219,
+          -3.5605,
+          -0.1686,
+          -3.9863,
+          -11.1172
+        ]
+      },
+      {
+        "line": 20,
+        "text": "爱上这水草丰美的牧场",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          4,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.4395,
+          -8.1328,
+          -9.6953,
+          -5.1094,
+          -11.1094,
+          -3.1426,
+          -4.0234,
+          -0.0095,
+          -7.6445,
+          -7.2656
+        ]
+      },
+      {
+        "line": 21,
+        "text": "花开一抹红 尽情的怒放",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.1016,
+          -8.9297,
+          -9.0703,
+          -10.3594,
+          -7.7539,
+          -9.0469,
+          -10.4375,
+          -2.3574,
+          -10.7344,
+          -7.8906
+        ]
+      },
+      {
+        "line": 22,
+        "text": "河流有多远 幸福有多长",
+        "rejectedCharacterIndices": [
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.1641,
+          -0.9561,
+          -4.1406,
+          -0.0864,
+          -3.5684,
+          -9.6328,
+          -12.1172,
+          -10.1406,
+          -0.007,
+          -0.0987
+        ]
+      },
+      {
+        "line": 23,
+        "text": "习惯了游牧人自由的生活",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          4,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.168,
+          -6.0156,
+          -2.7852,
+          -8.0625,
+          -6.3828,
+          -0.9966,
+          -6.2148,
+          -11.6172,
+          -0.0161,
+          -0.5645,
+          -0.0216
+        ]
+      },
+      {
+        "line": 24,
+        "text": "爱人在身边随处是天堂",
+        "rejectedCharacterIndices": [
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.8867,
+          -0.8423,
+          -0.3311,
+          -1.5134,
+          -0.0503,
+          -2.582,
+          -4.6523,
+          -8.9766,
+          -5.2031,
+          -4.418
+        ]
+      },
+      {
+        "line": 25,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4375,
+          -7.2148,
+          -8.5078,
+          -8.4297,
+          -11.0312,
+          -12.5156,
+          -6.4922,
+          -6.707,
+          -0.0576,
+          -0.3501,
+          -3.3359,
+          -1.9355
+        ]
+      },
+      {
+        "line": 26,
+        "text": "一梦到天涯遍地是花香",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.9297,
+          -4.1797,
+          -8.1562,
+          -0.0919,
+          -4.3633,
+          -10.7734,
+          -3.1641,
+          -0.9126,
+          -2.8066,
+          -3.0176
+        ]
+      },
+      {
+        "line": 27,
+        "text": "流浪的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.9609,
+          -6.7461,
+          -5.2578,
+          -5.5586,
+          -9.1094,
+          -8.6406,
+          -0.1825,
+          -1.3018,
+          -0.6558,
+          -3.1816
+        ]
+      },
+      {
+        "line": 28,
+        "text": "千里万里也会 回头望",
+        "rejectedCharacterIndices": [
+          0,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4219,
+          -3.2129,
+          -0.0014,
+          -8.7422,
+          -1.4219,
+          -3.3633,
+          -0.0067,
+          -3.2402,
+          -5.3945
+        ]
+      },
+      {
+        "line": 29,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.6875,
+          -8.2969,
+          -11.0703,
+          -13.75,
+          -11.1797,
+          -10.1406,
+          -9.3906,
+          -0.9351,
+          -0.0276,
+          -4.6367,
+          -6.5547,
+          -1.832
+        ]
+      },
+      {
+        "line": 30,
+        "text": "火一样热烈 火一样奔放",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.2871,
+          -3.8203,
+          -0.2568,
+          -6.9688,
+          -6.7031,
+          -1.8955,
+          -3.5039,
+          -0.5835,
+          -3.2578,
+          -6.3555
+        ]
+      },
+      {
+        "line": 31,
+        "text": "痴情的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.1094,
+          -4.832,
+          -10.7188,
+          -8.7578,
+          -8.625,
+          -4.4023,
+          -5.5703,
+          -0.3228,
+          -0.3091,
+          -2.3867
+        ]
+      },
+      {
+        "line": 32,
+        "text": "有种幸福叫地久天长",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0175,
+          -0.0252,
+          -7.1172,
+          -3.8555,
+          -1.1328,
+          -3.3281,
+          -1.29,
+          -5.3906,
+          -2.7168
+        ]
+      },
+      {
+        "line": 33,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.4766,
+          -6.3906,
+          -1.9199,
+          -3.0078,
+          -1.2695,
+          -2.7578,
+          -1.2568,
+          -3.0566,
+          -0.0049,
+          -0.8218,
+          -0.3542,
+          -1.166
+        ]
+      },
+      {
+        "line": 34,
+        "text": "一梦到天涯遍地是花香",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.3906,
+          -7.5586,
+          -6.7305,
+          -0.2107,
+          -3.5195,
+          -13.5625,
+          -0.3867,
+          -3.8047,
+          -3.4414,
+          -3.4707
+        ]
+      },
+      {
+        "line": 35,
+        "text": "流浪的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.5449,
+          -5.4648,
+          -5.0078,
+          -3.7793,
+          -8.5781,
+          -6.0742,
+          -4.1016,
+          -4.125,
+          -0.4856,
+          -0.9097
+        ]
+      },
+      {
+        "line": 36,
+        "text": "千里万里也会 回头望",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.043,
+          -3.5547,
+          -0.0485,
+          -7.125,
+          -0.8696,
+          -3.6094,
+          -0.0038,
+          -7.2148,
+          -11.8906
+        ]
+      },
+      {
+        "line": 37,
+        "text": "草原最美的花 火红的萨日朗",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          10
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.125,
+          -14.1094,
+          -9.5156,
+          -10.4141,
+          -9.9453,
+          -15.1797,
+          -7.5273,
+          -3.0039,
+          -0.244,
+          -4.6133,
+          -7.1992,
+          -4.9688
+        ]
+      },
+      {
+        "line": 38,
+        "text": "火一样热烈 火一样奔放",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.7578,
+          -2.3164,
+          -0.134,
+          -3.2617,
+          -4.3281,
+          -4.3281,
+          -5.2031,
+          -1.8965,
+          -4.9688,
+          -2.9824
+        ]
+      },
+      {
+        "line": 39,
+        "text": "痴情的人啊心上有了她",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.5859,
+          -7.5156,
+          -9.2109,
+          -9.9219,
+          -9.1953,
+          -3.3711,
+          -6.7969,
+          -9.2422,
+          -10.0,
+          -0.6406
+        ]
+      },
+      {
+        "line": 40,
+        "text": "有种幸福叫地久天长",
+        "rejectedCharacterIndices": [
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.16,
+          -0.1722,
+          -9.9141,
+          -4.9102,
+          -4.875,
+          -2.7285,
+          -2.8574,
+          -9.1797,
+          -5.5586
+        ]
+      },
+      {
+        "line": 41,
+        "text": "有种幸福叫地久天长",
+        "rejectedCharacterIndices": [
+          2,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0559,
+          -0.1109,
+          -9.4688,
+          -5.2344,
+          -5.1523,
+          -1.6514,
+          -4.7773,
+          -4.4883,
+          -8.2109
+        ]
+      }
+    ]
+  },
+  "zhan-zai-cao-yuan-wang-bei-jing": {
+    "sha256": "9c8fa9d6f33fc5b1142d71a4bdbb8f5fdb985c3d832f4bb06442865b25df2bbf",
+    "vocalSha256": "2dbe03d4ede1ec8bb2354e2f6b922f4ac91fa91d61789a8a3617f9abd6396453",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "瓦蓝蓝的天上飞雄鹰",
+        "rejectedCharacterIndices": [
+          2,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.522,
+          -5.8047,
+          -7.5703,
+          -0.2283,
+          -1.083,
+          -1.9004,
+          -0.3984,
+          -4.4648,
+          -7.7266
+        ]
+      },
+      {
+        "line": 2,
+        "text": "我在高岗眺望北京",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0088,
+          -0.6855,
+          -0.0207,
+          -2.2109,
+          -2.3438,
+          -1.5635,
+          -9.3672
+        ]
+      },
+      {
+        "line": 3,
+        "text": "侧耳倾听母亲的声音",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.4766,
+          -10.0625,
+          -8.2031,
+          -10.1484,
+          -3.2383,
+          -0.77,
+          -0.0202,
+          -1.8643,
+          -2.1133
+        ]
+      },
+      {
+        "line": 4,
+        "text": "放眼欲穿崇山峻岭",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.6992,
+          -11.6562,
+          -5.8242,
+          -1.7041,
+          -1.6772,
+          -1.8164,
+          -9.4609,
+          -9.7109
+        ]
+      },
+      {
+        "line": 5,
+        "text": "绿波波的草场骏马行",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.6094,
+          -4.8828,
+          -0.538,
+          -0.0341,
+          -7.4023,
+          -1.8574,
+          -10.7188,
+          -0.3079,
+          -5.7461
+        ]
+      },
+      {
+        "line": 6,
+        "text": "我在草原歌唱北京",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0275,
+          -0.1343,
+          -8.4219,
+          -0.8599,
+          -2.4512,
+          -4.832,
+          -4.8281,
+          -5.9688
+        ]
+      },
+      {
+        "line": 7,
+        "text": "谁的眼睛掠过了风景",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          4,
+          6,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.291,
+          -0.055,
+          -6.3516,
+          -10.0703,
+          -6.7422,
+          -4.8008,
+          -8.6094,
+          -0.3169,
+          -6.2852
+        ]
+      },
+      {
+        "line": 8,
+        "text": "迎风高唱五星红旗",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.293,
+          -1.3066,
+          -3.3262,
+          -3.1816,
+          -7.75,
+          -8.1797,
+          -3.9863,
+          -9.1641
+        ]
+      },
+      {
+        "line": 9,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.081,
+          -2.1211,
+          -1.4971,
+          -5.6836,
+          -6.4727,
+          -10.0,
+          -4.3281,
+          -9.7266
+        ]
+      },
+      {
+        "line": 10,
+        "text": "一望无际国泰安宁",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.2969,
+          -3.7891,
+          -12.1641,
+          -8.7891,
+          -2.1113,
+          -3.1836,
+          -7.2578,
+          -6.832
+        ]
+      },
+      {
+        "line": 11,
+        "text": "唱出草原的豪情和美丽",
+        "rejectedCharacterIndices": [
+          3,
+          6,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.8301,
+          -0.2654,
+          -5.6094,
+          -6.6875,
+          -5.6602,
+          -0.6699,
+          -6.8125,
+          -0.9082,
+          -9.1875,
+          -12.1328
+        ]
+      },
+      {
+        "line": 12,
+        "text": "让这歌声回荡紫禁",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.5156,
+          -0.2493,
+          -10.0547,
+          -3.0664,
+          -4.1484,
+          -1.9531,
+          -9.6719
+        ]
+      },
+      {
+        "line": 13,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.2529,
+          -5.9219,
+          -0.2129,
+          -5.3516,
+          -5.0977,
+          -9.4219,
+          -3.459,
+          -11.125
+        ]
+      },
+      {
+        "line": 14,
+        "text": "青青山岗心旷神怡",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.1406,
+          -4.6133,
+          -1.708,
+          -5.1523,
+          -3.6758,
+          -2.9648,
+          -10.2109
+        ]
+      },
+      {
+        "line": 15,
+        "text": "让心放飞着喜悦的心情",
+        "rejectedCharacterIndices": [
+          2,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.5898,
+          -3.8535,
+          -8.7969,
+          -2.2305,
+          -0.0969,
+          -10.9453,
+          -8.1797,
+          -6.7539,
+          -9.3984,
+          -9.5312
+        ]
+      },
+      {
+        "line": 16,
+        "text": "吉祥彩云献给你",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.6016,
+          -7.0625,
+          -15.3125,
+          -8.4219,
+          -7.1562,
+          -5.0117,
+          -6.918
+        ]
+      },
+      {
+        "line": 17,
+        "text": "瓦蓝蓝的天上飞雄鹰",
+        "rejectedCharacterIndices": [
+          2,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0469,
+          -3.0371,
+          -6.4414,
+          -0.0023,
+          -0.7222,
+          -0.5815,
+          -0.8135,
+          -4.8438,
+          -7.8242
+        ]
+      },
+      {
+        "line": 18,
+        "text": "我在高岗眺望北京",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0093,
+          -0.1672,
+          -0.0392,
+          -1.8262,
+          -3.6387,
+          -2.1855,
+          -8.7891
+        ]
+      },
+      {
+        "line": 19,
+        "text": "侧耳倾听母亲的声音",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.4805,
+          -11.4219,
+          -6.7148,
+          -8.7109,
+          -2.9805,
+          -0.6543,
+          -0.0367,
+          -2.582,
+          -3.5039
+        ]
+      },
+      {
+        "line": 20,
+        "text": "放眼欲穿崇山峻岭",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.0547,
+          -11.6016,
+          -6.9609,
+          -1.7915,
+          -2.3335,
+          -3.5234,
+          -10.2578,
+          -9.7344
+        ]
+      },
+      {
+        "line": 21,
+        "text": "绿波波的草场骏马行",
+        "rejectedCharacterIndices": [
+          0,
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.2344,
+          -3.5273,
+          -0.29,
+          -0.0849,
+          -8.1016,
+          -5.2422,
+          -9.9453,
+          -0.5771,
+          -4.1992
+        ]
+      },
+      {
+        "line": 22,
+        "text": "我在草原歌唱北京",
+        "rejectedCharacterIndices": [
+          2,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.3325,
+          -0.1609,
+          -8.3906,
+          -3.6719,
+          -3.0176,
+          -3.0391,
+          -0.457,
+          -9.3984
+        ]
+      },
+      {
+        "line": 23,
+        "text": "谁的眼睛掠过了风景",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          4,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.6445,
+          -0.0867,
+          -7.0039,
+          -11.0,
+          -8.1641,
+          -5.375,
+          -7.6562,
+          -0.4958,
+          -5.6016
+        ]
+      },
+      {
+        "line": 24,
+        "text": "迎风高唱五星红旗",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.1445,
+          -2.3433,
+          -0.4456,
+          -4.3281,
+          -8.4453,
+          -8.3984,
+          -4.2461,
+          -8.5781
+        ]
+      },
+      {
+        "line": 25,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.7612,
+          -3.7695,
+          -0.8467,
+          -5.3242,
+          -11.2891,
+          -11.5859,
+          -4.6797,
+          -9.1172
+        ]
+      },
+      {
+        "line": 26,
+        "text": "一望无际国泰安宁",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.7461,
+          -3.9258,
+          -12.875,
+          -9.25,
+          -1.5771,
+          -3.3418,
+          -6.957,
+          -7.3516
+        ]
+      },
+      {
+        "line": 27,
+        "text": "唱出草原的豪情和美丽",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          4,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.6016,
+          -0.0439,
+          -9.0391,
+          -7.3281,
+          -9.1328,
+          -0.6714,
+          -5.7617,
+          -1.4365,
+          -8.3906,
+          -11.3594
+        ]
+      },
+      {
+        "line": 28,
+        "text": "让这歌声回荡紫禁",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.0566,
+          -1.0205,
+          -11.6719,
+          -2.9121,
+          -4.6211,
+          -1.7148,
+          -9.9297
+        ]
+      },
+      {
+        "line": 29,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.4102,
+          -5.3672,
+          -0.2595,
+          -9.8984,
+          -3.4414,
+          -7.8789,
+          -4.1602,
+          -11.25
+        ]
+      },
+      {
+        "line": 30,
+        "text": "青青山岗心旷神怡",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -10.2109,
+          -5.1719,
+          -1.2285,
+          -6.8359,
+          -1.6494,
+          -3.3262,
+          -9.7031
+        ]
+      },
+      {
+        "line": 31,
+        "text": "让心放飞着喜悦的心情",
+        "rejectedCharacterIndices": [
+          2,
+          5,
+          6,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.8411,
+          -2.5645,
+          -7.1484,
+          -3.3809,
+          -0.2211,
+          -9.7734,
+          -7.7617,
+          -5.8281,
+          -9.9531,
+          -10.4844
+        ]
+      },
+      {
+        "line": 32,
+        "text": "吉祥彩云献给你",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.2773,
+          -4.6992,
+          -9.7578,
+          -6.6641,
+          -8.1406,
+          -1.5371,
+          -5.75
+        ]
+      },
+      {
+        "line": 33,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.3955,
+          -5.5,
+          -0.4705,
+          -7.9609,
+          -11.8203,
+          -9.1641,
+          -5.9414,
+          -9.6328
+        ]
+      },
+      {
+        "line": 34,
+        "text": "一望无际国泰安宁",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -5.6367,
+          -3.0332,
+          -11.7266,
+          -7.6914,
+          -2.248,
+          -2.4551,
+          -5.0,
+          -10.5156
+        ]
+      },
+      {
+        "line": 35,
+        "text": "唱出草原的豪情和美丽",
+        "rejectedCharacterIndices": [
+          2,
+          3,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.0195,
+          -0.5991,
+          -7.9062,
+          -6.4844,
+          -4.9336,
+          -1.9941,
+          -5.5,
+          -1.8906,
+          -5.2812,
+          -9.3125
+        ]
+      },
+      {
+        "line": 36,
+        "text": "让这歌声回荡紫禁",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.7695,
+          -0.7803,
+          -10.0469,
+          -2.4648,
+          -4.6055,
+          -5.5352,
+          -12.4219
+        ]
+      },
+      {
+        "line": 37,
+        "text": "我站在草原望北京",
+        "rejectedCharacterIndices": [
+          1,
+          3,
+          4,
+          5,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.248,
+          -10.6875,
+          -0.1702,
+          -6.5938,
+          -5.6055,
+          -7.2227,
+          -5.125,
+          -10.3516
+        ]
+      },
+      {
+        "line": 38,
+        "text": "青青山岗心旷神怡",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.8906,
+          -5.7578,
+          -0.8187,
+          -6.0312,
+          -1.6484,
+          -4.2188,
+          -10.3828
+        ]
+      },
+      {
+        "line": 39,
+        "text": "让心放飞着喜悦的心情",
+        "rejectedCharacterIndices": [
+          2,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.4609,
+          -2.0898,
+          -7.0977,
+          -3.9922,
+          -0.1653,
+          -11.9922,
+          -7.7031,
+          -6.7188,
+          -9.5781,
+          -9.7578
+        ]
+      },
+      {
+        "line": 40,
+        "text": "吉祥彩云献给你",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.1484,
+          -7.7422,
+          -14.0781,
+          -8.6016,
+          -7.3789,
+          -6.1523,
+          -7.3008
+        ]
+      },
+      {
+        "line": 41,
+        "text": "吉祥彩云献给献给你",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.0312,
+          -7.7578,
+          -14.8984,
+          -8.6875,
+          -14.8281,
+          -2.9609,
+          -8.7891,
+          -7.7148,
+          -7.7305
+        ]
+      }
+    ]
+  },
+  "wo-shi-ren-jian-chou-chang-ke": {
+    "sha256": "422028764c1d1c195c614f5e524ea5140caa673f1e4268a7fb8e79b2cb616346",
+    "vocalSha256": "d0d4c44f2d8cd4afc3bc762f2b33f6cf7552cfe58e2e9d9c11416a2da000d807",
+    "purpose": "notation-layout-only; not human-verified phoneme times",
+    "details": [
+      {
+        "line": 1,
+        "text": "我是漂泊的孩子",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.0352,
+          -0.0278,
+          -0.2876,
+          -4.6992,
+          -6.3125,
+          -3.9395,
+          -1.8076
+        ]
+      },
+      {
+        "line": 2,
+        "text": "生来就无家可归",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.8516,
+          -1.9785,
+          -0.0851,
+          -10.5234,
+          -1.8262,
+          -4.2305,
+          -6.2852
+        ]
+      },
+      {
+        "line": 3,
+        "text": "八万四千法门",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -9.4609,
+          -9.9062,
+          -7.668,
+          -13.4531,
+          -7.082,
+          -2.6602
+        ]
+      },
+      {
+        "line": 4,
+        "text": "没有一扇为我开启",
+        "rejectedCharacterIndices": [
+          3,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0038,
+          -0.0111,
+          -0.0822,
+          -8.2031,
+          -0.3828,
+          -1.0781,
+          -0.001,
+          -12.2891
+        ]
+      },
+      {
+        "line": 5,
+        "text": "我是远方的孩子",
+        "rejectedCharacterIndices": [
+          2
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.5176,
+          -0.2593,
+          -7.2148,
+          -2.3516,
+          -0.0058,
+          -5.9883,
+          -0.3064
+        ]
+      },
+      {
+        "line": 6,
+        "text": "风是唯一的知己",
+        "rejectedCharacterIndices": [
+          2,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.876,
+          -4.3672,
+          -9.6484,
+          -1.6201,
+          -0.0022,
+          -10.2812,
+          -6.168
+        ]
+      },
+      {
+        "line": 7,
+        "text": "走过千山万水",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.9395,
+          -5.1797,
+          -4.0078,
+          -8.3125,
+          -0.0941,
+          -1.5205
+        ]
+      },
+      {
+        "line": 8,
+        "text": "却没能走出我自己",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -1.2627,
+          -4.457,
+          -2.043,
+          -0.1667,
+          -5.5039,
+          -2.6387,
+          -2.5449,
+          -3.791
+        ]
+      },
+      {
+        "line": 9,
+        "text": "你不明白",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.6328,
+          -0.0859,
+          -0.9873,
+          -3.6816
+        ]
+      },
+      {
+        "line": 10,
+        "text": "我为何倚门独立",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0094,
+          -5.7734,
+          -9.9844,
+          -6.5742,
+          -6.3047,
+          -4.4531
+        ]
+      },
+      {
+        "line": 11,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [
+          4
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.3086,
+          -0.0062,
+          -0.0002,
+          -0.0067,
+          -6.2266,
+          -5.0078
+        ]
+      },
+      {
+        "line": 12,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          1,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -4.8711,
+          -9.0547,
+          -5.2305,
+          -13.875
+        ]
+      },
+      {
+        "line": 13,
+        "text": "你不明白",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.0352,
+          -1.8398,
+          -0.2338,
+          -13.6641
+        ]
+      },
+      {
+        "line": 14,
+        "text": "我为何逆风哭泣",
+        "rejectedCharacterIndices": [
+          0,
+          3,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.1445,
+          -4.7617,
+          -3.1758,
+          -12.8281,
+          -4.8164,
+          -6.1602,
+          -6.9297
+        ]
+      },
+      {
+        "line": 15,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [
+          4,
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.8105,
+          -0.0734,
+          -0.0002,
+          -0.0008,
+          -8.25,
+          -7.4297
+        ]
+      },
+      {
+        "line": 16,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -7.3281,
+          -6.6953,
+          -11.4062,
+          -10.2734
+        ]
+      },
+      {
+        "line": 17,
+        "text": "我是迷途的星子",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0003,
+          -0.0006,
+          -0.5835,
+          -9.8906,
+          -0.0272,
+          -4.1914,
+          -0.0
+        ]
+      },
+      {
+        "line": 18,
+        "text": "只知道燃烧自己",
+        "rejectedCharacterIndices": [
+          0,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.0078,
+          -0.0003,
+          -0.0554,
+          -1.6143,
+          -5.2383,
+          -4.793,
+          -8.8594
+        ]
+      },
+      {
+        "line": 19,
+        "text": "银河浩瀚如经文",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.4414,
+          -4.2344,
+          -7.5195,
+          -7.1484,
+          -0.0883,
+          -2.8652,
+          -0.7021
+        ]
+      },
+      {
+        "line": 20,
+        "text": "没有一句渡我皈依",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0018,
+          -0.0032,
+          -2.125,
+          -6.0898,
+          -8.6328,
+          -0.2399,
+          -13.2031
+        ]
+      },
+      {
+        "line": 21,
+        "text": "我是断线的风筝",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0647,
+          -0.0069,
+          -8.1484,
+          -2.2285,
+          -0.0072,
+          -3.5938
+        ]
+      },
+      {
+        "line": 22,
+        "text": "飘摇在冷雨黄昏",
+        "rejectedCharacterIndices": [
+          1
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.0488,
+          -6.3633,
+          -0.0316,
+          -3.0469,
+          -5.0508,
+          -0.1212,
+          -0.249
+        ]
+      },
+      {
+        "line": 23,
+        "text": "三千世界如长绳",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0137,
+          -5.0586,
+          -0.0139,
+          -0.0058,
+          -0.938,
+          -4.3438,
+          -10.5
+        ]
+      },
+      {
+        "line": 24,
+        "text": "没有一根系我浮生",
+        "rejectedCharacterIndices": [
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0027,
+          -0.0031,
+          -0.1848,
+          -0.0223,
+          -5.0078,
+          -0.3022,
+          -8.3438,
+          -0.1098
+        ]
+      },
+      {
+        "line": 25,
+        "text": "你不明白",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.2393,
+          -0.2388,
+          -2.0312,
+          -12.8125
+        ]
+      },
+      {
+        "line": 26,
+        "text": "我为何倚门独立",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.0053,
+          -4.1914,
+          -4.2031,
+          -6.9258,
+          -4.4844,
+          -3.7539
+        ]
+      },
+      {
+        "line": 27,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [
+          5
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -3.9004,
+          -0.0682,
+          -0.0001,
+          -0.0267,
+          -5.3711,
+          -6.8438
+        ]
+      },
+      {
+        "line": 28,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          0,
+          1,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -6.8672,
+          -11.1094,
+          -3.8535,
+          -16.8125
+        ]
+      },
+      {
+        "line": 29,
+        "text": "你不明白",
+        "rejectedCharacterIndices": [
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -1.9258,
+          -2.6094,
+          -0.7036,
+          -9.8203
+        ]
+      },
+      {
+        "line": 30,
+        "text": "我为何逆风哭泣",
+        "rejectedCharacterIndices": [
+          3,
+          6
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -0.3372,
+          -2.418,
+          -3.2832,
+          -12.4609,
+          -2.2539,
+          -0.9312,
+          -9.125
+        ]
+      },
+      {
+        "line": 31,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [
+          0
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.0781,
+          -2.1621,
+          -0.0027,
+          -0.3113,
+          -0.6807,
+          -1.6934
+        ]
+      },
+      {
+        "line": 32,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          1,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -2.2344,
+          -10.2812,
+          -6.5312,
+          -18.0469
+        ]
+      },
+      {
+        "line": 33,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -1.7207,
+          -0.1677,
+          -0.006,
+          -0.0358,
+          -0.0431,
+          -0.199
+        ]
+      },
+      {
+        "line": 34,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -11.8125,
+          -3.9844,
+          -13.9141,
+          -11.8906
+        ]
+      },
+      {
+        "line": 35,
+        "text": "因为我在人间",
+        "rejectedCharacterIndices": [],
+        "method": "ctc-candidates",
+        "modelScores": [
+          -0.0375,
+          -0.0413,
+          -0.0229,
+          -0.0057,
+          -0.0766,
+          -1.7627
+        ]
+      },
+      {
+        "line": 36,
+        "text": "无靠无依",
+        "rejectedCharacterIndices": [
+          0,
+          2,
+          3
+        ],
+        "method": "mixed-estimates",
+        "modelScores": [
+          -8.6094,
+          -5.4727,
+          -8.25,
+          -13.1016
+        ]
+      }
+    ]
+  }
+}

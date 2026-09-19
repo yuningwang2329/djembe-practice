@@ -110,14 +110,16 @@ export function createDrumSampler(context: AudioContext, fallback: DrumSynth): D
       let lastNode: AudioNode = source;
       if (typeof context.createBiquadFilter === "function") {
         const filter = context.createBiquadFilter();
-        if (hit.dynamics === "soft") {
+        if (hit.stroke === "bass") {
+          // B/b share the attack spectrum. Low-passing b at 260 Hz on top of
+          // its velocity reduction removed the cues audible on small speakers.
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 260 : 1100, startTime);
+          filter.frequency.setValueAtTime(1200, startTime);
           lastNode.connect(filter);
           lastNode = filter;
-        } else if (hit.stroke === "bass") {
+        } else if (hit.dynamics === "soft") {
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(360, startTime);
+          filter.frequency.setValueAtTime(1100, startTime);
           lastNode.connect(filter);
           lastNode = filter;
         }

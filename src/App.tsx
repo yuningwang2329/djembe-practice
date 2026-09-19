@@ -139,7 +139,7 @@ function SongLibrary({
 }
 
 /**
- * 视觉提前量：用户偏好竖线先于正在放大的音符。只移动竖线/视窗；
+ * 视觉提前量：用户偏好竖线先于正在放大的音符。移动竖线/歌词扫色/视窗；
  * 不用它补偿歌曲的拍点或歌词错误，也不作为蓝牙延迟校准值。
  */
 const VISUAL_LEAD_KEY = "djembe.visualLeadMs";
@@ -377,7 +377,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
                   </button>
                   <output
                     aria-label="画面提前量"
-                    title="只让竖线和视窗提前，不改变实际鼓声、音符放大和歌词时间。"
+                    title="竖线、歌词扫色和视窗一起提前；不改变实际鼓声、音符放大和演唱时间。"
                   >
                     提前 {visualLeadMs}ms
                   </output>

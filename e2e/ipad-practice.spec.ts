@@ -45,16 +45,16 @@ test("song lyric cues follow seeking and leave the instrumental gap clear", asyn
   const progress = page.getByLabel("播放进度");
   await progress.fill("18000");
   const active = page.locator('.score-lyric[data-state="current"]');
-  await expect(active).toHaveCount(1);
-  await expect(active).toContainText("暖阳下");
+  await expect.poll(async()=>(await active.allTextContents()).join('')).toContain("暖阳下");
+  expect(await active.evaluateAll(els=>new Set(els.map(el=>el.getAttribute('data-cue-start'))).size)).toBe(1);
   await page.screenshot({ path: "test-results/qiao-lyrics-landscape.png" });
   await progress.fill("90000");
   await expect(active).toHaveCount(0);
   // 123 秒处录音唱的是「风华模样 你落落大方」（参考歌词 2:02 起句）。
   // 结构校正前谱面在此处显示的是「你说无人在身旁」——那正是它整体晚了 6~10 秒的证据。
   await progress.fill("123000");
-  await expect(active).toHaveCount(1);
-  await expect(active).toContainText("风华模样");
+  await expect.poll(async()=>(await active.allTextContents()).join('')).toContain("风华模样");
+  expect(await active.evaluateAll(els=>new Set(els.map(el=>el.getAttribute('data-cue-start'))).size)).toBe(1);
 });
 
 test("continuous score previews the next row and crosses the old page boundary without jumping", async ({ page }) => {

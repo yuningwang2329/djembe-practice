@@ -10,8 +10,9 @@ test("Dayu registers the full score, keeps interludes clear and follows playback
   // 主歌一进歌：当前歌词为「海浪无声…」，高亮小节在第 6 小节附近
   await progress.fill("43500");
   const active = page.locator('.score-lyric[data-state="current"]');
-  await expect(active).toHaveCount(1);
-  await expect(active).toContainText("海浪无声");
+  // The same cue is split into notation-aligned bar fragments, not duplicated.
+  await expect.poll(async()=>(await active.allTextContents()).join('')).toContain("海浪无声");
+  expect(await active.evaluateAll(els=>new Set(els.map(el=>el.getAttribute('data-cue-start'))).size)).toBe(1);
   // 钢琴引子与间奏留白
   await progress.fill("20000");
   await expect(page.locator('.score-lyric[data-state="current"]')).toHaveCount(0);

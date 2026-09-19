@@ -39,6 +39,20 @@ function makeAudio(currentTime = 0) {
 }
 
 describe("playback controller", () => {
+  it('does not drop the clicked soft bass when media advances before the first animation frame', async()=>{
+    const song=makeSong();
+    const hit={atMs:500,stroke:'bass' as const,hand:'L' as const,dynamics:'soft' as const};
+    song.bars[0].hits=[hit];
+    let now=500,playing=false;
+    const clock={getTimeMs:()=>now,getPlaybackRate:()=>1,isPlaying:()=>playing,pause:()=>{playing=false;},seek:(t:number)=>{now=t;},setPlaybackRate:(r:number)=>r,play:async()=>{playing=true;now+=12;}};
+    const synth=makeSynth();
+    const controller=createPlaybackController({song,clock,synth,requestFrame:()=>1});
+    await controller.play({countInBeats:0});
+    controller.tick();
+    expect(synth.schedule).toHaveBeenCalledTimes(1);
+    expect(synth.schedule).toHaveBeenCalledWith(hit,10,.8);
+    controller.destroy();
+  });
   it.each([0.5, 1, 1.5])("aligns the real song's first and late hits with media time at rate %s", async (rate) => {
     const audio = makeAudio();
     const synth = makeSynth();

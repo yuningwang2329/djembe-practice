@@ -7,147 +7,439 @@
         "startMs": 16993,
         "endMs": 22433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          16993,
+          17433,
+          17793,
+          18373,
+          18663,
+          18953,
+          19353,
+          19913,
+          20113,
+          20533,
+          20953,
+          21313,
+          21693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我走在了那座小桥上",
         "startMs": 23013,
         "endMs": 26073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          23013,
+          23213,
+          23513,
+          23813,
+          24013,
+          24393,
+          24773,
+          25153,
+          25573
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你抚琴奏忧伤",
         "startMs": 26153,
         "endMs": 28613,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          26153,
+          26393,
+          26713,
+          27113,
+          27493,
+          27873
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "桥边歌唱的小姑娘 你眼角在流淌",
         "startMs": 29393,
         "endMs": 34453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          29393,
+          29754,
+          30116,
+          30477,
+          30839,
+          31200,
+          31562,
+          31923,
+          32284,
+          32646,
+          33007,
+          33369,
+          33730,
+          34092
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你说一个人在逞强 一个人念家乡",
         "startMs": 35633,
         "endMs": 41013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          35633,
+          36017,
+          36402,
+          36786,
+          37170,
+          37554,
+          37939,
+          38323,
+          38707,
+          39092,
+          39476,
+          39860,
+          40244,
+          40629
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "风华模样 你落落大方",
         "startMs": 41853,
         "endMs": 47313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          41853,
+          42453,
+          43053,
+          43433,
+          44593,
+          45203,
+          45813,
+          46173,
+          46573
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐在桥上 我听你歌唱",
         "startMs": 48053,
         "endMs": 53853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          48053,
+          48833,
+          49173,
+          49633,
+          50833,
+          51173,
+          51743,
+          52313,
+          53083
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我说桥边姑娘 你的芬芳",
         "startMs": 56593,
         "endMs": 62793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          56593,
+          57013,
+          57393,
+          58173,
+          58553,
+          58953,
+          60493,
+          61253,
+          61653,
+          62053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我把你放心上 刻在了我心膛",
         "startMs": 63553,
         "endMs": 68973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          63553,
+          64373,
+          64753,
+          65153,
+          65493,
+          65913,
+          66653,
+          67053,
+          67273,
+          67453,
+          67813,
+          68393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "桥边姑娘 你的忧伤",
         "startMs": 69733,
         "endMs": 75193,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          69733,
+          70573,
+          70953,
+          71353,
+          72913,
+          73673,
+          74073,
+          74453
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "我把你放心房 不想让你流浪",
         "startMs": 75913,
         "endMs": 81453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          75913,
+          76793,
+          77173,
+          77573,
+          77913,
+          78333,
+          79093,
+          79453,
+          79693,
+          79953,
+          80333,
+          80713
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "暖阳下 的桥头旁 有这样一姑娘",
         "startMs": 97673,
         "endMs": 103133,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          97673,
+          98113,
+          98493,
+          99113,
+          99273,
+          99693,
+          100073,
+          100653,
+          100853,
+          101253,
+          101673,
+          102013,
+          102393
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "她有着长长的乌黑发 一双眼明亮",
         "startMs": 103733,
         "endMs": 109333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          103733,
+          103973,
+          104373,
+          104733,
+          105113,
+          105313,
+          105553,
+          105873,
+          106333,
+          106893,
+          107453,
+          107833,
+          108153,
+          108593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "姑娘你让我心荡漾 小鹿在乱撞",
         "startMs": 110153,
         "endMs": 115553,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          110153,
+          110568,
+          110984,
+          111399,
+          111815,
+          112230,
+          112645,
+          113061,
+          113476,
+          113891,
+          114307,
+          114722,
+          115138
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你说无人在身旁 一个人在流浪",
         "startMs": 116333,
         "endMs": 122173,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          116333,
+          116753,
+          117233,
+          117713,
+          117913,
+          118293,
+          118653,
+          119473,
+          119833,
+          120033,
+          120233,
+          120613,
+          121433
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "风华模样 你落落大方",
         "startMs": 122553,
         "endMs": 128033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          122553,
+          123153,
+          123753,
+          124133,
+          125293,
+          125903,
+          126513,
+          126873,
+          127293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐在桥上 我听你歌唱",
         "startMs": 128753,
         "endMs": 134553,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          128753,
+          129533,
+          129873,
+          130333,
+          131533,
+          131873,
+          132443,
+          133013,
+          133813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我说桥边姑娘 你的芬芳",
         "startMs": 137293,
         "endMs": 143493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          137293,
+          137713,
+          138073,
+          138873,
+          139253,
+          139653,
+          141193,
+          141953,
+          142353,
+          142753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我把你放心上 刻在了我心膛",
         "startMs": 144253,
         "endMs": 149673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          144253,
+          145053,
+          145453,
+          145853,
+          146193,
+          146613,
+          147353,
+          147753,
+          147973,
+          148153,
+          148513,
+          148933
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "桥边姑娘 你的忧伤",
         "startMs": 150433,
         "endMs": 155893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          150433,
+          151273,
+          151653,
+          152053,
+          153593,
+          154373,
+          154773,
+          155153
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "我把你放心房 不想让你流浪",
         "startMs": 156593,
         "endMs": 162153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          156593,
+          157513,
+          157873,
+          158273,
+          158653,
+          159033,
+          159793,
+          160153,
+          160393,
+          160653,
+          161033,
+          161413
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -159,189 +451,526 @@
         "startMs": 25833,
         "endMs": 33693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          25833,
+          26353,
+          26853,
+          27913,
+          28293,
+          28673,
+          29193,
+          30583,
+          31973,
+          32493,
+          32953
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "雨后的阳光洒落 人们都出来了",
         "startMs": 34013,
         "endMs": 40593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          34013,
+          34253,
+          34793,
+          36053,
+          36553,
+          36943,
+          37333,
+          38353,
+          38573,
+          38833,
+          39073,
+          39373,
+          39853
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "执着的迷惘的文艺青年很多",
         "startMs": 42173,
         "endMs": 50013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          42173,
+          42826,
+          43480,
+          44133,
+          44786,
+          45440,
+          46093,
+          46746,
+          47400,
+          48053,
+          48706,
+          49360
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "如果我无聊了就会来这里坐坐",
         "startMs": 50273,
         "endMs": 56393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          50273,
+          50553,
+          51453,
+          52353,
+          52713,
+          53073,
+          53453,
+          53833,
+          54093,
+          54333,
+          54733,
+          55133,
+          55653
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我是个沉默不语的",
         "startMs": 58173,
         "endMs": 61653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          58173,
+          58413,
+          58953,
+          59413,
+          59933,
+          60453,
+          60973,
+          61233
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "靠着墙壁晒太阳的过客",
         "startMs": 61733,
         "endMs": 66293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          61733,
+          62233,
+          62453,
+          62969,
+          63485,
+          64001,
+          64517,
+          65033,
+          65313,
+          65803
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "如果我有些倦意了",
         "startMs": 66373,
         "endMs": 69793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          66373,
+          66573,
+          67073,
+          67593,
+          68063,
+          68533,
+          68933,
+          69333
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "就让我在这里独自醒过",
         "startMs": 69873,
         "endMs": 74733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          69873,
+          70393,
+          70853,
+          71373,
+          71633,
+          71933,
+          72913,
+          73273,
+          73633,
+          73993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在鼓楼上面",
         "startMs": 74973,
         "endMs": 78733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          74973,
+          75693,
+          76223,
+          76753,
+          77133,
+          77513,
+          77993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一切繁华与我无关",
         "startMs": 79313,
         "endMs": 82813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          79313,
+          79513,
+          79913,
+          80313,
+          80793,
+          81193,
+          81593,
+          82073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这是个拥挤的地方 而我却很平凡",
         "startMs": 83073,
         "endMs": 89433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          83073,
+          83313,
+          83613,
+          84200,
+          84786,
+          85373,
+          85653,
+          86153,
+          87193,
+          87393,
+          87633,
+          87903,
+          88173,
+          88693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我走在鼓楼下面 淋湿的咖啡馆",
         "startMs": 107073,
         "endMs": 115273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          107073,
+          107693,
+          108213,
+          109273,
+          109513,
+          109993,
+          110533,
+          111460,
+          112386,
+          113313,
+          113813,
+          114093,
+          114683
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "睡不着的后海边 月亮还在抽着烟",
         "startMs": 115353,
         "endMs": 121733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          115353,
+          115633,
+          116093,
+          117173,
+          117393,
+          117633,
+          118153,
+          118693,
+          119033,
+          119373,
+          119713,
+          120153,
+          120680,
+          121206
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "喝醉的亲吻着 快活的人不眠",
         "startMs": 123473,
         "endMs": 130853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          123473,
+          124088,
+          124703,
+          125318,
+          125933,
+          126548,
+          127163,
+          127778,
+          128393,
+          129008,
+          129623,
+          130238
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唯有我倚着围栏 对过往说晚安",
         "startMs": 131613,
         "endMs": 139700,
         "timingMethod": "asr-and-vocal-boundary",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          131613,
+          132235,
+          132857,
+          133479,
+          134101,
+          134723,
+          135345,
+          135968,
+          136590,
+          137212,
+          137834,
+          138456,
+          139078
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我是个沉默不语的",
         "startMs": 171993,
         "endMs": 175553,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          171993,
+          172293,
+          172813,
+          173293,
+          173813,
+          174353,
+          174873,
+          175113
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "靠着车窗想念你的乘客",
         "startMs": 175633,
         "endMs": 180133,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          175633,
+          176133,
+          176353,
+          176853,
+          177333,
+          177863,
+          178393,
+          178913,
+          179153,
+          179643
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "当一零七 路再次经过",
         "startMs": 180213,
         "endMs": 184193,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          180213,
+          180653,
+          181093,
+          181533,
+          181973,
+          182483,
+          182993,
+          183253,
+          183753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "时间是带走青春的电车",
         "startMs": 184273,
         "endMs": 188593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          184273,
+          184733,
+          185233,
+          185533,
+          186163,
+          186793,
+          187063,
+          187333,
+          187553,
+          188073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在什刹海边一切甜蜜与我无关",
         "startMs": 188833,
         "endMs": 196693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          188833,
+          189357,
+          189881,
+          190405,
+          190929,
+          191453,
+          191977,
+          192501,
+          193025,
+          193549,
+          194073,
+          194597,
+          195121,
+          195645,
+          196169
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这是个拥挤的地方 而我却很孤单",
         "startMs": 196973,
         "endMs": 203093,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          196973,
+          197193,
+          197473,
+          197713,
+          198503,
+          199293,
+          199553,
+          200033,
+          201113,
+          201273,
+          201513,
+          201813,
+          202113,
+          202603
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 204353,
         "endMs": 206633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          204353,
+          204833,
+          205393,
+          205893
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 208433,
         "endMs": 210693,
         "timingMethod": "repeat-anchor-estimate",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          208433,
+          208913,
+          209453,
+          209953
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 212533,
         "endMs": 214733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          212533,
+          212953,
+          213553,
+          213993
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 220653,
         "endMs": 222873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          220653,
+          221113,
+          221653,
+          222263
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 224713,
         "endMs": 226933,
         "timingMethod": "repeat-anchor-estimate",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          224713,
+          225193,
+          225753,
+          226193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在鼓楼",
         "startMs": 228773,
         "endMs": 231033,
         "timingMethod": "repeat-anchor-estimate",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          228773,
+          229253,
+          229773,
+          230293
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -353,168 +982,474 @@
         "startMs": 43093,
         "endMs": 48993,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          43093,
+          43629,
+          44166,
+          44702,
+          45238,
+          45775,
+          46311,
+          46848,
+          47384,
+          47920,
+          48457
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "漫过天空尽头的角落",
         "startMs": 50033,
         "endMs": 55013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          50033,
+          50473,
+          50793,
+          51213,
+          51633,
+          52053,
+          52553,
+          53373,
+          54193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大鱼在梦境的缝隙里游过",
         "startMs": 56793,
         "endMs": 62753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          56793,
+          57273,
+          57653,
+          58073,
+          58503,
+          58933,
+          59380,
+          59826,
+          60273,
+          61143,
+          62013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "凝望你沉睡的轮廓",
         "startMs": 63673,
         "endMs": 68033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          63673,
+          64123,
+          64573,
+          65173,
+          65773,
+          66273,
+          66860,
+          67446
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "看海天一色 听风起雨落",
         "startMs": 69613,
         "endMs": 76353,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          69613,
+          70053,
+          70493,
+          71313,
+          72133,
+          73033,
+          73473,
+          74343,
+          75213,
+          75613
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "执子手吹散苍茫茫烟波",
         "startMs": 76473,
         "endMs": 82293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          76473,
+          77055,
+          77637,
+          78219,
+          78801,
+          79383,
+          79965,
+          80547,
+          81129,
+          81711
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大鱼的翅膀 已经太辽阔",
         "startMs": 83413,
         "endMs": 90073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          83413,
+          84079,
+          84745,
+          85411,
+          86077,
+          86743,
+          87409,
+          88075,
+          88741,
+          89407
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我松开时间的绳索",
         "startMs": 91073,
         "endMs": 95293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          91073,
+          91453,
+          92113,
+          92773,
+          93193,
+          93673,
+          94013,
+          94553
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "怕你飞远去 怕你离我而去",
         "startMs": 97073,
         "endMs": 103793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          97073,
+          97553,
+          98280,
+          99006,
+          99733,
+          100403,
+          101073,
+          101673,
+          102273,
+          102663,
+          103053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "更怕你永远停留在这里",
         "startMs": 103933,
         "endMs": 109093,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          103933,
+          104373,
+          104833,
+          105753,
+          106073,
+          106553,
+          106993,
+          107413,
+          107833,
+          108353
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "每一滴泪水 都向你流淌去",
         "startMs": 110753,
         "endMs": 117533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          110753,
+          111369,
+          111986,
+          112602,
+          113218,
+          113835,
+          114451,
+          115068,
+          115684,
+          116300,
+          116917
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "倒流进天空的海底",
         "startMs": 118593,
         "endMs": 122893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          118593,
+          119120,
+          119646,
+          120173,
+          120693,
+          121153,
+          121653,
+          122273
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "海浪无声将夜幕深深淹没",
         "startMs": 139053,
         "endMs": 144953,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          139053,
+          139589,
+          140126,
+          140662,
+          141198,
+          141735,
+          142271,
+          142808,
+          143344,
+          143880,
+          144417
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "漫过天空尽头的角落",
         "startMs": 145933,
         "endMs": 151033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          145933,
+          146373,
+          146733,
+          147173,
+          147603,
+          148033,
+          148493,
+          149340,
+          150186
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大鱼在梦境的缝隙里游过",
         "startMs": 152793,
         "endMs": 158753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          152793,
+          153203,
+          153613,
+          154073,
+          154493,
+          154953,
+          155393,
+          155833,
+          156273,
+          157143,
+          158013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "凝望你沉睡的轮廓",
         "startMs": 159633,
         "endMs": 163973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          159633,
+          160168,
+          160703,
+          161238,
+          161773,
+          162253,
+          162826,
+          163400
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "看海天一色 听风起雨落",
         "startMs": 165593,
         "endMs": 172353,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          165593,
+          166013,
+          166493,
+          167343,
+          168193,
+          169073,
+          169493,
+          170373,
+          171253,
+          171613
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "执子手吹散苍茫茫烟波",
         "startMs": 172533,
         "endMs": 178313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          172533,
+          173111,
+          173689,
+          174267,
+          174845,
+          175423,
+          176001,
+          176579,
+          177157,
+          177735
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大鱼的翅膀 已经太辽阔",
         "startMs": 179393,
         "endMs": 186073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          179393,
+          180061,
+          180729,
+          181397,
+          182065,
+          182733,
+          183401,
+          184069,
+          184737,
+          185405
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我松开时间的绳索",
         "startMs": 187053,
         "endMs": 191353,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          187053,
+          187453,
+          188033,
+          188613,
+          189193,
+          189653,
+          190053,
+          190703
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "看你飞远去 看你离我而去",
         "startMs": 193053,
         "endMs": 199773,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          193053,
+          193708,
+          194363,
+          195018,
+          195673,
+          196323,
+          196973,
+          197613,
+          198253,
+          198760,
+          199266
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "原来你生来就属于天际",
         "startMs": 199913,
         "endMs": 205053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          199913,
+          200353,
+          200993,
+          201633,
+          202093,
+          202553,
+          203013,
+          203473,
+          203813,
+          204433
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "每一滴泪水 都向你流淌去",
         "startMs": 206793,
         "endMs": 213553,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          206793,
+          207408,
+          208022,
+          208637,
+          209251,
+          209866,
+          210480,
+          211095,
+          211709,
+          212324,
+          212938
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "倒流回最初的相遇",
         "startMs": 214553,
         "endMs": 218853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          214553,
+          214993,
+          215413,
+          216253,
+          216693,
+          217173,
+          217573,
+          218213
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -526,294 +1461,794 @@
         "startMs": 15293,
         "endMs": 18073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          15293,
+          15553,
+          15813,
+          16593,
+          16793,
+          17073,
+          17593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "知了在声声叫着夏天",
         "startMs": 18153,
         "endMs": 21673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          18153,
+          18393,
+          18633,
+          18853,
+          19373,
+          19913,
+          20173,
+          20393,
+          20933
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "操场边的秋千上",
         "startMs": 23493,
         "endMs": 26533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          23493,
+          23743,
+          23993,
+          24833,
+          25033,
+          25313,
+          25833
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "只有蝴蝶停在上面",
         "startMs": 26613,
         "endMs": 29893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          26613,
+          26873,
+          27113,
+          27633,
+          27960,
+          28286,
+          28613,
+          29153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "黑板上老师的粉笔",
         "startMs": 31233,
         "endMs": 34013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          31233,
+          31623,
+          32013,
+          32513,
+          32773,
+          33033,
+          33293,
+          33553
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "还在拼命叽叽喳喳写个不停",
         "startMs": 34093,
         "endMs": 38153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          34093,
+          34431,
+          34770,
+          35108,
+          35446,
+          35785,
+          36123,
+          36461,
+          36800,
+          37138,
+          37476,
+          37815
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "等待着下课等待着放学",
         "startMs": 39533,
         "endMs": 43533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          39533,
+          39773,
+          40253,
+          40513,
+          41033,
+          41593,
+          41833,
+          42313,
+          42593,
+          43053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "等待游戏的童年",
         "startMs": 43613,
         "endMs": 46433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          43613,
+          43893,
+          44433,
+          44653,
+          44913,
+          45303,
+          45693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "福利社里面什么都有",
         "startMs": 50333,
         "endMs": 53373,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          50333,
+          50613,
+          50853,
+          51193,
+          51533,
+          51873,
+          52113,
+          52403,
+          52693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "就是口袋里没有半毛钱",
         "startMs": 53453,
         "endMs": 56993,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          53453,
+          53713,
+          53933,
+          54493,
+          54733,
+          54973,
+          55213,
+          55493,
+          55693,
+          56253
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "诸葛四郎和魔鬼党",
         "startMs": 58573,
         "endMs": 61633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          58573,
+          58926,
+          59280,
+          59633,
+          59853,
+          60073,
+          60593,
+          61113
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "到底谁抢到那支宝剑",
         "startMs": 61713,
         "endMs": 64993,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          61713,
+          61973,
+          62173,
+          62583,
+          62993,
+          63253,
+          63503,
+          63753,
+          64373
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "隔壁班的那个女孩",
         "startMs": 66353,
         "endMs": 69093,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          66353,
+          66613,
+          67033,
+          67453,
+          67873,
+          68153,
+          68393,
+          68633
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "怎么还没经过我的窗前",
         "startMs": 69173,
         "endMs": 73293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          69173,
+          69673,
+          69913,
+          70193,
+          70473,
+          70993,
+          71493,
+          71773,
+          72163,
+          72553
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "嘴里的零食手里的漫画",
         "startMs": 74573,
         "endMs": 78593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          74573,
+          74853,
+          75393,
+          75806,
+          76220,
+          76633,
+          76913,
+          77433,
+          77673,
+          78193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "心里初恋的童年",
         "startMs": 78673,
         "endMs": 81493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          78673,
+          78993,
+          79363,
+          79733,
+          79993,
+          80373,
+          80753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是要等到睡觉前",
         "startMs": 83313,
         "endMs": 86093,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          83313,
+          83583,
+          83853,
+          84393,
+          84613,
+          84863,
+          85113,
+          85653
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "才知道功课只做了一点点",
         "startMs": 86173,
         "endMs": 90033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          86173,
+          86453,
+          86693,
+          86933,
+          87343,
+          87753,
+          87993,
+          88273,
+          88533,
+          88753,
+          89293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是要等到考试后",
         "startMs": 91593,
         "endMs": 94353,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          91593,
+          91893,
+          92093,
+          92673,
+          92873,
+          93133,
+          93413,
+          93933
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "才知道该念的书都没有念",
         "startMs": 94433,
         "endMs": 98013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          94433,
+          94713,
+          94953,
+          95213,
+          95733,
+          96013,
+          96213,
+          96513,
+          96753,
+          96993,
+          97273
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "一寸光阴一寸金",
         "startMs": 99313,
         "endMs": 101833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          99313,
+          99723,
+          100133,
+          100673,
+          100893,
+          101143,
+          101393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "老师说过寸金难买寸光阴",
         "startMs": 101913,
         "endMs": 106173,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          101913,
+          102153,
+          102423,
+          102693,
+          102963,
+          103233,
+          103453,
+          103953,
+          104473,
+          105053,
+          105433
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一天又一天一年又一年",
         "startMs": 107593,
         "endMs": 111593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          107593,
+          107873,
+          108293,
+          108713,
+          109153,
+          109713,
+          109953,
+          110353,
+          110753,
+          111253
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "迷迷糊糊的童年",
         "startMs": 111673,
         "endMs": 114533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          111673,
+          111973,
+          112337,
+          112701,
+          113065,
+          113429,
+          113793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "没有人知道为什么",
         "startMs": 153453,
         "endMs": 156253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          153453,
+          153733,
+          153993,
+          154533,
+          154773,
+          155013,
+          155253,
+          155833
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "太阳总下到山的那一边",
         "startMs": 156333,
         "endMs": 160193,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          156333,
+          156553,
+          156833,
+          157073,
+          157633,
+          158113,
+          158413,
+          158633,
+          158893,
+          159453
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "没有人能够告诉我",
         "startMs": 161713,
         "endMs": 164513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          161713,
+          162013,
+          162253,
+          162773,
+          163073,
+          163313,
+          163573,
+          164113
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "山里面有没有住着神仙",
         "startMs": 164593,
         "endMs": 168133,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          164593,
+          164853,
+          165093,
+          165333,
+          165853,
+          166113,
+          166373,
+          166653,
+          166873,
+          167393
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "多少的日子里总是",
         "startMs": 169473,
         "endMs": 172313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          169473,
+          169753,
+          170263,
+          170773,
+          171053,
+          171273,
+          171513,
+          171793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一个人面对着天空发呆",
         "startMs": 172393,
         "endMs": 176413,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          172393,
+          172853,
+          173073,
+          173573,
+          174173,
+          174413,
+          174653,
+          174913,
+          175173,
+          175793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "就这么好奇就这么幻想",
         "startMs": 177753,
         "endMs": 181813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          177753,
+          177993,
+          178513,
+          178773,
+          179228,
+          179683,
+          180138,
+          180593,
+          180853,
+          181333
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这么孤单的童年",
         "startMs": 181893,
         "endMs": 184673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          181893,
+          182133,
+          182673,
+          182913,
+          183173,
+          183393,
+          183933
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "阳光下蜻蜓飞过来",
         "startMs": 188533,
         "endMs": 191353,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          188533,
+          188886,
+          189238,
+          189590,
+          189943,
+          190296,
+          190648,
+          191000
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一片片绿油油的稻田",
         "startMs": 191433,
         "endMs": 194953,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          191433,
+          191686,
+          191940,
+          192193,
+          192693,
+          192953,
+          193553,
+          193883,
+          194213
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "水彩蜡笔和万花筒",
         "startMs": 196773,
         "endMs": 199593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          196773,
+          197153,
+          197533,
+          197913,
+          198146,
+          198380,
+          198613,
+          199103
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "画不出天边那一条彩虹",
         "startMs": 199673,
         "endMs": 203233,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          199673,
+          199933,
+          200173,
+          200413,
+          200953,
+          201213,
+          201513,
+          201733,
+          202113,
+          202493
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "什么时候才能像高年级的同学",
         "startMs": 204573,
         "endMs": 208093,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          204573,
+          204813,
+          205073,
+          205473,
+          205873,
+          206133,
+          206373,
+          206613,
+          206873,
+          207153,
+          207413,
+          207633,
+          207893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "有张成熟与长大的脸",
         "startMs": 208173,
         "endMs": 211513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          208173,
+          208413,
+          208653,
+          209020,
+          209386,
+          209753,
+          210253,
+          210553,
+          211033
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "盼望着假期盼望着明天",
         "startMs": 212813,
         "endMs": 216853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          212813,
+          213198,
+          213583,
+          213968,
+          214353,
+          214780,
+          215206,
+          215633,
+          216013,
+          216393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "盼望长大的童年",
         "startMs": 216933,
         "endMs": 219733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          216933,
+          217193,
+          217693,
+          217993,
+          218223,
+          218453,
+          218993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一天又一天一年又一年",
         "startMs": 221053,
         "endMs": 225113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          221053,
+          221293,
+          221723,
+          222153,
+          222653,
+          223153,
+          223373,
+          223933,
+          224493,
+          224693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "盼望长大的童年",
         "startMs": 225193,
         "endMs": 227993,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          225193,
+          225413,
+          225933,
+          226233,
+          226473,
+          226863,
+          227253
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -825,518 +2260,1357 @@
         "startMs": 34593,
         "endMs": 36333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          34593,
+          35273,
+          35573,
+          35833
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "吹痛脸庞的感觉",
         "startMs": 36413,
         "endMs": 39013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          36413,
+          36713,
+          37013,
+          37333,
+          37653,
+          37933,
+          38273
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "像父亲的责骂",
         "startMs": 39333,
         "endMs": 40573,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          39333,
+          39553,
+          39773,
+          39933,
+          40146,
+          40360
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "母亲的哭泣",
         "startMs": 40653,
         "endMs": 41773,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          40653,
+          40913,
+          41073,
+          41213,
+          41493
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "永远难忘记",
         "startMs": 41853,
         "endMs": 43873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          41853,
+          42153,
+          42433,
+          42913,
+          43393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "年少的我",
         "startMs": 44313,
         "endMs": 46073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          44313,
+          44753,
+          45193,
+          45473
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "喜欢一个人在海边",
         "startMs": 46153,
         "endMs": 48693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          46153,
+          46413,
+          46793,
+          47013,
+          47133,
+          47333,
+          47593,
+          47953
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "卷起裤管光着脚丫踩在沙滩上",
         "startMs": 49133,
         "endMs": 53433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          49133,
+          49433,
+          49733,
+          50033,
+          50333,
+          50753,
+          51018,
+          51283,
+          51548,
+          51813,
+          52073,
+          52383,
+          52693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是幻想海洋的尽头有另一个世界",
         "startMs": 53973,
         "endMs": 58333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          53973,
+          54413,
+          54613,
+          54813,
+          55133,
+          55393,
+          55553,
+          55713,
+          55993,
+          56153,
+          56313,
+          56773,
+          56973,
+          57253,
+          57593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是以为勇敢的水手是真正的男儿",
         "startMs": 58773,
         "endMs": 63113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          58773,
+          59253,
+          59453,
+          59653,
+          59953,
+          60253,
+          60393,
+          60603,
+          60813,
+          60993,
+          61173,
+          61473,
+          61793,
+          62073,
+          62593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是一副弱不禁风孬种的样子",
         "startMs": 63573,
         "endMs": 67933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          63573,
+          63908,
+          64244,
+          64579,
+          64915,
+          65250,
+          65585,
+          65921,
+          66256,
+          66591,
+          66927,
+          67262,
+          67598
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "在受人欺负的时候总是听见水手说",
         "startMs": 68293,
         "endMs": 72553,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          68293,
+          68563,
+          68833,
+          69033,
+          69313,
+          69413,
+          69613,
+          69893,
+          70193,
+          70473,
+          70773,
+          71253,
+          71413,
+          71673,
+          72013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 72633,
         "endMs": 77373,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          72633,
+          72933,
+          73273,
+          73873,
+          74413,
+          75013,
+          75413,
+          75813,
+          76213,
+          76493,
+          76833
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 77453,
         "endMs": 79813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          77453,
+          77753,
+          78223,
+          78693,
+          78973,
+          79253
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 79893,
         "endMs": 82173,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          79893,
+          80133,
+          80513,
+          80953,
+          81093,
+          81373,
+          81653
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 82253,
         "endMs": 87013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          82253,
+          82513,
+          82893,
+          83493,
+          84033,
+          84673,
+          84953,
+          85403,
+          85853,
+          86153,
+          86453
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 87093,
         "endMs": 89393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          87093,
+          87393,
+          87863,
+          88333,
+          88686,
+          89040
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 89473,
         "endMs": 90813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          89473,
+          89733,
+          90073
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "长大以后",
         "startMs": 94973,
         "endMs": 96693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          94973,
+          95593,
+          95913,
+          96193
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "为了理想而努力",
         "startMs": 96773,
         "endMs": 99333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          96773,
+          97073,
+          97393,
+          97713,
+          98033,
+          98273,
+          98593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "渐渐的忽略了",
         "startMs": 99773,
         "endMs": 100873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          99773,
+          99993,
+          100213,
+          100413,
+          100613,
+          100773
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "父亲母亲和故乡的消息",
         "startMs": 100953,
         "endMs": 104153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          100953,
+          101233,
+          101613,
+          101833,
+          102053,
+          102253,
+          102453,
+          102813,
+          103053,
+          103413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "如今的我",
         "startMs": 104653,
         "endMs": 106313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          104653,
+          105193,
+          105503,
+          105813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "生活就像在演戏",
         "startMs": 106393,
         "endMs": 109033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          106393,
+          106713,
+          107093,
+          107473,
+          107773,
+          107913,
+          108473
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "说着言不由衷的话",
         "startMs": 109453,
         "endMs": 111473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          109453,
+          109853,
+          109993,
+          110313,
+          110613,
+          110843,
+          111073,
+          111213
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "戴着伪善的面具",
         "startMs": 111553,
         "endMs": 113793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          111553,
+          111693,
+          111933,
+          112173,
+          112413,
+          112693,
+          113053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是拿着微不足道的成就来骗自己",
         "startMs": 114253,
         "endMs": 118633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          114253,
+          114693,
+          114853,
+          115193,
+          115453,
+          115773,
+          116093,
+          116333,
+          116473,
+          116633,
+          116953,
+          117093,
+          117253,
+          117573,
+          117893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是莫名其妙感到一阵的空虚",
         "startMs": 119073,
         "endMs": 123473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          119073,
+          119553,
+          119713,
+          119973,
+          120273,
+          120533,
+          120853,
+          121173,
+          121493,
+          121783,
+          122073,
+          122353,
+          122733
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "总是靠一点酒精的麻醉才能够睡去",
         "startMs": 123873,
         "endMs": 128233,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          123873,
+          124333,
+          124493,
+          124813,
+          124913,
+          125133,
+          125393,
+          125513,
+          125673,
+          126020,
+          126366,
+          126713,
+          126943,
+          127173,
+          127703
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "在半睡半醒之间仿佛又听见水手说",
         "startMs": 128593,
         "endMs": 132853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          128593,
+          128753,
+          129173,
+          129433,
+          129693,
+          129953,
+          130213,
+          130533,
+          130743,
+          130953,
+          131113,
+          131413,
+          131713,
+          131993,
+          132313
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 132933,
         "endMs": 137693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          132933,
+          133233,
+          133573,
+          134153,
+          134733,
+          135373,
+          135653,
+          136113,
+          136573,
+          136873,
+          137173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 137773,
         "endMs": 140113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          137773,
+          138073,
+          138533,
+          138993,
+          139253,
+          139683
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 140193,
         "endMs": 142493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          140193,
+          140433,
+          140793,
+          141193,
+          141353,
+          141653,
+          141953
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 142573,
         "endMs": 147373,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          142573,
+          142853,
+          143333,
+          143813,
+          144393,
+          145013,
+          145293,
+          145763,
+          146233,
+          146523,
+          146813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 147453,
         "endMs": 149773,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          147453,
+          147733,
+          148203,
+          148673,
+          148953,
+          149233
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 149853,
         "endMs": 151173,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          149853,
+          150093,
+          150433
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "寻寻觅觅寻不到",
         "startMs": 179353,
         "endMs": 181733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          179353,
+          179853,
+          180013,
+          180283,
+          180553,
+          180873,
+          181193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "活着的证据",
         "startMs": 181813,
         "endMs": 183753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          181813,
+          182273,
+          182453,
+          182693,
+          183013
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "都市的柏油路太硬",
         "startMs": 184253,
         "endMs": 186513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          184253,
+          184493,
+          184653,
+          184883,
+          185113,
+          185413,
+          185673,
+          186093
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "踩不出足迹",
         "startMs": 186593,
         "endMs": 188573,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          186593,
+          187073,
+          187233,
+          187573,
+          188073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "骄傲无知的现代人",
         "startMs": 189053,
         "endMs": 191393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          189053,
+          189346,
+          189640,
+          189933,
+          190073,
+          190193,
+          190533,
+          190813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "不知道珍惜",
         "startMs": 191473,
         "endMs": 193453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          191473,
+          191913,
+          192053,
+          192353,
+          192713
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "那一片被文明糟蹋过的海洋和天地",
         "startMs": 193773,
         "endMs": 198253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          193773,
+          194072,
+          194370,
+          194669,
+          194968,
+          195266,
+          195565,
+          195864,
+          196162,
+          196461,
+          196760,
+          197058,
+          197357,
+          197656,
+          197954
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "只有远离人群才能找回我自己",
         "startMs": 198793,
         "endMs": 203073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          198793,
+          199173,
+          199333,
+          199693,
+          199893,
+          200213,
+          200533,
+          200793,
+          201173,
+          201553,
+          201693,
+          201973,
+          202333
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "在带着咸味的空气中自由的呼吸",
         "startMs": 203373,
         "endMs": 207873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          203373,
+          203633,
+          203893,
+          204153,
+          204413,
+          204573,
+          204713,
+          205013,
+          205293,
+          205973,
+          206333,
+          206593,
+          206853,
+          207133
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "耳畔又传来汽笛声和水手的笑语",
         "startMs": 208433,
         "endMs": 212753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          208433,
+          208633,
+          208773,
+          208913,
+          209213,
+          209513,
+          209813,
+          210113,
+          210633,
+          210913,
+          211193,
+          211413,
+          211613,
+          212183
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "永远在内心的最深处听见水手说",
         "startMs": 213193,
         "endMs": 217333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          213193,
+          213473,
+          213613,
+          213753,
+          214033,
+          214213,
+          214353,
+          214613,
+          215013,
+          215413,
+          215813,
+          216213,
+          216493,
+          216813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 217413,
         "endMs": 222153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          217413,
+          217693,
+          218053,
+          218653,
+          219193,
+          219833,
+          220133,
+          220573,
+          221013,
+          221393,
+          221773
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 222233,
         "endMs": 224593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          222233,
+          222533,
+          222933,
+          223333,
+          223733,
+          224033
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 224673,
         "endMs": 226973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          224673,
+          224893,
+          225273,
+          225673,
+          225833,
+          226143,
+          226453
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 227053,
         "endMs": 231833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          227053,
+          227333,
+          227673,
+          228313,
+          228853,
+          229473,
+          229733,
+          230073,
+          230673,
+          230983,
+          231293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 231913,
         "endMs": 234233,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          231913,
+          232193,
+          232601,
+          233009,
+          233417,
+          233825
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 234313,
         "endMs": 235653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          234313,
+          234573,
+          234913
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 236733,
         "endMs": 241473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          236733,
+          237053,
+          237373,
+          237953,
+          238533,
+          239153,
+          239513,
+          239873,
+          240233,
+          240593,
+          240953
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 241553,
         "endMs": 243893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          241553,
+          241853,
+          242333,
+          242813,
+          243073,
+          243373
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 243973,
         "endMs": 246273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          243973,
+          244213,
+          244573,
+          244993,
+          245153,
+          245453,
+          245753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 246353,
         "endMs": 251113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          246353,
+          246613,
+          246973,
+          247593,
+          248173,
+          248793,
+          249073,
+          249543,
+          250013,
+          250303,
+          250593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 251193,
         "endMs": 253513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          251193,
+          251493,
+          251963,
+          252433,
+          252713,
+          253113
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 253593,
         "endMs": 254933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          253593,
+          253873,
+          254193
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 256013,
         "endMs": 260793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          256013,
+          256333,
+          256653,
+          257293,
+          257833,
+          258433,
+          258733,
+          259183,
+          259633,
+          259933,
+          260233
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 260873,
         "endMs": 263213,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          260873,
+          261153,
+          261613,
+          262073,
+          262373,
+          262693
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 263293,
         "endMs": 265593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          263293,
+          263533,
+          263913,
+          264353,
+          264493,
+          264783,
+          265073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 265673,
         "endMs": 270453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          265673,
+          265933,
+          266293,
+          266913,
+          267473,
+          268113,
+          268393,
+          268693,
+          269313,
+          269623,
+          269933
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 270533,
         "endMs": 272853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          270533,
+          270813,
+          271283,
+          271753,
+          272033,
+          272313
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 272933,
         "endMs": 274253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          272933,
+          273173,
+          273513
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 275313,
         "endMs": 280113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          275313,
+          275613,
+          275973,
+          276553,
+          277133,
+          277753,
+          278053,
+          278513,
+          278973,
+          279233,
+          279573
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 280193,
         "endMs": 282533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          280193,
+          280473,
+          280873,
+          281273,
+          281673,
+          281993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 282613,
         "endMs": 284913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          282613,
+          282853,
+          283213,
+          283653,
+          283813,
+          284103,
+          284393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 284993,
         "endMs": 289733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          284993,
+          285253,
+          285613,
+          286253,
+          286793,
+          287413,
+          287693,
+          288143,
+          288593,
+          288873,
+          289213
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要问",
         "startMs": 289813,
         "endMs": 292153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          289813,
+          290113,
+          290593,
+          291073,
+          291433,
+          291793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "为什么",
         "startMs": 292233,
         "endMs": 293593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          292233,
+          292543,
+          292853
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "他说风雨中这点痛算什么",
         "startMs": 294633,
         "endMs": 299413,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          294633,
+          294953,
+          295460,
+          295966,
+          296473,
+          297073,
+          297373,
+          297823,
+          298273,
+          298583,
+          298893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "擦干泪不要怕",
         "startMs": 299493,
         "endMs": 301813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          299493,
+          299793,
+          300243,
+          300693,
+          300973,
+          301393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "至少我们还有梦",
         "startMs": 301893,
         "endMs": 308973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          301893,
+          302133,
+          302553,
+          302953,
+          303113,
+          305553,
+          307263
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -1348,266 +3622,648 @@
         "startMs": 26413,
         "endMs": 28633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          26413,
+          26733,
+          27053,
+          27353,
+          27993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "水有多长",
         "startMs": 28853,
         "endMs": 30453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          28853,
+          29153,
+          29453,
+          29713
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "通往天堂的路太难",
         "startMs": 31253,
         "endMs": 34073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          31253,
+          31573,
+          31873,
+          32153,
+          32613,
+          32733,
+          33033,
+          33333
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "终于盼来啊",
         "startMs": 36053,
         "endMs": 38273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          36053,
+          36413,
+          36693,
+          36973,
+          37533
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这条天路",
         "startMs": 38453,
         "endMs": 40113,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          38453,
+          38760,
+          39066,
+          39373
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "象巨龙飞在高原上",
         "startMs": 40833,
         "endMs": 43673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          40833,
+          41143,
+          41453,
+          41773,
+          42013,
+          42323,
+          42633,
+          43153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "穿过草原啊",
         "startMs": 45613,
         "endMs": 47973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          45613,
+          45973,
+          46263,
+          46553,
+          47263
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "越过山川",
         "startMs": 48053,
         "endMs": 49653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          48053,
+          48453,
+          48853,
+          49253
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "载着梦想和吉祥",
         "startMs": 50453,
         "endMs": 53273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          50453,
+          50753,
+          51053,
+          51493,
+          51933,
+          52380,
+          52826
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "幸福的歌啊一路的唱",
         "startMs": 55193,
         "endMs": 59253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          55193,
+          55523,
+          55853,
+          56133,
+          56813,
+          57673,
+          58033,
+          58273,
+          58763
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唱到了唐古拉山",
         "startMs": 60033,
         "endMs": 62853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          60033,
+          60353,
+          60673,
+          61033,
+          61393,
+          61753,
+          62113
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐上了火车去拉萨",
         "startMs": 66973,
         "endMs": 71313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          66973,
+          67553,
+          67940,
+          68326,
+          68713,
+          69333,
+          69953,
+          70573
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "去看那神奇的布达拉",
         "startMs": 71773,
         "endMs": 76133,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          71773,
+          72353,
+          72746,
+          73140,
+          73533,
+          73873,
+          74173,
+          74783,
+          75393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "去看那最美的格桑花呀",
         "startMs": 76833,
         "endMs": 81533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          76833,
+          77140,
+          77446,
+          77753,
+          78213,
+          78673,
+          79273,
+          79573,
+          80183,
+          80793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "盛开在雪山下",
         "startMs": 81633,
         "endMs": 84493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          81633,
+          81953,
+          82253,
+          82703,
+          83153,
+          83753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐上了火车去拉萨",
         "startMs": 86153,
         "endMs": 90493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          86153,
+          86660,
+          87166,
+          87673,
+          88180,
+          88686,
+          89193,
+          89843
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "跳起那热烈的雪山朗玛",
         "startMs": 90953,
         "endMs": 95293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          90953,
+          91381,
+          91809,
+          92237,
+          92665,
+          93093,
+          93533,
+          93973,
+          94413,
+          94853
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "喝下那最香浓的青稞酒呀",
         "startMs": 96053,
         "endMs": 100753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          96053,
+          96480,
+          96908,
+          97335,
+          97762,
+          98189,
+          98617,
+          99044,
+          99471,
+          99898,
+          100326
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "醉在神话天堂",
         "startMs": 100853,
         "endMs": 104900,
         "timingMethod": "repeat-and-vocal-boundary",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          100853,
+          101173,
+          101473,
+          101773,
+          102353,
+          103626
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "山有多高啊",
         "startMs": 117613,
         "endMs": 119493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          117613,
+          117933,
+          118253,
+          118553,
+          119023
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "水有多长",
         "startMs": 120033,
         "endMs": 121653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          120033,
+          120343,
+          120653,
+          121153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "通往天堂的路太难",
         "startMs": 122453,
         "endMs": 125293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          122453,
+          122753,
+          123073,
+          123353,
+          123813,
+          123933,
+          124243,
+          124553
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "终于盼来啊",
         "startMs": 127253,
         "endMs": 129493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          127253,
+          127560,
+          127866,
+          128173,
+          128753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这条天路",
         "startMs": 129653,
         "endMs": 131313,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          129653,
+          129933,
+          130233,
+          130573
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "象巨龙飞在高原上",
         "startMs": 132033,
         "endMs": 134873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          132033,
+          132343,
+          132653,
+          132973,
+          133213,
+          133628,
+          134043,
+          134458
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "穿过草原啊",
         "startMs": 136813,
         "endMs": 139073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          136813,
+          137126,
+          137440,
+          137753,
+          138413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "越过山川",
         "startMs": 139233,
         "endMs": 140873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          139233,
+          139523,
+          139813,
+          140133
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "载着梦想和吉祥",
         "startMs": 141653,
         "endMs": 144453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          141653,
+          141933,
+          142253,
+          142703,
+          143153,
+          143433,
+          143713
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "幸福的歌啊一路的唱",
         "startMs": 146393,
         "endMs": 150433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          146393,
+          146723,
+          147053,
+          147333,
+          148093,
+          148853,
+          149233,
+          149473,
+          149953
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唱到了唐古拉山",
         "startMs": 151233,
         "endMs": 154053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          151233,
+          151553,
+          151873,
+          152026,
+          152180,
+          152333,
+          153193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐上了火车去拉萨",
         "startMs": 158153,
         "endMs": 162493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          158153,
+          158653,
+          159153,
+          159653,
+          160153,
+          160653,
+          161153,
+          161823
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "去看那神奇的布达拉",
         "startMs": 162973,
         "endMs": 167333,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          162973,
+          163573,
+          163933,
+          164293,
+          164653,
+          165013,
+          165373,
+          165983,
+          166593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "去看那最美的格桑花呀",
         "startMs": 168033,
         "endMs": 172733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          168033,
+          168340,
+          168646,
+          168953,
+          169413,
+          169873,
+          170323,
+          170773,
+          171383,
+          171993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "盛开在雪山下",
         "startMs": 172833,
         "endMs": 175713,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          172833,
+          173133,
+          173453,
+          173903,
+          174353,
+          174973
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "坐上了火车去拉萨",
         "startMs": 177353,
         "endMs": 181693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          177353,
+          177856,
+          178360,
+          178863,
+          179366,
+          179870,
+          180373,
+          181033
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "跳起那热烈的雪山朗玛",
         "startMs": 182153,
         "endMs": 186493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          182153,
+          182581,
+          183009,
+          183437,
+          183865,
+          184293,
+          184563,
+          184833,
+          185386,
+          185940
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "喝下那最香浓的青稞酒呀",
         "startMs": 187253,
         "endMs": 191633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          187253,
+          187651,
+          188049,
+          188448,
+          188846,
+          189244,
+          189642,
+          190040,
+          190438,
+          190837,
+          191235
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "醉在神话天堂",
         "startMs": 192053,
         "endMs": 194913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          192053,
+          192373,
+          192613,
+          192973,
+          193553,
+          194233
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -1619,147 +4275,499 @@
         "startMs": 17613,
         "endMs": 23733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          17613,
+          18169,
+          18726,
+          19282,
+          19838,
+          20395,
+          20951,
+          21508,
+          22064,
+          22620,
+          23177
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "河对面的莎吾烈泰 今天在不在",
         "startMs": 24693,
         "endMs": 30753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          24693,
+          25159,
+          25625,
+          26091,
+          26558,
+          27024,
+          27490,
+          27956,
+          28422,
+          28888,
+          29355,
+          29821,
+          30287
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "那年我饮马来到了 你的白毡房",
         "startMs": 31773,
         "endMs": 37813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          31773,
+          32093,
+          32413,
+          32896,
+          33380,
+          33863,
+          34346,
+          34830,
+          35313,
+          35953,
+          36213,
+          36643,
+          37073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我曾看到你弹着冬布拉 听过你把歌唱",
         "startMs": 38373,
         "endMs": 44833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          38373,
+          38613,
+          38813,
+          39273,
+          39493,
+          39953,
+          40413,
+          40633,
+          41206,
+          41780,
+          42353,
+          42793,
+          43013,
+          43233,
+          43693,
+          44263
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "单纯的相逢 平凡的晚上",
         "startMs": 47613,
         "endMs": 53733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          47613,
+          48053,
+          48553,
+          48793,
+          49746,
+          50700,
+          51653,
+          52100,
+          52546,
+          52993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我就在那个时候啊 傻傻的等到了天亮",
         "startMs": 54693,
         "endMs": 60533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          54693,
+          55013,
+          55333,
+          55593,
+          56013,
+          56473,
+          56783,
+          57093,
+          57443,
+          57793,
+          58013,
+          58363,
+          58713,
+          59133,
+          59513,
+          60023
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "月亮作证 你毡帽上的羽毛",
         "startMs": 61753,
         "endMs": 67813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          61753,
+          62304,
+          62855,
+          63406,
+          63957,
+          64508,
+          65058,
+          65609,
+          66160,
+          66711,
+          67262
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "亲吻着晚风飘啊飘 啊飘到了我的心上",
         "startMs": 68873,
         "endMs": 74913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          68873,
+          69253,
+          69473,
+          69813,
+          70153,
+          70593,
+          71033,
+          71473,
+          71913,
+          72353,
+          72793,
+          72993,
+          73213,
+          73453,
+          73673,
+          74293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "六星街里还传来 巴扬琴声吗",
         "startMs": 84713,
         "endMs": 90773,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          84713,
+          85113,
+          85573,
+          86033,
+          86473,
+          86933,
+          87393,
+          88043,
+          88693,
+          89140,
+          89586,
+          90033
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "阿力克桑德的面包房 列巴出炉了吗",
         "startMs": 91733,
         "endMs": 97813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          91733,
+          92053,
+          92373,
+          92673,
+          92903,
+          93133,
+          93543,
+          93953,
+          94413,
+          95313,
+          95753,
+          96173,
+          96593,
+          97000,
+          97406
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "南苑卤香是舌尖上的故事啊",
         "startMs": 98853,
         "endMs": 104913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          98853,
+          99358,
+          99863,
+          100368,
+          100873,
+          101378,
+          101883,
+          102388,
+          102893,
+          103398,
+          103903,
+          104408
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你让浪迹天涯的孩子啊 梦中回家吧",
         "startMs": 105413,
         "endMs": 111913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          105413,
+          105748,
+          106083,
+          106418,
+          106753,
+          107153,
+          107433,
+          107753,
+          108073,
+          108753,
+          109433,
+          109813,
+          110333,
+          110753,
+          111173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "儿时的万花筒里 有野鸽在飞翔",
         "startMs": 114753,
         "endMs": 120813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          114753,
+          115063,
+          115373,
+          115593,
+          116073,
+          116586,
+          117100,
+          117613,
+          118126,
+          118640,
+          119153,
+          119706,
+          120260
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "这让我想起二哥 和他心爱的弹弓叉",
         "startMs": 121793,
         "endMs": 127793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          121793,
+          122073,
+          122413,
+          122693,
+          123113,
+          123573,
+          124013,
+          124453,
+          124853,
+          125333,
+          125633,
+          125973,
+          126213,
+          126740,
+          127266
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "湖蓝色的院墙 我生命里的院落",
         "startMs": 128833,
         "endMs": 134893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          128833,
+          129253,
+          129713,
+          130241,
+          130769,
+          131297,
+          131825,
+          132353,
+          132793,
+          133193,
+          133453,
+          133673,
+          134153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我的妈妈在那里给我的爱 叫我永生不忘啊",
         "startMs": 135413,
         "endMs": 141893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          135413,
+          135613,
+          135873,
+          136513,
+          136793,
+          137213,
+          137433,
+          137693,
+          138093,
+          138313,
+          138643,
+          138973,
+          139253,
+          139453,
+          139913,
+          140353,
+          140753,
+          141153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "心中有个地方 刻进了你的名字",
         "startMs": 174653,
         "endMs": 180813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          174653,
+          175133,
+          175573,
+          175853,
+          176253,
+          176533,
+          177183,
+          177833,
+          178483,
+          179133,
+          179373,
+          179593,
+          180073
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原 河谷 月季花香 都是我的歌",
         "startMs": 181753,
         "endMs": 187833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          181753,
+          182203,
+          182653,
+          183073,
+          183533,
+          183973,
+          184413,
+          184853,
+          185293,
+          185933,
+          186173,
+          186726,
+          187280
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "儿时离开你 正逢花开时",
         "startMs": 188873,
         "endMs": 194893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          188873,
+          189303,
+          189733,
+          190437,
+          191141,
+          191845,
+          192549,
+          193253,
+          193673,
+          194153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "如今往事 远了 模糊了 我却忘不了苹果香",
         "startMs": 195413,
         "endMs": 201893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          195413,
+          195633,
+          195983,
+          196333,
+          196763,
+          197193,
+          197653,
+          198073,
+          198313,
+          198993,
+          199173,
+          199503,
+          199833,
+          200033,
+          200293,
+          200733,
+          201153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "如今往事 远了 模糊了 我却忘不了苹果香",
         "startMs": 204253,
         "endMs": 211613,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          204253,
+          204560,
+          204866,
+          205173,
+          205573,
+          206073,
+          206513,
+          206953,
+          207213,
+          208573,
+          208893,
+          209213,
+          209533,
+          209753,
+          209973,
+          210413,
+          210873
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -1771,287 +4779,829 @@
         "startMs": 32013,
         "endMs": 35913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          32013,
+          32293,
+          32573,
+          32853,
+          33153,
+          34033,
+          34553,
+          34833,
+          35133,
+          35413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大路有多远 幸福有多长",
         "startMs": 35993,
         "endMs": 39513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          35993,
+          36273,
+          36533,
+          37093,
+          37386,
+          37680,
+          37973,
+          38243,
+          38513,
+          38773
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "听惯了牧马人悠扬的琴声",
         "startMs": 40493,
         "endMs": 44933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          40493,
+          40793,
+          41053,
+          41473,
+          41893,
+          42193,
+          42893,
+          43593,
+          43893,
+          44133,
+          44533
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "爱上这水草丰美的牧场",
         "startMs": 45013,
         "endMs": 48893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          45013,
+          45293,
+          45713,
+          46133,
+          46443,
+          46753,
+          47033,
+          47313,
+          47733,
+          48153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "花开一抹红 尽情的怒放",
         "startMs": 50133,
         "endMs": 54013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          50133,
+          50413,
+          50693,
+          50973,
+          51253,
+          51820,
+          52386,
+          52953,
+          53253,
+          53633
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "河流有多远 幸福有多长",
         "startMs": 54093,
         "endMs": 57653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          54093,
+          54393,
+          54673,
+          55233,
+          55517,
+          55801,
+          56085,
+          56369,
+          56653,
+          56913
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "习惯了游牧人自由的生活",
         "startMs": 58593,
         "endMs": 63053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          58593,
+          58913,
+          59193,
+          59613,
+          60033,
+          60333,
+          60900,
+          61466,
+          62033,
+          62233,
+          62513
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "爱人在身边随处是天堂",
         "startMs": 63133,
         "endMs": 66973,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          63133,
+          63393,
+          63673,
+          64213,
+          64533,
+          64813,
+          65113,
+          65393,
+          65893,
+          66233
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 67953,
         "endMs": 72153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          67953,
+          68316,
+          68679,
+          69042,
+          69404,
+          69767,
+          70130,
+          70493,
+          70933,
+          71093,
+          71373,
+          71653
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一梦到天涯遍地是花香",
         "startMs": 72233,
         "endMs": 75753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          72233,
+          72556,
+          72880,
+          73203,
+          73526,
+          73850,
+          74173,
+          74413,
+          74713,
+          75013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "流浪的人啊心上有了她",
         "startMs": 77013,
         "endMs": 81173,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          77013,
+          77483,
+          77953,
+          78423,
+          78893,
+          79363,
+          79833,
+          80113,
+          80393,
+          80653
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "千里万里也会 回头望",
         "startMs": 81253,
         "endMs": 85153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          81253,
+          81533,
+          81833,
+          82403,
+          82973,
+          83253,
+          83513,
+          83963,
+          84413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 86073,
         "endMs": 90253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          86073,
+          86366,
+          86660,
+          86953,
+          87369,
+          87785,
+          88201,
+          88617,
+          89033,
+          89193,
+          89493,
+          89773
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "火一样热烈 火一样奔放",
         "startMs": 90333,
         "endMs": 93893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          90333,
+          90613,
+          90873,
+          91453,
+          91753,
+          92013,
+          92353,
+          92573,
+          92873,
+          93153
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "痴情的人啊心上有了她",
         "startMs": 95133,
         "endMs": 99293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          95133,
+          95413,
+          95925,
+          96437,
+          96949,
+          97461,
+          97973,
+          98273,
+          98513,
+          98853
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "有种幸福叫地久天长",
         "startMs": 99373,
         "endMs": 103233,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          99373,
+          99673,
+          100103,
+          100533,
+          101073,
+          101373,
+          101633,
+          102063,
+          102493
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "天下有多大 随它去宽广",
         "startMs": 113553,
         "endMs": 117413,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          113553,
+          113833,
+          114113,
+          114373,
+          114653,
+          115493,
+          115848,
+          116203,
+          116558,
+          116913
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "大路有多远 幸福有多长",
         "startMs": 117493,
         "endMs": 121033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          117493,
+          117773,
+          118053,
+          118613,
+          118897,
+          119181,
+          119465,
+          119749,
+          120033,
+          120293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "听惯了牧马人悠扬的琴声",
         "startMs": 122013,
         "endMs": 126453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          122013,
+          122293,
+          122573,
+          122960,
+          123346,
+          123733,
+          124433,
+          125133,
+          125413,
+          125653,
+          126053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "爱上这水草丰美的牧场",
         "startMs": 126533,
         "endMs": 130393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          126533,
+          126900,
+          127266,
+          127633,
+          127943,
+          128253,
+          128493,
+          128813,
+          129340,
+          129866
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "花开一抹红 尽情的怒放",
         "startMs": 131633,
         "endMs": 135533,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          131633,
+          132042,
+          132450,
+          132859,
+          133267,
+          133676,
+          134084,
+          134493,
+          134840,
+          135186
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "河流有多远 幸福有多长",
         "startMs": 135613,
         "endMs": 139153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          135613,
+          135893,
+          136173,
+          136713,
+          136973,
+          137268,
+          137563,
+          137858,
+          138153,
+          138413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "习惯了游牧人自由的生活",
         "startMs": 140173,
         "endMs": 144573,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          140173,
+          140433,
+          140693,
+          141066,
+          141440,
+          141813,
+          142386,
+          142960,
+          143533,
+          143733,
+          144053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "爱人在身边随处是天堂",
         "startMs": 144653,
         "endMs": 148493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          144653,
+          144933,
+          145213,
+          145733,
+          146033,
+          146333,
+          146613,
+          147003,
+          147393,
+          147753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 149473,
         "endMs": 153653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          149473,
+          149846,
+          150218,
+          150590,
+          150963,
+          151336,
+          151708,
+          152080,
+          152453,
+          152613,
+          152893,
+          153173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一梦到天涯遍地是花香",
         "startMs": 153733,
         "endMs": 157253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          153733,
+          153993,
+          154403,
+          154813,
+          155133,
+          155413,
+          155693,
+          155933,
+          156233,
+          156513
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "流浪的人啊心上有了她",
         "startMs": 158653,
         "endMs": 162673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          158653,
+          158833,
+          159013,
+          159213,
+          159926,
+          160640,
+          161353,
+          161653,
+          161913,
+          162193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "千里万里也会 回头望",
         "startMs": 162753,
         "endMs": 166653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          162753,
+          163053,
+          163333,
+          163903,
+          164473,
+          164713,
+          165033,
+          165313,
+          165913
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 167573,
         "endMs": 171713,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          167573,
+          167939,
+          168304,
+          168670,
+          169036,
+          169402,
+          169767,
+          170133,
+          170553,
+          170713,
+          170993,
+          171273
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "火一样热烈 火一样奔放",
         "startMs": 171793,
         "endMs": 175393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          171793,
+          172133,
+          172373,
+          172760,
+          173146,
+          173533,
+          173853,
+          174093,
+          174393,
+          174893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "痴情的人啊心上有了她",
         "startMs": 176653,
         "endMs": 180773,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          176653,
+          176913,
+          177423,
+          177933,
+          178443,
+          178953,
+          179513,
+          179813,
+          180053,
+          180353
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "有种幸福叫地久天长",
         "startMs": 180853,
         "endMs": 184733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          180853,
+          181153,
+          181593,
+          182033,
+          182553,
+          182853,
+          183113,
+          183413,
+          183993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 185693,
         "endMs": 189893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          185693,
+          185973,
+          186253,
+          186553,
+          186813,
+          187113,
+          187933,
+          188213,
+          188673,
+          188833,
+          189093,
+          189373
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一梦到天涯遍地是花香",
         "startMs": 189973,
         "endMs": 193493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          189973,
+          190340,
+          190706,
+          191073,
+          191373,
+          191643,
+          191913,
+          192153,
+          192473,
+          192753
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "流浪的人啊心上有了她",
         "startMs": 194753,
         "endMs": 198913,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          194753,
+          195033,
+          195413,
+          195593,
+          196240,
+          196886,
+          197533,
+          197853,
+          198113,
+          198393
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "千里万里也会 回头望",
         "startMs": 198993,
         "endMs": 202073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          198993,
+          199313,
+          199573,
+          200133,
+          200693,
+          200953,
+          201253,
+          201526,
+          201800
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "草原最美的花 火红的萨日朗",
         "startMs": 202153,
         "endMs": 207993,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          202153,
+          202756,
+          203359,
+          203962,
+          204564,
+          205167,
+          205770,
+          206373,
+          206773,
+          206933,
+          207223,
+          207513
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "火一样热烈 火一样奔放",
         "startMs": 208073,
         "endMs": 211633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          208073,
+          208353,
+          208593,
+          209173,
+          209473,
+          209753,
+          210093,
+          210313,
+          210613,
+          210893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "痴情的人啊心上有了她",
         "startMs": 212853,
         "endMs": 217033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          212853,
+          213321,
+          213789,
+          214257,
+          214725,
+          215193,
+          215528,
+          215863,
+          216198,
+          216533
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "有种幸福叫地久天长",
         "startMs": 217113,
         "endMs": 220933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          217113,
+          217373,
+          217813,
+          218253,
+          218773,
+          219073,
+          219333,
+          219763,
+          220193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "有种幸福叫地久天长",
         "startMs": 221673,
         "endMs": 225493,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          221673,
+          221913,
+          222353,
+          222793,
+          223333,
+          223633,
+          223893,
+          224193,
+          224843
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -2063,287 +5613,756 @@
         "startMs": 20113,
         "endMs": 24433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          20113,
+          20413,
+          20703,
+          20993,
+          21293,
+          21893,
+          22493,
+          23333,
+          23883
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在高岗眺望北京",
         "startMs": 24873,
         "endMs": 28073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          24873,
+          25273,
+          25673,
+          26073,
+          26473,
+          26873,
+          27273,
+          27673
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "侧耳倾听母亲的声音",
         "startMs": 29713,
         "endMs": 34033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          29713,
+          30303,
+          30893,
+          31483,
+          32073,
+          32393,
+          32673,
+          32953,
+          33293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "放眼欲穿崇山峻岭",
         "startMs": 34513,
         "endMs": 37693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          34513,
+          34853,
+          35193,
+          35373,
+          35693,
+          36073,
+          36613,
+          37153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "绿波波的草场骏马行",
         "startMs": 39373,
         "endMs": 43653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          39373,
+          39673,
+          39913,
+          40233,
+          40663,
+          41093,
+          41833,
+          42573,
+          42913
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在草原歌唱北京",
         "startMs": 44093,
         "endMs": 47273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          44093,
+          44393,
+          44703,
+          45013,
+          45313,
+          45813,
+          46213,
+          46533
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "谁的眼睛掠过了风景",
         "startMs": 48873,
         "endMs": 53253,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          48873,
+          49333,
+          49913,
+          50493,
+          51073,
+          51653,
+          51923,
+          52193,
+          52723
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "迎风高唱五星红旗",
         "startMs": 53653,
         "endMs": 56833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          53653,
+          54013,
+          54293,
+          54633,
+          55026,
+          55420,
+          55813,
+          56323
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 58493,
         "endMs": 62853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          58493,
+          59093,
+          59393,
+          59733,
+          60320,
+          60906,
+          61493,
+          62173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一望无际国泰安宁",
         "startMs": 63313,
         "endMs": 66433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          63313,
+          63593,
+          63900,
+          64206,
+          64513,
+          64813,
+          65353,
+          65893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唱出草原的豪情和美丽",
         "startMs": 68073,
         "endMs": 72473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          68073,
+          68433,
+          68713,
+          69503,
+          70293,
+          70533,
+          70813,
+          71093,
+          71553,
+          72013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让这歌声回荡紫禁",
         "startMs": 72913,
         "endMs": 76053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          72913,
+          73306,
+          73698,
+          74090,
+          74483,
+          74876,
+          75268,
+          75660
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 77693,
         "endMs": 82073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          77693,
+          78313,
+          78613,
+          78933,
+          79540,
+          80146,
+          80753,
+          81413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "青青山岗心旷神怡",
         "startMs": 82533,
         "endMs": 85693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          82533,
+          82928,
+          83323,
+          83718,
+          84113,
+          84508,
+          84903,
+          85298
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让心放飞着喜悦的心情",
         "startMs": 87293,
         "endMs": 91653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          87293,
+          87593,
+          88043,
+          88493,
+          89433,
+          89803,
+          90173,
+          90543,
+          90913,
+          91283
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "吉祥彩云献给你",
         "startMs": 92133,
         "endMs": 95273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          92133,
+          92493,
+          92853,
+          93213,
+          93573,
+          93933,
+          94603
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "瓦蓝蓝的天上飞雄鹰",
         "startMs": 116113,
         "endMs": 120433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          116113,
+          116413,
+          116713,
+          117013,
+          117293,
+          117893,
+          118493,
+          119313,
+          119873
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在高岗眺望北京",
         "startMs": 120873,
         "endMs": 124053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          120873,
+          121270,
+          121668,
+          122066,
+          122463,
+          122860,
+          123258,
+          123656
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "侧耳倾听母亲的声音",
         "startMs": 125713,
         "endMs": 130033,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          125713,
+          126303,
+          126893,
+          127483,
+          128073,
+          128393,
+          128673,
+          128953,
+          129293
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "放眼欲穿崇山峻岭",
         "startMs": 130513,
         "endMs": 133693,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          130513,
+          130800,
+          131086,
+          131373,
+          131693,
+          132073,
+          132613,
+          133153
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "绿波波的草场骏马行",
         "startMs": 135373,
         "endMs": 139633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          135373,
+          135653,
+          135913,
+          136233,
+          136663,
+          137093,
+          137823,
+          138553,
+          138893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我在草原歌唱北京",
         "startMs": 140073,
         "endMs": 143273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          140073,
+          140393,
+          140703,
+          141013,
+          141313,
+          141793,
+          142213,
+          142743
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "谁的眼睛掠过了风景",
         "startMs": 144873,
         "endMs": 149233,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          144873,
+          145333,
+          145913,
+          146493,
+          147073,
+          147653,
+          147923,
+          148193,
+          148493
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "迎风高唱五星红旗",
         "startMs": 149653,
         "endMs": 152833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          149653,
+          149993,
+          150293,
+          150633,
+          151013,
+          151393,
+          151773,
+          152303
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 154493,
         "endMs": 158853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          154493,
+          155093,
+          155393,
+          155733,
+          156320,
+          156906,
+          157493,
+          158173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一望无际国泰安宁",
         "startMs": 159273,
         "endMs": 162433,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          159273,
+          159613,
+          159913,
+          160213,
+          160513,
+          160813,
+          161353,
+          161893
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唱出草原的豪情和美丽",
         "startMs": 164073,
         "endMs": 168473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          164073,
+          164433,
+          164958,
+          165483,
+          166008,
+          166533,
+          166833,
+          167093,
+          167553,
+          168013
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让这歌声回荡紫禁",
         "startMs": 168893,
         "endMs": 172053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          168893,
+          169288,
+          169683,
+          170078,
+          170473,
+          170868,
+          171263,
+          171658
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 173693,
         "endMs": 178073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          173693,
+          174313,
+          174613,
+          175148,
+          175683,
+          176218,
+          176753,
+          177413
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "青青山岗心旷神怡",
         "startMs": 178533,
         "endMs": 181673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          178533,
+          178926,
+          179318,
+          179710,
+          180103,
+          180496,
+          180888,
+          181280
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让心放飞着喜悦的心情",
         "startMs": 183273,
         "endMs": 187653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          183273,
+          183593,
+          184043,
+          184493,
+          185433,
+          185720,
+          186006,
+          186293,
+          186746,
+          187200
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "吉祥彩云献给你",
         "startMs": 188133,
         "endMs": 191273,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          188133,
+          188373,
+          188763,
+          189153,
+          189543,
+          189933,
+          190533
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 192893,
         "endMs": 196653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          192893,
+          193493,
+          193793,
+          194270,
+          194746,
+          195223,
+          195700,
+          196176
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "一望无际国泰安宁",
         "startMs": 197693,
         "endMs": 200833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          197693,
+          198013,
+          198313,
+          198613,
+          198913,
+          199213,
+          199593,
+          200213
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "唱出草原的豪情和美丽",
         "startMs": 202473,
         "endMs": 206873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          202473,
+          202833,
+          203453,
+          204073,
+          204693,
+          204933,
+          205233,
+          205493,
+          205833,
+          206353
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让这歌声回荡紫禁",
         "startMs": 207293,
         "endMs": 210453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          207293,
+          207688,
+          208083,
+          208478,
+          208873,
+          209268,
+          209663,
+          210058
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我站在草原望北京",
         "startMs": 212093,
         "endMs": 216473,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          212093,
+          212553,
+          213013,
+          213548,
+          214083,
+          214618,
+          215153,
+          215813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "青青山岗心旷神怡",
         "startMs": 216933,
         "endMs": 220073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          216933,
+          217326,
+          217718,
+          218110,
+          218503,
+          218896,
+          219288,
+          219680
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "让心放飞着喜悦的心情",
         "startMs": 221673,
         "endMs": 226053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          221673,
+          222013,
+          222453,
+          222893,
+          223833,
+          224203,
+          224573,
+          224943,
+          225313,
+          225683
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "吉祥彩云献给你",
         "startMs": 226533,
         "endMs": 229673,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          226533,
+          226982,
+          227430,
+          227879,
+          228327,
+          228776,
+          229224
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "吉祥彩云献给献给你",
         "startMs": 231293,
         "endMs": 236853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          231293,
+          231665,
+          232037,
+          232409,
+          232781,
+          233153,
+          234078,
+          235003,
+          235928
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   },
@@ -2355,252 +6374,578 @@
         "startMs": 30753,
         "endMs": 33413,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          30753,
+          31033,
+          31253,
+          31733,
+          31963,
+          32193,
+          32673
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "生来就无家可归",
         "startMs": 34293,
         "endMs": 36733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          34293,
+          34573,
+          34793,
+          35073,
+          35353,
+          35693,
+          36213
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "八万四千法门",
         "startMs": 38713,
         "endMs": 40873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          38713,
+          38997,
+          39281,
+          39565,
+          39849,
+          40133
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "没有一扇为我开启",
         "startMs": 41053,
         "endMs": 43653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          41053,
+          41353,
+          41593,
+          41823,
+          42053,
+          42253,
+          42473,
+          43063
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我是远方的孩子",
         "startMs": 45733,
         "endMs": 48373,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          45733,
+          45993,
+          46333,
+          46673,
+          46953,
+          47213,
+          47633
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "风是唯一的知己",
         "startMs": 48553,
         "endMs": 51413,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          48553,
+          49033,
+          49383,
+          49733,
+          49973,
+          50453,
+          50933
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "走过千山万水",
         "startMs": 53653,
         "endMs": 55793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          53653,
+          53933,
+          54133,
+          54373,
+          54613,
+          55053
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "却没能走出我自己",
         "startMs": 56193,
         "endMs": 58853,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          56193,
+          56453,
+          56713,
+          56953,
+          57193,
+          57413,
+          57713,
+          58113
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "你不明白",
         "startMs": 60193,
         "endMs": 61933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          60193,
+          60473,
+          60693,
+          61193
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我为何倚门独立",
         "startMs": 63753,
         "endMs": 66133,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          63753,
+          64093,
+          64433,
+          64773,
+          65113,
+          65453,
+          65793
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 67673,
         "endMs": 69833,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          67673,
+          67913,
+          68153,
+          68373,
+          68733,
+          69093
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "无靠无依",
         "startMs": 71493,
         "endMs": 73513,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          71493,
+          71953,
+          72413,
+          72963
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你不明白",
         "startMs": 75113,
         "endMs": 76793,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          75113,
+          75353,
+          75573,
+          76183
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我为何逆风哭泣",
         "startMs": 78633,
         "endMs": 80933,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          78633,
+          78833,
+          79073,
+          79293,
+          79513,
+          79986,
+          80460
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 82533,
         "endMs": 84653,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          82533,
+          82773,
+          83013,
+          83213,
+          83693,
+          84173
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "无靠无依",
         "startMs": 86353,
         "endMs": 89700,
         "timingMethod": "repeat-and-vocal-boundary",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          86353,
+          87190,
+          88026,
+          88863
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我是迷途的星子",
         "startMs": 105133,
         "endMs": 107733,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          105133,
+          105353,
+          105573,
+          105933,
+          106293,
+          106493,
+          106993
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "只知道燃烧自己",
         "startMs": 108633,
         "endMs": 111193,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          108633,
+          108853,
+          109073,
+          109333,
+          109713,
+          110053,
+          110623
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "银河浩瀚如经文",
         "startMs": 112513,
         "endMs": 115213,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          112513,
+          112773,
+          113180,
+          113586,
+          113993,
+          114193,
+          114613
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "没有一句渡我皈依",
         "startMs": 115293,
         "endMs": 117453,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          115293,
+          115563,
+          115833,
+          116103,
+          116373,
+          116643,
+          116913,
+          117183
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我是断线的风筝",
         "startMs": 119913,
         "endMs": 122073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          119913,
+          120222,
+          120530,
+          120839,
+          121147,
+          121456,
+          121764
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "飘摇在冷雨黄昏",
         "startMs": 122693,
         "endMs": 126013,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          122693,
+          123153,
+          123613,
+          124093,
+          124373,
+          124773,
+          125273
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "三千世界如长绳",
         "startMs": 126373,
         "endMs": 129213,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          126373,
+          126633,
+          126853,
+          127133,
+          127573,
+          128013,
+          128613
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "没有一根系我浮生",
         "startMs": 130073,
         "endMs": 132873,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          130073,
+          130353,
+          130573,
+          130793,
+          131033,
+          131433,
+          131783,
+          132133
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你不明白",
         "startMs": 134253,
         "endMs": 135953,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          134253,
+          134533,
+          134733,
+          135343
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我为何倚门独立",
         "startMs": 137773,
         "endMs": 140153,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          137773,
+          138113,
+          138453,
+          138793,
+          139133,
+          139473,
+          139813
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 141693,
         "endMs": 143813,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          141693,
+          141933,
+          142173,
+          142373,
+          142693,
+          143253
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "无靠无依",
         "startMs": 145473,
         "endMs": 147593,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          145473,
+          145963,
+          146453,
+          147023
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "你不明白",
         "startMs": 149073,
         "endMs": 150753,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          149073,
+          149333,
+          149533,
+          150143
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "我为何逆风哭泣",
         "startMs": 152553,
         "endMs": 154893,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          152553,
+          152793,
+          153033,
+          153253,
+          153473,
+          153713,
+          154303
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 156453,
         "endMs": 158573,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          156453,
+          156693,
+          156933,
+          157133,
+          157473,
+          157833
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "无靠无依",
         "startMs": 160213,
         "endMs": 162293,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          160213,
+          160733,
+          161253,
+          161773
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 167493,
         "endMs": 169633,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          167493,
+          167733,
+          167953,
+          168173,
+          168413,
+          168893
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "无靠无依",
         "startMs": 171253,
         "endMs": 173073,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          171253,
+          171633,
+          172113,
+          172593
+        ],
+        "layoutTiming": "mixed-estimates"
       },
       {
         "text": "因为我在人间",
         "startMs": 174853,
         "endMs": 177053,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": false
+        "reviewRequired": false,
+        "layoutTimesMs": [
+          174853,
+          175093,
+          175333,
+          175553,
+          175793,
+          176313
+        ],
+        "layoutTiming": "ctc-candidates"
       },
       {
         "text": "无靠无依",
         "startMs": 184313,
         "endMs": 186393,
         "timingMethod": "ordered-ctc-sentence",
-        "reviewRequired": true
+        "reviewRequired": true,
+        "layoutTimesMs": [
+          184313,
+          184793,
+          185326,
+          185860
+        ],
+        "layoutTiming": "mixed-estimates"
       }
     ]
   }

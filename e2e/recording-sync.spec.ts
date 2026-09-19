@@ -23,10 +23,10 @@ for (const [id,recording] of Object.entries(recordings)) {
       const position=Math.ceil((cue.startMs+100)/10)*10;
       await progress.fill(String(position));
       const active=page.locator('.score-lyric[data-state="current"]');
-      await expect(active).toHaveCount(1);
-      await expect(active).toHaveAttribute('data-cue-start',String(cue.startMs));
+      await expect(active.first()).toHaveAttribute('data-cue-start',String(cue.startMs));
+      expect(await active.evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('data-cue-start')))])).toEqual([String(cue.startMs)]);
       await page.getByRole('button',{name:'画面提前量增加'}).click();
-      await expect(active).toHaveAttribute('data-cue-start',String(cue.startMs));
+      await expect(active.first()).toHaveAttribute('data-cue-start',String(cue.startMs));
       expect(Number(await progress.inputValue())).toBe(position);
     }
     const displayed=await page.locator('.score-lyric__char').allTextContents();

@@ -31,10 +31,12 @@ function flattenHits(song: SongDefinition): ScoreHit[] {
 export function createScheduleCursor(song: SongDefinition) {
   const scoreHits = flattenHits(song);
   const scheduledIds = new Set<string>();
+  let resetAtMs=0;
 
   return {
     reset(_scoreTimeMs = 0): void {
       scheduledIds.clear();
+      resetAtMs=_scoreTimeMs;
     },
 
     schedule(window: ScheduleWindow): ScheduledHit[] {
@@ -43,7 +45,7 @@ export function createScheduleCursor(song: SongDefinition) {
       return scoreHits.flatMap(({ id, hit, scoreAtMs }) => {
         if (
           scheduledIds.has(id) ||
-          scoreAtMs < window.scoreNowMs ||
+          scoreAtMs < Math.max(resetAtMs, window.scoreNowMs - 60 * window.playbackRate) ||
           scoreAtMs > window.scoreUntilMs
         ) {
           return [];
@@ -56,7 +58,7 @@ export function createScheduleCursor(song: SongDefinition) {
             hit,
             atAudioTimeSeconds:
               window.audioNowSeconds +
-              (scoreAtMs - window.scoreNowMs) / 1_000 / window.playbackRate,
+              Math.max(0, scoreAtMs - window.scoreNowMs) / 1_000 / window.playbackRate,
           },
         ];
       });

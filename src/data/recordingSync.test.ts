@@ -2,6 +2,14 @@ import { expect, it } from 'vitest';
 import { alignScoreToRecording, timeAtBeat, attachRecordingLyrics } from './recordingSync';
 import { makeSong } from '../test/fixtures';
 import { songLibrary } from './demoSong';
+import { validateSong } from '../domain/song';
+
+it('every recording has complete, ordered notation anchors without losing repeated characters',()=>{
+  for(const song of songLibrary.filter(s=>s.lyricTiming==='recording')){
+    expect(validateSong(song),song.title).toEqual([]);
+    expect(song.lyrics!.every(c=>c.layoutTimesMs?.length===Array.from(c.text.replace(/\s/g,'')).length)).toBe(true);
+  }
+});
 
 it('uses individual measured beat intervals, not a whole-bar linear stretch', () => {
   const grid={sha256:'fixture', durationMs:5000, bpm:120, beatTimesMs:[100,600,1200,1700,2200,2700,3200,3700,4200]};

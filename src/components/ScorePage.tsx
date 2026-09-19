@@ -1,11 +1,13 @@
 import type { Bar, HitEvent, Stroke, SongDefinition } from "../domain/song";
 import { strokeLabels } from "../domain/song";
-import { memo, useLayoutEffect, useMemo, useRef } from "react";
+import { memo, useCallback, useLayoutEffect, useMemo, useRef } from "react";
+import { getCachedBeatPairs, getNoteBeams, layoutRecordingLyrics, type BeatNote, type NotatedLyricChar } from '../domain/scoreLayout';
+export { getCachedBeatPairs } from '../domain/scoreLayout';
 
 interface ScorePageProps {
   bars: Bar[];
   currentTimeMs: number;
-  /** 额外视觉提前量：只移动竖线和视窗，不移动鼓音放大或歌词高亮。 */
+  /** 额外视觉提前量：竖线/歌词扫色/视窗共用，不改变实际鼓音和演唱时刻。 */
   visualLeadMs?: number;
   /** 倒数中的拍号（1 起），0 表示不在倒数 */
   countInBeat?: number;
@@ -30,37 +32,6 @@ interface ScorePageProps {
  * 歌词词组按小节对位（lyricSpan 跨几小节就居中于几小节下方）。
  * 速度参考「阿波非洲鼓」教学谱排版。
  */
-interface BeatNote { hit: HitEvent | null; duration: number }
-
-function beatPairs(bar: Bar): BeatNote[][] {
-  const sixteenthMs = (bar.endMs - bar.startMs) / bar.beats / 4;
-  const bySlot = new Map<number, HitEvent>();
-  for (const hit of bar.hits) {
-    const index = Math.round((hit.atMs - bar.startMs) / sixteenthMs);
-    if (index >= 0 && index < bar.beats * 4) bySlot.set(index, hit);
-  }
-  return Array.from({ length: bar.beats }, (_, beat) => {
-    const notes: BeatNote[] = [];
-    for (let slot = 0; slot < 4;) {
-      let end = slot + 1;
-      while (end < 4 && !bySlot.has(beat * 4 + end)) end++;
-      notes.push({ hit: bySlot.get(beat * 4 + slot) ?? null, duration: end - slot });
-      slot = end;
-    }
-    return notes;
-  });
-}
-
-const beatPairsCache = new WeakMap<Bar, BeatNote[][]>();
-export function getCachedBeatPairs(bar: Bar): BeatNote[][] {
-  let cached = beatPairsCache.get(bar);
-  if (!cached) {
-    cached = beatPairs(bar);
-    beatPairsCache.set(bar, cached);
-  }
-  return cached;
-}
-
 function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
@@ -287,6 +258,7 @@ interface ScoreRowBlockProps {
   activeWindowMs: number;
   lyrics?: SongDefinition["lyrics"];
   preferTimedLyrics?: boolean;
+  notatedLyrics?: Map<number,NotatedLyricChar[]>;
   lyricOffsetMs?: number;
   charTimes?: Record<number, number[][]>;
   onSeekAndPlay?: (timeMs: number) => void;
@@ -301,6 +273,7 @@ function areRowPropsEqual(prev: ScoreRowBlockProps, next: ScoreRowBlockProps): b
   if (prev.lyricOffsetMs !== next.lyricOffsetMs) return false;
   if (prev.lyrics !== next.lyrics) return false;
   if (prev.preferTimedLyrics !== next.preferTimedLyrics) return false;
+  if (prev.notatedLyrics !== next.notatedLyrics) return false;
   // Singing can be ahead of/behind its notated bar; don't memoize it by the visual cursor.
   if (!prev.preferTimedLyrics && prev.currentTimeMs !== next.currentTimeMs && prev.rowBars.some(b => b.lyricBeats?.some(Boolean))) return false;
 
@@ -358,6 +331,7 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
   activeWindowMs,
   lyrics,
   preferTimedLyrics = false,
+  notatedLyrics,
   lyricOffsetMs = 0,
   charTimes,
   onSeekAndPlay,
@@ -366,7 +340,6 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
   const rowKey = rowBars[0]?.number ?? 0;
   const rowStart = rowBars[0].startMs;
   const rowEnd = rowBars[rowBars.length - 1].endMs;
-  const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
 
   function hitState(hit: HitEvent): "current" | "next" | "idle" {
     if (latestHit === hit && currentTimeMs - hit.atMs <= activeWindowMs) return "current";
@@ -441,6 +414,11 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
                 </span>
               )}
             </span>
+          ))}
+          {getNoteBeams(notes).map((beam,index)=>(
+            <span key={`beam-${index}`} className={`score-beam score-beam--${beam.level}`}
+              data-beam-level={beam.level} aria-hidden="true"
+              style={{left:`calc(${beam.start*25}% + 3px)`,width:`calc(${(beam.end-beam.start)*25}% - 6px)`}} />
           ))}
         </span>
       </div>
@@ -557,44 +535,33 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
             );
           })}
         </div>
-      ) : lyrics ? (
-        <div className="score-lyrics" aria-label="本行歌词">
-          {rowLyrics?.map((cue) => {
-            const characters = Array.from(cue.text.replace(/\s/g, ""));
-            const allPositions = characters.map((char, i) => ({
-              char,
-              at: cue.startMs + (i + 0.5) / characters.length * (cue.endMs - cue.startMs),
-            }));
-            const positions=allPositions.filter(({ at }) => at >= rowStart && at < rowEnd);
-            if (!positions.length) return null;
-            const start = Math.max(cue.startMs, rowStart);
-            const end = Math.min(cue.endMs, rowEnd);
-            const activeStart=positions[0]===allPositions[0] ? cue.startMs : start;
-            const activeEnd=positions.at(-1)===allPositions.at(-1) ? cue.endMs : end;
-            return (
-              <p
-                key={cue.startMs}
-                className="score-lyric score-lyric--timed"
-                data-cue-start={cue.startMs}
-                data-cue-end={cue.endMs}
-                aria-label={positions.map(({ char }) => char).join("")}
-                data-state={currentTimeMs >= activeStart && currentTimeMs < activeEnd ? "current" : "idle"}
-                style={{
-                  left: `${clamp01((cue.startMs - rowStart) / (rowEnd - rowStart)) * 100}%`,
-                  width: `${(Math.min(cue.endMs, rowEnd) - Math.max(cue.startMs, rowStart)) / (rowEnd - rowStart) * 100}%`,
-                }}
-              >
-                {positions.map(({ char, at }, i) => (
-                  <span
-                    className="score-lyric__char"
-                    key={i}
-                    style={{ left: `${(at - start) / (end - start) * 100}%` }}
-                  >
-                    {char}
-                  </span>
-                ))}
-              </p>
-            );
+      ) : lyrics && notatedLyrics ? (
+        <div className="score-lyrics score-lyrics--notation" aria-label="本行歌词">
+          {rowBars.map(bar=>{
+            const chars=notatedLyrics.get(bar.number)??[];
+            const sweep=playheadBarNumber===bar.number ? playheadPercent :
+              (playheadBarNumber!==null ? (bar.number<playheadBarNumber?100:0) : currentTimeMs>=bar.endMs?100:0);
+            const cueIndices=[...new Set(chars.map(c=>c.cueIndex))];
+            return <div className="score-notation-lyrics" key={bar.number} style={{flex:bar.beats}} data-lyric-bar={bar.number}>
+              {bar.timeSignature && <span className="score-bar__meter score-notation-meter" aria-hidden="true"/>}
+              <div className="score-notation-grid">
+                {cueIndices.map(cueIndex=>{
+                  const cue=lyrics[cueIndex];
+                  const letters=chars.filter(c=>c.cueIndex===cueIndex);
+                  return <p key={cueIndex} className="score-lyric score-lyric--notation"
+                    data-cue-start={cue.startMs} data-cue-end={cue.endMs}
+                    data-state={currentTimeMs>=cue.startMs && currentTimeMs<cue.endMs?'current':'idle'}
+                    aria-label={letters.map(c=>c.ch).join('')}>
+                    {letters.map(c=><span key={c.index} className="score-lyric__char" style={{left:`${c.leftPercent}%`}}>{c.ch}</span>)}
+                    <span className="score-lyric__sweep" aria-hidden="true" style={{clipPath:`inset(0 ${100-sweep}% 0 0)`}}>
+                      {letters.map(c=><span key={c.index} className="score-lyric__ink-char" data-text={c.ch} style={{left:`${c.leftPercent}%`}}/>)}
+                    </span>
+                  </p>;
+                })}
+                {chars.length>0 && <span className="score-lyric-progress" data-complete={sweep===100} aria-hidden="true" style={{width:`${sweep}%`}}/>}
+                {chars.length>0 && playheadBarNumber===bar.number && <span className="score-lyric-cursor" aria-hidden="true" style={{left:`${playheadPercent}%`}}/>}
+              </div>
+            </div>;
           })}
         </div>
       ) : null}
@@ -618,6 +585,12 @@ export function ScorePage({
   isPlaying = false,
 }: ScorePageProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
+  const notatedLyrics=useMemo(()=>lyrics?layoutRecordingLyrics(bars,lyrics):undefined,[bars,lyrics]);
+  // Parent snapshots change at frame rate. A fresh parent handler must not
+  // invalidate every offscreen row (thousands of glyphs) on every frame.
+  const seekRef=useRef(onSeekAndPlay);
+  useLayoutEffect(()=>{seekRef.current=onSeekAndPlay;},[onSeekAndPlay]);
+  const handleSeek=useCallback((timeMs:number)=>seekRef.current?.(timeMs),[]);
   const visualTimeMs = currentTimeMs + visualLeadMs;
   const timeRef = useRef(visualTimeMs);
   timeRef.current = visualTimeMs;
@@ -776,9 +749,10 @@ export function ScorePage({
               activeWindowMs={activeWindowMs}
               lyrics={lyrics}
               preferTimedLyrics={preferTimedLyrics}
+              notatedLyrics={notatedLyrics}
               lyricOffsetMs={lyricOffsetMs}
               charTimes={charTimes}
-              onSeekAndPlay={onSeekAndPlay}
+              onSeekAndPlay={onSeekAndPlay ? handleSeek : undefined}
               showHands={showHands}
             />
           ))}

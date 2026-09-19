@@ -50,14 +50,14 @@ export function createDrumSynth(audioContext: AudioContext): DrumSynth {
       let lastNode: AudioNode = oscillator;
       if (typeof audioContext.createBiquadFilter === "function") {
         const filter = audioContext.createBiquadFilter();
-        if (hit.dynamics === "soft") {
+        if (hit.stroke === "bass") {
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(hit.stroke === "bass" ? 260 : 1000, startTime);
+          filter.frequency.setValueAtTime(1200, startTime);
           lastNode.connect(filter);
           lastNode = filter;
-        } else if (hit.stroke === "bass") {
+        } else if (hit.dynamics === "soft") {
           filter.type = "lowpass";
-          filter.frequency.setValueAtTime(320, startTime);
+          filter.frequency.setValueAtTime(1000, startTime);
           lastNode.connect(filter);
           lastNode = filter;
         } else if (hit.stroke === "slap") {

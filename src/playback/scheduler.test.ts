@@ -4,6 +4,17 @@ import { createScheduleCursor } from "./scheduler";
 import { makeSong } from "../test/fixtures";
 
 describe("drum scheduler", () => {
+  it('catches a just-missed frame once but never replays a hit before the explicit seek point',()=>{
+    const cursor=createScheduleCursor(makeSong());
+    cursor.reset(1000);
+    const window={scoreNowMs:1012,scoreUntilMs:1100,audioNowSeconds:10,playbackRate:1};
+    expect(cursor.schedule(window).map(e=>[e.hit.atMs,e.atAudioTimeSeconds])).toEqual([[1000,10]]);
+    expect(cursor.schedule(window)).toEqual([]);
+    cursor.reset(1001);
+    expect(cursor.schedule(window)).toEqual([]);
+    cursor.reset(1000);
+    expect(cursor.schedule({...window,scoreNowMs:1200,scoreUntilMs:1300})).toEqual([]);
+  });
   it("converts score-time hits in its look-ahead window into Web Audio times", () => {
     const cursor = createScheduleCursor(makeSong());
 

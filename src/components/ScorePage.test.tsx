@@ -4,13 +4,31 @@ import { ScorePage, isUsableTimes, placedChars, getPlayheadBar } from "./ScorePa
 import { makeSong } from "../test/fixtures";
 
 describe("ScorePage", () => {
+  it('keeps memoised rows clickable with the newest seek callback',()=>{
+    const old=vi.fn(),next=vi.fn(),bars=makeSong().bars;
+    const {container,rerender}=render(<ScorePage bars={bars} currentTimeMs={0} onSeekAndPlay={old}/>);
+    rerender(<ScorePage bars={bars} currentTimeMs={0} onSeekAndPlay={next}/>);
+    fireEvent.click(container.querySelector('[data-hit-at="7500"]')!);
+    expect(old).not.toHaveBeenCalled();expect(next).toHaveBeenCalledWith(7500);
+  });
+  it('restores a continuous lyric sweep tied to the visual cursor while keeping the cue clock independent',()=>{
+    const props={bars:makeSong().bars,preferTimedLyrics:true,lyrics:[{startMs:0,endMs:900,text:'甲乙丙丁',layoutTimesMs:[0,250,500,750]}]};
+    const {container,rerender}=render(<ScorePage {...props} currentTimeMs={400}/>);
+    const get=()=>({head:container.querySelector('.score-playhead')?.getAttribute('style'),
+      sweep:container.querySelector('.score-lyric__sweep')?.getAttribute('style')});
+    const before=get();
+    expect(container.querySelector('.score-lyric-progress')).toHaveStyle({width:'52%'});
+    rerender(<ScorePage {...props} currentTimeMs={400} visualLeadMs={100}/>);
+    expect(get().head).not.toBe(before.head);expect(get().sweep).not.toBe(before.sweep);
+    expect(container.querySelector('.score-lyric-progress')).toHaveStyle({width:'62%'});
+    expect(container.querySelector('.score-lyric')).toHaveAttribute('data-state','current');
+  });
   it('does not lose lyric highlighting when a cue starts just before the next row but its first letter is on that row', () => {
     const props={bars:makeSong().bars,preferTimedLyrics:true,lyrics:[{startMs:2900,endMs:4000,text:'甲乙'}]};
     const {container,rerender}=render(<ScorePage {...props} currentTimeMs={2800}/>);
     expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(0);
     rerender(<ScorePage {...props} currentTimeMs={2950}/>);
-    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(1);
-    expect(screen.getByLabelText('甲乙')).toHaveAttribute('data-state','current');
+    expect([...container.querySelectorAll('.score-lyric[data-state="current"]')].map(el=>el.textContent).join('')).toBe('甲乙');
   });
   it('uses recording lyric cues instead of stale bar-attached words, with clear vocal gaps', () => {
     const bars=makeSong().bars.map(b=>({...b,lyric:'旧词错误位置',lyricBeats:['旧','词','','']}));
@@ -71,10 +89,10 @@ describe("ScorePage", () => {
   });
   it("highlights timed lyrics only during their cue and clears them in a gap", () => {
     const props = { bars: makeSong().bars.slice(0, 4), lyrics: [{ startMs: 500, endMs: 1500, text: "测试句子" }] };
-    const { rerender } = render(<ScorePage {...props} currentTimeMs={700} />);
-    expect(screen.getByLabelText("测试句子")).toHaveAttribute("data-state", "current");
+    const { container, rerender } = render(<ScorePage {...props} currentTimeMs={700} />);
+    expect([...container.querySelectorAll('.score-lyric[data-state="current"]')].map(el=>el.textContent).join('')).toBe('测试句子');
     rerender(<ScorePage {...props} currentTimeMs={1500} />);
-    expect(screen.getByLabelText("测试句子")).toHaveAttribute("data-state", "idle");
+    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(0);
   });
   it("spreads every character once across a row boundary without ellipses or repeated lyrics", () => {
     const { container } = render(<ScorePage bars={makeSong().bars} currentTimeMs={3100}
@@ -83,7 +101,7 @@ describe("ScorePage", () => {
     expect(chars.map((char) => char.textContent).join('')).toBe('甲乙丙丁');
     expect(container.querySelectorAll('.score-lyrics')[0].textContent).toBe('甲乙');
     expect(container.querySelectorAll('.score-lyrics')[1].textContent).toBe('丙丁');
-    expect(container.querySelectorAll('.score-lyric[data-state="current"]')).toHaveLength(1);
+    expect(new Set([...container.querySelectorAll('.score-lyric[data-state="current"]')].map(el=>el.getAttribute('data-cue-start')))).toEqual(new Set(['2000']));
     expect(container.querySelector('.score-page')!.textContent).not.toContain('…');
     expect(chars[0].getAttribute('style')).not.toBe(chars[1].getAttribute('style'));
   });

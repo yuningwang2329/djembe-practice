@@ -40,7 +40,10 @@ export interface SongDefinition {
   recordingSha256?: string;
   bars: Bar[];
   /** 独立于鼓谱小节的逐句歌词时间，使用与鼓点相同的时间轴。 */
-  lyrics?: Array<{ startMs: number; endMs: number; text: string; timingMethod?: string; reviewRequired?: boolean }>;
+  lyrics?: Array<{ startMs: number; endMs: number; text: string; timingMethod?: string; reviewRequired?: boolean;
+    /** Vocal candidates used ONLY for notation placement. Weak spans are explicitly estimated. */
+    layoutTimesMs?: number[]; layoutTiming?: 'ctc-candidates' | 'mixed-estimates';
+  }>;
   /** 新录音级时间表优先于旧的小节附词；布局不能反过来决定演唱时间。 */
   lyricTiming?: 'recording';
   /** 同一首歌的可选谱面版本（如扒谱版、教材版），练习时可切换 */
@@ -106,6 +109,10 @@ export function validateSong(song: SongDefinition): string[] {
       errors.push(`${label}时间范围无效`);
     }
     if(index && cue.startMs<cues[index-1].endMs) errors.push(`${label}与前一句重叠`);
+    if(cue.layoutTimesMs && (cue.layoutTimesMs.length!==Array.from(cue.text.replace(/\s/g,'')).length ||
+      cue.layoutTimesMs.some((t,i,times)=>!Number.isFinite(t)||t<cue.startMs||t>=cue.endMs||(i>0&&t<=times[i-1])))) {
+      errors.push(`${label}排字锚点无效`);
+    }
   });
   return errors;
 }

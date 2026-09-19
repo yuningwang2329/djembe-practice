@@ -152,9 +152,9 @@ export function createPlaybackController(options: PlaybackControllerOptions): Pl
     if (audio && audio.currentTime * 1_000 < song.audioOffsetMs) {
       clock.seek(getCurrentTimeMs());
     }
+    cursor.reset(getCurrentTimeMs());
     const playPromise = clock.play();
     hasStarted = true;
-    cursor.reset(getCurrentTimeMs());
     tick();
     await playPromise;
   }
