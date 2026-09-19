@@ -50,65 +50,12 @@ function clamp01(value: number): number {
   return Math.min(1, Math.max(0, value));
 }
 
-interface NoteVisualPoint {
-  attackMs: number;
-  centerPercent: number;
-}
-
-function getBarNoteVisualPoints(bar: Bar): NoteVisualPoint[] {
-  const points: NoteVisualPoint[] = [];
-  const pairs = beatPairs(bar);
-  const totalSixteenths = bar.beats * 4;
-  const barDuration = bar.endMs - bar.startMs;
-
-  let currentSlot = 0;
-  for (let beat = 0; beat < pairs.length; beat++) {
-    const notes = pairs[beat];
-    for (let n = 0; n < notes.length; n++) {
-      const note = notes[n];
-      const startSlot = currentSlot;
-      const endSlot = currentSlot + note.duration;
-      const attackMs = bar.startMs + (startSlot / totalSixteenths) * barDuration;
-      const centerPercent = ((startSlot + endSlot) / 2 / totalSixteenths) * 100;
-      points.push({ attackMs, centerPercent });
-      currentSlot = endSlot;
-    }
-  }
-  return points;
-}
-
 export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
-  if (timeMs <= bar.startMs) {
-    const points = getBarNoteVisualPoints(bar);
-    return points[0]?.centerPercent ?? 0;
-  }
-  if (timeMs >= bar.endMs) {
-    return 100;
-  }
-
-  const points = getBarNoteVisualPoints(bar);
-  if (points.length === 0) {
-    return clamp01((timeMs - bar.startMs) / (bar.endMs - bar.startMs)) * 100;
-  }
-
-  if (timeMs < points[0].attackMs) {
-    return points[0].centerPercent;
-  }
-
-  for (let i = 0; i < points.length - 1; i++) {
-    const current = points[i];
-    const next = points[i + 1];
-    if (timeMs >= current.attackMs && timeMs < next.attackMs) {
-      const span = next.attackMs - current.attackMs;
-      const progress = span > 0 ? (timeMs - current.attackMs) / span : 0;
-      return current.centerPercent + progress * (next.centerPercent - current.centerPercent);
-    }
-  }
-
-  const last = points[points.length - 1];
-  const remainingTime = bar.endMs - last.attackMs;
-  const progress = remainingTime > 0 ? (timeMs - last.attackMs) / remainingTime : 1;
-  return last.centerPercent + progress * (100 - last.centerPercent);
+  if (timeMs <= bar.startMs) return 0;
+  if (timeMs >= bar.endMs) return 100;
+  const duration = bar.endMs - bar.startMs;
+  if (duration <= 0) return 0;
+  return clamp01((timeMs - bar.startMs) / duration) * 100;
 }
 
 export function ScorePage({
@@ -176,13 +123,14 @@ export function ScorePage({
 
   function strokeChar(hit: HitEvent) {
     const label = strokeLabels[hit.stroke];
-    const letter = hit.dynamics === "soft" ? label.letter.toLowerCase() : label.letter;
+    const isSoft = hit.dynamics === "soft";
+    const letter = isSoft ? label.letter.toLowerCase() : label.letter;
     return (
       <span
-        className={`score-char score-char--${hit.stroke}`}
+        className={`score-char score-char--${hit.stroke}${isSoft ? " score-char--soft" : ""}`}
         data-hit-at={hit.atMs}
         data-state={hitState(hit)}
-        aria-label={`${hit.dynamics === "soft" ? "轻击 " : ""}${label.name} ${letter}，${hit.hand} 手`}
+        aria-label={`${isSoft ? "轻击 " : ""}${label.name} ${letter}，${hit.hand} 手`}
         role={onSeekAndPlay ? "button" : undefined}
         tabIndex={onSeekAndPlay ? 0 : undefined}
         data-seekable={onSeekAndPlay ? "true" : undefined}
@@ -199,7 +147,9 @@ export function ScorePage({
           }
         } : undefined}
       >
-        <b className="score-char__letter">{letter}</b>
+        <b className="score-char__letter">
+          {isSoft ? <span className="score-char__ghost-note">{letter}</span> : letter}
+        </b>
         {showHands && <i className={`score-hand score-hand--${hit.hand} score-char__hand`}>{hit.hand}</i>}
       </span>
     );
@@ -240,35 +190,18 @@ export function ScorePage({
     );
   }
 
-  /** 全曲连续排版，每行 3 小节（适配平板与宽屏视野） */
+  /** 全曲连续排版，每行 3 小节（适配竖屏紧凑与长行视野） */
   const rows: Bar[][] = [];
   for (let index = 0; index < bars.length; index += 3) {
     rows.push(bars.slice(index, index + 3));
   }
 
-  // 计算首个鼓点提示，解决“4321 之后不知道何时敲”的问题
-  const firstDrumHit = bars.flatMap(bar => bar.hits).find(hit => hit.atMs >= 0) ?? null;
-  const beatMs = bpm ? Math.round(60_000 / bpm) : 500;
-  let drumEntryPrompt: string | null = null;
-  if (firstDrumHit && currentTimeMs < firstDrumHit.atMs) {
-    const timeUntilDrum = firstDrumHit.atMs - currentTimeMs;
-    if (timeUntilDrum <= beatMs * 4 && timeUntilDrum > 0) {
-      const remainingBeats = Math.max(1, Math.ceil(timeUntilDrum / beatMs));
-      drumEntryPrompt = `🥁 准备进鼓 ${remainingBeats}`;
-    }
-  } else if (firstDrumHit && currentTimeMs >= firstDrumHit.atMs && currentTimeMs - firstDrumHit.atMs < beatMs) {
-    drumEntryPrompt = `🥁 进鼓！敲！`;
-  }
-
   return (
     <section className="score" aria-label="可跟练鼓谱">
-      {drumEntryPrompt && (
-        <div className="drum-entry-cue" role="status" aria-live="assertive">
-          {drumEntryPrompt}
-        </div>
-      )}
       <div className="score-legend" aria-hidden="true">
-        {bars.some(bar => bar.hits.some(hit => hit.dynamics === "soft")) ? <span className="score-meta">小写 b/s：轻击</span> : null}
+        {bars.some(bar => bar.hits.some(hit => hit.dynamics === "soft")) ? (
+          <span className="score-meta">小写 b/s：轻击</span>
+        ) : null}
         {(["bass", "tone", "slap"] as Stroke[]).map((stroke) => (
           <span key={stroke} className={`score-legend__item score-legend__item--${stroke}`}>
             <b>{strokeLabels[stroke].letter}</b>
@@ -282,8 +215,8 @@ export function ScorePage({
         ) : null}
         {showHands && (
           <span className="score-legend__hands">
-            <i className="score-hand score-hand--R">R</i> 右手
-            <i className="score-hand score-hand--L">L</i> 左手
+            <i className="score-hand score-hand--R">R</i>
+            <i className="score-hand score-hand--L">L</i>
           </span>
         )}
       </div>
@@ -297,32 +230,6 @@ export function ScorePage({
           const rowLyrics = lyrics?.filter((cue) => cue.startMs < rowEnd && cue.endMs > rowStart);
           return (
             <div className="score-page__block" key={rowKey} data-start={rowStart} data-end={rowEnd}>
-              <div className="score-page__beats" aria-hidden="true">
-                {rowBars.map((bar) => (
-                  <div
-                    className="score-page__bar-beats"
-                    key={`beats-${bar.number}`}
-                    style={{ flex: bar.beats }}
-                  >
-                    {bar.timeSignature && (
-                      <span className="score-page__meter-space" aria-hidden="true" />
-                    )}
-                    {Array.from({ length: bar.beats }, (_, index) => (
-                      <span
-                        key={index}
-                        className={
-                          countInBeat === index + 1 && activeBar?.number === bar.number
-                            ? "score-beat--count"
-                            : undefined
-                        }
-                      >
-                        {index + 1}
-                      </span>
-                    ))}
-                  </div>
-                ))}
-              </div>
-
               <div className="score-page__row">
                 {rowBars.map((bar) => {
                   const isActive = activeBar?.number === bar.number;

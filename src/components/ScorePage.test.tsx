@@ -115,16 +115,16 @@ describe("ScorePage", () => {
     expect(container.querySelector(".score-rest")).not.toHaveAttribute("data-state");
   });
 
-  it("aligns the playhead directly over the sounding note's visual center in the active bar", () => {
+  it("moves the playhead at a constant speed across the active bar", () => {
     const song = makeSong();
-    // bar 0: startMs 0, endMs 1000, 4 beats. At 500ms (start of beat 3), playhead lands right on beat 3's note center (62.5%)
+    // bar 0: startMs 0, endMs 1000, 4 beats. At 500ms (halfway), playhead is exactly at 50%
     const { container } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={500} />,
     );
 
     const playhead = container.querySelector(".score-playhead");
     expect(playhead).not.toBeNull();
-    expect(playhead).toHaveStyle({ left: "62.5%" });
+    expect(playhead).toHaveStyle({ left: "50%" });
 
     const { container: idleContainer } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={10_000} />,
@@ -132,18 +132,19 @@ describe("ScorePage", () => {
     expect(idleContainer.querySelector(".score-playhead")).toBeNull();
   });
 
-  it("highlights the counted beat during count-in", () => {
+  it("omits repetitive 1234 beat numbers above bars, leaving only clean bar numbers", () => {
     const song = makeSong();
     const { container } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={0} countInBeat={2} />,
     );
 
-    const counted = container.querySelectorAll(".score-beat--count");
-    expect(counted).toHaveLength(1);
-    expect(counted[0]).toHaveTextContent("2");
+    // 每小节上方不再有 12341234 拍数列表，保持谱面极度干净
+    expect(container.querySelector(".score-page__beats")).toBeNull();
+    // 但左上角小节号清晰保留
+    expect(container.querySelector(".score-bar__no")).toHaveTextContent("1");
   });
 
-  it("renders a 2/4 time signature badge and exactly 2 beat numbers for a 2-beat bar", () => {
+  it("renders a 2/4 time signature badge and flex-2 width for a 2-beat bar without beat numbers", () => {
     const bar24 = {
       number: 5,
       startMs: 4000,
@@ -161,13 +162,42 @@ describe("ScorePage", () => {
     expect(meterBadge).toHaveAttribute("aria-label", "拍号切换 2/4");
     expect(meterBadge!.textContent).toBe("24");
 
-    const barBeats = container.querySelector(".score-page__bar-beats");
-    expect(barBeats).not.toBeNull();
-    // 拍头上方应只有 1, 2 两个数字，而不是 4 个
-    const beatNumbers = [...barBeats!.querySelectorAll("span:not(.score-page__meter-space)")];
-    expect(beatNumbers.map((el) => el.textContent)).toEqual(["1", "2"]);
+    // 拍头上方不渲染 1234 列表
+    expect(container.querySelector(".score-page__bar-beats")).toBeNull();
 
     const article = container.querySelector(".score-bar");
     expect(article).toHaveStyle({ flex: "2" });
+  });
+
+  it("applies ghost-note soft styling for s and b so they are easily distinguished from S and B", () => {
+    const bar = {
+      number: 1,
+      startMs: 0,
+      endMs: 2000,
+      beats: 4,
+      hits: [
+        { atMs: 0, stroke: "slap" as const, hand: "R" as const },
+        { atMs: 500, stroke: "slap" as const, hand: "L" as const, dynamics: "soft" as const },
+        { atMs: 1000, stroke: "bass" as const, hand: "R" as const },
+        { atMs: 1500, stroke: "bass" as const, hand: "L" as const, dynamics: "soft" as const },
+      ],
+    };
+    const { container } = render(<ScorePage bars={[bar]} currentTimeMs={0} />);
+
+    // 强击 S 和 B 没有 soft 类和 ghost-note
+    const strongSlap = container.querySelector('[data-hit-at="0"]');
+    expect(strongSlap).not.toHaveClass("score-char--soft");
+    expect(strongSlap?.querySelector(".score-char__ghost-note")).toBeNull();
+
+    // 弱击 s 和 b 有 soft 类和 ghost-note 装饰环
+    const softSlap = container.querySelector('[data-hit-at="500"]');
+    expect(softSlap).toHaveClass("score-char--soft");
+    expect(softSlap?.querySelector(".score-char__ghost-note")).not.toBeNull();
+    expect(softSlap?.textContent).toContain("s");
+
+    const softBass = container.querySelector('[data-hit-at="1500"]');
+    expect(softBass).toHaveClass("score-char--soft");
+    expect(softBass?.querySelector(".score-char__ghost-note")).not.toBeNull();
+    expect(softBass?.textContent).toContain("b");
   });
 });

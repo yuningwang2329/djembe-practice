@@ -106,10 +106,11 @@ test("iPad landscape practice controls stay large, independent and usable", asyn
 test("portrait remains operable", async ({ page }) => {
   await page.setViewportSize({ width: 820, height: 1180 });
   await page.goto("/");
-  await page.getByRole("button", { name: "开始练习 暖身律动" }).click();
+  await page.getByRole("button", { name: "开始练习 桥边姑娘" }).click();
 
   await expect(page.getByLabel("可跟练鼓谱")).toBeVisible();
   await expect(page.getByRole("button", { name: "开始播放" })).toBeVisible();
+  await page.screenshot({ path: "/Users/wangyuning/.gemini/antigravity/brain/a10bbffc-5acb-44ad-a396-07837d408051/portrait-6rows-preview.png" });
 });
 
 test("an imported family track remains available after reopening the app", async ({ page }) => {

@@ -214,7 +214,6 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
       <header className="practice-header">
         <button className="back-button" type="button" onClick={onBack}>返回曲目库</button>
         <div className="practice-header__info">
-          <p>正在练习</p>
           <div className="practice-header__headline">
             <h1>{song.title}</h1>
             <div className="mode-pill-group" role="tablist" aria-label="练习模式切换">
@@ -234,7 +233,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
                 className={`mode-pill ${practiceMode === "rhythm" ? "mode-pill--active" : ""}`}
                 onClick={() => setPracticeMode("rhythm")}
               >
-                节奏型练习
+                节奏型
               </button>
             </div>
             <button
@@ -255,7 +254,7 @@ function PracticeRoom({ song, onBack }: { song: SongDefinition; onBack: () => vo
                 }}
                 title="跳过前奏，直接从第一个敲鼓点开始"
               >
-                🥁 直达首个鼓点
+                🥁 直达鼓点
               </button>
             )}
           </div>
