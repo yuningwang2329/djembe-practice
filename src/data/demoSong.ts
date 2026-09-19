@@ -1,5 +1,6 @@
 import type { Hand, SongDefinition, Stroke } from "../domain/song";
 import { applyStructureEdits } from "./structure";
+import { applyTempoCorrection } from "./tempo";
 
 const barDurationMs = 2_000;
 const subdivisionMs = 250;
@@ -70,5 +71,8 @@ export const songLibrary: SongDefinition[] = [
   sarilang,
   beijing,
   chouchangke,
-].map(applyStructureEdits);
+]
+  // 顺序要紧：先按实测速度重排时间轴，再按录音段落增删小节
+  .map(applyTempoCorrection)
+  .map(applyStructureEdits);
 

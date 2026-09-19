@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { songLibrary } from "./demoSong";
 import { structureEdits } from "./structureEdits";
+import { structureEditsStage2 } from "./structureEditsStage2";
 import { lyricOffsets } from "./lyricOffsets";
 import { validateSong } from "../domain/song";
 import { qiaobianguniang } from "./qiaobianguniang";
@@ -17,8 +18,10 @@ import { beijing } from "./beijing";
 describe("谱面结构校正", () => {
   it("编辑表的每个键都能对应到曲目 id", () => {
     const ids = new Set(songLibrary.map((song) => song.id));
-    const orphans = Object.keys(structureEdits).filter((key) => !ids.has(key));
-    expect(orphans, `这些键没有对应曲目，校正会被静默跳过: ${orphans.join(", ")}`).toEqual([]);
+    for (const table of [structureEdits, structureEditsStage2]) {
+      const orphans = Object.keys(table).filter((key) => !ids.has(key));
+      expect(orphans, `这些键没有对应曲目，校正会被静默跳过: ${orphans.join(", ")}`).toEqual([]);
+    }
   });
 
   it("歌词微调表的每个键也能对应到曲目 id", () => {
@@ -55,7 +58,8 @@ describe("谱面结构校正", () => {
     for (const song of songLibrary) {
       const base = originals[song.id];
       if (base === undefined) continue;
-      const net = (structureEdits[song.id] ?? []).reduce((sum, edit) => sum + edit.delta, 0);
+      const net = [...(structureEdits[song.id] ?? []), ...(structureEditsStage2[song.id] ?? [])]
+        .reduce((sum, edit) => sum + edit.delta, 0);
       expect(song.bars.length, `${song.id} 小节数不符`).toBe(base + net);
     }
   });

@@ -29,10 +29,11 @@ export const structureEdits: Record<string, StructureEdit[]> = {
     { atBar: 102, delta: -1, targets: [101] },
   ],
   "shuishou": [
-    { atBar: 31, delta: 1 },
+    { atBar: 18, delta: 1 },
     { atBar: 52, delta: -13, targets: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51] },
+    { atBar: 65, delta: 1 },
     { atBar: 90, delta: -3, targets: [87, 88, 89] },
-    { atBar: 95, delta: 1 },
+    { atBar: 99, delta: 1 },
   ],
   "lasa": [
     { atBar: 28, delta: 1 },

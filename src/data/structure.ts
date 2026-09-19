@@ -1,5 +1,6 @@
 import type { Bar, HitEvent, SongDefinition } from "../domain/song";
-import { structureEdits } from "./structureEdits";
+import { structureEdits, type StructureEdit } from "./structureEdits";
+import { structureEditsStage2 } from "./structureEditsStage2";
 
 /**
  * 谱面结构校正：按 structureEdits 在指定位置补/删小节，使谱面的段落长度
@@ -36,7 +37,12 @@ function toTemplate(bar: Bar): BarTemplate {
 }
 
 export function applyStructureEdits(song: SongDefinition): SongDefinition {
-  const edits = structureEdits[song.id];
+  // 分两轮：第一轮用原始编号，第二轮用第一轮平移后的编号——增删会改变小节编号，
+  // 一轮之内无法表达"删掉一个刚补出来的小节"，所以如实分轮。
+  return applyStage(applyStage(song, structureEdits[song.id]), structureEditsStage2[song.id]);
+}
+
+function applyStage(song: SongDefinition, edits: StructureEdit[] | undefined): SongDefinition {
   if (!edits?.length || song.bars.length === 0) return song;
 
   const deletions = new Set<number>();
