@@ -344,12 +344,12 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .score-char--slap .score-char__letter { color: #147055; font-weight: 900; }
 .score-char--rest .score-char__letter { color: #cbb8a4; font-weight: 600; }
 
-/* 弱音/轻击：小写 s / b 用小字号 + 斜体 + 淡色，大写 S / B 坚挺实心，一眼即辨。
-   不再加虚线外环——外环在小屏上会糊成一片，反而不好认。 */
+/* 弱音/轻击：小写 s / b 用小字号 + 淡色区分，大写 S / B 坚挺实心，一眼即辨。
+   小写字母本身造型与大写截然不同，无需斜体区分，保持端正竖直与基准线统一。 */
 .score-char--soft .score-char__letter {
   font-size: clamp(1.12rem, 2.2vw, 1.5rem);
   font-weight: 750;
-  font-style: italic;
+  font-style: normal;
 }
 .score-char--slap.score-char--soft .score-char__letter {
   color: #3b8871;
