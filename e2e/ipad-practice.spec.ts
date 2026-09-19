@@ -50,9 +50,11 @@ test("song lyric cues follow seeking and leave the instrumental gap clear", asyn
   await page.screenshot({ path: "test-results/qiao-lyrics-landscape.png" });
   await progress.fill("90000");
   await expect(active).toHaveCount(0);
+  // 123 秒处录音唱的是「风华模样 你落落大方」（参考歌词 2:02 起句）。
+  // 结构校正前谱面在此处显示的是「你说无人在身旁」——那正是它整体晚了 6~10 秒的证据。
   await progress.fill("123000");
   await expect(active).toHaveCount(1);
-  await expect(active).toContainText("你说无人在身旁");
+  await expect(active).toContainText("风华模样");
 });
 
 test("continuous score previews the next row and crosses the old page boundary without jumping", async ({ page }) => {
@@ -60,7 +62,8 @@ test("continuous score previews the next row and crosses the old page boundary w
   await page.getByRole("button", { name: "开始练习 桥边姑娘" }).click();
   const progress = page.getByLabel("播放进度");
   const viewport = page.locator('.score-viewport');
-  await expect(page.locator('.score-bar')).toHaveCount(58);
+  // 58 小节是校正前的数量；校正后删除 3 个多余小节（原第 23/33/51 小节）→ 55
+  await expect(page.locator('.score-bar')).toHaveCount(55);
   await progress.fill('40340');
   const before = await viewport.evaluate((el) => el.scrollTop);
   const nextRow = await page.getByLabel('第 13 小节', { exact: true }).boundingBox();

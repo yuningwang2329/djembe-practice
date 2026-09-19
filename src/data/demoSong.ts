@@ -1,4 +1,5 @@
 import type { Hand, SongDefinition, Stroke } from "../domain/song";
+import { applyStructureEdits } from "./structure";
 
 const barDurationMs = 2_000;
 const subdivisionMs = 250;
@@ -69,5 +70,5 @@ export const songLibrary: SongDefinition[] = [
   sarilang,
   beijing,
   chouchangke,
-];
+].map(applyStructureEdits);
 
