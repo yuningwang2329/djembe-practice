@@ -18,10 +18,10 @@ describe("ScorePage", () => {
       sweep:container.querySelector('.score-lyric__sweep')?.getAttribute('style')});
     const before=get();
     expect(container.querySelector('.score-lyric-progress, .score-lyric-cursor')).toBeNull();
-    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 48% 0 0)'});
+    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 47.5% 0 0)'});
     rerender(<ScorePage {...props} currentTimeMs={400} visualLeadMs={100}/>);
     expect(get().head).not.toBe(before.head);expect(get().sweep).not.toBe(before.sweep);
-    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 38% 0 0)'});
+    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 37.5% 0 0)'});
     expect(container.querySelector('.score-lyric')).toHaveAttribute('data-state','current');
   });
   it('does not lose lyric highlighting when a cue starts just before the next row but its first letter is on that row', () => {
@@ -44,7 +44,7 @@ describe("ScorePage", () => {
     const bar = {number:1,startMs:0,endMs:2000,beats:4,hits:[{atMs:500,stroke:'bass' as const,hand:'R' as const}]};
     const {container} = render(<ScorePage bars={[bar]} currentTimeMs={500} visualLeadMs={300}
       lyrics={[{startMs:750,endMs:1500,text:'尚未开唱'}]}/>);
-    expect(container.querySelector('.score-playhead')).toHaveStyle({left:'52%'});
+    expect(container.querySelector('.score-playhead')).toHaveStyle({left:'52.5%'});
     expect(container.querySelector('[data-hit-at="500"]')).toHaveAttribute('data-state','current');
     expect(screen.getByLabelText('尚未开唱')).toHaveAttribute('data-state','idle');
   });
@@ -52,7 +52,7 @@ describe("ScorePage", () => {
     const bar = {number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [], lyricBeats: ['甲乙', '', '', '']};
     const props = {bars: [bar], charTimes: {1: [[1000, 1400], [], [], []]}};
     const {container, rerender} = render(<ScorePage {...props} currentTimeMs={700}/>);
-    expect(container.querySelector('.score-playhead')).toHaveStyle({left: '47%'});
+    expect(container.querySelector('.score-playhead')).toHaveStyle({left: '47.5%'});
     expect(container.querySelectorAll('.score-lyric__char--placed')[0]).toHaveAttribute('data-state','idle');
     rerender(<ScorePage {...props} currentTimeMs={1100}/>);
     expect(container.querySelectorAll('.score-lyric__char--placed')[0]).toHaveAttribute('data-state','current');
@@ -177,7 +177,7 @@ describe("ScorePage", () => {
 
     const playhead = container.querySelector(".score-playhead");
     expect(playhead).not.toBeNull();
-    expect(playhead).toHaveStyle({ left: "62%" });
+    expect(playhead).toHaveStyle({ left: "62.5%" });
 
     const { container: idleContainer } = render(
       <ScorePage bars={song.bars.slice(0, 4)} currentTimeMs={10_000} />,
@@ -333,28 +333,26 @@ describe("ScorePage", () => {
   });
 
   it("跨小节播放头无缝连续过渡：上一小节 100% 结束时刻，下一小节正好从 0% 接棒，无停顿无瞬移", () => {
-    // 构造两小节：bar1 0~2000ms (4拍，beatMs=500, leadMs=240), bar2 2000~4000ms
+    // 整拍格中心位于 12.5%、37.5%、62.5%、87.5%。
     const bar1 = { number: 1, startMs: 0, endMs: 2000, beats: 4, hits: [] };
     const bar2 = { number: 2, startMs: 2000, endMs: 4000, beats: 4, hits: [] };
     const bars = [bar1, bar2];
 
-    // 分界时刻：bar2.startMs - leadMs = 2000 - 240 = 1760ms
-    // 在 1759ms 时，播放头还在 bar1，即将达到 100%
-    expect(getPlayheadBar(bars, 1759)?.number).toBe(1);
+    // 相邻中心之间连续经过小节线。
+    expect(getPlayheadBar(bars, 1749)?.number).toBe(1);
 
-    // 在 1760ms 时（上一小节 100% 的同一瞬间），播放头无缝切到 bar2
-    expect(getPlayheadBar(bars, 1760)?.number).toBe(2);
+    expect(getPlayheadBar(bars, 1750)?.number).toBe(2);
 
     // 渲染测试：
-    const { container, rerender } = render(<ScorePage bars={bars} currentTimeMs={1759} />);
+    const { container, rerender } = render(<ScorePage bars={bars} currentTimeMs={1749} />);
     const bar1El = container.querySelector('[aria-label="第 1 小节"]');
     const bar2El = container.querySelector('[aria-label="第 2 小节"]');
     expect(bar1El).toHaveClass("score-bar--active");
     expect(bar1El?.querySelector(".score-playhead")).not.toBeNull();
     expect(bar2El?.querySelector(".score-playhead")).toBeNull();
 
-    // 在 1760ms 时，bar2 立即激活且播放头位于 0% 起步，绝不跳到 12%
-    rerender(<ScorePage bars={bars} currentTimeMs={1760} />);
+    // 接缝从 0% 连续进入，首拍击响时到达首字母中心。
+    rerender(<ScorePage bars={bars} currentTimeMs={1750} />);
     expect(bar2El).toHaveClass("score-bar--active");
     const playhead2 = bar2El?.querySelector(".score-playhead");
     expect(playhead2).not.toBeNull();

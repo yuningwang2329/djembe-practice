@@ -2,6 +2,7 @@ import type { Bar, HitEvent, Stroke, SongDefinition } from "../domain/song";
 import { strokeLabels } from "../domain/song";
 import { memo, useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { getCachedBeatPairs, getNoteBeams, layoutRecordingLyrics, type BeatNote, type NotatedLyricChar } from '../domain/scoreLayout';
+import {getPlayheadPosition} from '../domain/playhead';
 export { getCachedBeatPairs } from '../domain/scoreLayout';
 
 interface ScorePageProps {
@@ -198,19 +199,9 @@ export function placedChars(
   return getHumanizedPlacedChars(bar, times, 0);
 }
 
-/**
- * 计算小节内播放头的百分比（带超前半拍击响提前量）。
- * 保证在激活小节内从 0% 恒速滑行到 100%。
- */
+/** Note-centred visual projection; never shifts the sounding hit. */
 export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
-  const duration = bar.endMs - bar.startMs;
-  if (duration <= 0) return 0;
-  const beatMs = duration / (bar.beats || 4);
-  const leadMs = beatMs * 0.48;
-  const t = timeMs + leadMs;
-  if (t <= bar.startMs) return 0;
-  if (t >= bar.endMs) return 100;
-  return clamp01((t - bar.startMs) / duration) * 100;
+  return getPlayheadPosition([bar],timeMs)?.percent??(timeMs>=bar.endMs?100:0);
 }
 
 /**
@@ -220,24 +211,7 @@ export function getPlayheadPercentInBar(bar: Bar, timeMs: number): number {
  * 彻底消灭停留在小节右边沿卡顿以及下一小节跳出 12% 的不连贯现象。
  */
 export function getPlayheadBar(bars: Bar[], currentTimeMs: number): Bar | null {
-  for (let i = 0; i < bars.length; i++) {
-    const bar = bars[i];
-    const beatMs = (bar.endMs - bar.startMs) / (bar.beats || 4);
-    const leadMs = beatMs * 0.48;
-    const nextBar = bars[i + 1];
-    const nextLeadMs = nextBar
-      ? ((nextBar.endMs - nextBar.startMs) / (nextBar.beats || 4)) * 0.48
-      : leadMs;
-    const endWindow = nextBar ? nextBar.startMs - nextLeadMs : bar.endMs - leadMs;
-    const startWindow = i === 0 ? bar.startMs - leadMs : undefined;
-    if (currentTimeMs < endWindow) {
-      if (startWindow !== undefined && currentTimeMs < startWindow) {
-        return null;
-      }
-      return bar;
-    }
-  }
-  return null;
+  return getPlayheadPosition(bars,currentTimeMs)?.bar??null;
 }
 
 interface BlockMetric {
@@ -293,12 +267,8 @@ function areRowPropsEqual(prev: ScoreRowBlockProps, next: ScoreRowBlockProps): b
   const nextHasNextHit = next.nextHit && rowBars.some((b) => b.hits.includes(next.nextHit!));
   if (prevHasNextHit || nextHasNextHit) return false;
 
-  const firstBar = rowBars[0];
-  const beatMs = (firstBar.endMs - firstBar.startMs) / (firstBar.beats || 4);
-  const leadMs = beatMs * 0.48;
-
-  const prevPlayheadTime = prev.currentTimeMs + leadMs;
-  const nextPlayheadTime = next.currentTimeMs + leadMs;
+  const prevPlayheadTime = prev.currentTimeMs;
+  const nextPlayheadTime = next.currentTimeMs;
 
   const prevPast = prevPlayheadTime >= rowEnd;
   const nextPast = nextPlayheadTime >= rowEnd;
@@ -669,8 +639,9 @@ export function ScorePage({
   }, [visualTimeMs]);
 
   // 计算连续、平滑的播放头所在小节及百分比
-  const playheadBar = getPlayheadBar(bars, visualTimeMs);
-  const playheadPercent = playheadBar ? getPlayheadPercentInBar(playheadBar, visualTimeMs) : 0;
+  const playhead = getPlayheadPosition(bars,visualTimeMs);
+  const playheadBar = playhead?.bar??null;
+  const playheadPercent = playhead?.percent??0;
 
   // 定位击响音符与下一次击响音符
   const sixteenthMs = bpm ? Math.round(60_000 / bpm / 4) : 125;

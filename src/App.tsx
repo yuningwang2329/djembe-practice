@@ -139,17 +139,16 @@ function SongLibrary({
 }
 
 /**
- * 视觉提前量：用户偏好竖线先于正在放大的音符。移动竖线/歌词扫色/视窗；
+ * 默认击响时竖线通过字母中心。可选微调只移动竖线/歌词扫色/视窗；
  * 不用它补偿歌曲的拍点或歌词错误，也不作为蓝牙延迟校准值。
  */
-const VISUAL_LEAD_KEY = "djembe.visualLeadMs";
+// New preference: do not silently carry the old intentionally-leading setting forward.
+const VISUAL_LEAD_KEY = "djembe.visualLeadMs.centered";
 const VISUAL_LEAD_MIN = 0;
 const VISUAL_LEAD_MAX = 600;
 const VISUAL_LEAD_STEP = 20;
 /**
- * 默认 0：原先以为"画面慢半拍"是设备延迟，后来定位到真因是音符字母画在时值格子
- * 正中、而竖线按时间走（实测差 0.38 拍），已改为字母对齐拍点。这一项留着给
- * 蓝牙音箱之类的设备延迟用，按需调整即可。
+ * 默认 0：按实际音符中心定位，不再预置半拍提前，不继承旧版提前偏好。
  */
 const VISUAL_LEAD_DEFAULT = 0;
 
