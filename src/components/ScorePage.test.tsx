@@ -17,10 +17,11 @@ describe("ScorePage", () => {
     const get=()=>({head:container.querySelector('.score-playhead')?.getAttribute('style'),
       sweep:container.querySelector('.score-lyric__sweep')?.getAttribute('style')});
     const before=get();
-    expect(container.querySelector('.score-lyric-progress')).toHaveStyle({width:'52%'});
+    expect(container.querySelector('.score-lyric-progress, .score-lyric-cursor')).toBeNull();
+    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 48% 0 0)'});
     rerender(<ScorePage {...props} currentTimeMs={400} visualLeadMs={100}/>);
     expect(get().head).not.toBe(before.head);expect(get().sweep).not.toBe(before.sweep);
-    expect(container.querySelector('.score-lyric-progress')).toHaveStyle({width:'62%'});
+    expect(container.querySelector('.score-lyric__sweep')).toHaveStyle({clipPath:'inset(0 38% 0 0)'});
     expect(container.querySelector('.score-lyric')).toHaveAttribute('data-state','current');
   });
   it('does not lose lyric highlighting when a cue starts just before the next row but its first letter is on that row', () => {

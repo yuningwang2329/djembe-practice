@@ -553,13 +553,11 @@ const ScoreRowBlock = memo(function ScoreRowBlock({
                     data-state={currentTimeMs>=cue.startMs && currentTimeMs<cue.endMs?'current':'idle'}
                     aria-label={letters.map(c=>c.ch).join('')}>
                     {letters.map(c=><span key={c.index} className="score-lyric__char" style={{left:`${c.leftPercent}%`}}>{c.ch}</span>)}
-                    <span className="score-lyric__sweep" aria-hidden="true" style={{clipPath:`inset(0 ${100-sweep}% 0 0)`}}>
+                    <span className="score-lyric__sweep" data-row-active={rowBars.some(b=>b.number===playheadBarNumber)} aria-hidden="true" style={{clipPath:`inset(0 ${100-sweep}% 0 0)`}}>
                       {letters.map(c=><span key={c.index} className="score-lyric__ink-char" data-text={c.ch} style={{left:`${c.leftPercent}%`}}/>)}
                     </span>
                   </p>;
                 })}
-                {chars.length>0 && <span className="score-lyric-progress" data-complete={sweep===100} aria-hidden="true" style={{width:`${sweep}%`}}/>}
-                {chars.length>0 && playheadBarNumber===bar.number && <span className="score-lyric-cursor" aria-hidden="true" style={{left:`${playheadPercent}%`}}/>}
               </div>
             </div>;
           })}
